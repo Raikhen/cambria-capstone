@@ -54,6 +54,19 @@ export interface EventReaction {
   platform: ReactionPlatform;
 }
 
+export interface EventImage {
+  /** Absolute URL, typically the public `event-images` Supabase bucket. */
+  url: string;
+  /** Alt text describing the image content. */
+  alt: string;
+  /** Optional visible caption. */
+  caption?: string;
+  /** Attribution, e.g. "Photo: James the photographer (CC BY 2.0)". */
+  credit?: string;
+  /** Link to the original file / license page. */
+  credit_url?: string;
+}
+
 export interface TimelineEvent {
   /** Present when the row comes from the database; absent in seed JSON. */
   id?: string;
@@ -72,6 +85,8 @@ export interface TimelineEvent {
   importance: number;
   /** One sentence justifying the score against the rubric. */
   importance_rationale?: string;
+  /** Optional illustrative image (public domain / CC, hosted in our bucket). */
+  image?: EventImage | null;
   /** >= 1 required. */
   sources: EventSource[];
   /** Optional human commentary attached to the event. */

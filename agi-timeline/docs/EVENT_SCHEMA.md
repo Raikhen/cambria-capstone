@@ -25,6 +25,18 @@ the ingestion pipeline. Keep all four in sync with this document.
   "importance": 5,                     // 1–5 per the rubric in INCLUSION_CRITERIA.md
   "importance_rationale": "One sentence justifying the score against the rubric.",
 
+  // Optional illustrative image. Must be public domain or freely licensed
+  // (e.g. Wikimedia Commons); re-hosted as compressed WebP in the public
+  // `event-images` Supabase storage bucket, ~1200px wide max. Credit required
+  // for CC-licensed images.
+  "image": {
+    "url": "https://<project>.supabase.co/storage/v1/object/public/event-images/deep-blue-kasparov.webp",
+    "alt": "The Deep Blue supercomputer cabinet on display",
+    "caption": "One of Deep Blue's two cabinets, now at the Computer History Museum.",
+    "credit": "James the photographer (CC BY 2.0)",
+    "credit_url": "https://commons.wikimedia.org/wiki/File:Deep_Blue.jpg"
+  },
+
   // ≥ 1 required. First source is the primary one.
   "sources": [
     {
@@ -37,7 +49,9 @@ the ingestion pipeline. Keep all four in sync with this document.
 
   // Human commentary attached to the event: tweets, Zvi's analysis, notable quotes.
   // Quotes must be verbatim and linked. Optional, but strongly encouraged for
-  // modern-era events.
+  // modern-era events. The UI renders official embeds for X status URLs and
+  // Substack note URLs (…/note/c-<id>), so prefer linking the post itself over
+  // profile or article-section links when the quote is the whole post.
   "reactions": [
     {
       "author": "Andrej Karpathy",

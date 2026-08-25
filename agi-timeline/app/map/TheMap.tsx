@@ -665,7 +665,6 @@ export default function TheMap({
       <div className="tm-bar">
         <div className="tm-wordmark">
           <b>{SITE_NAME}</b>
-          <span>1943–2026</span>
         </div>
 
         <div

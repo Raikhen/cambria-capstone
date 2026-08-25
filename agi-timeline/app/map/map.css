@@ -87,13 +87,6 @@
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
-.tm-wordmark span {
-  font-family: var(--tm-font-m);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: var(--tm-ink-faint);
-  white-space: nowrap;
-}
 
 .tm-bar-group {
   display: flex;
@@ -453,9 +446,9 @@
 .tm-hover b {
   font-weight: 500;
   font-size: 12px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 300px;
+  /* Full title, always: wrap instead of truncating with an ellipsis. */
+  white-space: normal;
+  line-height: 1.3;
 }
 .tm-hover i {
   font-family: var(--tm-font-m);
@@ -669,7 +662,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(420px, 92vw);
+  width: min(var(--tm-panel-w, 420px), 92vw);
   background: var(--tm-bg-raised);
   border-left: 1px solid var(--tm-hair-strong);
   z-index: 40;
@@ -681,6 +674,50 @@
 }
 .tm-panel.open {
   transform: translateX(0);
+}
+.tm-panel.resizing {
+  transition: none;
+  user-select: none;
+}
+
+/* Hit area starts at the panel's OUTER edge (left: -1px covers the 1px
+   border-left) and sits fully inside the panel. No hover cursor — the
+   highlight line is the affordance; the col-resize cursor appears only
+   while actually dragging (via .tm-resizing-x below). */
+.tm-panel-resizer {
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 13px;
+  touch-action: none;
+  z-index: 5;
+}
+.tm-panel-resizer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background-color 0.12s;
+}
+.tm-panel-resizer:hover::after,
+.tm-panel-resizer:focus-visible::after {
+  background: var(--tm-hair-strong);
+}
+.tm-panel.resizing .tm-panel-resizer::after {
+  background: var(--tm-ink-dim);
+}
+.tm-panel-resizer:focus-visible {
+  outline: none;
+}
+/* While dragging, lock the resize cursor everywhere so it can't flicker
+   when the pointer outruns the panel edge. */
+.tm-resizing-x,
+.tm-resizing-x * {
+  cursor: col-resize !important;
 }
 
 .tm-panel-head {
@@ -819,8 +856,95 @@
   line-height: 1.18;
   letter-spacing: -0.012em;
   margin: 0 0 12px;
-  text-wrap: balance;
 }
+/* optional event image — cover behind the header block. Meta row (categories,
+   importance) pins to the top of the image; date + title sit at the bottom.
+   Image credit lives in the img alt/title attributes, not on screen. */
+.tm-head-cover {
+  position: relative;
+  /* cancel the body padding so the image runs edge to edge */
+  margin: -18px -20px 18px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--tm-hair);
+  min-height: 224px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.tm-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* portraits crop from the bottom — keep faces in frame */
+  object-position: 50% 25%;
+  background: var(--tm-hair);
+}
+/* uniform dim over the whole image so no bright patch can wash out text,
+   whatever the photo looks like; the gradients below do the local work */
+.tm-head-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: oklch(0.18 0.012 76 / 0.22);
+  pointer-events: none;
+}
+.tm-head-cover .tm-head-text {
+  position: relative;
+  /* clear image above; scrim carries the text zone */
+  padding: 44px 20px 14px;
+  background: linear-gradient(
+    to bottom,
+    oklch(0.18 0.012 76 / 0) 0%,
+    oklch(0.18 0.012 76 / 0.55) 40%,
+    oklch(0.18 0.012 76 / 0.9) 100%
+  );
+}
+.tm-head-cover .tm-meta-row {
+  position: relative;
+  margin-bottom: 0;
+  padding: 10px 12px 26px;
+}
+/* badge wrap: opaque-enough ink chips guarantee contrast on any image */
+.tm-head-cover .tm-cat-tag,
+.tm-head-cover .tm-imp-badge {
+  padding: 4px 8px;
+  border-radius: 2px;
+  background: oklch(0.18 0.012 76 / 0.62);
+  backdrop-filter: blur(3px);
+}
+.tm-head-cover .tm-cat-tag {
+  /* mostly white with a tint of the hue — every category clears the dark
+     badge; the dot carries the real color */
+  color: color-mix(in oklch, var(--c) 25%, white);
+}
+.tm-head-cover .tm-cat-tag i {
+  background: color-mix(in oklch, var(--c) 55%, white);
+}
+.tm-head-cover .tm-cat-tag.secondary i {
+  background: transparent;
+  border-color: color-mix(in oklch, var(--c) 55%, white);
+}
+.tm-head-cover .tm-imp-badge {
+  color: oklch(0.97 0.005 84 / 0.9);
+}
+.tm-head-cover .tm-imp-pips i {
+  background: oklch(0.99 0.004 84 / 0.35);
+}
+.tm-head-cover .tm-imp-pips i.on {
+  background: oklch(0.99 0.004 84);
+}
+.tm-head-cover .tm-panel-date {
+  color: oklch(0.97 0.005 84 / 0.88);
+  text-shadow: 0 1px 2px oklch(0.18 0.012 76 / 0.5);
+}
+.tm-head-cover .tm-panel-title {
+  margin-bottom: 0;
+  color: oklch(0.99 0.004 84);
+  text-shadow: 0 1px 3px oklch(0.18 0.012 76 / 0.55);
+}
+
 .tm-panel-summary {
   font-size: 13.5px;
   line-height: 1.62;
@@ -916,6 +1040,201 @@
   text-underline-offset: 3px;
 }
 
+/* Substack note embeds — Substack's own iframe, full width.
+   position:relative so a hidden still-loading frame (position:absolute in
+   the component) doesn't take up space under the fallback quote card. */
+.tm-embed {
+  position: relative;
+}
+.tm-embed iframe {
+  display: block;
+  border: none;
+  margin: 0;
+  width: 100% !important;
+  max-width: 100%;
+}
+
+/* X reactions — minimal cards built from syndication data, in the same
+   footprint as quote cards: full width, hairline border, no action bar. */
+.tm-tweet-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+  min-width: 0;
+}
+.tm-tweet-avatar {
+  flex: none;
+}
+.tm-tweet-avatar img {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--tm-hair);
+}
+.tm-tweet-name {
+  color: var(--tm-ink);
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tm-tweet-name:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.tm-tweet-handle {
+  color: var(--tm-ink-faint);
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tm-tweet-x {
+  margin-left: auto;
+  flex: none;
+  color: var(--tm-ink-faint);
+  display: grid;
+  place-items: center;
+  padding: 2px;
+}
+.tm-tweet-x:hover {
+  color: var(--tm-ink);
+}
+.tm-tweet-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--tm-ink);
+  margin: 0 0 10px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+.tm-tweet-text a {
+  color: var(--tm-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--tm-hair-strong);
+}
+.tm-tweet-text a:hover {
+  text-decoration-color: var(--tm-ink);
+}
+.tm-tweet-replyto {
+  display: block;
+  font-size: 11px;
+  color: var(--tm-ink-faint) !important;
+  margin-bottom: 4px;
+}
+.tm-tweet-media {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 10px;
+}
+.tm-tweet-media.multi {
+  grid-template-columns: 1fr 1fr;
+}
+.tm-tweet-media img {
+  display: block;
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid var(--tm-hair);
+}
+.tm-tweet-video {
+  position: relative;
+}
+.tm-tweet-play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: oklch(0.235 0.012 76 / 0.75);
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  color: var(--tm-bg);
+  pointer-events: none;
+}
+.tm-tweet-quoted {
+  border: 1px solid var(--tm-hair);
+  border-radius: 2px;
+  padding: 8px 10px;
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--tm-ink-dim);
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tm-tweet-quoted b {
+  color: var(--tm-ink);
+  font-weight: 600;
+}
+.tm-tweet-quoted:hover {
+  border-color: var(--tm-hair-strong);
+}
+
+/* X-style link card for the tweet's trailing URL */
+.tm-tweet-lcard {
+  display: block;
+  border: 1px solid var(--tm-hair);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 0 10px;
+  text-decoration: none;
+  background: var(--tm-bg-raised);
+}
+.tm-tweet-lcard:hover {
+  border-color: var(--tm-hair-strong);
+}
+.tm-tweet-lcard > img {
+  display: block;
+  width: 100%;
+  max-height: 170px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--tm-hair);
+}
+.tm-tweet-lcard-body {
+  display: block;
+  padding: 8px 10px 9px;
+}
+.tm-tweet-lcard-site {
+  display: block;
+  font-family: var(--tm-font-m);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--tm-ink-faint);
+  margin-bottom: 2px;
+}
+.tm-tweet-lcard-title {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--tm-ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tm-tweet-lcard-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--tm-ink-dim);
+  margin-top: 2px;
+}
+
 .tm-sources {
   list-style: none;
   margin: 0 0 26px;
@@ -969,9 +1288,6 @@
     gap: 8px;
     padding: 7px 10px;
   }
-  .tm-wordmark span {
-    display: none;
-  }
   .tm-cats {
     order: 5;
     flex-basis: 100%;
@@ -1010,6 +1326,9 @@
   }
   .tm-panel.open {
     transform: translateY(0);
+  }
+  .tm-panel-resizer {
+    display: none;
   }
 }
 
