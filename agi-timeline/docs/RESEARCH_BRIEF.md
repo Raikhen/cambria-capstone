@@ -1,6 +1,6 @@
 # Backfill research brief (shared by all era agents)
 
-You are one of five research agents backfilling the AGI Timeline. Before anything
+You are one of five research agents backfilling the AGI Trajectory. Before anything
 else, read `docs/INCLUSION_CRITERIA.md` (editorial policy: categories, importance
 rubric, inclusion tests, exclusions) and `docs/EVENT_SCHEMA.md` (exact JSON shape).
 Your output must comply with both.

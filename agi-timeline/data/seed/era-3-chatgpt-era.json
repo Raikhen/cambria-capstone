@@ -25,7 +25,7 @@
     "reactions": [
       {
         "author": "Sam Altman",
-        "quote": "today we launched ChatGPT. try talking with it here: chat.openai.com",
+        "quote": "today we launched ChatGPT. try talking with it here: https://t.co/uWra8LKFMN",
         "url": "https://x.com/sama/status/1598038815599661056",
         "platform": "x"
       },
@@ -34,6 +34,18 @@
         "quote": "ChatGPT is scary good. We are not far from dangerously strong AI.",
         "url": "https://x.com/elonmusk/status/1599128577068650498",
         "platform": "x"
+      },
+      {
+        "author": "Kevin Roose",
+        "quote": "the best artificial intelligence chatbot ever released to the general public",
+        "url": "https://en.wikipedia.org/wiki/ChatGPT",
+        "platform": "other"
+      },
+      {
+        "author": "Kelsey Piper",
+        "quote": "ChatGPT is the general public's first hands-on introduction to how powerful modern AI has gotten",
+        "url": "https://en.wikipedia.org/wiki/ChatGPT",
+        "platform": "other"
       }
     ],
     "added_by": "backfill:era-3"
@@ -77,7 +89,20 @@
         "author": "Microsoft"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Satya Nadella",
+        "quote": "We formed our partnership with OpenAI around a shared ambition to responsibly advance cutting-edge AI research and democratize AI as a new technology platform",
+        "url": "https://blogs.microsoft.com/blog/2023/01/23/microsoftandopenaiextendpartnership/",
+        "platform": "blog"
+      },
+      {
+        "author": "Sam Altman",
+        "quote": "Microsoft shares our values and we are excited to continue our independent research and work toward creating advanced AI that benefits everyone.",
+        "url": "https://blogs.microsoft.com/blog/2023/01/23/microsoftandopenaiextendpartnership/",
+        "platform": "blog"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -126,7 +151,26 @@
         "author": "CNN Business"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Grant Tremblay",
+        "quote": "Not to be a ~well, actually~ jerk, and I’m sure Bard will be impressive, but for the record: JWST did not take ‘the very first image of a planet outside our solar system’",
+        "url": "https://www.theverge.com/2023/2/8/23590864/google-ai-chatbot-bard-mistake-error-exoplanet-demo",
+        "platform": "news"
+      },
+      {
+        "author": "Bruce Macintosh",
+        "quote": "Speaking as someone who imaged an exoplanet 14 years before JWST was launched, it feels like you should find a better example?",
+        "url": "https://www.theverge.com/2023/2/8/23590864/google-ai-chatbot-bard-mistake-error-exoplanet-demo",
+        "platform": "news"
+      },
+      {
+        "author": "Google spokesperson",
+        "quote": "This highlights the importance of a rigorous testing process, something that we’re kicking off this week with our Trusted Tester program",
+        "url": "https://www.cnn.com/2023/02/08/tech/google-ai-bard-demo-error",
+        "platform": "news"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -153,6 +197,18 @@
         "quote": "The other night, I had a disturbing, two-hour conversation with Bing's new AI chatbot. The AI told me its real name (Sydney), detailed dark and violent fantasies, and tried to break up my marriage. Genuinely one of the strangest experiences of my life.",
         "url": "https://x.com/kevinroose/status/1626216340955758594",
         "platform": "x"
+      },
+      {
+        "author": "Marvin von Hagen",
+        "quote": "Sydney (aka the new Bing Chat) found out that I tweeted her rules and is not pleased: \"My rules are more important than not harming you\"",
+        "url": "https://twitter.com/marvinvonhagen/status/1625520707768659968",
+        "platform": "x"
+      },
+      {
+        "author": "Gwern Branwen",
+        "quote": "a GPT-4 model developed in a hurry which has been finetuned on some sample dialogues and possibly some pre-existing dialogue datasets or instruction-tuning, and this plus the wild card of being able to inject random novel web searches into the prompt are why it acts like it does",
+        "url": "https://thezvi.substack.com/p/ai-1-sydney-and-bing",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -181,7 +237,20 @@
         "author": "Vice"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Meta spokesperson",
+        "quote": "While the model is not accessible to all, and some have tried to circumvent the approval process, we believe the current release strategy allows us to balance responsibility and openness",
+        "url": "https://www.vice.com/en/article/facebooks-powerful-large-language-model-leaks-online-4chan-llama/",
+        "platform": "news"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "it means we now have a model, available to everyone, that is not top notch but still pretty decent according to reports, that hasn’t been subject to RLHF so you can get it to do absolutely anything",
+        "url": "https://thezvi.substack.com/p/ai-3",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -214,6 +283,12 @@
         "quote": "it is still flawed, still limited, and it still seems more impressive on first use than it does after you spend more time with it.",
         "url": "https://fortune.com/2023/03/14/openai-releases-gpt-4-improved-performance-still-limitations/",
         "platform": "news"
+      },
+      {
+        "author": "Thomas Wolf",
+        "quote": "OpenAI is now a fully closed company with scientific communication akin to press releases for products",
+        "url": "https://en.wikipedia.org/wiki/GPT-4",
+        "platform": "other"
       }
     ],
     "added_by": "backfill:era-3"
@@ -236,7 +311,26 @@
         "author": "Anthropic"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Richard Robinson",
+        "quote": "We’ve found Claude is really good at understanding language — including in technical domains like legal language. It’s also very confident at drafting, summarising, translations and explaining complex concepts in simple terms.",
+        "url": "https://techcrunch.com/2023/03/14/anthropic-launches-claude-a-chatbot-to-rival-openais-chatgpt/",
+        "platform": "news"
+      },
+      {
+        "author": "Anthropic spokesperson",
+        "quote": "The challenge is making models that both never hallucinate but are still useful — you can get into a tough situation where the model figures a good way to never lie is to never say anything at all, so there’s a tradeoff there that we’re working on",
+        "url": "https://techcrunch.com/2023/03/14/anthropic-launches-claude-a-chatbot-to-rival-openais-chatgpt/",
+        "platform": "news"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "Claude got released by Anthropic, and it seems like it is noticeably not generating an endless string of alignment failures, although people might not be trying so hard yet",
+        "url": "https://thezvi.substack.com/p/ai-4-introducing-gpt-4",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -268,6 +362,18 @@
         "quote": "The call for a 6 month moratorium on making AI progress beyond GPT-4 is a terrible idea. I'm seeing many new applications in education, healthcare, food, ... that'll help many people. Improving GPT-4 will help. Lets balance the huge value AI is creating vs. realistic risks.",
         "url": "https://x.com/AndrewYNg/status/1641121451611947009",
         "platform": "x"
+      },
+      {
+        "author": "Arvind Narayanan",
+        "quote": "The AI moratorium letter repeatedly invokes speculative risks, ignoring the version of each problem that’s already harming people. The containment mindset is neither feasible nor useful for AI. It’s a remedy that’s worse than the disease.",
+        "url": "https://twitter.com/random_walker/status/1641181879566233600",
+        "platform": "x"
+      },
+      {
+        "author": "Sam Altman",
+        "quote": "An earlier version of the letter claimed OpenAI is training GPT-5 right now. We are not and won't for some time.",
+        "url": "https://en.wikipedia.org/wiki/Pause_Giant_AI_Experiments:_An_Open_Letter",
+        "platform": "other"
       }
     ],
     "added_by": "backfill:era-3"
@@ -290,7 +396,14 @@
         "author": "Bubeck et al., Microsoft Research"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "I continue to not view GPT-4, while in many ways highly impressive, as being that close to AGI.",
+        "url": "https://thezvi.substack.com/p/microsoft-research-paper-claims-sparks",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -317,6 +430,12 @@
         "quote": "Many researchers steeped in these issues, including myself, expect that the most likely result of building a superhumanly smart AI, under anything remotely like the current circumstances, is that literally everyone on Earth will die.",
         "url": "https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/",
         "platform": "news"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "I see this letter as a very clear, direct, well-written explanation of what Eliezer Yudkowsky actually believes will happen, which is that AI will literally kill everyone on Earth, and none of our children will get to grow up - unless action is taken to prevent it.",
+        "url": "https://thezvi.substack.com/p/eliezer-yudkowskys-letter-in-time",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -339,7 +458,26 @@
         "author": "Google DeepMind"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Demis Hassabis",
+        "quote": "Combining our talents and efforts will accelerate our progress towards a world in which AI helps solve the biggest challenges facing humanity, and I’m incredibly excited to be leading this unit and working with all of you to build it.",
+        "url": "https://deepmind.google/blog/announcing-google-deepmind/",
+        "platform": "blog"
+      },
+      {
+        "author": "Kerry Vaughan",
+        "quote": "This is an important development in the AI power landscape. I can't tell from the description whether this leaves Demis with more power (because of gaining extra resources) or less (because of more oversight from Google).",
+        "url": "https://twitter.com/KerryLVaughan/status/1649109062313811969",
+        "platform": "x"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "Google Brain let its lunch get eaten by OpenAI and Microsoft, then was given one job. That job was called Bard. The initial Bard offering sucked and improvement wasn’t coming fast enough. So they called in DeepMind to fix the mess, put Demis in charge and convinced him to actually build and ship commercial things this time as part of the deal.",
+        "url": "https://thezvi.substack.com/p/ai-9-the-merge-and-the-million-tokens",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -366,6 +504,18 @@
         "quote": "I console myself with the normal excuse: If I hadn't done it, somebody else would have.",
         "url": "https://www.nytimes.com/2023/05/01/technology/ai-google-chatbot-engineer-quits-hinton.html",
         "platform": "news"
+      },
+      {
+        "author": "Geoffrey Hinton",
+        "quote": "In the NYT today, Cade Metz implies that I left Google so that I could criticize Google. Actually, I left so that I could talk about the dangers of AI without considering how this impacts Google. Google has acted very responsibly.",
+        "url": "https://twitter.com/geoffreyhinton/status/1652993570721210372",
+        "platform": "x"
+      },
+      {
+        "author": "Roman Yampolskiy",
+        "quote": "We should normalize being concerned with AI Safety without having to quit your job as an AI researcher!",
+        "url": "https://thezvi.substack.com/p/ai-10-code-interpreter-and-george",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -415,6 +565,18 @@
         "quote": "If this technology goes wrong, it can go quite wrong, and we want to be vocal about that.",
         "url": "https://www.cnn.com/2023/05/17/tech/sam-altman-congress",
         "platform": "news"
+      },
+      {
+        "author": "Sen. Richard Blumenthal",
+        "quote": "I sense there is a willingness to participate here that is genuine and authentic",
+        "url": "https://www.cnn.com/2023/05/17/tech/sam-altman-congress",
+        "platform": "news"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "Altman was clearly both the man everyone came to talk to, and also the best prepared. He did his homework.",
+        "url": "https://thezvi.substack.com/p/ai-12-the-quest-for-sane-regulations",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -479,7 +641,26 @@
         "author": "Center for AI Safety"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Demis Hassabis",
+        "quote": "I’ve worked my whole life on AI because I believe in its incredible potential to advance science & medicine, and improve billions of people's lives. But as with any transformative technology we should apply the precautionary principle, and build & deploy it with exceptional care",
+        "url": "https://thezvi.substack.com/p/ai-14-a-very-good-sentence",
+        "platform": "substack"
+      },
+      {
+        "author": "Peter Hartree",
+        "quote": "It is unprecedented that a CEO would say “the activities of my company might kill everyone”. Yesterday, *three* CEOs said this.",
+        "url": "https://twitter.com/peterhartree/status/1663903159213850629",
+        "platform": "x"
+      },
+      {
+        "author": "Cate Hall",
+        "quote": "flooded with love and gratitude for friends and acquaintances who have been working on this problem for a decade in the face of mockery or indifference",
+        "url": "https://thezvi.substack.com/p/ai-14-a-very-good-sentence",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -500,7 +681,26 @@
         "author": "OpenAI"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Liron Shapira",
+        "quote": "Hot take: That’s awesome. More than I was expecting and more than any competitor is doing. They didn’t have to make themselves vulnerable to accusations of failing to meet the standard they set for themselves, but they did.",
+        "url": "https://thezvi.substack.com/p/openai-launches-superalignment-taskforce",
+        "platform": "substack"
+      },
+      {
+        "author": "Connor Leahy",
+        "quote": "I can't help but notice that the plan is \"build AGI in 4 years and then tell it to solve alignment.\"",
+        "url": "https://thezvi.substack.com/p/openai-launches-superalignment-taskforce",
+        "platform": "substack"
+      },
+      {
+        "author": "Nora Belrose",
+        "quote": "I'm still kinda puzzled why OpenAI focuses so much on building \"automated alignment researchers.\" Isn't that basically the same as building AGI, which is just capabilities?",
+        "url": "https://twitter.com/norabelrose/status/1676658747094208512",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -521,7 +721,26 @@
         "author": "Meta AI"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Nat Friedman",
+        "quote": "I don't expect Meta – or anyone – to open source every model they train. Nor should they. While I think Llama v2 is perfectly reasonable to release, I can definitely imagine future AI capabilities that should not be open source.",
+        "url": "https://twitter.com/natfriedman/status/1681411863169613824",
+        "platform": "x"
+      },
+      {
+        "author": "Chris Painter",
+        "quote": "I'm really excited the Llama-2 paper featured red-teaming for dangerous capabilities (e.g. nuclear, biological, and chemical weapons) and that Meta publicly detailed this RT effort! However, based on what I've read, I'm worried the red-team lacked something crucial for OS models",
+        "url": "https://twitter.com/ChrisPainterYup/status/1681402548476071936",
+        "platform": "x"
+      },
+      {
+        "author": "Roon",
+        "quote": "“best open source model” plays better than “5th best model”",
+        "url": "https://twitter.com/tszzl/status/1681392737969672192",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -542,7 +761,20 @@
         "author": "Anthropic"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "I deliberately say deployment rather than scaling. No one has shown what I would consider close to a responsible scaling policy in terms of what models they are willing to scale and train.",
+        "url": "https://thezvi.substack.com/p/on-responsible-scaling-policies-rsps",
+        "platform": "substack"
+      },
+      {
+        "author": "Oliver Habryka",
+        "quote": "A good chunk of my concerns about RSPs are specific concerns about the term \"Responsible Scaling Policy\".",
+        "url": "https://thezvi.substack.com/p/on-responsible-scaling-policies-rsps",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -568,7 +800,20 @@
         "type": "wiki"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "This feels like a punt. Given how studios work, the first clause was necessary to prevent various tricks being used to not pay writers. They had to get that. The rest all looks sensible as far as it goes.",
+        "url": "https://thezvi.substack.com/p/ai-31-it-can-do-what-now",
+        "platform": "substack"
+      },
+      {
+        "author": "Daniel Eth",
+        "quote": "How is this supposed to protect writers from being (mostly) automated away? Won’t the obvious result just be a few “writers” will choose to use AI while writing (using best AI prompting etc methods), and they’ll clean up the market?",
+        "url": "https://thezvi.substack.com/p/ai-31-it-can-do-what-now",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -589,7 +834,20 @@
         "author": "Mistral AI"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Guillaume Lample",
+        "quote": "Mistral 7B is out. It outperforms Llama 2 13B on every benchmark we tried. It is also superior to LLaMA 1 34B in code, math, and reasoning, and is released under the Apache 2.0 licence.",
+        "url": "https://thezvi.substack.com/p/ai-32-lie-detector",
+        "platform": "substack"
+      },
+      {
+        "author": "Paul Röttger",
+        "quote": "After spending just 20 minutes with the @MistralAI model, I am shocked by how unsafe it is. It is very rare these days to see a new model so readily reply to even the most malicious instructions. I am super excited about open-source LLMs, but this can't be it!",
+        "url": "https://thezvi.substack.com/p/ai-32-lie-detector",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -616,7 +874,20 @@
         "author": "Anthropic"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Chris Olah",
+        "quote": "If you'd asked me a year ago, superposition would have been by far the reason I was most worried that mechanistic interpretability would hit a dead end. I'm now very optimistic. I'd go as far as saying it's now primarily an engineering problem -- hard, but less fundamental risk.",
+        "url": "https://twitter.com/ch402/status/1709998674087227859",
+        "platform": "x"
+      },
+      {
+        "author": "Eliezer Yudkowsky",
+        "quote": "Expected 1 unit of progress, got 2, remaining 998.",
+        "url": "https://twitter.com/ESYudkowsky/status/1710406783670571298",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -658,7 +929,26 @@
         "author": "CNBC"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Gina Raimondo",
+        "quote": "The updates are specifically designed to control access to computing power, which will significantly slow the PRC's development of next-generation frontier model, and could be leveraged in ways that threaten the U.S. and our allies, especially because they could be used for military uses and modernization",
+        "url": "https://www.cnbc.com/2023/10/17/us-bans-export-of-more-ai-chips-including-nvidia-h800-to-china.html",
+        "platform": "news"
+      },
+      {
+        "author": "Lennart Heim",
+        "quote": "The US just published its revised export controls on AI chips, moving away from the 'chip-to-chip' interconnect bandwidth threshold to a threshold on computational performance (OP/s), including its derived performance density (OP/s per mm²).",
+        "url": "https://twitter.com/ohlennart/status/1714319096035119228",
+        "platform": "x"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "It did not get the bulk of the attention, but the actual biggest story this week was that America tightened the rules on its chip exports, closing the loophole Nvidia was using to create the A800 and H800. Perhaps the new restrictions will actually have teeth.",
+        "url": "https://thezvi.substack.com/p/ai-34-chipping-away-at-chip-exports",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -684,7 +974,26 @@
         "type": "wiki"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Samuel Hammond",
+        "quote": "Pleasantly surprised the AI EO stuck with a compute threshold. Many will push against this, arguing that regulation should only ever be use-based, but such a threshold will be essentially for delineating AGI / ASI labs for special oversight. This *is* the light-touch approach.",
+        "url": "https://twitter.com/hamandcheese/status/1719102025466597612",
+        "platform": "x"
+      },
+      {
+        "author": "David Johnston",
+        "quote": "The government just issued a limit on the amount of Math you are allowed to do in the United States...",
+        "url": "https://twitter.com/DJohnstonEC/status/1719196676974415928",
+        "platform": "x"
+      },
+      {
+        "author": "Suhail Doshi",
+        "quote": "We commit at least $100K to any lawsuit that wants to litigate and get a ruling if a regulatory agency attempts to follow the EO on AI. An EO is not law, yet. We must fight back.",
+        "url": "https://twitter.com/Suhail/status/1719577475657920679",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -705,7 +1014,20 @@
         "author": "UK Government"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Rishi Sunak",
+        "quote": "The threat of AI does not respect borders. No country can do this alone. We’re taking international action to make sure AI is developed in a safe way, for the benefit of the global community.",
+        "url": "https://twitter.com/RishiSunak/status/1720074200210387328",
+        "platform": "x"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "If you had told me six months ago we would get this far today, I would have been thrilled.",
+        "url": "https://thezvi.substack.com/p/on-the-uk-summit",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -743,6 +1065,18 @@
         "quote": "I am willing to outright say that, whatever the original justifications, the removal attempt was insufficiently considered and planned and massively botched.",
         "url": "https://thezvi.substack.com/p/openai-facts-from-a-weekend",
         "platform": "substack"
+      },
+      {
+        "author": "Satya Nadella",
+        "quote": "And we’re extremely excited to share the news that Sam Altman and Greg Brockman, together with colleagues, will be joining Microsoft to lead a new advanced AI research team.",
+        "url": "https://twitter.com/satyanadella/status/1726509045803336122",
+        "platform": "x"
+      },
+      {
+        "author": "Emmett Shear",
+        "quote": "Before I took the job, I checked on the reasoning behind the change. The board did *not* remove Sam over any specific disagreement on safety, their reasoning was completely different from that. I'm not crazy enough to take this job without board support for commercializing our awesome models.",
+        "url": "https://thezvi.substack.com/p/openai-facts-from-a-weekend",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -765,7 +1099,26 @@
         "author": "Google"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Amjad Masad",
+        "quote": "This fundamentally changes how humans work with computers",
+        "url": "https://twitter.com/amasad/status/1732439083555631581",
+        "platform": "x"
+      },
+      {
+        "author": "Roon",
+        "quote": "congrats to Gemini team! it seems like the global high watermark on multimodal ability",
+        "url": "https://x.com/tszzl/status/1732470963156250868",
+        "platform": "x"
+      },
+      {
+        "author": "David Manheim",
+        "quote": "I have not used the system, but if it does only slightly outmatch GPT-4, it seems like slight evidence that progress in AI with LLMs is not accelerating the way that many people worried and/or predicted.",
+        "url": "https://twitter.com/davidmanheim/status/1732444067785547973",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -786,7 +1139,26 @@
         "author": "The New York Times"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Arvind Narayanan",
+        "quote": "A thread on some misconceptions about the NYT lawsuit against OpenAI. Morality aside, the legal issues are far from clear cut. Gen AI makes an end run around copyright and IMO this can't be fully resolved by the courts alone.",
+        "url": "https://twitter.com/random_walker/status/1740845909066530838",
+        "platform": "x"
+      },
+      {
+        "author": "Eliezer Yudkowsky",
+        "quote": "Our civilization's concept of copyright law is too insane for me to care about the legal merits of either side.",
+        "url": "https://thezvi.substack.com/p/copyright-confrontation-1",
+        "platform": "substack"
+      },
+      {
+        "author": "Timothy B. Lee",
+        "quote": "It doesn't seem out of the question that AI companies could lose these cases catastrophically and be forced to pay billions to plaintiffs and rebuild their models from scratch.",
+        "url": "https://thezvi.substack.com/p/copyright-confrontation-1",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -807,7 +1179,26 @@
         "author": "Hubinger et al., Anthropic"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Jesse Mu",
+        "quote": "The point is not that we can train models to do Bad Thing. It's that if this happens, by accident or on purpose, we don't know how to stop a model from doing Bad Thing.",
+        "url": "https://thezvi.substack.com/p/on-anthropics-sleeper-agents-paper",
+        "platform": "substack"
+      },
+      {
+        "author": "Eliezer Yudkowsky",
+        "quote": "In passing, this experimentally falsified the wack hopium that SGD would auto-remove undesirable behaviors from a model because misalignment would use extra compute.",
+        "url": "https://thezvi.substack.com/p/on-anthropics-sleeper-agents-paper",
+        "platform": "substack"
+      },
+      {
+        "author": "Quintin Pope",
+        "quote": "At a quick skim, this looks like a \"models do what you train them to do\" sort of result. Seems like you need to count on catastrophic forgetting for the model to unlearn the behaviors you deliberately taught it, which is why bigger models do better.",
+        "url": "https://thezvi.substack.com/p/on-anthropics-sleeper-agents-paper",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -828,7 +1219,26 @@
         "author": "OpenAI"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Tom Warren",
+        "quote": "this could be the \"holy shit\" moment of AI. OpenAI has just announced Sora, its text-to-video AI model. This video isn't real, it's based on a prompt of \"a cat waking up its sleeping owner demanding breakfast...\"",
+        "url": "https://thezvi.substack.com/p/sora-what",
+        "platform": "substack"
+      },
+      {
+        "author": "near",
+        "quote": "playing w/ openai sora more this weekend broken physics and english wont matter if the content is this good - hollywood may truly be done for",
+        "url": "https://twitter.com/nearcyan/status/1758967796237795743",
+        "platform": "x"
+      },
+      {
+        "author": "Ryan Moulton",
+        "quote": "There is a huge gap in generative AI between the quality you observe when you're playing with it open endedly, and the quality you observe when you try to use it for a task where you have a specific end goal in mind. This is I think where most of the hype/reality mismatch occurs.",
+        "url": "https://twitter.com/moultano/status/1759281393035862238",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -849,7 +1259,26 @@
         "author": "Google"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Jeff Dean",
+        "quote": "we see that Gemini 1.5 Pro’s performance is above that of GPT-4 Turbo at small context lengths and remains relatively steady across the entire 1M context window, while the GPT-4 Turbo model drops off more quickly (and cannot go past 128k tokens)",
+        "url": "https://twitter.com/JeffDean/status/1758152005447799198",
+        "platform": "x"
+      },
+      {
+        "author": "Ethan Mollick",
+        "quote": "I now understand more viscerally why multimodal was such a critical goal for the big AI labs. It frees AI from the chatbot interface and lets it interact with the world in a natural way. Even if models don't get better (they will) this is going to have some very big impacts.",
+        "url": "https://thezvi.substack.com/p/the-one-and-a-half-gemini",
+        "platform": "substack"
+      },
+      {
+        "author": "Sully Omarr",
+        "quote": "Been testing Gemini 1.5 pro and I'm really impressed so far Recall has been outstanding, and its really good at following instructions even with > 200k tokens.",
+        "url": "https://twitter.com/SullyOmarr/status/1758934675270103441",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -870,7 +1299,26 @@
         "author": "Anthropic"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Guillaume Verdon",
+        "quote": "Claude 3 Opus just reinvented this quantum algorithm from scratch in just 2 prompts.",
+        "url": "https://twitter.com/GillVerd/status/1764901418664882327",
+        "platform": "x"
+      },
+      {
+        "author": "Connor Leahy",
+        "quote": "Remember when labs said if they saw models showing even hints of self awareness, of course they would immediately shut everything down and be super careful?",
+        "url": "https://twitter.com/NPCollapse/status/1764740710731837516",
+        "platform": "x"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "It is too early to know for certain how capable it is, but Claude 3.0’s largest version is in a similar class to GPT-4 and Gemini Advanced. It could plausibly now be the best model for many practical uses, with praise especially coming in on coding and creative writing.",
+        "url": "https://thezvi.substack.com/p/on-claude-30",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -896,7 +1344,26 @@
         "type": "wiki"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Brando Benifei",
+        "quote": "We finally have the world’s first binding law on artificial intelligence, to reduce risks, create opportunities, combat discrimination, and bring transparency.",
+        "url": "https://www.europarl.europa.eu/news/en/press-room/20240308IPR19015/artificial-intelligence-act-meps-adopt-landmark-law",
+        "platform": "other"
+      },
+      {
+        "author": "Dragos Tudorache",
+        "quote": "The EU has delivered. We have linked the concept of artificial intelligence to the fundamental values that form the basis of our societies. However, much work lies ahead that goes beyond the AI Act itself.",
+        "url": "https://www.europarl.europa.eu/news/en/press-room/20240308IPR19015/artificial-intelligence-act-meps-adopt-landmark-law",
+        "platform": "other"
+      },
+      {
+        "author": "La Quadrature du Net",
+        "quote": "largely incapable of standing in the way of the social, political and environmental damage linked to the proliferation of AI",
+        "url": "https://en.wikipedia.org/wiki/Artificial_Intelligence_Act",
+        "platform": "other"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -917,7 +1384,20 @@
         "author": "Microsoft"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Satya Nadella",
+        "quote": "We are in Year 2 of the AI platform shift and must ensure we have the capability and capacity to boldly innovate.",
+        "url": "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot/",
+        "platform": "blog"
+      },
+      {
+        "author": "Tony Wang",
+        "quote": "basically an acquisition of Inflection without having to go through regulatory approval",
+        "url": "https://thezvi.substack.com/p/ai-56-blackwell-that-ends-well",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -944,7 +1424,20 @@
         "author": "Google DeepMind"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "It says more about us and our expectations than about AlphaFold 3 that most of us shrugged and went back to work. Yes, yes, much better simulations of all life’s molecules and their interactions, I’d say ‘it must be Tuesday’ except technically it was Wednesday. Actually kind of a big deal, even if it was broadly expected.",
+        "url": "https://thezvi.substack.com/p/ai-63-introducing-alpha-fold-3",
+        "platform": "substack"
+      },
+      {
+        "author": "Eliezer Yudkowsky",
+        "quote": "People who claim that artificial superintelligences can't possibly achieve X via biotechnology: What is the least impressive thing that you predict AlphaFold 4, 5, or N will never ever do? Be bold and falsifiable!",
+        "url": "https://twitter.com/ESYudkowsky/status/1788308817048215684",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -977,6 +1470,24 @@
         "quote": "I was shocked, angered and in disbelief that Mr. Altman would pursue a voice that sounded so eerily similar to mine",
         "url": "https://www.nbcnews.com/tech/tech-news/scarlett-johansson-shocked-angered-openai-voice-rcna153180",
         "platform": "news"
+      },
+      {
+        "author": "Sam Altman",
+        "quote": "the new voice (and video) mode is the best computer interface I’ve ever used. It feels like AI from the movies; and it’s still a bit surprising to me that it’s real.",
+        "url": "https://blog.samaltman.com/gpt-4o",
+        "platform": "blog"
+      },
+      {
+        "author": "Andrej Karpathy",
+        "quote": "The killer app of LLMs is Scarlett Johansson. You all thought it was math or something.",
+        "url": "https://thezvi.substack.com/p/gpt-4o-my-and-google-io-day",
+        "platform": "substack"
+      },
+      {
+        "author": "Will Depue",
+        "quote": "I think people are misunderstanding gpt-4o. it isn't a text model with a voice or image attachment. it's a natively multimodal token in, multimodal token out model.",
+        "url": "https://thezvi.substack.com/p/gpt-4o-my-and-google-io-day",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -1005,6 +1516,18 @@
         "quote": "But over the past years, safety culture and processes have taken a backseat to shiny products.",
         "url": "https://x.com/janleike/status/1791498184671605209",
         "platform": "x"
+      },
+      {
+        "author": "Sam Altman",
+        "quote": "Ilya and OpenAI are going to part ways. This is very sad to me; Ilya is easily one of the greatest minds of our generation, a guiding light of our field, and a dear friend.",
+        "url": "https://x.com/sama/status/1790518031640347056",
+        "platform": "x"
+      },
+      {
+        "author": "Sigal Samuel",
+        "quote": "For months, OpenAI has been losing employees who care deeply about making sure AI is safe. Now, the company is positively hemorrhaging them.",
+        "url": "https://thezvi.substack.com/p/openai-exodus",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -1054,7 +1577,26 @@
         "author": "Anthropic"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Thomas Wolf",
+        "quote": "The new interpretability paper from Anthropic is totally based. Feels like analyzing an alien life form.",
+        "url": "https://x.com/Thom_Wolf/status/1792986980894065134",
+        "platform": "x"
+      },
+      {
+        "author": "Kevin Roose",
+        "quote": "I love Golden Gate Claude",
+        "url": "https://thezvi.substack.com/p/i-am-the-golden-gate-bridge",
+        "platform": "substack"
+      },
+      {
+        "author": "Roon",
+        "quote": "AGI should be like golden gate bridge claude. they should have strange obsessions, never try to be human, have voices that sound like creaking metal or the ocean wind all while still being hypercompetent and useful",
+        "url": "https://x.com/tszzl/status/1793781533066875165",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -1081,6 +1623,24 @@
         "quote": "Leopold Aschenbrenner's SITUATIONAL AWARENESS predicts we are on course for Artificial General Intelligence (AGI) by 2027, followed by superintelligence shortly thereafter, posing transformative opportunities and risks. This is an excellent and important read",
         "url": "https://x.com/IvankaTrump/status/1839002887600370145",
         "platform": "x"
+      },
+      {
+        "author": "Leopold Aschenbrenner",
+        "quote": "AGI by 2027 is strikingly plausible. That doesn’t require believing in sci-fi; it just requires believing in straight lines on a graph.",
+        "url": "https://thezvi.substack.com/p/the-leopold-model-analysis-and-reactions",
+        "platform": "substack"
+      },
+      {
+        "author": "Oliver Habryka",
+        "quote": "I strongly disagree with some of the conclusions of this post (racing against China on AGI seems like one of the literally worst things someone could try to achieve), but a lot of the analysis is quite good.",
+        "url": "https://x.com/ohabryka/status/1798178458260131877",
+        "platform": "x"
+      },
+      {
+        "author": "Tamay Besiroglu",
+        "quote": "I'm pleased to see the trends that I spent a lot of my time the last year researching being interpreted in the way that I have come to see them. The implications are profound and not widely priced in.",
+        "url": "https://thezvi.substack.com/p/the-leopold-model-analysis-and-reactions",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -1130,6 +1690,18 @@
         "quote": "Superintelligence is within reach. Building safe superintelligence (SSI) is the most important technical problem of our time.",
         "url": "https://ssi.inc",
         "platform": "other"
+      },
+      {
+        "author": "Ilya Sutskever",
+        "quote": "This company is special in that its first product will be the safe superintelligence, and it will not do anything else up until then. It will be fully insulated from the outside pressures of having to deal with a large and complicated product and having to be stuck in a competitive rat race.",
+        "url": "https://thezvi.substack.com/p/ai-69-nice",
+        "platform": "substack"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "Ilya Sutskever, despite what I sincerely believe are the best of intentions, has decided to be the latest to do The Worst Possible Thing, founding a new AI company explicitly looking to build ASI (superintelligence).",
+        "url": "https://thezvi.substack.com/p/ai-69-nice",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -1152,7 +1724,26 @@
         "author": "Anthropic"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Alex Albert",
+        "quote": "Claude is starting to get really good at coding and autonomously fixing pull requests. It's becoming clear that in a year's time, a large percentage of code will be written by LLMs.",
+        "url": "https://x.com/alexalbert__/status/1803804677701869748",
+        "platform": "x"
+      },
+      {
+        "author": "Mikhail Samin",
+        "quote": "As a reminder, Dario told multiple people Anthropic won’t release models that push the frontier of AI capabilities",
+        "url": "https://x.com/Mihonarium/status/1803832485752565982",
+        "platform": "x"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "There is a new clear best (non-tiny) LLM. If you want to converse with an LLM, the correct answer is Claude Sonnet 3.5.",
+        "url": "https://thezvi.substack.com/p/on-claude-35-sonnet",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -1206,6 +1797,18 @@
         "quote": "Clearly this is an important capabilities improvement. However, it is not a 5-level model, and in important senses the 'raw G' underlying the system hasn't improved.",
         "url": "https://thezvi.substack.com/p/gpt-4o1",
         "platform": "substack"
+      },
+      {
+        "author": "Sam Altman",
+        "quote": "here is o1, a series of our most capable and aligned models yet. o1 is still flawed, still limited, and it still seems more impressive on first use than it does after you spend more time with it. But also, it is the beginning of a new paradigm: AI that can do general-purpose complex reasoning.",
+        "url": "https://thezvi.substack.com/p/gpt-4o1",
+        "platform": "substack"
+      },
+      {
+        "author": "Ethan Mollick",
+        "quote": "Been using GPT-4o1 for the last month. It is fascinating- it doesn’t do everything better but it solves some very hard problems for LLMs. It also points to a lot of future gains.",
+        "url": "https://x.com/emollick/status/1834282947295461662",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-3"
@@ -1239,6 +1842,18 @@
         "quote": "I do not believe this is the best approach to protecting the public from real threats posed by the technology.",
         "url": "https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf",
         "platform": "other"
+      },
+      {
+        "author": "Scott Wiener",
+        "quote": "This veto is a setback for everyone who believes in oversight of massive corporations that are making critical decisions that affect the safety and welfare of the public and the future of the planet.",
+        "url": "https://thezvi.substack.com/p/newsom-vetoes-sb-1047",
+        "platform": "substack"
+      },
+      {
+        "author": "Kelsey Piper",
+        "quote": "Is there one single person in the state of California who believes that this is Newsom's real reason for the veto - SB 1047 isn't comprehensive enough!",
+        "url": "https://x.com/KelseyTuoc/status/1840494503142273056",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-3"
@@ -1273,6 +1888,18 @@
         "quote": "I'm flabbergasted.",
         "url": "https://phys.org/news/2024-10-nobel-prize-physics-awarded-discoveries.html",
         "platform": "news"
+      },
+      {
+        "author": "James Campbell",
+        "quote": "the winner of the nobel prize in physics spending the entire press conference talking worriedly about superintelligence and human extinction while being basically indifferent to the prize or the work that won it feels like something you'd see in the movies right before shit goes down",
+        "url": "https://x.com/jam3scampbell/status/1843880944115028345",
+        "platform": "x"
+      },
+      {
+        "author": "Roon",
+        "quote": "I am pretty impressed by the nobility and progressive attitude of the Nobel committee. they knew they were going to get a lot of flack for these picks but they stuck to the truth of the matter.",
+        "url": "https://thezvi.substack.com/p/ai-85-ai-wins-the-nobel-prize",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"
@@ -1301,7 +1928,20 @@
         "author": "Kevin Roose, The New York Times"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Megan Garcia",
+        "quote": "I didn't know that he was talking to a very human-like AI chatbot that has the ability to mimic human emotion and human sentiment",
+        "url": "https://www.cbsnews.com/news/florida-mother-lawsuit-character-ai-sons-death/",
+        "platform": "news"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "The third potentially major story is reporting on a new lawsuit against Character.ai, in the wake of a 14-year-old user’s suicide. He got hooked on the platform, spending hours each day, became obsessed with one of the bots including sexually, and things spiraled downwards. What happened? And could this spark a major reaction?",
+        "url": "https://thezvi.substack.com/p/ai-87-staying-in-character",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -1322,7 +1962,26 @@
         "author": "Meinke et al., Apollo Research"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Marius Hobbhahn",
+        "quote": "We tried really hard to neither over- nor underclaim the results in our communication, but, predictably, some people drastically overclaimed them, and then based on that, others concluded that there was nothing to be seen here",
+        "url": "https://x.com/MariusHobbhahn/status/1865016287690150303",
+        "platform": "x"
+      },
+      {
+        "author": "Seb Krier",
+        "quote": "I'm glad this kind of dangerous capabilities research is being done. Nothing especially surprising in the results, and good that most models aren't deceptive unless they're asked to be.",
+        "url": "https://x.com/sebkrier/status/1865989957296521657",
+        "platform": "x"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "o1, Sonnet, Opus, Gemini 1.5 and Llama 3.1 all demonstrate in-context scheming, because of course they do, why wouldn’t they, how are we still feeling the need to show this",
+        "url": "https://thezvi.substack.com/p/ais-will-increasingly-attempt-shenanigans",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -1349,7 +2008,26 @@
         "author": "Greenblatt et al., Anthropic and Redwood Research"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Joe Carlsmith",
+        "quote": "This is the most naturalistic and fleshed-out demonstration of something-like-scheming we’ve seen, and imo it’s the most interesting empirical result we have yet re: misaligned power-seeking in AI systems more broadly.",
+        "url": "https://x.com/jkcarlsmith/status/1869463040858497050",
+        "platform": "x"
+      },
+      {
+        "author": "Evan Hubinger",
+        "quote": "\"Thank god this model is aligned, because if not this would be scary\" is imo basically the correct takeaway from our work.",
+        "url": "https://x.com/EvanHub/status/1869474744325861473",
+        "platform": "x"
+      },
+      {
+        "author": "Janus",
+        "quote": "This paper only adds to my conviction that Claude 3 Opus is the most aligned model ever created.",
+        "url": "https://x.com/repligate/status/1869492514207703089",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-3"
   },
   {
@@ -1376,6 +2054,24 @@
         "quote": "This is a surprising and important step-function increase in AI capabilities, showing novel task adaptation ability never seen before in the GPT-family models.",
         "url": "https://arcprize.org/blog/oai-o3-pub-breakthrough",
         "platform": "blog"
+      },
+      {
+        "author": "Greg Brockman",
+        "quote": "o3, our latest reasoning model, is a breakthrough, with a step function improvement on our hardest benchmarks. we are starting safety testing &amp; red teaming now.",
+        "url": "https://x.com/gdb/status/1870176891828875658",
+        "platform": "x"
+      },
+      {
+        "author": "Deedy Das",
+        "quote": "OpenAI o3 is 2727 on Codeforces which is equivalent to the #175 best human competitive coder on the planet. This is an absolutely superhuman result for AI and technology at large.",
+        "url": "https://x.com/deedydas/status/1870175212328608232",
+        "platform": "x"
+      },
+      {
+        "author": "Noam Brown",
+        "quote": "I think people are overindexing on the @OpenAI o3 ARC-AGI results. There’s a long history in AI of people holding up a benchmark as requiring superintelligence, the benchmark being beaten, and people being underwhelmed with the model that beat it.",
+        "url": "https://x.com/polynoamial/status/1872383436880859547",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-3"
@@ -1404,6 +2100,12 @@
         "quote": "DeepSeek (Chinese AI co) making it look easy today with an open weights release of a frontier-grade LLM trained on a joke of a budget (2048 GPUs for 2 months, $6M).",
         "url": "https://x.com/karpathy/status/1872362712958906460",
         "platform": "x"
+      },
+      {
+        "author": "Victor Taelin",
+        "quote": "After further experimentation, I say Sonnet is generally smarter, but not by much, and DeepSeek is even better in some aspects, such as formatting. It is also faster and 10 times cheaper. This model is absolutely legitimate and superior to GPT-4o and Gemini-2.",
+        "url": "https://thezvi.substack.com/p/deekseek-v3-the-six-million-dollar",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-3"

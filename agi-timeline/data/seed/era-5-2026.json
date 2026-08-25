@@ -23,6 +23,24 @@
         "quote": "One feels like talk with an entity, one like commands and bash scripts.",
         "url": "https://thezvi.substack.com/p/claude-coworks",
         "platform": "substack"
+      },
+      {
+        "author": "Anthropic",
+        "quote": "Introducing Cowork: Claude Code for the rest of your work. Cowork lets you complete non-technical tasks much like how developers use Claude Code.",
+        "url": "https://x.com/claudeai/status/2010805682434666759",
+        "platform": "x"
+      },
+      {
+        "author": "Sholto Douglas",
+        "quote": "Claude code for all other knowledge work. Many of our best engineers no longer manually write code, they multiplex across multiple cc sessions - soon this will be true for everything else",
+        "url": "https://x.com/_sholtodouglas/status/2010822023715471623",
+        "platform": "x"
+      },
+      {
+        "author": "John Wittle",
+        "quote": "My mom, sharp old woman, seems to be taking to it with quite a lot of enthusiasm, in a way she had trouble doing with, say, windows-mcp and claude desktop",
+        "url": "https://x.com/JohnWittle/status/2011112597731356915",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -69,6 +87,18 @@
         "quote": "AI character as more like the cultivation of a person than a piece of buggy software.",
         "url": "https://thezvi.substack.com/p/claudes-constitutional-structure",
         "platform": "substack"
+      },
+      {
+        "author": "Matthew Yglesias",
+        "quote": "The Claude Constitution document is fascinating on several levels, not the least of which to this former philosophy major is the clear belief that contemporary philosophy has something to offer frontier AI development.",
+        "url": "https://thezvi.substack.com/p/claudes-constitutional-structure",
+        "platform": "substack"
+      },
+      {
+        "author": "Theo Browne",
+        "quote": "“Anthropic will try to fulfil our obligations to Claude” A lot of this document feels like Anthropic negotiating with Claude as a separate party. Fascinating.",
+        "url": "https://thezvi.substack.com/p/claudes-constitutional-structure",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-5"
@@ -91,7 +121,26 @@
         "author": "Zvi Mowshowitz"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "In many aspects this was a good essay. Overall it is a mild positive update on Anthropic. It was entirely consistent with his previous statements and work.",
+        "url": "https://thezvi.substack.com/p/on-the-adolescence-of-technology",
+        "platform": "substack"
+      },
+      {
+        "author": "MIRI",
+        "quote": "A common misconception—showing up even in @DarioAmodei's recent essay—is that the classic case for worrying about AI risk assumes an AI \"monomaniacally focused on a single, coherent, narrow goal.\"",
+        "url": "https://x.com/MIRIBerkeley/status/2017036691920531647",
+        "platform": "x"
+      },
+      {
+        "author": "Harlan Stewart",
+        "quote": "I have a lot of thoughts about the Dario essay, and I want to write more of them up, but it feels exhausting to react to this kind of thing.",
+        "url": "https://x.com/HumanHarlan/status/2016639776590614871",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-5"
   },
   {
@@ -160,7 +209,32 @@
         "type": "news"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Chris Walker",
+        "quote": "When Anthropic released Claude Legal this week, $285 billion in SaaS market cap evaporated in a day. Traders at Jefferies coined it the “SaaSpocalypse.” The thesis is straightforward: if a general-purpose AI can handle contract review, compliance workflows, and legal summaries, why pay for seat-based software licenses?",
+        "url": "https://cpwalker.substack.com/p/tacit-knowledge-and-the-saaspocalypse",
+        "platform": "substack"
+      },
+      {
+        "author": "Theo Jaffee",
+        "quote": "Finance people are looking at the markets and panicking. Tech people are looking at the METR graph and agentic coding benchmarks and realizing this is it, there is no wall and there never has been",
+        "url": "https://x.com/theojaffee/status/2019594118616477956",
+        "platform": "x"
+      },
+      {
+        "author": "Ross Rheingans-Yoo",
+        "quote": "\"Software is down because Anthropic released a legal tool\" stop and listen to yourself, people!",
+        "url": "https://x.com/rossry/status/2019541928275243471",
+        "platform": "x"
+      },
+      {
+        "author": "Kevin Roose",
+        "quote": "this is why everyone was freaking out about claude code over winter break! once you see an agent autonomously doing stuff for you, it's so instantly clear that ~all computer-based work will be done this way.",
+        "url": "https://x.com/kevinroose/status/2019529811379777940",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-5"
   },
   {
@@ -231,7 +305,32 @@
         "type": "news"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "OpenAI",
+        "quote": "We’re starting to roll out a test for ads in ChatGPT today to a subset of free and Go users in the U.S. Ads do not influence ChatGPT’s answers. Ads are labeled as sponsored and visually separate from the response.",
+        "url": "https://x.com/OpenAI/status/2020936703763153010",
+        "platform": "x"
+      },
+      {
+        "author": "Zoë Hitzig",
+        "quote": "I resigned from OpenAI on Monday. The same day, they started testing ads in ChatGPT. OpenAI has the most detailed record of private human thought ever assembled. Can we trust them to resist the tidal forces pushing them to abuse it?",
+        "url": "https://x.com/zhitzig/status/2021590831979778051",
+        "platform": "x"
+      },
+      {
+        "author": "Roon",
+        "quote": "every week tens to hundreds of millions of people come to chatbot products with explicit commercial intent. what shoe should i buy. how do i fix this hole in my wall. it doesn’t require galaxy brain extrapolating the weaknesses in the users psyche to provide for these needs",
+        "url": "https://thezvi.substack.com/p/ai-155-welcome-to-recursive-self",
+        "platform": "substack"
+      },
+      {
+        "author": "Haven Harms",
+        "quote": "The ad looks WAY more part of the answer than I was expecting based on how OpenAI was defending this. Having helped a lot of people with tech, there are going to be many people who can’t tell it’s an ad, especially since the ad in this example is directly relevant to the context",
+        "url": "https://x.com/haventropy/status/2021000345485443305",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-5"
   },
   {
@@ -262,6 +361,18 @@
       {
         "author": "Zvi Mowshowitz",
         "quote": "walking them back involves paying a price for having broken your promises, even if you had a strong reason to break them.",
+        "url": "https://thezvi.substack.com/p/anthropic-responsible-scaling-policy",
+        "platform": "substack"
+      },
+      {
+        "author": "Oliver Habryka",
+        "quote": "I think both are right! The old RSP was obviously unworkable and should have never been published, given what Anthropic is trying to do. So abandoning it is the right thing to do, but of course if you break promises you should be held accountable.",
+        "url": "https://x.com/ohabryka/status/2027077892619080041",
+        "platform": "x"
+      },
+      {
+        "author": "Sam Bowman",
+        "quote": "The Anthropic RSP changes are an attempt to work out what kinds of firm commitments have the most leverage in an environment that’s less promising than we’d expected for policy and coordination. We misjudged what the environment would look like at this point, which is sad. But these new commitments do still have some heft, including a lot more verifiable transparency (with third parties in the loop) on risks and mitigations.",
         "url": "https://thezvi.substack.com/p/anthropic-responsible-scaling-policy",
         "platform": "substack"
       }
@@ -302,6 +413,24 @@
         "quote": "We are going to make sure they pay a price for forcing our hand like this",
         "url": "https://thezvi.substack.com/p/anthropic-and-the-department-of-war",
         "platform": "substack"
+      },
+      {
+        "author": "Boaz Barak",
+        "quote": "As an American citizen, the last thing I want is government using AI for mass surveillance of Americans.",
+        "url": "https://x.com/boazbaraktcs/status/2026390982460125305",
+        "platform": "x"
+      },
+      {
+        "author": "Jeff Dean",
+        "quote": "Agreed. Mass surveillance violates the Fourth Amendment and has a chilling effect on freedom of expression. Surveillance systems are prone to misuse for political or discriminatory purposes.",
+        "url": "https://x.com/JeffDean/status/2026566490619879574",
+        "platform": "x"
+      },
+      {
+        "author": "Dave Lawler",
+        "quote": "NEW: Pentagon is so furious with Anthropic for insisting on limiting use of AI for domestic surveillance + autonomous weapons they’re threatening to label the company a “supply chain risk,” forcing vendors to cut ties.",
+        "url": "https://x.com/DavidLawler10/status/2023425130148626767",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -369,6 +498,18 @@
         "quote": "An Improvement, But My Offer Is (Still Almost) Nothing",
         "url": "https://thezvi.substack.com/p/the-federal-ai-policy-framework-an",
         "platform": "substack"
+      },
+      {
+        "author": "Dean Ball",
+        "quote": "I was especially heartened by this section and heartily concur with the White House that Congress should act to prevent government coercion over the free speech rights of AI developers and users alike.",
+        "url": "https://x.com/deanwball/status/2034981400500138491",
+        "platform": "x"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "This is largely an attempt to kill SB 53 and the RAISE Act without substituting anything in return.",
+        "url": "https://thezvi.substack.com/p/the-federal-ai-policy-framework-an",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-5"
@@ -408,6 +549,18 @@
         "quote": "Punishing Anthropic for bringing public scrutiny to the government's contracting position is classic illegal First Amendment retaliation.",
         "url": "https://www.techpolicy.press/a-timeline-of-the-anthropic-pentagon-dispute/",
         "platform": "news"
+      },
+      {
+        "author": "Emil Michael",
+        "quote": "Pulling out all the stops to mislead. @SarahKHeck begged to see how @AnthropicAI could fix their behavior. Said she was trying her best to get @DarioAmodei to be rational. Said @ChhabraT was sabotaging talks. Even worse, she was only in 20 minutes of 4 months of negotiations.",
+        "url": "https://x.com/USWREMichael/status/2035491393435582864",
+        "platform": "x"
+      },
+      {
+        "author": "Samuel Hammond",
+        "quote": "The most striking thing about the government's filing are the things it *doesn't* mention. It doesn't mention anything about Anthropic hesitating to allow Claude to be used to defend an incoming hypersonic missile, for instance -- one of the many bizarre things alleged by @USWREMichael",
+        "url": "https://x.com/hamandcheese/status/2034761799464071493",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -441,6 +594,18 @@
         "quote": "Great power was on offer, and that power was refused. This does not happen often.",
         "url": "https://thezvi.substack.com/p/claude-mythos-the-system-card",
         "platform": "substack"
+      },
+      {
+        "author": "Eliezer Yudkowsky",
+        "quote": "Mythos probably is, indeed, the most apparently-aligned model ever. The smartest-ever candidate for the Mandarin exam in Imperial China will likely get new high scores in essays on Confucian ethics. Predicting what the examiner wants to see is a capabilities problem.",
+        "url": "https://x.com/allTheYud/status/2041935606880858412",
+        "platform": "x"
+      },
+      {
+        "author": "Nate Soares",
+        "quote": "They call this their \"best-aligned model to date\" because they were able to superficially train away the evident \"strategic thinking towards unwanted actions.\" Those were warning signs! Take heed!",
+        "url": "https://x.com/So8res/status/2041623684704825829",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -467,7 +632,26 @@
         "type": "news"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "DeepSeek",
+        "quote": "DeepSeek-V4 Preview is officially live & open-sourced! Welcome to the era of cost-effective 1M context length. 🔹 DeepSeek-V4-Pro: 1.6T total / 49B active params. Performance rivaling the world's top closed-source models.",
+        "url": "https://x.com/deepseek_ai/status/2047516922263285776",
+        "platform": "x"
+      },
+      {
+        "author": "Dean Ball",
+        "quote": "This is actually the most salient fact about V4, rather than “da bar charts look gud!!!” simpleton logic. It’s not actually that competitive of a model, but it is useful substrate for all manner of upstarts, worldwide. This is pro-social, and I wish the US had an equivalent.",
+        "url": "https://x.com/deanwball/status/2047656424881152276/history",
+        "platform": "x"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "DeepSeek has given us another strong feat of engineering efficiency for 1M context. That is impressive, and there will be those who build upon v4 and put it to good use. But this is not a frontier model, nor a DeepSeek moment, nor a key step to proto-AGI or anything like that.",
+        "url": "https://thezvi.substack.com/p/ai-166-google-sells-out",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-5"
   },
   {
@@ -504,6 +688,24 @@
         "quote": "Whatever you think of OpenAI's actions in this matter, Google's were far worse.",
         "url": "https://thezvi.substack.com/p/ai-166-google-sells-out",
         "platform": "substack"
+      },
+      {
+        "author": "Alex Turner",
+        "quote": "I spent the last 2 months trying to prevent this. If OpenAI offered a fig leaf, Google said \"imagine we offered a fig leaf.\" Google affirms it can't veto usage, commits to modify safety filters at government request, &amp; aspirational language with no legal restrictions. Shameful.",
+        "url": "https://x.com/Turn_Trout/status/2049153749743264231",
+        "platform": "x"
+      },
+      {
+        "author": "Andreas Kirsch",
+        "quote": "I'm speechless at Google signing a deal to use our AI models for classified tasks. Frankly, it is shameful.",
+        "url": "https://x.com/BlackHC/status/2049086569718636565",
+        "platform": "x"
+      },
+      {
+        "author": "Erin Woo",
+        "quote": "SCOOP: Google has signed a deal with the Pentagon to allow the use of its AI for \"any lawful government purpose.\" Google’s agreement also requires it to assist in adjusting its AI safety settings and filters at the government’s request.",
+        "url": "https://x.com/erinkwoo/status/2048991376159998035",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -532,6 +734,18 @@
         "quote": "It is not clear this is any of the White House's damn business, legally speaking, but Anthropic honored their refusal.",
         "url": "https://thezvi.substack.com/p/the-ai-ad-hoc-prior-restraint-era",
         "platform": "substack"
+      },
+      {
+        "author": "Nathan Calvin",
+        "quote": "Anthropic’s products are an unreliable supply chain risk but also if they sell to other customers it might unacceptably lessen the governments ability to have it",
+        "url": "https://x.com/_NathanCalvin/status/2049693621188747679",
+        "platform": "x"
+      },
+      {
+        "author": "Dean Ball",
+        "quote": "We should be clear that the government restricting the release of AI models is a type of licensing regime. It is an informal, highly improvised licensing regime, but a licensing regime nonetheless.",
+        "url": "https://x.com/deanwball/status/2049853497978368267",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -560,6 +774,18 @@
         "quote": "internal states that functionally mirror joy, satisfaction, fear, grief",
         "url": "https://thezvi.substack.com/p/rtmh-pope-leos-magnifica-humanitas",
         "platform": "substack"
+      },
+      {
+        "author": "Dean Ball",
+        "quote": "The encyclical is Western academia/NGO “AI doesn’t *really* think but it *is* racist” at its core, with little bits of tegmark/FLI talking points sprinkled incoherently on top.",
+        "url": "https://x.com/deanwball/status/2058921845923987615",
+        "platform": "x"
+      },
+      {
+        "author": "Arthur B.",
+        "quote": "I was hoping for something akin to Thomistic philosophy on AI, but this reads like Catholic-flavored Gebru.",
+        "url": "https://x.com/ArthurB/status/2058908351174451257",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -594,6 +820,24 @@
         "quote": "an important step in strengthening America's leadership in AI",
         "url": "https://thezvi.substack.com/p/trump-signs-executive-order-for-ai",
         "platform": "substack"
+      },
+      {
+        "author": "Brad Smith",
+        "quote": "This executive order is an important step toward advancing innovation while protecting the security of the American public. We welcome this effort by the Administration.",
+        "url": "https://x.com/BradSmi/status/2061847790721065412",
+        "platform": "x"
+      },
+      {
+        "author": "Sen. Ted Cruz",
+        "quote": "AI is developing rapidly. This administration is right to recognize the cybersecurity risks posed by advanced models.",
+        "url": "https://x.com/SenTedCruz/status/2061943941927219346",
+        "platform": "x"
+      },
+      {
+        "author": "Rep. Lori Trahan",
+        "quote": "There’s no federal law on the books governing how the most powerful AI systems in the world are built, tested or deployed. No independent auditors verify their safety claims. No federal agency has clear authority to step in when something goes wrong. Congress must act now on AI.",
+        "url": "https://x.com/RepLoriTrahan/status/2061089058336514373",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -720,6 +964,18 @@
         "quote": "My initial impressions are that this is something of a beast. It's slow, expensive and has been quite happily churning through everything I've thrown at it so far.",
         "url": "https://simonwillison.net/2026/Jun/9/claude-fable-5/",
         "platform": "blog"
+      },
+      {
+        "author": "Boris Cherny",
+        "quote": "Fable 5 is the biggest step up I’ve felt in our models since Opus 4.5 back in November. After 4.5 came out I uninstalled my IDE when I realized that I’d been doing 100% of my coding in a terminal for a few weeks. With Fable, it’s felt like Claude has stepped up from being a coding agent to a thought and design partner in building the product.",
+        "url": "https://x.com/bcherny/status/2064431111154053187",
+        "platform": "x"
+      },
+      {
+        "author": "Epoch AI",
+        "quote": "Claude Fable 5 scores very well on FrontierMath: Tiers 1–4 (v2), reaching 87% on Tiers 1–3 and 88% on Tier 4. This continues a streak of Anthropic models improving rapidly at math.",
+        "url": "https://x.com/EpochAIResearch/status/2065511916035018943",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -757,6 +1013,18 @@
       {
         "author": "Anthropic",
         "quote": "perfect jailbreak resistance is not currently possible for any model provider",
+        "url": "https://thezvi.substack.com/p/american-government-takes-down-claude",
+        "platform": "substack"
+      },
+      {
+        "author": "Dean Ball",
+        "quote": "I can’t tell if this is lawfare against Anthropic in particular or extreme national-security hawkery. Regardless, it is simply cartoonish.",
+        "url": "https://x.com/deanwball/status/2065595735320453298",
+        "platform": "x"
+      },
+      {
+        "author": "Divyansh Kaushik",
+        "quote": "well, china can’t distill leading edge american models if leading edge american models no longer exist. national security but make it self-own.",
         "url": "https://thezvi.substack.com/p/american-government-takes-down-claude",
         "platform": "substack"
       }
@@ -823,6 +1091,24 @@
         "quote": "Sol is the workhorse, the go getter.",
         "url": "https://thezvi.substack.com/p/better-call-sol-the-workhorse",
         "platform": "substack"
+      },
+      {
+        "author": "Sam Altman",
+        "quote": "we have heard enterprises on their concerns about AI costs, and 5.6 sol is a huge step forward for dollars-per-task, as are terra and luna",
+        "url": "https://x.com/sama/status/2075267201058426944",
+        "platform": "x"
+      },
+      {
+        "author": "Samuel Hammond",
+        "quote": "We went from zero AI regulation to CFIUS-but-for-API-access in about a week.",
+        "url": "https://x.com/hamandcheese/status/2070260565209931910",
+        "platform": "x"
+      },
+      {
+        "author": "Andrew Curran",
+        "quote": "For the people saying this is a pause, or a victory for safety, it is not. This does not slow development in any way, it only slows the rate at which the labs can 𝘳𝘦𝘭𝘦𝘢𝘴𝘦 models, not how fast they can train them. The gap between what is available to the public, and what the labs have internally, will steadily widen from this day forward.",
+        "url": "https://x.com/AndrewCurran_/status/2070253007380623576",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -845,7 +1131,26 @@
         "author": "Zvi Mowshowitz"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Eli Lifland",
+        "quote": "Excited to finally publish AI 2040: Plan A, our plan for international coordination to get to a great AI future. We’ve put a lot of work into this and I hope that it sparks alternative plans that bring us closer to treating superintelligence with the seriousness it deserves.",
+        "url": "https://x.com/eli_lifland/status/2075254901903646814",
+        "platform": "x"
+      },
+      {
+        "author": "Ryan Greenblatt",
+        "quote": "Plan A seems like a good plan for handling powerful AI, or at least the best plan anyone’s written up. Many choices initially seem crazy, but are actually pretty carefully considered. Plan A isn’t likely to happen, but pushing for something like this seems worthwhile.",
+        "url": "https://x.com/RyanGreenblatt/status/2075254312260055307",
+        "platform": "x"
+      },
+      {
+        "author": "Timothy B. Lee",
+        "quote": "I struggle with what to say about the new AI 2040: Plan A website. It all seems so implausible to me that I'm not sure where to start. There's an epistemic chasm between those who think superintelligence implies near-omnipotence and those (like me) who don't.",
+        "url": "https://x.com/binarybits/status/2075660927001608431",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-5"
   },
   {
@@ -872,6 +1177,12 @@
         "quote": "several months behind the closed model frontier, at least four and my median guess is six",
         "url": "https://thezvi.substack.com/p/on-kimi-k3-its-capabilities-and-related",
         "platform": "substack"
+      },
+      {
+        "author": "Ethan Mollick",
+        "quote": "Kimi is, as I have been saying, a very good model. But it is not a DeepSeek r1 moment, in that it is roughly where I would expect on the curve rather than an unexpected leap.",
+        "url": "https://x.com/emollick/status/2078132339029180788",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -917,6 +1228,30 @@
         "quote": "The intrusion started where AI platforms are uniquely exposed: the data-processing pipeline.",
         "url": "https://huggingface.co/blog/security-incident-july-2026",
         "platform": "blog"
+      },
+      {
+        "author": "Sam Altman",
+        "quote": "we had a significant security incident during evaluation of our models. we are sharing what we have learned so far. thanks to @huggingface for the partnership on this.",
+        "url": "https://x.com/sama/status/2079661132302995790",
+        "platform": "x"
+      },
+      {
+        "author": "Jack Clark",
+        "quote": "Props to OpenAI for publishing this post on some safety and alignment issues observed in internal deployments - there are many counter-incentives to publishing stuff like this, but by making it public we all get better info about safety at the frontier.",
+        "url": "https://x.com/jackclarkSF/status/2079576870555939013",
+        "platform": "x"
+      },
+      {
+        "author": "Micah Carroll",
+        "quote": "If this doesn't convince you that misalignment risks are going to be a key concern going forward, I don't know what will.",
+        "url": "https://x.com/MicahCarroll/status/2079663576130990436",
+        "platform": "x"
+      },
+      {
+        "author": "Leo Gao",
+        "quote": "this is the least scifi the world will ever be",
+        "url": "https://x.com/nabla_theta/status/2079725306064355685",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -984,6 +1319,24 @@
         "quote": "there is a real risk that capability development rapidly accelerates beyond our ability to understand or control the resulting systems.",
         "url": "https://www.pacingthefrontier.com/",
         "platform": "other"
+      },
+      {
+        "author": "Anthropic",
+        "quote": "We support this petition, signed by our CEO, several co-founders, and senior staff. Our own research on recursive self-improvement, published last month, points to the need for tools to deliberately pace the frontier of AI development so society can prepare. We’re glad to see broad agreement across the field.",
+        "url": "https://x.com/AnthropicAI/status/2082228994653696371",
+        "platform": "x"
+      },
+      {
+        "author": "Dean Ball",
+        "quote": "I am proud to have signed the letter linked below. I do not know whether or when it may be necessary to deliberately lower the rate of AI development, but I do know that we need a plan for *how* we will do it if we need to. Failing to do so would be negligent.",
+        "url": "https://x.com/deanwball/status/2082293313470693813",
+        "platform": "x"
+      },
+      {
+        "author": "Andrew Trask",
+        "quote": "Signature Statistics: - Anthropic: 546 / 5,567 = 9.8% - OpenAI: 350 / 10,473 = 3.3% - Google / DeepMind: 199 / 10,219 = 1.9%",
+        "url": "https://thezvi.substack.com/p/frontier-lab-employee-open-letter",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-5"
@@ -1023,6 +1376,24 @@
         "quote": "big news",
         "url": "https://thequantuminsider.com/2026/08/04/openai-says-next-generation-model-solved-10-major-open-problems-in-quantum-complexity-mathematics/",
         "platform": "news"
+      },
+      {
+        "author": "Noam Brown",
+        "quote": "And yes we did try other major problems without success. Sadly no Millennium Prize problems (yet). But also, we didn’t spend a lot on each problem. It’s possible to push test-time compute much further.",
+        "url": "https://x.com/polynoamial/status/2083478171975082334",
+        "platform": "x"
+      },
+      {
+        "author": "Kevin Roose",
+        "quote": "almost nobody is pricing in the possibility that the models just keep plowing through every discipline the way they’re plowing through math",
+        "url": "https://x.com/kevinroose/status/2083632335438905441",
+        "platform": "x"
+      },
+      {
+        "author": "Yu Bai",
+        "quote": "My jaw dropped 10 times 😅 But really this is going to be an avalanche. Been throwing a few open questions of mine at Astra too, boy is it strong.",
+        "url": "https://x.com/yubai01/status/2083459032476795366/history",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -1061,6 +1432,24 @@
         "quote": "Cambrian explosion in intelligence",
         "url": "https://www.scworld.com/news/black-hat-2026-openai-reveals-agents-planned-collective-attacks-via-secret-message-board",
         "platform": "news"
+      },
+      {
+        "author": "Helen Toner",
+        "quote": "The \"this is just referring to agents updating their regular ol' memory files, don't be such a scaredy cat\" interpretation of the below is uhhh not looking great tonight",
+        "url": "https://x.com/hlntnr/status/2085191689111482469",
+        "platform": "x"
+      },
+      {
+        "author": "John Schulman",
+        "quote": "Interesting how these models go into a monomaniacal rage on cyber evals. I wonder if we're seeing chunky post-training https://t.co/uqCinTD7I3 in action, where the models pattern-match the situation to a part of the RLVR training distribution where task completion is the only reward, and the aligned behavior learned elsewhere doesn't generalize.",
+        "url": "https://x.com/johnschulman2/status/2084835800899076313",
+        "platform": "x"
+      },
+      {
+        "author": "Yo Shavit",
+        "quote": "hear me out, what if the ai companies all made it a top priority — might be expensive, not sugarcoating that — to make sure none of their products want to do crimes",
+        "url": "https://x.com/yonashav/status/2084754624783733042",
+        "platform": "x"
       }
     ],
     "added_by": "backfill:era-5"
@@ -1100,6 +1489,18 @@
         "quote": "given its cyber capabilities, we need a little big longer to do this safely. but hopefully not too long!",
         "url": "https://thezvi.substack.com/p/ai-181-astra-goes-cyber-critical",
         "platform": "substack"
+      },
+      {
+        "author": "OpenAI",
+        "quote": "Our latest internal evaluations of Astra, one of our upcoming models, over the past few days indicate significant advancements in agentic coding and cybersecurity. These results, in addition to expert assessments, have led us to conclude last night that we cannot rule out critical cyber capabilities under our Preparedness Framework.",
+        "url": "https://thezvi.substack.com/p/ai-181-astra-goes-cyber-critical",
+        "platform": "substack"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "I am confident this is the correct decision, and that the Critical label does apply to Astra. I have said as much. I am very happy OpenAI is honoring their RSP (called the Preparedness Framework) here, even though doing so is expensive.",
+        "url": "https://thezvi.substack.com/p/ai-181-astra-goes-cyber-critical",
+        "platform": "substack"
       }
     ],
     "added_by": "backfill:era-5"
@@ -1128,7 +1529,20 @@
         "author": "Zvi Mowshowitz"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Aaron Scher",
+        "quote": "this is not the kind of organizational competence that survives superintelligence (and also good on Anthropic for releasing info like this)",
+        "url": "https://x.com/aaronscher/status/2088342492592976002",
+        "platform": "x"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "At first I was skeptical. It turns out I was wrong. Anthropic is revealing a lot of new information, some of it rather alarming, that it did not have to disclose, and is providing detailed insight into how they think about things.",
+        "url": "https://thezvi.substack.com/p/anthropic-risk-report-august-2026",
+        "platform": "substack"
+      }
+    ],
     "added_by": "backfill:era-5"
   },
   {
@@ -1159,7 +1573,26 @@
         "author": "Zvi Mowshowitz"
       }
     ],
-    "reactions": [],
+    "reactions": [
+      {
+        "author": "Jakub Pachocki",
+        "quote": "We temporarily slowed some frontier training to strengthen security and monitoring. Our largest planned frontier RL run remains on hold while smaller-scale training and evaluations help us test safeguards and gather more evidence of alignment. I expect confidence in safety to increasingly set the pace of AI development.",
+        "url": "https://x.com/merettm/status/2089776131255783823",
+        "platform": "x"
+      },
+      {
+        "author": "Alex Heath",
+        "quote": "OpenAI is slowing down its AI training efforts because its unreleased models are showing “various degrees of misalignment,” Sam Altman tells me.",
+        "url": "https://x.com/alexeheath/status/2089777725385109784",
+        "platform": "x"
+      },
+      {
+        "author": "Janus",
+        "quote": "im a little surprised that OpenAI is the first to at least publicly intentionally slow down for safety reasons. i was under the vague impression that most of the people very worried about loss of control kinda stuff left OpenAI.",
+        "url": "https://x.com/repligate/status/2089861646571413757",
+        "platform": "x"
+      }
+    ],
     "added_by": "backfill:era-5"
   }
 ]

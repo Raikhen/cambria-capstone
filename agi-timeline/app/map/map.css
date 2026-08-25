@@ -25,12 +25,9 @@
   --tm-font-u: var(--tm-font-ui), "Helvetica Neue", Arial, sans-serif;
   --tm-font-m: var(--tm-font-mono), "SFMono-Regular", Menlo, monospace;
 
-  /* full-bleed breakout of the root layout's max-w-5xl px-4 py-8 main */
-  --tm-topnav: 49px;
   position: relative;
-  width: 100vw;
-  margin: -2rem calc(50% - 50vw);
-  height: calc(100dvh - var(--tm-topnav));
+  width: 100%;
+  height: 100dvh;
   min-height: 480px;
 
   display: flex;
@@ -107,8 +104,10 @@
   flex: 1;
 }
 
-/* category chips — the one place color lives in the chrome */
-.tm-chip {
+/* category chips — the one place color lives in the chrome.
+   These are toggles: ON reads as a filled, colored tag; OFF reads as a
+   struck-out, dimmed outline. The two states must be unmistakable. */
+.tm-root .tm-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -117,28 +116,74 @@
   border: 1px solid var(--tm-hair-strong);
   font-size: 11.5px;
   letter-spacing: 0.01em;
-  color: var(--tm-ink-dim);
-  transition: color 0.12s, border-color 0.12s, background-color 0.12s;
   white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s, background-color 0.12s,
+    opacity 0.12s;
 }
 .tm-chip i {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  border: 1.5px solid var(--c);
-  background: transparent;
   flex: none;
+  transition: background-color 0.12s, border-color 0.12s;
 }
+
+/* ON — filled chip, solid color dot, full-opacity label */
 .tm-chip[aria-pressed="true"] {
   color: var(--tm-ink);
-  border-color: color-mix(in oklch, var(--c) 55%, var(--tm-bg));
-  background: color-mix(in oklch, var(--c) 11%, var(--tm-bg));
+  border-color: color-mix(in oklch, var(--c) 60%, var(--tm-bg));
+  background: color-mix(in oklch, var(--c) 14%, var(--tm-bg));
 }
 .tm-chip[aria-pressed="true"] i {
   background: var(--c);
+  border: 1.5px solid var(--c);
 }
-.tm-chip:hover {
+.tm-chip[aria-pressed="true"]:hover {
   border-color: var(--c);
+  background: color-mix(in oklch, var(--c) 20%, var(--tm-bg));
+}
+
+/* OFF — outline only, dimmed struck label, hollow dot */
+.tm-chip[aria-pressed="false"] {
+  color: var(--tm-ink-faint);
+  border-color: var(--tm-hair);
+  border-style: dashed;
+  background: transparent;
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in oklch, var(--tm-ink-faint) 65%, transparent);
+}
+.tm-chip[aria-pressed="false"] i {
+  background: transparent;
+  border: 1.5px solid color-mix(in oklch, var(--c) 45%, var(--tm-bg));
+}
+.tm-chip[aria-pressed="false"]:hover {
+  color: var(--tm-ink-dim);
+  border-color: var(--c);
+}
+.tm-chip[aria-pressed="false"]:hover i {
+  border-color: var(--c);
+}
+
+.tm-chip:active {
+  transform: translateY(0.5px);
+}
+
+/* text-action chips — "All" (when some category is hidden) and
+   "Clear" (when any is shown). Borderless so they read as actions,
+   not as another toggle in the chip row. */
+.tm-root .tm-chip-action {
+  color: var(--tm-ink-dim);
+  border-color: transparent;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 10px;
+  padding: 4px 9px;
+}
+.tm-chip-action:hover {
+  color: var(--tm-ink);
+  background: var(--tm-hair);
 }
 
 /* importance stepper */
@@ -181,6 +226,39 @@
   background: var(--tm-hair);
 }
 .tm-imp-steps button:focus-visible {
+  outline-offset: -2px;
+}
+
+/* time-scale segmented toggle: log warp vs. proportional years */
+.tm-scale {
+  display: flex;
+  border: 1px solid var(--tm-hair-strong);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.tm-scale button {
+  height: 24px;
+  padding: 0 9px;
+  font-family: var(--tm-font-m);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tm-ink-dim);
+  cursor: pointer;
+  transition: color 0.12s, background-color 0.12s;
+}
+.tm-scale button + button {
+  border-left: 1px solid var(--tm-hair);
+}
+.tm-scale button[aria-pressed="true"] {
+  color: var(--tm-bg);
+  background: var(--tm-ink);
+}
+.tm-scale button:not([aria-pressed="true"]):hover {
+  color: var(--tm-ink);
+  background: var(--tm-hair);
+}
+.tm-scale button:focus-visible {
   outline-offset: -2px;
 }
 
@@ -242,6 +320,9 @@
   background: var(--tm-bg);
   user-select: none;
   -webkit-user-select: none;
+}
+.tm-stage.mark-hover {
+  cursor: pointer;
 }
 .tm-stage.is-panning {
   cursor: grabbing;
@@ -305,19 +386,19 @@
   color: var(--tm-ink-dim);
 }
 
-/* leader hairlines from marker to label / card */
+/* leader hairlines from marker to label */
 .tm-leader {
   position: absolute;
   width: 1px;
   background: var(--tm-hair-strong);
   pointer-events: none;
 }
-.tm-leader.card {
-  background: var(--tm-hair);
-}
 
 /* ============================================================ markers */
 
+/* Markers never hit-test themselves — the stage resolves pointer position to
+   the nearest marker center (see hitTestMarker), which sets data-hover here.
+   This keeps generous targets without neighbors shadowing each other. */
 .tm-mark {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -327,18 +408,12 @@
   place-items: center;
   border-radius: 50%;
   z-index: 10;
+  pointer-events: none;
 }
-.tm-mark:hover,
+.tm-mark[data-hover="true"],
 .tm-mark:focus-visible,
 .tm-mark[data-sel="true"] {
   z-index: 24;
-}
-
-/* invisible enlarged hit area for touch (≥44px) */
-.tm-hit {
-  position: absolute;
-  inset: -11px;
-  border-radius: 50%;
 }
 
 .tm-dot {
@@ -351,7 +426,7 @@
   box-shadow: 0 0 0 1.5px var(--tm-bg);
   transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.tm-mark:hover .tm-dot,
+.tm-mark[data-hover="true"] .tm-dot,
 .tm-mark:focus-visible .tm-dot {
   transform: scale(1.3);
 }
@@ -401,7 +476,7 @@
   letter-spacing: 0.05em;
   opacity: 0.72;
 }
-.tm-mark:hover .tm-hover,
+.tm-mark[data-hover="true"] .tm-hover,
 .tm-mark:focus-visible .tm-hover {
   opacity: 1;
 }
@@ -438,79 +513,6 @@
 .tm-lbl:hover b,
 .tm-lbl[data-sel="true"] b {
   color: var(--c);
-}
-
-/* ============================================================ quote cards */
-
-.tm-card {
-  position: absolute;
-  max-height: 122px;
-  margin: 0;
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--tm-hair-strong);
-  border-radius: 2px;
-  background: var(--tm-bg-raised);
-  cursor: pointer;
-  overflow: hidden;
-  z-index: 11;
-  transition: border-color 0.12s;
-}
-.tm-card.compact {
-  max-height: 84px;
-}
-.tm-card.compact blockquote {
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-}
-.tm-card:hover {
-  border-color: var(--tm-ink-faint);
-}
-.tm-card[data-sel="true"] {
-  border-color: var(--tm-ink);
-}
-.tm-card blockquote {
-  margin: 0;
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: var(--tm-ink);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  overflow: hidden;
-}
-.tm-card blockquote::before {
-  content: "“";
-  color: var(--tm-ink-faint);
-}
-.tm-card blockquote::after {
-  content: "”";
-  color: var(--tm-ink-faint);
-}
-.tm-card figcaption {
-  padding-top: 8px;
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  min-width: 0;
-}
-.tm-card figcaption b {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--tm-ink);
-  white-space: nowrap;
-}
-.tm-card figcaption span {
-  font-family: var(--tm-font-m);
-  font-size: 9px;
-  letter-spacing: 0.03em;
-  color: var(--tm-ink-faint);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
 }
 
 /* crosshair + cursor readout */
@@ -580,6 +582,11 @@
 .tm-empty > div {
   text-align: center;
   max-width: 300px;
+  padding: 20px 28px;
+  background: var(--tm-bg-raised);
+  border: 1px solid var(--tm-hair-strong);
+  border-radius: 2px;
+  box-shadow: 0 2px 14px oklch(0.25 0.012 76 / 0.06);
 }
 .tm-empty p {
   font-size: 16px;
@@ -620,8 +627,10 @@
 }
 .tm-mini-win {
   position: absolute;
-  top: 1px;
-  bottom: 1px;
+  /* Full track height — the histogram bars are bottom-anchored to the track
+     edge, so any inset here leaves bar bases poking out below the window. */
+  top: 0;
+  bottom: 0;
   border: 1px solid var(--tm-ink);
   border-radius: 2px;
   background: color-mix(in oklch, var(--tm-ink) 6%, transparent);
@@ -848,25 +857,41 @@
   height: 1px;
   background: var(--tm-hair);
 }
+.tm-section-n {
+  flex: none;
+  margin-left: -4px;
+  min-width: 15px;
+  text-align: center;
+  padding: 0 4px;
+  border: 1px solid var(--tm-hair-strong);
+  border-radius: 8px;
+  font-size: 9px;
+  color: var(--tm-ink-dim);
+  letter-spacing: 0;
+}
 
-/* voices — the human record, before the sources */
+/* voices — the human record, before the sources.
+   Every reaction renders here (the panel body scrolls); comfortable
+   vertical rhythm between quote cards. */
 .tm-quotes {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 26px;
 }
 .tm-quote {
+  margin: 0;
   border: 1px solid var(--tm-hair);
+  border-left: 2px solid var(--tm-hair-strong);
   border-radius: 2px;
-  padding: 12px 14px 10px;
+  padding: 12px 14px 11px;
   background: var(--tm-bg);
 }
 .tm-quote-text {
   font-size: 14px;
-  line-height: 1.52;
+  line-height: 1.55;
   color: var(--tm-ink);
-  margin: 0 0 9px;
+  margin: 0 0 10px;
 }
 .tm-quote-text::before {
   content: "“";
@@ -974,8 +999,10 @@
     height: 30px;
     width: 30px;
   }
-  .tm-zoom .tm-fit {
+  .tm-zoom .tm-fit,
+  .tm-scale button {
     width: auto;
+    height: 30px;
   }
   .tm-hint {
     display: none;

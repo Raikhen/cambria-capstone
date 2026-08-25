@@ -1,4 +1,4 @@
-# AGI Timeline — Editorial Policy
+# AGI Trajectory — Editorial Policy
 
 **Version 1.0 — August 2026**
 

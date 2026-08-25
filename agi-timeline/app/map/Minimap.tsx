@@ -15,17 +15,18 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from "react";
 import type { TimelineEvent } from "@/lib/types";
-import { dateToU, minimapScale, type View } from "./lib";
+import { dateToU, minimapScale, type ScaleMode, type View } from "./lib";
 
 const BINS = 96;
 
 interface Props {
   filtered: TimelineEvent[];
   view: View;
+  mode: ScaleMode;
   onNavigate: (o: number) => void;
 }
 
-export default function Minimap({ filtered, view, onNavigate }: Props) {
+export default function Minimap({ filtered, view, mode, onNavigate }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
   const [trackW, setTrackW] = useState(0);
@@ -43,16 +44,16 @@ export default function Minimap({ filtered, view, onNavigate }: Props) {
   const bars = useMemo(() => {
     const counts = new Array<number>(BINS).fill(0);
     for (const ev of filtered) {
-      const b = Math.min(BINS - 1, Math.floor(dateToU(ev.date) * BINS));
+      const b = Math.min(BINS - 1, Math.floor(dateToU(ev.date, mode) * BINS));
       counts[b]++;
     }
     const max = Math.max(1, ...counts);
     return counts.map((c) => c / max);
-  }, [filtered]);
+  }, [filtered, mode]);
 
   // Keep year labels at least 44px apart at the current track width.
   const scale = useMemo(() => {
-    const all = minimapScale();
+    const all = minimapScale(mode);
     if (trackW <= 0) return all;
     const out: typeof all = [];
     for (const t of all) {
@@ -61,7 +62,7 @@ export default function Minimap({ filtered, view, onNavigate }: Props) {
       out.push(t);
     }
     return out;
-  }, [trackW]);
+  }, [trackW, mode]);
 
   const navToClientX = useCallback(
     (clientX: number) => {

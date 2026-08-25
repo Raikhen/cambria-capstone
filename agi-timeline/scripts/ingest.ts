@@ -1,5 +1,5 @@
 /**
- * Autonomous ingestion pipeline for the AGI Timeline.
+ * Autonomous ingestion pipeline for AGI Trajectory.
  *
  * Gathers human-written source material (Zvi Mowshowitz's Substack), asks
  * Claude — acting strictly as a selector/condenser under the editorial policy
@@ -88,7 +88,7 @@ async function fetchWithRetry(
       const res = await fetch(url, {
         ...init,
         headers: {
-          "user-agent": "agi-timeline-ingest/1.0 (+https://github.com/agi-timeline)",
+          "user-agent": "agi-trajectory-ingest/1.0 (+https://github.com/agi-trajectory)",
           ...(init.headers ?? {}),
         },
         signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),

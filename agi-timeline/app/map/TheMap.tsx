@@ -3,10 +3,11 @@
 /**
  * The Map — a zoomable, pannable chart of AI history on a single axis.
  *
- * World model: time is warped onto u ∈ [0,1] (see lib.ts). The viewport is
- * {o, z}: world-u at the left edge, and zoom factor (viewport shows 1/z of
- * the world). Pan is a single GPU transform on the world layer; zoom
- * recomputes the collision-resolved scene (markers, labels, quote cards).
+ * World model: time is warped onto u ∈ [0,1] (see lib.ts) in one of two
+ * scale modes (reverse-log or linear). The viewport is {o, z}: world-u at
+ * the left edge, and zoom factor (viewport shows 1/z of the world). Pan is a
+ * single GPU transform on the world layer; zoom recomputes the
+ * collision-resolved scene (markers, labels).
  */
 
 import {
@@ -20,6 +21,7 @@ import {
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
+import { SITE_NAME } from "@/lib/site";
 import { CATEGORIES, type Category, type TimelineEvent } from "@/lib/types";
 import {
   CAT_LABEL,
@@ -31,7 +33,9 @@ import {
   genTicks,
   labelTier,
   layoutScene,
-  pxPerYearAt,
+  timeToU,
+  uToTime,
+  type ScaleMode,
   type View,
 } from "./lib";
 import Minimap from "./Minimap";
@@ -53,14 +57,21 @@ interface Props {
   events: TimelineEvent[];
   initialCats: Category[];
   initialMin: number;
+  initialScale: ScaleMode;
 }
 
-export default function TheMap({ events, initialCats, initialMin }: Props) {
+export default function TheMap({
+  events,
+  initialCats,
+  initialMin,
+  initialScale,
+}: Props) {
   /* ------------------------------------------------------------ state */
   const [dims, setDims] = useState({ w: 0, h: 0 });
   const [view, setView] = useState<View>({ o: 0, z: 1 });
   const [cats, setCats] = useState<Category[]>(initialCats);
   const [minImp, setMinImp] = useState(initialMin);
+  const [mode, setMode] = useState<ScaleMode>(initialScale);
   const [selected, setSelected] = useState<string | null>(null);
   const [interacted, setInteracted] = useState(false);
   const [fontTick, setFontTick] = useState(0);
@@ -78,6 +89,8 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
   dimsRef.current = dims;
   const viewRef = useRef(view);
   viewRef.current = view;
+  const modeRef = useRef(mode);
+  modeRef.current = mode;
 
   const pointersRef = useRef(new Map<number, { x: number; y: number }>());
   const gestureRef = useRef<{
@@ -91,25 +104,17 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
   }>({ mode: null, startX: 0, o0: 0, moved: 0, pinchD0: 0, pinchZ0: 1, pinchU: 0 });
   const suppressClickRef = useRef(false);
   const animRef = useRef<number | null>(null);
+  const sceneRef = useRef<ReturnType<typeof layoutScene> | null>(null);
+  const hoverSlugRef = useRef<string | null>(null);
 
   /* --------------------------------------------------- layout plumbing */
 
-  // Full-bleed setup: measure the site header, lock document scroll.
+  // Full-bleed setup: lock document scroll while the instrument is mounted.
   useEffect(() => {
-    const header = document.querySelector("body > header");
-    const root = rootRef.current;
-    const setNav = () => {
-      if (root && header instanceof HTMLElement) {
-        root.style.setProperty("--tm-topnav", `${header.offsetHeight}px`);
-      }
-    };
-    setNav();
-    window.addEventListener("resize", setNav);
     const html = document.documentElement;
     const prev = html.style.overflow;
     html.style.overflow = "hidden";
     return () => {
-      window.removeEventListener("resize", setNav);
       html.style.overflow = prev;
     };
   }, []);
@@ -120,9 +125,11 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
     const w = window as unknown as Record<string, unknown>;
     w.__tmGoto = (o: number, z: number) => setView(clampView(o, z));
     w.__tmSelect = (slug: string | null) => setSelected(slug);
+    w.__tmView = () => viewRef.current;
     return () => {
       delete w.__tmGoto;
       delete w.__tmSelect;
+      delete w.__tmView;
     };
   }, []);
 
@@ -208,13 +215,15 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
     else p.delete("cats");
     if (minImp > 1) p.set("min", String(minImp));
     else p.delete("min");
+    if (mode !== "log") p.set("scale", mode);
+    else p.delete("scale");
     const qs = p.toString();
     window.history.replaceState(
       null,
       "",
       qs ? `?${qs}` : window.location.pathname,
     );
-  }, [cats, minImp]);
+  }, [cats, minImp, mode]);
 
   /* ------------------------------------------------------ view helpers */
 
@@ -279,6 +288,26 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
       }
     },
     [animateTo],
+  );
+
+  // Switch scale mode, keeping the on-screen time range stable: the times at
+  // the viewport edges in the old mode become the edges in the new one.
+  const switchMode = useCallback(
+    (next: ScaleMode) => {
+      if (next === modeRef.current) return;
+      stopAnim();
+      const v = viewRef.current;
+      const prev = modeRef.current;
+      const span = 1 / v.z;
+      const tL = uToTime(Math.max(0, v.o), prev);
+      const tR = uToTime(Math.min(1, v.o + span), prev);
+      const u0 = timeToU(tL, next);
+      const u1 = Math.max(u0 + 1 / 200, timeToU(tR, next));
+      setMode(next);
+      setView(clampView(u0, 1 / (u1 - u0)));
+      setInteracted(true);
+    },
+    [stopAnim],
   );
 
   /* ----------------------------------------------------- pointer input */
@@ -407,7 +436,53 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
     [animateTo],
   );
 
-  // Crosshair + date readout: direct DOM writes, no re-render.
+  // Markers don't hit-test themselves (their generous pointer targets would
+  // overlap and shadow each other) — the stage resolves the pointer to the
+  // nearest marker center instead, so between two close dots the closest one
+  // always wins.
+  const hitTestMarker = useCallback((clientX: number, clientY: number) => {
+    const stage = stageRef.current;
+    const sc = sceneRef.current;
+    if (!stage || !sc) return null;
+    const rect = stage.getBoundingClientRect();
+    const v = viewRef.current;
+    const W = dimsRef.current.w || 1;
+    const wx = clientX - rect.left + v.o * Math.max(1, v.z * W);
+    const y = clientY - rect.top;
+    let best: string | null = null;
+    let bestD = Infinity;
+    for (const m of sc.markers) {
+      const thr = Math.max(22, m.r + 8);
+      const dx = m.x - wx;
+      const dy = m.y - y;
+      const d = dx * dx + dy * dy;
+      if (d <= thr * thr && d < bestD) {
+        bestD = d;
+        best = m.ev.slug;
+      }
+    }
+    return best;
+  }, []);
+
+  const applyHover = useCallback((slug: string | null) => {
+    if (slug === hoverSlugRef.current) return;
+    const stage = stageRef.current;
+    if (!stage) return;
+    if (hoverSlugRef.current) {
+      stage
+        .querySelector(`.tm-mark[data-slug="${CSS.escape(hoverSlugRef.current)}"]`)
+        ?.removeAttribute("data-hover");
+    }
+    hoverSlugRef.current = slug;
+    if (slug) {
+      stage
+        .querySelector(`.tm-mark[data-slug="${CSS.escape(slug)}"]`)
+        ?.setAttribute("data-hover", "true");
+    }
+    stage.classList.toggle("mark-hover", slug !== null);
+  }, []);
+
+  // Crosshair + date readout + marker hover: direct DOM writes, no re-render.
   const onStagePointerMove = useCallback(
     (e: ReactPointerEvent<HTMLDivElement>) => {
       if (e.pointerType !== "mouse") return;
@@ -423,13 +498,17 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
       stage.classList.add("has-cursor");
       cross.style.transform = `translateX(${px}px)`;
       readout.style.left = `${Math.min(Math.max(px, 46), W - 46)}px`;
-      readout.textContent = fmtCursorDate(u, v.z * W);
+      readout.textContent = fmtCursorDate(u, v.z * W, modeRef.current);
+      applyHover(
+        gestureRef.current.mode ? null : hitTestMarker(e.clientX, e.clientY),
+      );
     },
-    [],
+    [applyHover, hitTestMarker],
   );
   const onStagePointerLeave = useCallback(() => {
     stageRef.current?.classList.remove("has-cursor");
-  }, []);
+    applyHover(null);
+  }, [applyHover]);
 
   /* ---------------------------------------------------------- keyboard */
 
@@ -494,8 +573,8 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
   const span = 1 / view.z;
   const quantO = Math.floor(view.o / (span * 0.5)) * (span * 0.5);
   const ticks = useMemo(
-    () => genTicks(quantO - span * 0.75, quantO + span * 2.25, s),
-    [quantO, span, s],
+    () => genTicks(quantO - span * 0.75, quantO + span * 2.25, s, mode),
+    [quantO, span, s, mode],
   );
 
   const selectedEv = useMemo(
@@ -512,9 +591,6 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
   }, [selected, filtered]);
   const selIndex = selectedEv ? filtered.indexOf(selectedEv) : -1;
 
-  const centerU = quantO + span * 0.5;
-  const ambient = pxPerYearAt(Math.min(Math.max(centerU, 0), 1), s) >= 500;
-
   // Label tier: zoom-based, but relaxed when filters leave the map sparse —
   // the collision fitter still guarantees nothing overlaps.
   const baseTier = labelTier(view.z);
@@ -528,26 +604,25 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
   const scene = useMemo(() => {
     if (dims.w <= 0 || dims.h <= 0) return null;
     return layoutScene(filtered, {
+      mode,
       s,
       w: dims.w,
       h: dims.h,
       axisH: AXIS_H,
       tier,
-      ambient,
-      viewU0: quantO - span * 0.5,
-      viewU1: quantO + span * 1.5,
       selectedSlug: selected,
       measureUi: measure.ui,
       measureMono: measure.mono,
     });
-  }, [filtered, s, dims, tier, ambient, quantO, span, selected, measure]);
+  }, [filtered, mode, s, dims, tier, selected, measure]);
+  sceneRef.current = scene;
 
   const selectSlug = useCallback(
     (slug: string | null) => {
       setSelected(slug);
       if (slug) {
         const ev = events.find((e) => e.slug === slug);
-        if (ev) ensureVisible(dateToU(ev.date));
+        if (ev) ensureVisible(dateToU(ev.date, modeRef.current));
       }
     },
     [events, ensureVisible],
@@ -561,11 +636,26 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
     [selectSlug],
   );
 
+  // Marker clicks arrive here (markers are pointer-events: none) and resolve
+  // to the nearest dot; labels and the panel still handle their own clicks.
+  const onStageClick = useCallback(
+    (e: ReactMouseEvent<HTMLDivElement>) => {
+      if (suppressClickRef.current) return;
+      const t = e.target as Element;
+      if (t.closest(".tm-lbl") || t.closest("button")) return;
+      const slug = hitTestMarker(e.clientX, e.clientY);
+      if (slug) selectSlug(slug);
+    },
+    [hitTestMarker, selectSlug],
+  );
+
   const toggleCat = useCallback((c: Category) => {
     setCats((prev) =>
       prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c],
     );
   }, []);
+
+  const allCatsOn = cats.length === CATEGORIES.length;
 
   /* ------------------------------------------------------------ render */
 
@@ -574,27 +664,53 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
       {/* ---- control bar ---- */}
       <div className="tm-bar">
         <div className="tm-wordmark">
-          <b>The Map</b>
+          <b>{SITE_NAME}</b>
           <span>1943–2026</span>
         </div>
 
         <div
           className="tm-bar-group tm-cats"
           role="group"
-          aria-label="Filter by category"
+          aria-label="Filter by category — click a chip to hide or show it"
         >
-          {CATEGORIES.map((c) => (
+          {CATEGORIES.map((c) => {
+            const on = cats.includes(c);
+            return (
+              <button
+                key={c}
+                className="tm-chip"
+                aria-pressed={on}
+                title={
+                  on
+                    ? `${CAT_LABEL[c]} shown — click to hide`
+                    : `${CAT_LABEL[c]} hidden — click to show`
+                }
+                style={{ "--c": `var(--tm-cat-${c})` } as CSSProperties}
+                onClick={() => toggleCat(c)}
+              >
+                <i aria-hidden />
+                {CAT_LABEL[c]}
+              </button>
+            );
+          })}
+          {!allCatsOn && (
             <button
-              key={c}
-              className="tm-chip"
-              aria-pressed={cats.includes(c)}
-              style={{ "--c": `var(--tm-cat-${c})` } as CSSProperties}
-              onClick={() => toggleCat(c)}
+              className="tm-chip tm-chip-action"
+              title="Show all categories"
+              onClick={() => setCats([...CATEGORIES])}
             >
-              <i aria-hidden />
-              {CAT_LABEL[c]}
+              All
             </button>
-          ))}
+          )}
+          {allCatsOn && (
+            <button
+              className="tm-chip tm-chip-action"
+              title="Hide all categories"
+              onClick={() => setCats([])}
+            >
+              Clear
+            </button>
+          )}
         </div>
 
         <div className="tm-bar-spacer" />
@@ -615,6 +731,28 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
               </button>
             ))}
           </div>
+        </div>
+
+        <div
+          className="tm-scale"
+          role="group"
+          aria-label="Time scale"
+          title="Log: recency spread logarithmically · Linear: proportional years"
+        >
+          <button
+            aria-pressed={mode === "log"}
+            title="Log — recent years get more room, the deep past compresses"
+            onClick={() => switchMode("log")}
+          >
+            Log
+          </button>
+          <button
+            aria-pressed={mode === "linear"}
+            title="Linear — years take proportional space"
+            onClick={() => switchMode("linear")}
+          >
+            Linear
+          </button>
         </div>
 
         <div className="tm-zoom" role="group" aria-label="Zoom">
@@ -644,6 +782,7 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
         onPointerDown={onStagePointerDown}
         onPointerMove={onStagePointerMove}
         onPointerLeave={onStagePointerLeave}
+        onClick={onStageClick}
         onDoubleClick={onStageDoubleClick}
         // The browser auto-scrolls overflow:hidden containers to reveal
         // focused children, which would desync from our transform — undo it.
@@ -684,7 +823,7 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
                 </span>
               ))}
 
-              {/* leader lines (labels + cards) */}
+              {/* leader lines */}
               {scene.labels.map((l) => (
                 <span
                   key={`ld${l.slug}`}
@@ -696,23 +835,13 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
                   }}
                 />
               ))}
-              {scene.cards.map((c) => (
-                <span
-                  key={`cld${c.ev.slug}`}
-                  className="tm-leader card"
-                  style={{
-                    left: c.leader.x,
-                    top: Math.min(c.leader.y1, c.leader.y2),
-                    height: Math.max(1, Math.abs(c.leader.y2 - c.leader.y1)),
-                  }}
-                />
-              ))}
 
               {/* markers */}
               {scene.markers.map((m) => (
                 <button
                   key={m.ev.slug}
                   className="tm-mark"
+                  data-slug={m.ev.slug}
                   data-imp={m.ev.importance}
                   data-sel={selected === m.ev.slug || undefined}
                   style={
@@ -727,7 +856,6 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
                   onFocus={() => ensureVisible(m.u)}
                   aria-label={`${m.ev.title} — ${fmtEventDate(m.ev)} — ${CAT_LABEL[m.ev.category]}, importance ${m.ev.importance} of 5`}
                 >
-                  <span className="tm-hit" aria-hidden />
                   <span className="tm-dot" aria-hidden />
                   <span
                     className={`tm-hover${m.y <= scene.axisY ? " below" : ""}`}
@@ -760,32 +888,6 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
                   <i>{l.year}</i>
                 </div>
               ))}
-
-              {/* quote cards — the crowd commenting on history */}
-              {scene.cards.map((c) => {
-                const r = c.ev.reactions![0];
-                return (
-                  <figure
-                    key={`c${c.ev.slug}`}
-                    className={`tm-card${c.h < 100 ? " compact" : ""}`}
-                    data-sel={selected === c.ev.slug || undefined}
-                    style={
-                      c.side === 0
-                        ? { left: c.x, bottom: dims.h - (c.y + c.h), width: c.w }
-                        : { left: c.x, top: c.y, width: c.w }
-                    }
-                    onClick={() => guardedSelect(c.ev.slug)}
-                  >
-                    <blockquote>{r.quote}</blockquote>
-                    <figcaption>
-                      <b>{r.author}</b>
-                      <span>
-                        on {c.ev.title.length > 34 ? `${c.ev.title.slice(0, 33)}…` : c.ev.title}
-                      </span>
-                    </figcaption>
-                  </figure>
-                );
-              })}
             </div>
 
             <div className="tm-cross" ref={crossRef} aria-hidden />
@@ -803,7 +905,7 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
               </div>
             )}
 
-            {!interacted && filtered.length > 0 && scene.cards.length === 0 && (
+            {!interacted && filtered.length > 0 && (
               <div className="tm-hint" aria-hidden>
                 drag to pan · scroll to zoom · <kbd>+</kbd>/<kbd>−</kbd> ·{" "}
                 <kbd>0</kbd> fits
@@ -817,6 +919,7 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
       <Minimap
         filtered={filtered}
         view={view}
+        mode={mode}
         onNavigate={(o) => {
           stopAnim();
           setInteracted(true);

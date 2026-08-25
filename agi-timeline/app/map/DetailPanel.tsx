@@ -121,14 +121,18 @@ const DetailPanel = forwardRef<HTMLDivElement, Props>(function DetailPanel(
 
             {shown.reactions && shown.reactions.length > 0 && (
               <>
-                <p className="tm-section-cap">What people said</p>
+                <p className="tm-section-cap">
+                  What people said
+                  {shown.reactions.length > 1 && (
+                    <span className="tm-section-n">
+                      {shown.reactions.length}
+                    </span>
+                  )}
+                </p>
                 <div className="tm-quotes">
                   {shown.reactions.map((r, i) => (
-                    <figure key={i} className="tm-quote" style={{ margin: 0 }}>
-                      <blockquote
-                        className="tm-quote-text"
-                        style={{ margin: 0 }}
-                      >
+                    <figure key={i} className="tm-quote">
+                      <blockquote className="tm-quote-text">
                         {r.quote}
                       </blockquote>
                       <figcaption className="tm-quote-meta">
