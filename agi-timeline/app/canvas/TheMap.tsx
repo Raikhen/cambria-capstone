@@ -1,12 +1,12 @@
 "use client";
 
 /**
- * The Map — a zoomable, pannable spatial chart of AI history.
+ * The Map — a zoomable, pannable chart of AI history on a single axis.
  *
  * World model: time is warped onto u ∈ [0,1] (see lib.ts). The viewport is
  * {o, z}: world-u at the left edge, and zoom factor (viewport shows 1/z of
- * the world). Pan is a single GPU transform on a memoized marker layer;
- * zoom recomputes marker positions.
+ * the world). Pan is a single GPU transform on the world layer; zoom
+ * recomputes the collision-resolved scene (markers, labels, quote cards).
  */
 
 import {
@@ -23,24 +23,31 @@ import {
 import { CATEGORIES, type Category, type TimelineEvent } from "@/lib/types";
 import {
   CAT_LABEL,
-  ERAS,
-  ROW_FRAC,
   clampView,
   dateToU,
   easeOutQuart,
-  eventYear,
   fmtCursorDate,
   fmtEventDate,
   genTicks,
   labelTier,
-  layoutMarkers,
-  type Era,
+  layoutScene,
+  pxPerYearAt,
   type View,
 } from "./lib";
 import Minimap from "./Minimap";
 import DetailPanel from "./DetailPanel";
 
-const AXIS_H = 34;
+const AXIS_H = 30;
+
+/* ------------------------------------------------------- text measurement */
+
+let measureCtx: CanvasRenderingContext2D | null = null;
+function getCtx(): CanvasRenderingContext2D | null {
+  if (!measureCtx) {
+    measureCtx = document.createElement("canvas").getContext("2d");
+  }
+  return measureCtx;
+}
 
 interface Props {
   events: TimelineEvent[];
@@ -56,6 +63,10 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
   const [minImp, setMinImp] = useState(initialMin);
   const [selected, setSelected] = useState<string | null>(null);
   const [interacted, setInteracted] = useState(false);
+  const [fontTick, setFontTick] = useState(0);
+  const [families, setFamilies] = useState<{ ui: string; mono: string } | null>(
+    null,
+  );
 
   const rootRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -103,6 +114,18 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
     };
   }, []);
 
+  // Dev-only hook so tests / tooling can drive the viewport deterministically.
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") return;
+    const w = window as unknown as Record<string, unknown>;
+    w.__tmGoto = (o: number, z: number) => setView(clampView(o, z));
+    w.__tmSelect = (slug: string | null) => setSelected(slug);
+    return () => {
+      delete w.__tmGoto;
+      delete w.__tmSelect;
+    };
+  }, []);
+
   // Stage size.
   useEffect(() => {
     const el = stageRef.current;
@@ -114,6 +137,56 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  // Font families for canvas text measurement; re-measure once fonts load.
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const cs = getComputedStyle(root);
+    const ui = cs.getPropertyValue("--tm-font-u").trim() || "sans-serif";
+    const mono = cs.getPropertyValue("--tm-font-m").trim() || "monospace";
+    setFamilies({ ui, mono });
+    let alive = true;
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        if (alive) setFontTick((t) => t + 1);
+      });
+    }
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const measure = useMemo(() => {
+    // fontTick invalidates the cache once webfonts finish loading.
+    void fontTick;
+    const cache = new Map<string, number>();
+    const ui = (text: string, px: number, weight: number) => {
+      const key = `u${weight}|${px}|${text}`;
+      let w = cache.get(key);
+      if (w === undefined) {
+        const ctx = getCtx();
+        if (!ctx || !families) return text.length * px * 0.55;
+        ctx.font = `${weight} ${px}px ${families.ui}`;
+        w = ctx.measureText(text).width;
+        cache.set(key, w);
+      }
+      return w;
+    };
+    const mono = (text: string, px: number) => {
+      const key = `m${px}|${text}`;
+      let w = cache.get(key);
+      if (w === undefined) {
+        const ctx = getCtx();
+        if (!ctx || !families) return text.length * px * 0.62;
+        ctx.font = `500 ${px}px ${families.mono}`;
+        w = ctx.measureText(text).width;
+        cache.set(key, w);
+      }
+      return w;
+    };
+    return { ui, mono };
+  }, [families, fontTick]);
 
   /* ----------------------------------------------------------- filters */
 
@@ -196,16 +269,6 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
     animateTo(0, 1);
     setInteracted(true);
   }, [animateTo]);
-
-  const fitEra = useCallback(
-    (era: Era) => {
-      const span = (era.u1 - era.u0) * 1.06;
-      const z = 1 / span;
-      animateTo(era.u0 - (span - (era.u1 - era.u0)) / 2, z);
-      setInteracted(true);
-    },
-    [animateTo],
-  );
 
   const ensureVisible = useCallback(
     (u: number) => {
@@ -425,20 +488,15 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
   /* --------------------------------------------------------- rendering */
 
   const s = Math.max(1, view.z * dims.w);
-  const tier = labelTier(view.z);
 
-  const placed = useMemo(() => layoutMarkers(filtered, s), [filtered, s]);
-
-  // Ticks: computed over a padded, quantized window so small pans don't
-  // rebuild the grid every frame.
+  // Ticks + scene are computed over a padded, quantized window so small pans
+  // don't rebuild them every frame.
   const span = 1 / view.z;
   const quantO = Math.floor(view.o / (span * 0.5)) * (span * 0.5);
   const ticks = useMemo(
     () => genTicks(quantO - span * 0.75, quantO + span * 2.25, s),
     [quantO, span, s],
   );
-
-  const laneH = Math.max(1, (dims.h - AXIS_H) / CATEGORIES.length);
 
   const selectedEv = useMemo(
     () => (selected ? filtered.find((e) => e.slug === selected) ?? null : null),
@@ -454,6 +512,36 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
   }, [selected, filtered]);
   const selIndex = selectedEv ? filtered.indexOf(selectedEv) : -1;
 
+  const centerU = quantO + span * 0.5;
+  const ambient = pxPerYearAt(Math.min(Math.max(centerU, 0), 1), s) >= 500;
+
+  // Label tier: zoom-based, but relaxed when filters leave the map sparse —
+  // the collision fitter still guarantees nothing overlaps.
+  const baseTier = labelTier(view.z);
+  const tier =
+    filtered.length <= 36
+      ? Math.min(baseTier, 3)
+      : filtered.length <= 90
+        ? Math.min(baseTier, 4)
+        : baseTier;
+
+  const scene = useMemo(() => {
+    if (dims.w <= 0 || dims.h <= 0) return null;
+    return layoutScene(filtered, {
+      s,
+      w: dims.w,
+      h: dims.h,
+      axisH: AXIS_H,
+      tier,
+      ambient,
+      viewU0: quantO - span * 0.5,
+      viewU1: quantO + span * 1.5,
+      selectedSlug: selected,
+      measureUi: measure.ui,
+      measureMono: measure.mono,
+    });
+  }, [filtered, s, dims, tier, ambient, quantO, span, selected, measure]);
+
   const selectSlug = useCallback(
     (slug: string | null) => {
       setSelected(slug);
@@ -465,83 +553,13 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
     [events, ensureVisible],
   );
 
-  const markersEl = useMemo(() => {
-    return placed.map((p) => {
-      const y = AXIS_H + p.lane * laneH + laneH * ROW_FRAC[p.row];
-      const on = p.ev.importance >= tier;
-      return (
-        <button
-          key={p.ev.slug}
-          className={`tm-mark${on ? " lbl-on" : ""}`}
-          data-imp={p.ev.importance}
-          data-sel={selected === p.ev.slug || undefined}
-          style={
-            {
-              left: p.x,
-              top: y,
-              "--c": `var(--tm-cat-${p.ev.category})`,
-            } as CSSProperties
-          }
-          onClick={() => {
-            if (suppressClickRef.current) return;
-            selectSlug(p.ev.slug);
-          }}
-          onFocus={() => ensureVisible(p.u)}
-          aria-label={`${p.ev.title} — ${fmtEventDate(p.ev)} — ${CAT_LABEL[p.ev.category]}, importance ${p.ev.importance} of 5`}
-        >
-          <span className="tm-hit" aria-hidden />
-          <span className="tm-dot" aria-hidden />
-          <span className="tm-lbl" aria-hidden>
-            <b>{p.ev.title}</b>
-            <i>{eventYear(p.ev)}</i>
-          </span>
-        </button>
-      );
-    });
-  }, [placed, laneH, tier, selected, selectSlug, ensureVisible]);
-
-  const gridEl = useMemo(() => {
-    return (
-      <>
-        {ticks.map((t) => (
-          <div
-            key={`g${t.u}`}
-            className="tm-grid"
-            data-major={t.major || undefined}
-            style={{ left: t.u * s }}
-          />
-        ))}
-        {ticks.map((t) => (
-          <span
-            key={`l${t.u}`}
-            className="tm-tick-lbl"
-            data-major={t.major || undefined}
-            style={{ left: t.u * s }}
-          >
-            {t.label}
-          </span>
-        ))}
-        {ERAS.map((era) => {
-          const w = (era.u1 - era.u0) * s;
-          return (
-            <span key={era.key}>
-              {era.u0 > 0 && (
-                <span className="tm-era-line" style={{ left: era.u0 * s }} />
-              )}
-              {w > 300 && (
-                <span
-                  className="tm-era-mark"
-                  style={{ left: ((era.u0 + era.u1) / 2) * s }}
-                >
-                  {era.name}
-                </span>
-              )}
-            </span>
-          );
-        })}
-      </>
-    );
-  }, [ticks, s]);
+  const guardedSelect = useCallback(
+    (slug: string) => {
+      if (suppressClickRef.current) return;
+      selectSlug(slug);
+    },
+    [selectSlug],
+  );
 
   const toggleCat = useCallback((c: Category) => {
     setCats((prev) =>
@@ -557,7 +575,7 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
       <div className="tm-bar">
         <div className="tm-wordmark">
           <b>The Map</b>
-          <span>AI history, charted</span>
+          <span>1943–2026</span>
         </div>
 
         <div
@@ -607,12 +625,12 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
             +
           </button>
           <button className="tm-fit" onClick={fitAll}>
-            FIT
+            Fit
           </button>
         </div>
 
         <span className="tm-count" role="status">
-          <b>{filtered.length}</b>/{events.length} events
+          <b>{filtered.length}</b>/{events.length}
         </span>
       </div>
 
@@ -634,38 +652,140 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
           e.currentTarget.scrollTop = 0;
         }}
       >
-        <div className="tm-axis-bg" />
+        <div className="tm-ruler" aria-hidden />
 
-        {dims.w > 0 && (
+        {scene && (
           <>
-            {/* fixed lane chrome */}
-            <div className="tm-lanes" aria-hidden>
-              {CATEGORIES.map((c, i) => (
-                <div
-                  key={c}
-                  className="tm-lane"
-                  style={
-                    {
-                      top: i * laneH,
-                      height: laneH,
-                      "--c": `var(--tm-cat-${c})`,
-                    } as CSSProperties
-                  }
-                >
-                  <span className="tm-lane-lbl">{CAT_LABEL[c]}</span>
-                </div>
-              ))}
-            </div>
+            {/* the one axis — fixed, horizontal, full width */}
+            <div className="tm-axis" style={{ top: scene.axisY }} aria-hidden />
 
             {/* panning world layer */}
             <div
               className="tm-layer"
-              style={{
-                transform: `translate3d(${-view.o * s}px,0,0)`,
-              }}
+              style={{ transform: `translate3d(${-view.o * s}px,0,0)` }}
             >
-              {gridEl}
-              {markersEl}
+              {/* gridlines + tick labels */}
+              {ticks.map((t) => (
+                <div
+                  key={`g${t.u}`}
+                  className="tm-grid"
+                  data-major={t.major || undefined}
+                  style={{ left: t.u * s }}
+                />
+              ))}
+              {ticks.map((t) => (
+                <span
+                  key={`l${t.u}`}
+                  className="tm-tick-lbl"
+                  data-major={t.major || undefined}
+                  style={{ left: t.u * s }}
+                >
+                  {t.label}
+                </span>
+              ))}
+
+              {/* leader lines (labels + cards) */}
+              {scene.labels.map((l) => (
+                <span
+                  key={`ld${l.slug}`}
+                  className="tm-leader"
+                  style={{
+                    left: l.leader.x,
+                    top: Math.min(l.leader.y1, l.leader.y2),
+                    height: Math.max(1, Math.abs(l.leader.y2 - l.leader.y1)),
+                  }}
+                />
+              ))}
+              {scene.cards.map((c) => (
+                <span
+                  key={`cld${c.ev.slug}`}
+                  className="tm-leader card"
+                  style={{
+                    left: c.leader.x,
+                    top: Math.min(c.leader.y1, c.leader.y2),
+                    height: Math.max(1, Math.abs(c.leader.y2 - c.leader.y1)),
+                  }}
+                />
+              ))}
+
+              {/* markers */}
+              {scene.markers.map((m) => (
+                <button
+                  key={m.ev.slug}
+                  className="tm-mark"
+                  data-imp={m.ev.importance}
+                  data-sel={selected === m.ev.slug || undefined}
+                  style={
+                    {
+                      left: m.x,
+                      top: m.y,
+                      "--c": `var(--tm-cat-${m.ev.category})`,
+                      "--r": `${m.r * 2}px`,
+                    } as CSSProperties
+                  }
+                  onClick={() => guardedSelect(m.ev.slug)}
+                  onFocus={() => ensureVisible(m.u)}
+                  aria-label={`${m.ev.title} — ${fmtEventDate(m.ev)} — ${CAT_LABEL[m.ev.category]}, importance ${m.ev.importance} of 5`}
+                >
+                  <span className="tm-hit" aria-hidden />
+                  <span className="tm-dot" aria-hidden />
+                  <span
+                    className={`tm-hover${m.y <= scene.axisY ? " below" : ""}`}
+                    aria-hidden
+                  >
+                    <b>{m.ev.title}</b>
+                    <i>{fmtEventDate(m.ev)}</i>
+                  </span>
+                </button>
+              ))}
+
+              {/* static labels */}
+              {scene.labels.map((l) => (
+                <div
+                  key={l.slug}
+                  className="tm-lbl"
+                  aria-hidden
+                  data-imp={l.imp}
+                  data-sel={selected === l.slug || undefined}
+                  style={
+                    {
+                      left: l.x,
+                      top: l.y,
+                      "--c": `var(--tm-cat-${l.cat})`,
+                    } as CSSProperties
+                  }
+                  onClick={() => guardedSelect(l.slug)}
+                >
+                  <b>{l.title}</b>
+                  <i>{l.year}</i>
+                </div>
+              ))}
+
+              {/* quote cards — the crowd commenting on history */}
+              {scene.cards.map((c) => {
+                const r = c.ev.reactions![0];
+                return (
+                  <figure
+                    key={`c${c.ev.slug}`}
+                    className={`tm-card${c.h < 100 ? " compact" : ""}`}
+                    data-sel={selected === c.ev.slug || undefined}
+                    style={
+                      c.side === 0
+                        ? { left: c.x, bottom: dims.h - (c.y + c.h), width: c.w }
+                        : { left: c.x, top: c.y, width: c.w }
+                    }
+                    onClick={() => guardedSelect(c.ev.slug)}
+                  >
+                    <blockquote>{r.quote}</blockquote>
+                    <figcaption>
+                      <b>{r.author}</b>
+                      <span>
+                        on {c.ev.title.length > 34 ? `${c.ev.title.slice(0, 33)}…` : c.ev.title}
+                      </span>
+                    </figcaption>
+                  </figure>
+                );
+              })}
             </div>
 
             <div className="tm-cross" ref={crossRef} aria-hidden />
@@ -676,14 +796,14 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
                 <div>
                   <p>Nothing charted here</p>
                   <span>
-                    Loosen the filters above — re-enable a category or lower
-                    the importance floor to light the map back up.
+                    Re-enable a category or lower the importance floor to
+                    bring the record back.
                   </span>
                 </div>
               </div>
             )}
 
-            {!interacted && filtered.length > 0 && (
+            {!interacted && filtered.length > 0 && scene.cards.length === 0 && (
               <div className="tm-hint" aria-hidden>
                 drag to pan · scroll to zoom · <kbd>+</kbd>/<kbd>−</kbd> ·{" "}
                 <kbd>0</kbd> fits
@@ -702,7 +822,6 @@ export default function TheMap({ events, initialCats, initialMin }: Props) {
           setInteracted(true);
           setView((v) => clampView(o, v.z));
         }}
-        onFitEra={fitEra}
       />
 
       {/* ---- detail panel ---- */}

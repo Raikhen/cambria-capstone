@@ -1,9 +1,9 @@
 "use client";
 
 /**
- * Detail panel — docked slide-over with the full record for one event:
- * date (precision-aware), title, summary, sources, and reactions rendered
- * as attributed quote cards.
+ * Detail panel — docked slide-over with the full record for one event.
+ * Leads with the human voices: contemporary reactions as attributed quote
+ * cards come before the source list.
  */
 
 import { forwardRef, useEffect, useRef, type CSSProperties } from "react";
@@ -119,29 +119,9 @@ const DetailPanel = forwardRef<HTMLDivElement, Props>(function DetailPanel(
             <h2 className="tm-panel-title">{shown.title}</h2>
             <p className="tm-panel-summary">{shown.summary}</p>
 
-            <p className="tm-section-cap">Sources</p>
-            <ul className="tm-sources">
-              {shown.sources.map((src, i) => (
-                <li
-                  key={`${src.url}${i}`}
-                  className={`tm-source${i === 0 ? " primary" : ""}`}
-                >
-                  <a href={src.url} target="_blank" rel="noopener noreferrer">
-                    <span className="tm-source-type">
-                      {i === 0 ? "Primary" : SOURCE_TYPE_LABEL[src.type] ?? src.type}
-                    </span>
-                    <span className="tm-source-title">
-                      {src.title}
-                      {src.author ? ` — ${src.author}` : ""}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-
             {shown.reactions && shown.reactions.length > 0 && (
               <>
-                <p className="tm-section-cap">Contemporary reactions</p>
+                <p className="tm-section-cap">What people said</p>
                 <div className="tm-quotes">
                   {shown.reactions.map((r, i) => (
                     <figure key={i} className="tm-quote" style={{ margin: 0 }}>
@@ -167,6 +147,26 @@ const DetailPanel = forwardRef<HTMLDivElement, Props>(function DetailPanel(
                 </div>
               </>
             )}
+
+            <p className="tm-section-cap">Sources</p>
+            <ul className="tm-sources">
+              {shown.sources.map((src, i) => (
+                <li
+                  key={`${src.url}${i}`}
+                  className={`tm-source${i === 0 ? " primary" : ""}`}
+                >
+                  <a href={src.url} target="_blank" rel="noopener noreferrer">
+                    <span className="tm-source-type">
+                      {i === 0 ? "Primary" : SOURCE_TYPE_LABEL[src.type] ?? src.type}
+                    </span>
+                    <span className="tm-source-title">
+                      {src.title}
+                      {src.author ? ` — ${src.author}` : ""}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </>
       )}

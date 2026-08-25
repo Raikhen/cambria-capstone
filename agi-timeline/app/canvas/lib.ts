@@ -1,110 +1,58 @@
 /**
- * World-coordinate machinery for The Map.
+ * World-coordinate machinery + scene layout for The Map.
  *
- * Time is mapped onto a single world axis u ∈ [0, 1] through a piecewise-linear
- * "era warp": each era owns a fixed share of the axis regardless of how many
- * calendar years it spans, so 1943–2011 (34 events) doesn't crush 2023–2026
- * (~120 events) into a wall of pixels.
+ * Time is mapped onto a single world axis u ∈ [0, 1] through a piecewise-
+ * linear density warp: dense stretches of history get more of the axis than
+ * sparse ones, so 1943–2011 (34 events) doesn't crush 2023–2026 (~150 events)
+ * into a wall of pixels. The warp is purely internal — nothing on screen
+ * names or draws its segments. Axis ticks are plain calendar years.
  */
 
 import { CATEGORIES, type Category, type TimelineEvent } from "@/lib/types";
 
-/* ------------------------------------------------------------------ eras */
+/* ----------------------------------------------------------- time warp */
 
-export interface Era {
-  key: string;
-  /** Charted region name, drawn as a watermark on the map. */
-  name: string;
-  /** Compact label for the minimap rail. */
-  short: string;
+interface Segment {
   t0: number;
   t1: number;
   u0: number;
   u1: number;
 }
 
-const ERA_DEFS: Array<{
-  key: string;
-  name: string;
-  short: string;
+const SEGMENT_DEFS: Array<{
   start: [number, number, number];
   end: [number, number, number];
   share: number;
 }> = [
-  {
-    key: "foundations",
-    name: "Foundations",
-    short: "1943–74",
-    start: [1943, 0, 1],
-    end: [1974, 0, 1],
-    share: 0.08,
-  },
-  {
-    key: "winters",
-    name: "Winters & revival",
-    short: "1974–2012",
-    start: [1974, 0, 1],
-    end: [2012, 5, 1],
-    share: 0.12,
-  },
-  {
-    key: "deep-learning",
-    name: "Deep learning",
-    short: "2012–17",
-    start: [2012, 5, 1],
-    end: [2017, 5, 1],
-    share: 0.11,
-  },
-  {
-    key: "transformers",
-    name: "Transformers & scale",
-    short: "2017–22",
-    start: [2017, 5, 1],
-    end: [2022, 10, 30],
-    share: 0.19,
-  },
-  {
-    key: "chatgpt",
-    name: "The ChatGPT shock",
-    short: "2022–24",
-    start: [2022, 10, 30],
-    end: [2024, 8, 1],
-    share: 0.22,
-  },
-  {
-    key: "agentic",
-    name: "The agentic era",
-    short: "2024–26",
-    start: [2024, 8, 1],
-    end: [2026, 8, 15],
-    share: 0.28,
-  },
+  { start: [1943, 0, 1], end: [1974, 0, 1], share: 0.08 },
+  { start: [1974, 0, 1], end: [2012, 5, 1], share: 0.12 },
+  { start: [2012, 5, 1], end: [2017, 5, 1], share: 0.11 },
+  { start: [2017, 5, 1], end: [2022, 10, 30], share: 0.19 },
+  { start: [2022, 10, 30], end: [2024, 8, 1], share: 0.22 },
+  { start: [2024, 8, 1], end: [2026, 8, 15], share: 0.28 },
 ];
 
-export const ERAS: Era[] = (() => {
+const SEGMENTS: Segment[] = (() => {
   let u = 0;
-  return ERA_DEFS.map((d) => {
-    const era: Era = {
-      key: d.key,
-      name: d.name,
-      short: d.short,
+  return SEGMENT_DEFS.map((d) => {
+    const seg: Segment = {
       t0: Date.UTC(d.start[0], d.start[1], d.start[2]),
       t1: Date.UTC(d.end[0], d.end[1], d.end[2]),
       u0: u,
       u1: u + d.share,
     };
     u += d.share;
-    return era;
+    return seg;
   });
 })();
 
-const T_MIN = ERAS[0].t0;
-const T_MAX = ERAS[ERAS.length - 1].t1;
+const T_MIN = SEGMENTS[0].t0;
+const T_MAX = SEGMENTS[SEGMENTS.length - 1].t1;
 const YEAR_MS = 365.25 * 24 * 3600 * 1000;
 
 export function timeToU(t: number): number {
   const tc = Math.min(Math.max(t, T_MIN), T_MAX);
-  for (const e of ERAS) {
+  for (const e of SEGMENTS) {
     if (tc <= e.t1) return e.u0 + ((tc - e.t0) / (e.t1 - e.t0)) * (e.u1 - e.u0);
   }
   return 1;
@@ -117,15 +65,22 @@ export function dateToU(iso: string): number {
 
 export function uToTime(u: number): number {
   const uc = Math.min(Math.max(u, 0), 1);
-  for (const e of ERAS) {
+  for (const e of SEGMENTS) {
     if (uc <= e.u1) return e.t0 + ((uc - e.u0) / (e.u1 - e.u0)) * (e.t1 - e.t0);
   }
   return T_MAX;
 }
 
-export function eraAtU(u: number): Era {
-  for (const e of ERAS) if (u <= e.u1) return e;
-  return ERAS[ERAS.length - 1];
+function segAtU(u: number): Segment {
+  for (const e of SEGMENTS) if (u <= e.u1) return e;
+  return SEGMENTS[SEGMENTS.length - 1];
+}
+
+/** Local pixel density of calendar time at world position u, scale s px/unit. */
+export function pxPerYearAt(u: number, s: number): number {
+  const seg = segAtU(u);
+  const years = (seg.t1 - seg.t0) / YEAR_MS;
+  return (s * (seg.u1 - seg.u0)) / years;
 }
 
 /* ------------------------------------------------------------------ ticks */
@@ -133,7 +88,6 @@ export function eraAtU(u: number): Era {
 export interface Tick {
   u: number;
   label: string;
-  /** Major ticks get a stronger gridline and brighter label. */
   major: boolean;
 }
 
@@ -147,26 +101,26 @@ const MONTHS_LONG = [
 ];
 
 const YEAR_STEPS = [1, 2, 5, 10, 20, 50];
-const MONTH_STEPS = [1, 3, 6]; // months
+const MONTH_STEPS = [1, 3, 6];
 
 /**
- * Generate axis ticks for the world range [uFrom, uTo] at scale `s` px/unit.
- * Density adapts per era, because px-per-year differs wildly across the warp.
+ * Axis ticks for the world range [uFrom, uTo] at scale `s` px/unit.
+ * Density adapts per warp segment, because px-per-year differs across it.
+ * Labels are plain years (or "Mar ’23" when a month is wider than MIN_PX).
  */
 export function genTicks(uFrom: number, uTo: number, s: number): Tick[] {
   const ticks: Tick[] = [];
-  const MIN_PX = 74;
+  const MIN_PX = 82;
 
-  for (const era of ERAS) {
-    if (era.u1 < uFrom || era.u0 > uTo) continue;
-    const eraYears = (era.t1 - era.t0) / YEAR_MS;
-    const pxPerYear = (s * (era.u1 - era.u0)) / eraYears;
+  for (const seg of SEGMENTS) {
+    if (seg.u1 < uFrom || seg.u0 > uTo) continue;
+    const segYears = (seg.t1 - seg.t0) / YEAR_MS;
+    const pxPerYear = (s * (seg.u1 - seg.u0)) / segYears;
 
-    // Try month steps first (finest), then year steps.
     let placed = false;
     for (const m of MONTH_STEPS) {
       if ((pxPerYear * m) / 12 >= MIN_PX) {
-        const d0 = new Date(era.t0);
+        const d0 = new Date(seg.t0);
         let y = d0.getUTCFullYear();
         let mo = Math.ceil(d0.getUTCMonth() / m) * m;
         for (;;) {
@@ -175,8 +129,8 @@ export function genTicks(uFrom: number, uTo: number, s: number): Tick[] {
             mo = mo % 12;
           }
           const t = Date.UTC(y, mo, 1);
-          if (t > era.t1) break;
-          if (t >= era.t0) {
+          if (t > seg.t1) break;
+          if (t >= seg.t0) {
             const u = timeToU(t);
             if (u >= uFrom && u <= uTo) {
               ticks.push({
@@ -200,11 +154,11 @@ export function genTicks(uFrom: number, uTo: number, s: number): Tick[] {
           break;
         }
       }
-      const y0 = new Date(era.t0).getUTCFullYear();
-      const y1 = new Date(era.t1).getUTCFullYear();
+      const y0 = new Date(seg.t0).getUTCFullYear();
+      const y1 = new Date(seg.t1).getUTCFullYear();
       for (let y = Math.ceil(y0 / step) * step; y <= y1; y += step) {
         const t = Date.UTC(y, 0, 1);
-        if (t < era.t0 || t > era.t1) continue;
+        if (t < seg.t0 || t > seg.t1) continue;
         const u = timeToU(t);
         if (u < uFrom || u > uTo) continue;
         ticks.push({ u, label: String(y), major: y % (step * 5) === 0 });
@@ -212,13 +166,29 @@ export function genTicks(uFrom: number, uTo: number, s: number): Tick[] {
     }
   }
 
-  // Dedupe ticks that collide across era boundaries (keep the earlier one).
+  // Dedupe ticks that land too close across segment boundaries.
   ticks.sort((a, b) => a.u - b.u);
   const out: Tick[] = [];
   for (const t of ticks) {
     const prev = out[out.length - 1];
-    if (prev && (t.u - prev.u) * s < 40) continue;
+    if (prev && (t.u - prev.u) * s < 48) continue;
     out.push(t);
+  }
+  return out;
+}
+
+/** A sparse year scale for the minimap: plain years, min Δu spacing. */
+export function minimapScale(): Tick[] {
+  const candidates = [
+    1950, 1960, 1970, 1980, 1990, 2000, 2010, 2015,
+    2018, 2020, 2022, 2023, 2024, 2025, 2026,
+  ];
+  const out: Tick[] = [];
+  for (const y of candidates) {
+    const u = timeToU(Date.UTC(y, 0, 1));
+    const prev = out[out.length - 1];
+    if (prev && u - prev.u < 0.052) continue;
+    out.push({ u, label: String(y), major: false });
   }
   return out;
 }
@@ -239,14 +209,11 @@ export function eventYear(ev: Pick<TimelineEvent, "date">): string {
 
 /** Cursor readout: precision follows the local px-per-year at that point. */
 export function fmtCursorDate(u: number, s: number): string {
-  const era = eraAtU(u);
-  const eraYears = (era.t1 - era.t0) / YEAR_MS;
-  const pxPerYear = (s * (era.u1 - era.u0)) / eraYears;
+  const ppy = pxPerYearAt(u, s);
   const dt = new Date(uToTime(u));
   const y = dt.getUTCFullYear();
-  if (pxPerYear >= 2600)
-    return `${MONTHS_SHORT[dt.getUTCMonth()]} ${dt.getUTCDate()}, ${y}`;
-  if (pxPerYear >= 300) return `${MONTHS_SHORT[dt.getUTCMonth()]} ${y}`;
+  if (ppy >= 2600) return `${MONTHS_SHORT[dt.getUTCMonth()]} ${dt.getUTCDate()}, ${y}`;
+  if (ppy >= 300) return `${MONTHS_SHORT[dt.getUTCMonth()]} ${y}`;
   return String(y);
 }
 
@@ -279,58 +246,425 @@ export const SOURCE_TYPE_LABEL: Record<string, string> = {
 };
 
 export const PLATFORM_LABEL: Record<string, string> = {
-  x: "on 𝕏",
+  x: "on X",
   substack: "on Substack",
   blog: "on their blog",
   news: "in the press",
   other: "",
 };
 
-/** Minimum importance whose labels are pinned open at zoom factor z. */
+/** Minimum importance eligible for a static label at zoom factor z. */
 export function labelTier(z: number): number {
-  if (z >= 13) return 2;
-  if (z >= 6) return 3;
-  if (z >= 2.4) return 4;
+  if (z >= 18) return 1;
+  if (z >= 10) return 2;
+  if (z >= 5) return 3;
+  if (z >= 1.8) return 4;
   return 5;
 }
 
-/* ---------------------------------------------------------------- layout */
+/* ----------------------------------------------------------- scene layout
+ *
+ * One pure pass turns the filtered events into a fully collision-resolved
+ * scene at the current scale: beeswarm marker rows around a single axis,
+ * label chips fitted into horizontal tracks above/below the swarm (leader
+ * lines reserved so nothing is crossed), and quote cards fitted into outer
+ * tracks near the stage edges. Anything that doesn't fit is dropped, in
+ * strict importance-then-recency priority. Deterministic for a given input.
+ */
 
-export interface Placed {
+export interface SceneMarker {
   ev: TimelineEvent;
   u: number;
-  /** World-layer x in px at the scale the layout was computed for. */
   x: number;
-  lane: number;
-  row: number;
+  y: number;
+  r: number;
+  labeled: boolean;
 }
 
-/** Row fractions within a lane — center first, then fan out. */
-export const ROW_FRAC = [0.5, 0.26, 0.74, 0.12];
+export interface SceneLabel {
+  slug: string;
+  cat: Category;
+  imp: number;
+  title: string;
+  year: string;
+  /** Center x / center y of the chip. */
+  x: number;
+  y: number;
+  w: number;
+  leader: { x: number; y1: number; y2: number };
+}
 
-/**
- * Assign each event a lane (its primary category) and a collision row within
- * the lane, greedy by date order at the given px scale.
- */
-export function layoutMarkers(events: TimelineEvent[], s: number): Placed[] {
-  const lastX: number[][] = CATEGORIES.map(() => ROW_FRAC.map(() => -Infinity));
-  const out: Placed[] = [];
+export interface SceneCard {
+  ev: TimelineEvent;
+  /** Left / top of the card track slot (cards are anchored toward the axis). */
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  /** 0 = above the axis, 1 = below. */
+  side: 0 | 1;
+  leader: { x: number; y1: number; y2: number };
+}
+
+export interface Scene {
+  markers: SceneMarker[];
+  labels: SceneLabel[];
+  cards: SceneCard[];
+  axisY: number;
+}
+
+export interface SceneOpts {
+  /** World scale, px per unit. */
+  s: number;
+  /** Stage size. */
+  w: number;
+  h: number;
+  /** Height of the top tick ruler. */
+  axisH: number;
+  /** Minimum importance eligible for a static label. */
+  tier: number;
+  /** Show ambient quote cards for in-view events with reactions. */
+  ambient: boolean;
+  /** Visible world range (used to pick ambient card candidates). */
+  viewU0: number;
+  viewU1: number;
+  selectedSlug: string | null;
+  measureUi: (text: string, px: number, weight: number) => number;
+  measureMono: (text: string, px: number) => number;
+}
+
+const MARKER_R: Record<number, number> = { 1: 2.5, 2: 3, 3: 4, 4: 5.5, 5: 7.5 };
+/** Beeswarm vertical offsets from the axis, tried in order. */
+const SWARM_OFFSETS = [0, -13, 13, -26, 26, -39, 39];
+const SWARM_ZONE = 48; // half-height of the marker band
+const LABEL_ROW_H = 21;
+const LABEL_GAP = 14; // min horizontal gap between label chips
+const LEADER_HALF = 5; // half-width of the sliver a leader reserves
+export const CARD_W = 300;
+export const CARD_H = 122;
+
+interface Interval {
+  a: number;
+  b: number;
+  /** Set for label intervals — a leader may pass behind its own label. */
+  slug?: string;
+}
+
+function fits(
+  row: Interval[],
+  x0: number,
+  x1: number,
+  ignoreSlug?: string,
+): boolean {
+  for (const iv of row) {
+    if (ignoreSlug !== undefined && iv.slug === ignoreSlug) continue;
+    if (x0 < iv.b && x1 > iv.a) return false;
+  }
+  return true;
+}
+
+export function layoutScene(events: TimelineEvent[], o: SceneOpts): Scene {
+  const axisY = o.axisH + (o.h - o.axisH) * 0.5;
+  const half = (o.h - o.axisH) * 0.5;
+
+  /* ---- markers: beeswarm around the axis ---- */
+  const swarmLast: Array<{ x: number; r: number }> = SWARM_OFFSETS.map(() => ({
+    x: -Infinity,
+    r: 0,
+  }));
+  const markers: SceneMarker[] = [];
+  const bySlug = new Map<string, SceneMarker>();
+  const nOffsets = half >= SWARM_ZONE + 30 ? SWARM_OFFSETS.length : 5;
   for (const ev of events) {
     const u = dateToU(ev.date);
-    const x = u * s;
-    const lane = CATEGORIES.indexOf(ev.category);
-    const rows = lastX[lane];
-    const gap = ev.importance >= 5 ? 30 : ev.importance >= 4 ? 18 : 13;
-    let row = rows.findIndex((lx) => x - lx >= gap);
-    if (row === -1) {
-      let min = 0;
-      for (let i = 1; i < rows.length; i++) if (rows[i] < rows[min]) min = i;
-      row = min;
+    const x = u * o.s;
+    const r = MARKER_R[ev.importance] ?? 4;
+    let idx = -1;
+    for (let i = 0; i < nOffsets; i++) {
+      const last = swarmLast[i];
+      if (x - last.x >= r + last.r + 5) {
+        idx = i;
+        break;
+      }
     }
-    rows[row] = x;
-    out.push({ ev, u, x, lane, row });
+    if (idx === -1) {
+      idx = 0;
+      for (let i = 1; i < nOffsets; i++)
+        if (swarmLast[i].x < swarmLast[idx].x) idx = i;
+    }
+    swarmLast[idx] = { x, r };
+    const m: SceneMarker = {
+      ev,
+      u,
+      x,
+      y: axisY + SWARM_OFFSETS[idx],
+      r,
+      labeled: false,
+    };
+    markers.push(m);
+    bySlug.set(ev.slug, m);
   }
-  return out;
+
+  /* ---- geometry of the label + card tracks ---- */
+  // On short stages, quote cards go compact (2-line clamp) so label rows
+  // and cards can coexist around the axis.
+  const compact = (o.h - o.axisH) * 0.5 < 240;
+  const cardH = compact ? 84 : CARD_H;
+  // Cards hug the axis band (composition stays tight on tall stages) but
+  // never leave the stage.
+  const REACH = 196;
+  const cardTopAbove = Math.max(o.axisH + 12, axisY - REACH - cardH);
+  const cardTopBelow = Math.min(o.h - cardH - 12, axisY + REACH);
+  const labelBase = SWARM_ZONE + 14; // first label row center, from axis
+
+  // How many label rows fit per side, leaving room for the card track.
+  const roomAbove = axisY - labelBase - (cardTopAbove + cardH + 18);
+  const roomBelow = cardTopBelow - 18 - (axisY + labelBase);
+  const rowsAbove = Math.max(1, Math.min(4, Math.floor(roomAbove / LABEL_ROW_H) + 1));
+  const rowsBelow = Math.max(1, Math.min(4, Math.floor(roomBelow / LABEL_ROW_H) + 1));
+  const cardRoomAbove = cardTopAbove + cardH + 8 < axisY - SWARM_ZONE;
+  const cardRoomBelow = cardTopBelow > axisY + SWARM_ZONE + 8;
+
+  // occupied[side][row] — side 0 = above, 1 = below. Row arrays hold label
+  // intervals and reserved leader slivers.
+  const occupied: Interval[][][] = [
+    Array.from({ length: rowsAbove }, () => []),
+    Array.from({ length: rowsBelow }, () => []),
+  ];
+  const labelRowY = (side: number, row: number) =>
+    side === 0
+      ? axisY - labelBase - row * LABEL_ROW_H
+      : axisY + labelBase + row * LABEL_ROW_H;
+
+  /* ---- quote cards: the crowd commenting on history.
+   * Placed in two phases around the labels: the selected event's card and
+   * major voices (importance ≥ 4) claim space first, remaining voices
+   * squeeze into whatever is left after labels. ---- */
+  const cards: SceneCard[] = [];
+  const cardW = Math.min(CARD_W, o.w - 32);
+  const cardRows: Interval[][] = [[], []]; // above, below
+  const px0 = o.viewU0 * o.s;
+  const px1 = o.viewU1 * o.s;
+  const margin = (px1 - px0) * 0.15;
+
+  let cardCands: SceneMarker[] = [];
+  if (o.ambient) {
+    cardCands = markers
+      .filter(
+        (m) =>
+          m.ev.reactions &&
+          m.ev.reactions.length > 0 &&
+          m.x >= px0 - margin &&
+          m.x <= px1 + margin,
+      )
+      .sort((a, b) =>
+        b.ev.importance !== a.ev.importance
+          ? b.ev.importance - a.ev.importance
+          : b.ev.date < a.ev.date
+            ? -1
+            : 1,
+      )
+      .slice(0, 14);
+  }
+  if (o.selectedSlug) {
+    const sel = bySlug.get(o.selectedSlug);
+    if (sel && sel.ev.reactions && sel.ev.reactions.length > 0) {
+      cardCands = [sel, ...cardCands.filter((m) => m !== sel)];
+    }
+  }
+
+  // A card's vertical band can intersect label rows on short stages: where
+  // it does, the card must clear (and then reserves) the full card width in
+  // those rows; rows between the band and the axis only need leader passage.
+  const tryCardSide = (
+    m: SceneMarker,
+    side: 0 | 1,
+    x0: number,
+    x1: number,
+  ): boolean => {
+    const bandTop = side === 0 ? cardTopAbove : cardTopBelow;
+    const bandBot = bandTop + cardH;
+    if (!fits(cardRows[side], x0 - 18, x1 + 18)) return false;
+    const rows = occupied[side];
+    const spans: Array<{ k: number; a: number; b: number } | null> = [];
+    for (let k = 0; k < rows.length; k++) {
+      const yc = labelRowY(side, k);
+      const intersects = yc - 11 < bandBot && yc + 11 > bandTop;
+      const between = side === 0 ? yc - 11 >= bandBot : yc + 11 <= bandTop;
+      if (intersects) {
+        if (!fits(rows[k], x0 - 8, x1 + 8)) return false;
+        spans.push({ k, a: x0 - 8, b: x1 + 8 });
+      } else if (between) {
+        // Leader passes this row — allowed behind this event's own label.
+        if (!fits(rows[k], m.x - LEADER_HALF, m.x + LEADER_HALF, m.ev.slug))
+          return false;
+        spans.push({ k, a: m.x - LEADER_HALF, b: m.x + LEADER_HALF });
+      } else {
+        spans.push(null);
+      }
+    }
+    cardRows[side].push({ a: x0 - 18, b: x1 + 18 });
+    for (const sp of spans) if (sp) rows[sp.k].push({ a: sp.a, b: sp.b });
+    return true;
+  };
+
+  let cardIdx = 0;
+  const placeCard = (m: SceneMarker): void => {
+    // Shift cards of events near the world's edges inward, leader permitting.
+    const maxShift = Math.max(0, cardW / 2 - 14);
+    let cx = Math.min(Math.max(m.x, cardW / 2 + 2), o.s - 2 - cardW / 2);
+    cx = Math.min(Math.max(cx, m.x - maxShift), m.x + maxShift);
+    const x0 = cx - cardW / 2;
+    const x1 = cx + cardW / 2;
+    let done = false;
+    // Alternate the preferred side so the commentary flanks the line.
+    const pref: Array<0 | 1> = cardIdx % 2 === 0 ? [1, 0] : [0, 1];
+    for (const side of pref) {
+      if (side === 0 && !cardRoomAbove) continue;
+      if (side === 1 && !cardRoomBelow) continue;
+      if (!tryCardSide(m, side, x0, x1)) continue;
+      const y = side === 0 ? cardTopAbove : cardTopBelow;
+      cards.push({
+        ev: m.ev,
+        x: x0,
+        y,
+        w: cardW,
+        h: cardH,
+        side,
+        leader:
+          side === 0
+            ? { x: m.x, y1: y + cardH, y2: m.y - m.r - 3 }
+            : { x: m.x, y1: m.y + m.r + 3, y2: y },
+      });
+      cardIdx++;
+      done = true;
+      break;
+    }
+    if (!done && m.ev.slug === o.selectedSlug && cardRoomBelow) {
+      // The selected card must appear: give it the below track at the
+      // nearest position that clears everything (shift horizontally).
+      const step = 24;
+      for (let d = 0; d <= 40; d++) {
+        let placedSel = false;
+        for (const dir of d === 0 ? [0] : [-1, 1]) {
+          const cx = m.x + dir * d * step;
+          if (tryCardSide(m, 1, cx - cardW / 2, cx + cardW / 2)) {
+            cards.push({
+              ev: m.ev,
+              x: cx - cardW / 2,
+              y: cardTopBelow,
+              w: cardW,
+              h: cardH,
+              side: 1,
+              leader: { x: m.x, y1: m.y + m.r + 3, y2: cardTopBelow },
+            });
+            placedSel = true;
+            break;
+          }
+        }
+        if (placedSel) break;
+      }
+    }
+  };
+
+  const isPriorityCard = (m: SceneMarker) =>
+    m.ev.slug === o.selectedSlug || m.ev.importance >= 4;
+  for (const m of cardCands) if (isPriorityCard(m)) placeCard(m);
+
+  /* ---- labels: importance desc, then recency desc ---- */
+  const candidates = markers
+    .filter((m) => m.ev.importance >= o.tier)
+    .sort((a, b) =>
+      b.ev.importance !== a.ev.importance
+        ? b.ev.importance - a.ev.importance
+        : b.ev.date < a.ev.date
+          ? -1
+          : 1,
+    );
+  // Selected event's label is always attempted first.
+  if (o.selectedSlug) {
+    const sel = bySlug.get(o.selectedSlug);
+    if (sel) {
+      const i = candidates.indexOf(sel);
+      if (i > 0) {
+        candidates.splice(i, 1);
+        candidates.unshift(sel);
+      } else if (i === -1) {
+        candidates.unshift(sel);
+      }
+    }
+  }
+
+  const labels: SceneLabel[] = [];
+  for (const m of candidates) {
+    const big = m.ev.importance === 5;
+    const fontPx = big ? 13 : 12;
+    const fontWt = big ? 600 : 500;
+    const yearW = o.measureMono(eventYear(m.ev), 9.5);
+    let title = m.ev.title;
+    let titleW = o.measureUi(title, fontPx, fontWt);
+    // Never let a single label exceed the viewport: truncate with ellipsis.
+    const maxTitleW = o.w - 32 - 7 - yearW;
+    while (titleW > maxTitleW && title.length > 12) {
+      const ratio = Math.min(0.94, maxTitleW / titleW);
+      title = `${title.replace(/…$/, "").slice(0, Math.floor(title.length * ratio) - 1).trimEnd()}…`;
+      titleW = o.measureUi(title, fontPx, fontWt);
+    }
+    const w = titleW + 7 + yearW;
+    // Shift labels of events near the world's edges inward (as far as the
+    // leader still lands inside the chip) so they don't clip at fit zoom.
+    const maxShift = Math.max(0, w / 2 - 2);
+    let lx = Math.min(Math.max(m.x, w / 2 + 2), o.s - 2 - w / 2);
+    lx = Math.min(Math.max(lx, m.x - maxShift), m.x + maxShift);
+    const x0 = lx - w / 2;
+    const x1 = lx + w / 2;
+
+    // Prefer the side the marker leans toward; on-axis markers prefer above.
+    const prefSide = m.y > axisY ? 1 : 0;
+    let placed = false;
+    outer: for (let row = 0; row < 4 && !placed; row++) {
+      for (const side of [prefSide, 1 - prefSide]) {
+        const rows = occupied[side];
+        if (row >= rows.length) continue;
+        if (!fits(rows[row], x0 - LABEL_GAP, x1 + LABEL_GAP)) continue;
+        // Leader must pass cleanly through nearer rows on this side.
+        let clear = true;
+        for (let k = 0; k < row; k++) {
+          if (!fits(rows[k], m.x - LEADER_HALF, m.x + LEADER_HALF)) {
+            clear = false;
+            break;
+          }
+        }
+        if (!clear) continue;
+        rows[row].push({ a: x0 - LABEL_GAP, b: x1 + LABEL_GAP, slug: m.ev.slug });
+        for (let k = 0; k < row; k++)
+          rows[k].push({ a: m.x - LEADER_HALF, b: m.x + LEADER_HALF });
+        const y = labelRowY(side, row);
+        labels.push({
+          slug: m.ev.slug,
+          cat: m.ev.category,
+          imp: m.ev.importance,
+          title,
+          year: eventYear(m.ev),
+          x: lx,
+          y,
+          w,
+          leader:
+            side === 0
+              ? { x: m.x, y1: y + 10, y2: m.y - m.r - 3 }
+              : { x: m.x, y1: m.y + m.r + 3, y2: y - 10 },
+        });
+        m.labeled = true;
+        placed = true;
+        break outer;
+      }
+    }
+  }
+
+  /* ---- phase 2: remaining voices squeeze into leftover space ---- */
+  for (const m of cardCands) if (!isPriorityCard(m)) placeCard(m);
+
+  return { markers, labels, cards, axisY };
 }
 
 /* ----------------------------------------------------------------- misc */

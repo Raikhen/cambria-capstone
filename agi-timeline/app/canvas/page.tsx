@@ -1,25 +1,19 @@
-// "The Map" — a zoomable, pannable spatial chart of AI history.
+// "The Map" — a zoomable, pannable chart of AI history on a single axis.
 // Server component: fetches all events and initial filter state from the URL,
 // then hands off to the client-side instrument.
 
 import type { Metadata } from "next";
-import { Archivo, Instrument_Serif, Spline_Sans_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
 import { getAllEvents } from "@/lib/events";
 import { CATEGORIES, type Category } from "@/lib/types";
 import TheMap from "./TheMap";
 import "./canvas.css";
 
-const display = Instrument_Serif({
-  weight: "400",
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--tm-font-display",
-});
-const ui = Archivo({
+const ui = Instrument_Sans({
   subsets: ["latin"],
   variable: "--tm-font-ui",
 });
-const mono = Spline_Sans_Mono({
+const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--tm-font-mono",
@@ -28,7 +22,7 @@ const mono = Spline_Sans_Mono({
 export const metadata: Metadata = {
   title: "The Map — AGI Timeline",
   description:
-    "The whole of AI history as one navigable landscape: pan, zoom, and chart a course from 1943 to today.",
+    "The whole of AI history as one navigable line: pan, zoom, and hear what people said as it happened, 1943 to today.",
 };
 
 export default async function CanvasPage({
@@ -50,7 +44,7 @@ export default async function CanvasPage({
     Number.isFinite(rawMin) && rawMin >= 1 && rawMin <= 5 ? rawMin : 1;
 
   return (
-    <div className={`${display.variable} ${ui.variable} ${mono.variable}`}>
+    <div className={`${ui.variable} ${mono.variable}`}>
       <TheMap
         events={events}
         initialCats={initialCats}

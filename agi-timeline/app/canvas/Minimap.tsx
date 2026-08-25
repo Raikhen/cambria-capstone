@@ -2,18 +2,20 @@
 
 /**
  * Minimap — the full 1943–2026 world range in one strip: a density
- * histogram of the currently filtered events, era boundaries, a draggable
- * viewport window, and a clickable era rail beneath it.
+ * histogram of the currently filtered events, a draggable viewport window,
+ * and a sparse year scale beneath it. No named regions — just time.
  */
 
 import {
   useCallback,
+  useEffect,
   useMemo,
   useRef,
+  useState,
   type PointerEvent as ReactPointerEvent,
 } from "react";
 import type { TimelineEvent } from "@/lib/types";
-import { ERAS, dateToU, type Era, type View } from "./lib";
+import { dateToU, minimapScale, type View } from "./lib";
 
 const BINS = 96;
 
@@ -21,12 +23,22 @@ interface Props {
   filtered: TimelineEvent[];
   view: View;
   onNavigate: (o: number) => void;
-  onFitEra: (era: Era) => void;
 }
 
-export default function Minimap({ filtered, view, onNavigate, onFitEra }: Props) {
+export default function Minimap({ filtered, view, onNavigate }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const draggingRef = useRef(false);
+  const [trackW, setTrackW] = useState(0);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      setTrackW(entries[0].contentRect.width);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const bars = useMemo(() => {
     const counts = new Array<number>(BINS).fill(0);
@@ -37,6 +49,19 @@ export default function Minimap({ filtered, view, onNavigate, onFitEra }: Props)
     const max = Math.max(1, ...counts);
     return counts.map((c) => c / max);
   }, [filtered]);
+
+  // Keep year labels at least 44px apart at the current track width.
+  const scale = useMemo(() => {
+    const all = minimapScale();
+    if (trackW <= 0) return all;
+    const out: typeof all = [];
+    for (const t of all) {
+      const prev = out[out.length - 1];
+      if (prev && (t.u - prev.u) * trackW < 44) continue;
+      out.push(t);
+    }
+    return out;
+  }, [trackW]);
 
   const navToClientX = useCallback(
     (clientX: number) => {
@@ -100,30 +125,28 @@ export default function Minimap({ filtered, view, onNavigate, onFitEra }: Props)
             ) : null,
           )}
         </svg>
-        {ERAS.slice(1).map((era) => (
-          <span
-            key={era.key}
-            className="tm-mini-era-line"
-            style={{ left: `${era.u0 * 100}%` }}
-          />
-        ))}
         <div
           className="tm-mini-win"
           style={{ left: `${winLeft}%`, width: `${winWidth}%` }}
         />
       </div>
 
-      <div className="tm-era-rail" role="group" aria-label="Jump to an era">
-        {ERAS.map((era) => (
-          <button
-            key={era.key}
-            className="tm-era-btn"
-            style={{ width: `${(era.u1 - era.u0) * 100}%` }}
-            onClick={() => onFitEra(era)}
-            title={`${era.name} (${era.short})`}
+      <div className="tm-mini-scale" aria-hidden>
+        {scale.map((t) => (
+          <span
+            key={t.label}
+            style={{
+              left: `${t.u * 100}%`,
+              transform:
+                t.u < 0.03
+                  ? "none"
+                  : t.u > 0.96
+                    ? "translateX(-100%)"
+                    : undefined,
+            }}
           >
-            {era.name}
-          </button>
+            {t.label}
+          </span>
         ))}
       </div>
     </div>
