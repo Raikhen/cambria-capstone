@@ -803,15 +803,7 @@ export default function TheMap({
               className="tm-layer"
               style={{ transform: `translate3d(${-view.o * s}px,0,0)` }}
             >
-              {/* gridlines + tick labels */}
-              {ticks.map((t) => (
-                <div
-                  key={`g${t.u}`}
-                  className="tm-grid"
-                  data-major={t.major || undefined}
-                  style={{ left: t.u * s }}
-                />
-              ))}
+              {/* tick labels */}
               {ticks.map((t) => (
                 <span
                   key={`l${t.u}`}

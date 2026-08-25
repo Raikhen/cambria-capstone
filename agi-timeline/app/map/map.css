@@ -359,18 +359,6 @@
   z-index: 2;
 }
 
-.tm-grid {
-  position: absolute;
-  top: 30px;
-  bottom: 0;
-  width: 1px;
-  background: var(--tm-hair);
-  opacity: 0.6;
-  pointer-events: none;
-}
-.tm-grid[data-major="true"] {
-  opacity: 1;
-}
 .tm-tick-lbl {
   position: absolute;
   top: 8px;

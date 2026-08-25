@@ -354,7 +354,8 @@ const MARKER_R: Record<number, number> = { 1: 2.5, 2: 3, 3: 4, 4: 5.5, 5: 7.5 };
 /** Beeswarm vertical offsets from the axis, tried in order. */
 const SWARM_OFFSETS = [0, -13, 13, -26, 26, -39, 39];
 const SWARM_ZONE = 48; // half-height of the marker band
-const LABEL_ROW_H = 21;
+const LABEL_ROW_H = 21; // minimum row pitch; rows spread wider when room allows
+const MAX_LABEL_ROWS = 6;
 const LABEL_GAP = 14; // min horizontal gap between label chips
 const LEADER_HALF = 5; // half-width of the sliver a leader reserves
 
@@ -421,11 +422,27 @@ export function layoutScene(events: TimelineEvent[], o: SceneOpts): Scene {
   }
 
   /* ---- geometry of the label tracks ---- */
-  const labelBase = SWARM_ZONE + 14; // first label row center, from axis
+  // First label row center, from axis: clear daylight between the marker
+  // swarm and the text band. Shrinks back toward the swarm when the stage is
+  // too short to afford it.
+  const labelBase = SWARM_ZONE + clamp(half - SWARM_ZONE - 3 * LABEL_ROW_H, 14, 34);
+  const EDGE = 12; // keep-out at the stage top/bottom
   const rowsFor = (room: number) =>
-    Math.max(1, Math.min(4, Math.floor((room - labelBase - 16) / LABEL_ROW_H) + 1));
+    Math.max(
+      1,
+      Math.min(MAX_LABEL_ROWS, Math.floor((room - labelBase - EDGE) / LABEL_ROW_H) + 1),
+    );
   const rowsAbove = rowsFor(axisY - o.axisH);
   const rowsBelow = rowsFor(o.h - axisY);
+  // Spread the rows across the room each side actually has, rather than
+  // stacking them at minimum pitch against the swarm — on tall stages the
+  // label band breathes over the whole half instead of hugging the axis.
+  const gapFor = (room: number, rows: number) =>
+    rows > 1
+      ? Math.max(LABEL_ROW_H, (room - labelBase - EDGE) / (rows - 1))
+      : LABEL_ROW_H;
+  const gapAbove = gapFor(axisY - o.axisH, rowsAbove);
+  const gapBelow = gapFor(o.h - axisY, rowsBelow);
 
   // occupied[side][row] — side 0 = above, 1 = below. Row arrays hold label
   // intervals and reserved leader slivers.
@@ -435,8 +452,8 @@ export function layoutScene(events: TimelineEvent[], o: SceneOpts): Scene {
   ];
   const labelRowY = (side: number, row: number) =>
     side === 0
-      ? axisY - labelBase - row * LABEL_ROW_H
-      : axisY + labelBase + row * LABEL_ROW_H;
+      ? axisY - labelBase - row * gapAbove
+      : axisY + labelBase + row * gapBelow;
 
   /* ---- labels: importance desc, then recency desc ---- */
   const candidates = markers
@@ -489,7 +506,7 @@ export function layoutScene(events: TimelineEvent[], o: SceneOpts): Scene {
     // Prefer the side the marker leans toward; on-axis markers prefer above.
     const prefSide = m.y > axisY ? 1 : 0;
     let placed = false;
-    outer: for (let row = 0; row < 4 && !placed; row++) {
+    outer: for (let row = 0; row < MAX_LABEL_ROWS && !placed; row++) {
       for (const side of [prefSide, 1 - prefSide]) {
         const rows = occupied[side];
         if (row >= rows.length) continue;
