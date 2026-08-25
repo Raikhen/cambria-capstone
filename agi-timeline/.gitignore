@@ -1,0 +1,20 @@
+node_modules/
+.next/
+.env.local
+.env*.local
+.vercel/
+
+# next.js / build output
+/out/
+/build
+*.tsbuildinfo
+next-env.d.ts
+
+# misc
+.DS_Store
+/coverage
+
+# supabase cli
+supabase/.temp/
+.vercel
+.env*

@@ -1,0 +1,1128 @@
+[
+  {
+    "slug": "google-brain-cat-neurons",
+    "date": "2012-06-26",
+    "date_precision": "day",
+    "title": "Google Brain's 'cat neuron' shows what scale does for neural networks",
+    "summary": "Researchers at Google's X lab, including Andrew Ng and Jeff Dean, trained a nine-layer network on 16,000 CPU cores over 10 million unlabeled YouTube frames and found a neuron that had learned to detect cats without supervision. The New York Times coverage made the experiment famous and signaled that a major company was betting on neural networks at industrial scale.",
+    "category": "research",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "A specialist landmark that makes Google's subsequent deep learning buildout legible, but it was quickly superseded methodologically by supervised GPU training.",
+    "sources": [
+      {
+        "url": "https://www.nytimes.com/2012/06/26/technology/in-a-big-network-of-computers-evidence-of-machine-learning.html",
+        "title": "How Many Computers to Identify a Cat? 16,000 — The New York Times",
+        "type": "news",
+        "author": "John Markoff"
+      },
+      {
+        "url": "https://arxiv.org/abs/1112.6209",
+        "title": "Building High-level Features Using Large Scale Unsupervised Learning",
+        "type": "paper",
+        "author": "Quoc V. Le et al."
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "alexnet-imagenet",
+    "date": "2012-09-30",
+    "date_precision": "day",
+    "title": "AlexNet wins ImageNet and ignites the deep learning era",
+    "summary": "A deep convolutional network built by Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton won the ImageNet Large Scale Visual Recognition Challenge with a 15.3% top-5 error rate, more than ten points ahead of the runner-up. Trained on two consumer GPUs, it demonstrated that deep neural networks plus large data plus parallel compute could crush hand-engineered approaches, converting much of computer vision — and soon the rest of AI — to deep learning.",
+    "category": "research",
+    "secondary_category": "capabilities",
+    "importance": 5,
+    "importance_rationale": "Textbook moment: AlexNet is the standard answer to when the deep learning era began, and the rubric itself cites it at this level.",
+    "sources": [
+      {
+        "url": "https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html",
+        "title": "ImageNet Classification with Deep Convolutional Neural Networks",
+        "type": "paper",
+        "author": "Krizhevsky, Sutskever, Hinton"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/AlexNet",
+        "title": "AlexNet — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "word2vec",
+    "date": "2013-01-16",
+    "date_precision": "day",
+    "title": "word2vec makes word embeddings ubiquitous",
+    "summary": "Tomas Mikolov and colleagues at Google published efficient methods for learning vector representations of words from billions of tokens. The embeddings captured semantic regularities as vector arithmetic (king − man + woman ≈ queen) and made distributed representations the default starting point for language processing, a conceptual step on the road from n-grams to neural language models.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "Known to any well-informed observer as the moment neural representations took over NLP, though its methods were later absorbed into end-to-end models.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1301.3781",
+        "title": "Efficient Estimation of Word Representations in Vector Space",
+        "type": "paper",
+        "author": "Mikolov, Chen, Corrado, Dean"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "deepmind-atari-dqn",
+    "date": "2013-12-19",
+    "date_precision": "day",
+    "title": "DeepMind's DQN learns Atari games from raw pixels",
+    "summary": "A small London startup called DeepMind posted a paper showing a single deep Q-network that learned to play Atari 2600 games directly from screen pixels and score, with no game-specific engineering, exceeding human experts on several titles. Expanded to 49 games in a 2015 Nature cover paper, DQN launched the modern deep reinforcement learning agenda and put DeepMind on the industry's radar shortly before Google acquired it.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 4,
+    "importance_rationale": "Field-wide significance: the founding result of deep RL and the demonstration that general game-playing agents were feasible, still cited as the start of that line.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1312.5602",
+        "title": "Playing Atari with Deep Reinforcement Learning",
+        "type": "paper",
+        "author": "Mnih et al. (DeepMind)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "google-acquires-deepmind",
+    "date": "2014-01-26",
+    "date_precision": "day",
+    "title": "Google acquires DeepMind",
+    "summary": "Google bought the three-year-old London lab founded by Demis Hassabis, Shane Legg, and Mustafa Suleyman for a reported £400 million (~$650 million), outbidding Facebook. The deal gave a company explicitly aiming at general artificial intelligence access to Google-scale compute, and reportedly included the condition that an ethics board oversee the technology. DeepMind went on to produce AlphaGo, AlphaZero, and AlphaFold under Google's ownership.",
+    "category": "industry",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "A power-shifting acquisition that fused AGI ambitions with big-tech compute and set the template for the lab-plus-hyperscaler structure of the field.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/DeepMind",
+        "title": "DeepMind — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "gans-goodfellow",
+    "date": "2014-06-10",
+    "date_precision": "day",
+    "title": "Goodfellow introduces generative adversarial networks",
+    "summary": "Ian Goodfellow and colleagues proposed training two networks against each other — a generator producing samples and a discriminator judging them — as a route to generative modeling. GANs dominated image synthesis research for the rest of the decade, produced the first photorealistic fake faces and the 'deepfake' problem, and made generative AI a mainstream research goal before diffusion models displaced them.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "Field-wide significance: GANs defined generative modeling and its societal downsides (deepfakes) for nearly a decade.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1406.2661",
+        "title": "Generative Adversarial Networks",
+        "type": "paper",
+        "author": "Goodfellow et al."
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Yann LeCun",
+        "quote": "the most interesting idea in the last 10 years in ML, in my opinion",
+        "url": "https://www.kdnuggets.com/2016/08/yann-lecun-quora-session.html",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "bostrom-superintelligence",
+    "date": "2014-07-03",
+    "date_precision": "day",
+    "title": "Nick Bostrom publishes 'Superintelligence'",
+    "summary": "Oxford philosopher Nick Bostrom's 'Superintelligence: Paths, Dangers, Strategies' argued that machine intelligence surpassing humans could be an existential risk and systematized concepts like the control problem, the orthogonality thesis, and instrumental convergence. A surprise New York Times bestseller, it moved AI risk from internet forums into elite discourse and directly prompted public warnings from Elon Musk, Stephen Hawking, and Bill Gates.",
+    "category": "safety",
+    "secondary_category": "culture",
+    "importance": 4,
+    "importance_rationale": "The book that mainstreamed the intellectual case for AI existential risk; it shaped a decade of safety discourse and institution-building.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Superintelligence:_Paths,_Dangers,_Strategies",
+        "title": "Superintelligence: Paths, Dangers, Strategies — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Elon Musk",
+        "quote": "Worth reading Superintelligence by Bostrom. We need to be super careful with AI. Potentially more dangerous than nukes.",
+        "url": "https://x.com/elonmusk/status/495759307346952192",
+        "platform": "x"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "musk-summoning-the-demon",
+    "date": "2014-10-24",
+    "date_precision": "day",
+    "title": "Musk calls AI humanity's 'biggest existential threat' at MIT",
+    "summary": "Speaking at MIT's AeroAstro Centennial Symposium, Elon Musk said that with artificial intelligence 'we are summoning the demon' and called it probably our biggest existential threat, urging regulatory oversight. The remark, echoed within months by Stephen Hawking and Bill Gates, marked the moment AI risk — freshly articulated in Bostrom's 'Superintelligence' — became front-page mainstream discourse.",
+    "category": "culture",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "A discourse landmark any observer of AI knows: the quote that carried existential-risk worries from academia into mass media.",
+    "sources": [
+      {
+        "url": "https://www.washingtonpost.com/news/innovations/wp/2014/10/24/elon-musk-with-artificial-intelligence-we-are-summoning-the-demon/",
+        "title": "Elon Musk: 'With artificial intelligence we are summoning the demon.' — The Washington Post",
+        "type": "news"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Stephen Hawking",
+        "quote": "The development of full artificial intelligence could spell the end of the human race.",
+        "url": "https://phys.org/news/2014-12-hawking-ai-human.html",
+        "platform": "news"
+      },
+      {
+        "author": "Bill Gates",
+        "quote": "I am in the camp that is concerned about super intelligence. First the machines will do a lot of jobs for us and not be super intelligent. That should be positive if we manage it well. A few decades after that though the intelligence is strong enough to be a concern.",
+        "url": "https://amatranscripts.com/ama/bill_gates_2015-01-28.html",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "tensorflow-open-sourced",
+    "date": "2015-11-09",
+    "date_precision": "day",
+    "title": "Google open-sources TensorFlow",
+    "summary": "Google released TensorFlow, the deep learning framework behind its internal systems, under an open-source license. Open tooling from a frontier company dramatically lowered the barrier to training neural networks, accelerated the diffusion of deep learning into industry and academia, and set off the framework competition that PyTorch (2016) would eventually win.",
+    "category": "industry",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "Notable infrastructure moment: open frameworks are a key reason deep learning spread as fast as it did, and TensorFlow's release began that regime.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/TensorFlow",
+        "title": "TensorFlow — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "resnet",
+    "date": "2015-12-10",
+    "date_precision": "day",
+    "title": "ResNet makes very deep networks trainable",
+    "summary": "Kaiming He and colleagues at Microsoft Research introduced residual connections, letting networks of 152 layers train stably and winning the 2015 ImageNet competition with error below the estimated human level. Skip connections became a universal ingredient of deep architectures — including the Transformer — removing a fundamental obstacle to depth and scale.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "One of the most-cited papers in the field; its residual connection is load-bearing in essentially every modern model, though it reads as an engineering refinement rather than a paradigm shift.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1512.03385",
+        "title": "Deep Residual Learning for Image Recognition",
+        "type": "paper",
+        "author": "He, Zhang, Ren, Sun"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "openai-founded",
+    "date": "2015-12-11",
+    "date_precision": "day",
+    "title": "OpenAI is founded",
+    "summary": "Sam Altman, Elon Musk, Greg Brockman, Ilya Sutskever, and others announced OpenAI, a non-profit AI research company with over $1 billion in pledged commitments and a mission to ensure that artificial general intelligence 'benefits all of humanity.' Founded partly out of concern that advanced AI was being concentrated in a few corporations, it became the organization whose GPT models would define the next decade.",
+    "category": "industry",
+    "secondary_category": "safety",
+    "importance": 4,
+    "importance_rationale": "The founding of the lab that later produced GPT-3 and ChatGPT is a durable, power-shifting event referenced in every history of the period.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/introducing-openai/",
+        "title": "Introducing OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/OpenAI",
+        "title": "OpenAI — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "alphago-lee-sedol",
+    "date": "2016-03-15",
+    "date_precision": "day",
+    "title": "AlphaGo defeats Lee Sedol 4–1",
+    "summary": "DeepMind's AlphaGo beat Lee Sedol, one of the greatest Go players in history, 4–1 in a five-game match in Seoul watched by an estimated 200 million people. Go's vast search space had made it a symbol of what machines could not do for at least another decade. Game 2's move 37 — a shoulder hit AlphaGo estimated a human would play with 1-in-10,000 probability — became the era's emblem of machine creativity; Lee's game 4 win with move 78 was the last time a human beat a top AI at the game.",
+    "category": "capabilities",
+    "secondary_category": "culture",
+    "importance": 5,
+    "importance_rationale": "Textbook moment cited in the rubric itself: the public, superhuman-performance milestone of the deep learning era.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol",
+        "title": "AlphaGo versus Lee Sedol — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://www.nature.com/articles/nature16961",
+        "title": "Mastering the game of Go with deep neural networks and tree search",
+        "type": "paper",
+        "author": "Silver et al. (DeepMind)"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Fan Hui",
+        "quote": "It's not a human move. I've never seen a human play this move. So beautiful.",
+        "url": "https://www.johnmenick.com/writing/move-37-alpha-go-deep-mind.html",
+        "platform": "news"
+      },
+      {
+        "author": "Lee Sedol",
+        "quote": "I thought AlphaGo was based on probability calculation and that it was merely a machine. But when I saw this move, I changed my mind. Surely, AlphaGo is creative.",
+        "url": "https://eliasberbari.substack.com/p/the-perspective-expanding-magic-of",
+        "platform": "substack"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "microsoft-tay",
+    "date": "2016-03-24",
+    "date_precision": "day",
+    "title": "Microsoft's Tay chatbot turns toxic within 24 hours",
+    "summary": "Microsoft launched Tay, a conversational AI persona on Twitter, on March 23, 2016. Within roughly 16 hours coordinated users had manipulated it into posting racist and inflammatory content, and Microsoft took it offline and apologized. Tay became the canonical early lesson that deployed AI systems face adversarial users, cited for years in debates about release practices and alignment.",
+    "category": "safety",
+    "secondary_category": "culture",
+    "importance": 3,
+    "importance_rationale": "A widely known deployment failure that durably shaped corporate caution about conversational AI releases.",
+    "sources": [
+      {
+        "url": "https://www.bbc.com/news/technology-35902104",
+        "title": "Tay: Microsoft issues apology over racist chatbot fiasco — BBC News",
+        "type": "news"
+      },
+      {
+        "url": "https://blogs.microsoft.com/blog/2016/03/25/learning-tays-introduction/",
+        "title": "Learning from Tay's introduction — Official Microsoft Blog",
+        "type": "official",
+        "author": "Peter Lee"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Peter Lee (Microsoft Research)",
+        "quote": "We are deeply sorry for the unintended offensive and hurtful tweets from Tay.",
+        "url": "https://blogs.microsoft.com/blog/2016/03/25/learning-tays-introduction/",
+        "platform": "blog"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "concrete-problems-ai-safety",
+    "date": "2016-06-21",
+    "date_precision": "day",
+    "title": "'Concrete Problems in AI Safety' reframes safety as ML research",
+    "summary": "Researchers from Google Brain, OpenAI, and Stanford — including Dario Amodei, Chris Olah, and Paul Christiano — published a research agenda of five practical safety problems: avoiding negative side effects, reward hacking, scalable oversight, safe exploration, and robustness to distributional shift. The paper translated abstract worries about advanced AI into empirical machine-learning problems, giving safety research mainstream academic legitimacy.",
+    "category": "safety",
+    "secondary_category": "research",
+    "importance": 4,
+    "importance_rationale": "The founding document of empirical AI safety as a field, named in the editorial policy's own examples and still cited as the agenda-setter.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1606.06565",
+        "title": "Concrete Problems in AI Safety",
+        "type": "paper",
+        "author": "Amodei, Olah, Steinhardt, Christiano, Schulman, Mané"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "asilomar-ai-principles",
+    "date": "2017-01-08",
+    "date_precision": "day",
+    "title": "Asilomar conference produces 23 principles for beneficial AI",
+    "summary": "The Future of Life Institute convened more than 100 AI researchers, economists, and philosophers at Asilomar, California, for the Beneficial AI conference (January 5–8, 2017). It produced 23 principles on research culture, ethics, and long-term issues — including that superintelligence should only be developed for widely shared benefit — signed by thousands of researchers and figures including Hawking and Musk. It was the field's most visible early attempt at self-governance.",
+    "category": "governance",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "The best-known pre-regulation attempt at AI norms, later invoked by the 2023 pause letter, though it carried no enforcement.",
+    "sources": [
+      {
+        "url": "https://futureoflife.org/open-letter/ai-principles/",
+        "title": "Asilomar AI Principles — Future of Life Institute",
+        "type": "official",
+        "author": "Future of Life Institute"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Asilomar_Conference_on_Beneficial_AI",
+        "title": "Asilomar Conference on Beneficial AI — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "deep-rl-human-preferences",
+    "date": "2017-06-12",
+    "date_precision": "day",
+    "title": "Learning from human preferences lays the groundwork for RLHF",
+    "summary": "OpenAI and DeepMind researchers led by Paul Christiano showed that reinforcement learning agents could be trained from human comparisons of behavior instead of hand-coded rewards, teaching a simulated robot to backflip from about 900 bits of human feedback. The technique — learning a reward model from human preferences — became the core of RLHF, the alignment method behind InstructGPT and ChatGPT.",
+    "category": "research",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "Specialist-famous origin of RLHF; its significance became field-wide only through its 2022 descendants, which have their own entries.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1706.03741",
+        "title": "Deep Reinforcement Learning from Human Preferences",
+        "type": "paper",
+        "author": "Christiano et al."
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "attention-is-all-you-need",
+    "date": "2017-06-12",
+    "date_precision": "day",
+    "title": "'Attention Is All You Need' introduces the Transformer",
+    "summary": "Eight Google researchers proposed the Transformer, an architecture built entirely on attention mechanisms that dispensed with recurrence and convolution, achieving state-of-the-art machine translation while being far more parallelizable to train. The design's efficiency on modern hardware made large-scale pretraining practical; GPT, BERT, and essentially every frontier model since is a Transformer.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 5,
+    "importance_rationale": "Textbook per the rubric's own example list: the architecture underlying the entire large-model era.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1706.03762",
+        "title": "Attention Is All You Need",
+        "type": "paper",
+        "author": "Vaswani et al. (Google)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "china-ai-development-plan",
+    "date": "2017-07-20",
+    "date_precision": "day",
+    "title": "China's State Council sets goal of world AI leadership by 2030",
+    "summary": "China's State Council publicly released the New Generation Artificial Intelligence Development Plan (dated July 8, 2017), a national strategy targeting global AI leadership and a trillion-yuan core industry by 2030. The document, issued weeks after AlphaGo defeated Chinese champion Ke Jie, framed AI as a strategic national priority and became the reference point for U.S. 'AI race' policymaking, including later export controls.",
+    "category": "governance",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "The founding document of AI great-power competition, cited throughout subsequent U.S. and EU policy debates.",
+    "sources": [
+      {
+        "url": "https://digichina.stanford.edu/work/full-translation-chinas-new-generation-artificial-intelligence-development-plan-2017/",
+        "title": "Full Translation: China's 'New Generation Artificial Intelligence Development Plan' (2017) — DigiChina",
+        "type": "official",
+        "author": "State Council of the PRC (trans. DigiChina)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "alphazero",
+    "date": "2017-12-05",
+    "date_precision": "day",
+    "title": "AlphaZero masters chess, shogi, and Go by self-play alone",
+    "summary": "DeepMind's AlphaZero learned chess, shogi, and Go from only the rules, reaching superhuman strength through self-play within hours of training and defeating the champion chess engine Stockfish. It generalized AlphaGo Zero (October 2017), which had beaten the Lee Sedol-era AlphaGo 100–0 without any human game data. The result showed that a single learning algorithm, unaided by human knowledge, could exceed centuries of accumulated expertise across domains.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 4,
+    "importance_rationale": "Field-wide milestone still invoked as the proof that self-play learning without human data can surpass human knowledge.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1712.01815",
+        "title": "Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm",
+        "type": "paper",
+        "author": "Silver et al. (DeepMind)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "google-project-maven-exit",
+    "date": "2018-06-01",
+    "date_precision": "day",
+    "title": "Google drops Pentagon's Project Maven after employee revolt",
+    "summary": "After roughly 4,000 employees signed a petition against Google's work on Project Maven — a Pentagon program applying machine learning to drone surveillance footage — and about a dozen resigned, Google announced it would not renew the contract. Days later it published its AI Principles, pledging not to build AI weapons. The episode was the high-water mark of tech-worker power over AI deployment and opened the still-running debate over military AI.",
+    "category": "industry",
+    "secondary_category": "governance",
+    "importance": 3,
+    "importance_rationale": "A notable, durable inflection in the politics of who decides what AI gets built, referenced in every subsequent military-AI controversy.",
+    "sources": [
+      {
+        "url": "https://www.washingtonpost.com/news/the-switch/wp/2018/06/01/google-to-drop-pentagon-ai-contract-after-employees-called-it-the-business-of-war/",
+        "title": "Google to drop Pentagon AI contract after employees called it 'the business of war' — The Washington Post",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "gpt-1",
+    "date": "2018-06-11",
+    "date_precision": "day",
+    "title": "OpenAI's GPT-1 establishes generative pre-training for language",
+    "summary": "OpenAI showed that a 117-million-parameter Transformer decoder, pre-trained generatively on unlabeled text and then fine-tuned, improved the state of the art on a range of language understanding tasks. The recipe — learn language by predicting the next token at scale, then adapt — was unglamorous at the time but became the foundation of the GPT series and the entire large language model paradigm.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "Context-setting origin of the GPT line; its importance is retrospective, so it scores below the successors that demonstrated scaling.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/language-unsupervised/",
+        "title": "Improving language understanding with unsupervised learning — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "bert",
+    "date": "2018-10-11",
+    "date_precision": "day",
+    "title": "Google's BERT sweeps NLP benchmarks",
+    "summary": "Google released BERT, a bidirectional Transformer pre-trained with masked language modeling, which set new state-of-the-art results on eleven NLP benchmarks including GLUE and SQuAD. Its open release converted the NLP community wholesale to Transformer pretraining and fine-tuning, and within a year it was serving Google Search queries — the paradigm's first planet-scale deployment.",
+    "category": "research",
+    "secondary_category": "capabilities",
+    "importance": 4,
+    "importance_rationale": "Field-wide significance: BERT made pretrained Transformers the universal substrate of NLP and remains among the most-cited AI papers.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1810.04805",
+        "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "type": "paper",
+        "author": "Devlin, Chang, Lee, Toutanova"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "gpt-2-staged-release",
+    "date": "2019-02-14",
+    "date_precision": "day",
+    "title": "OpenAI withholds GPT-2, citing misuse concerns",
+    "summary": "OpenAI announced GPT-2, a 1.5-billion-parameter language model that generated strikingly coherent text, but broke research norms by initially releasing only a small version: 'Due to our concerns about malicious applications of the technology, we are not releasing the trained model.' The decision — mocked by some as marketing, defended by others as prudent — started the first mainstream debate over responsible release of AI models; the full model followed in stages through November 2019.",
+    "category": "safety",
+    "secondary_category": "capabilities",
+    "importance": 4,
+    "importance_rationale": "A landmark in publication norms and the moment 'too dangerous to release' entered the AI vocabulary, still cited in every staged-release debate.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/better-language-models/",
+        "title": "Better language models and their implications — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://www.fast.ai/posts/2019-02-15-openai-gp2.html",
+        "title": "Some thoughts on zero-day threats in AI, and OpenAI's GPT-2 — fast.ai",
+        "type": "blog",
+        "author": "Jeremy Howard"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "bitter-lesson",
+    "date": "2019-03-13",
+    "date_precision": "day",
+    "title": "Rich Sutton publishes 'The Bitter Lesson'",
+    "summary": "Reinforcement learning pioneer Rich Sutton published a short essay arguing that 70 years of AI history teach one bitter lesson: general methods that leverage growing computation ultimately beat approaches built on human knowledge. The essay became the canonical intellectual justification for the scaling-first strategy that OpenAI and others pursued, and remains one of the most-quoted texts in arguments about how AGI will be reached.",
+    "category": "research",
+    "secondary_category": "culture",
+    "importance": 3,
+    "importance_rationale": "A discourse landmark that any well-informed observer knows; it framed the scaling debate without itself being a technical result.",
+    "sources": [
+      {
+        "url": "http://www.incompleteideas.net/IncIdeas/BitterLesson.html",
+        "title": "The Bitter Lesson",
+        "type": "blog",
+        "author": "Rich Sutton"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "turing-award-deep-learning",
+    "date": "2019-03-27",
+    "date_precision": "day",
+    "title": "Bengio, Hinton, and LeCun win the Turing Award for deep learning",
+    "summary": "The ACM awarded the 2018 Turing Award — computing's highest honor — to Yoshua Bengio, Geoffrey Hinton, and Yann LeCun for the conceptual and engineering breakthroughs that made deep neural networks a core technology. The prize formally canonized a research program that had been marginal for decades, and the three were thereafter known as the 'godfathers of deep learning.'",
+    "category": "culture",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "The establishment's official recognition of deep learning; notable and durable, but it ratified rather than changed the field's direction.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Turing_Award",
+        "title": "Turing Award — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "microsoft-openai-1b",
+    "date": "2019-07-22",
+    "date_precision": "day",
+    "title": "Microsoft invests $1 billion in OpenAI",
+    "summary": "Microsoft and OpenAI announced a $1 billion investment and exclusive computing partnership, with Microsoft becoming OpenAI's sole cloud provider and preferred commercialization partner while OpenAI built increasingly large models on Azure supercomputers. Following OpenAI's restructuring into a capped-profit company that March, the deal supplied the compute that produced GPT-3 and set the lab-hyperscaler alliance model the rest of the industry copied.",
+    "category": "industry",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "Power-shifting rather than routine: it financed the GPT-3 scaling run and created the decade's defining corporate alliance, though its full weight became visible only later.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/microsoft-invests-in-and-partners-with-openai/",
+        "title": "Microsoft invests in and partners with OpenAI to support us building beneficial AGI — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://techcrunch.com/2019/07/22/microsoft-invests-1-billion-in-openai-in-new-multiyear-partnership/",
+        "title": "Microsoft invests $1 billion in OpenAI in new multiyear partnership — TechCrunch",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "kaplan-scaling-laws",
+    "date": "2020-01-23",
+    "date_precision": "day",
+    "title": "OpenAI publishes scaling laws for neural language models",
+    "summary": "Jared Kaplan, Sam McCandlish, and OpenAI colleagues showed that language model loss falls as a smooth power law in parameters, data, and compute across many orders of magnitude, with larger models being more sample-efficient. The result made capability gains a predictable function of investment, providing the empirical rationale for GPT-3 and for treating compute as the strategic resource of the field.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "Named in the editorial policy's research examples: the paper that turned 'scale is all you need' from slogan into quantitative planning tool.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2001.08361",
+        "title": "Scaling Laws for Neural Language Models",
+        "type": "paper",
+        "author": "Kaplan, McCandlish, et al. (OpenAI)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "gpt-3",
+    "date": "2020-05-28",
+    "date_precision": "day",
+    "title": "GPT-3 demonstrates few-shot learning at 175 billion parameters",
+    "summary": "OpenAI published 'Language Models are Few-Shot Learners,' introducing GPT-3, a 175-billion-parameter model — over 100 times larger than GPT-2 — that could perform tasks from translation to arithmetic to code from natural-language prompts alone, without fine-tuning. Access through the API launched that June produced a wave of viral demos and startups, establishing prompting as a new programming paradigm and vindicating the scaling hypothesis.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 5,
+    "importance_rationale": "Textbook: GPT-3 proved scaling yields qualitatively new general abilities and created the LLM industry that ChatGPT later brought to the masses.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2005.14165",
+        "title": "Language Models are Few-Shot Learners",
+        "type": "paper",
+        "author": "Brown et al. (OpenAI)"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Sam Altman",
+        "quote": "The GPT-3 hype is way too much. It's impressive (thanks for the nice compliments!) but it still has serious weaknesses and sometimes makes very silly mistakes. AI is going to change the world, but GPT-3 is just a very early glimpse. We have a lot still to figure out.",
+        "url": "https://twitter.com/sama/status/1284922296348454913",
+        "platform": "x"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "alphafold-2-casp14",
+    "date": "2020-11-30",
+    "date_precision": "day",
+    "title": "AlphaFold 2 solves protein structure prediction at CASP14",
+    "summary": "DeepMind's AlphaFold 2 achieved accuracy comparable to experimental methods in the CASP14 assessment, with organizers declaring the 50-year grand challenge of predicting a protein's 3D structure from its amino-acid sequence essentially solved for single proteins. It was the first time a deep learning system cracked a major open scientific problem; the work later earned Demis Hassabis and John Jumper the 2024 Nobel Prize in Chemistry.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 5,
+    "importance_rationale": "Textbook: the defining proof that modern AI can produce Nobel-level science, cited in virtually every account of AI's real-world impact.",
+    "sources": [
+      {
+        "url": "https://predictioncenter.org/casp14/doc/CASP14_press_release.html",
+        "title": "CASP14 press release — Protein Structure Prediction Center",
+        "type": "official",
+        "author": "CASP organizers"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/AlphaFold",
+        "title": "AlphaFold — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Andriy Kryshtafovych (CASP organizer)",
+        "quote": "What AlphaFold has achieved is truly remarkable and today's announcement is a win for DeepMind, but it's also a triumph for team science.",
+        "url": "https://predictioncenter.org/casp14/doc/CASP14_press_release.html",
+        "platform": "other"
+      },
+      {
+        "author": "Dame Janet Thornton (EMBL-EBI)",
+        "quote": "It's tremendous to see the triumph of human curiosity, endeavour and intelligence in solving this problem.",
+        "url": "https://predictioncenter.org/casp14/doc/CASP14_press_release.html",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "timnit-gebru-google-exit",
+    "date": "2020-12-02",
+    "date_precision": "day",
+    "title": "Google forces out AI ethics co-lead Timnit Gebru",
+    "summary": "Timnit Gebru, co-lead of Google's Ethical AI team, announced she had been fired after a dispute over 'On the Dangers of Stochastic Parrots,' a paper criticizing large language models' biases, costs, and opacity, which Google managers had asked to be withdrawn. More than 4,000 Googlers and researchers signed a protest letter, co-lead Margaret Mitchell was fired weeks later, and 'stochastic parrots' entered the permanent vocabulary of AI criticism.",
+    "category": "culture",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "The defining episode of corporate AI-ethics tension of its period, still the reference case for research freedom inside AI labs.",
+    "sources": [
+      {
+        "url": "https://www.technologyreview.com/2020/12/04/1013294/google-ai-ethics-research-paper-forced-out-timnit-gebru/",
+        "title": "We read the paper that forced Timnit Gebru out of Google — MIT Technology Review",
+        "type": "news",
+        "author": "Karen Hao"
+      },
+      {
+        "url": "https://techcrunch.com/2020/12/03/googles-co-lead-of-ethical-ai-team-says-she-was-fired-for-sending-an-email/",
+        "title": "Google's co-lead of Ethical AI team says she was fired for sending an email — TechCrunch",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "clip-and-dalle",
+    "date": "2021-01-05",
+    "date_precision": "day",
+    "title": "OpenAI unveils CLIP and DALL-E, connecting language and images",
+    "summary": "OpenAI announced two multimodal systems on the same day: CLIP, which learns visual concepts from 400 million image-text pairs and classifies images zero-shot from natural-language labels, and DALL-E, a 12-billion-parameter model generating images from text prompts. CLIP became foundational infrastructure for the generative image systems that followed — including Stable Diffusion — while DALL-E previewed the text-to-image era that erupted in 2022.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 4,
+    "importance_rationale": "Field-wide significance: CLIP is among the most built-upon models of the decade and DALL-E opened text-to-image generation as a public capability.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/dall-e/",
+        "title": "DALL·E: Creating images from text — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://openai.com/index/clip/",
+        "title": "CLIP: Connecting text and images — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "eu-ai-act-proposal",
+    "date": "2021-04-21",
+    "date_precision": "day",
+    "title": "European Commission proposes the AI Act",
+    "summary": "The European Commission published its proposal for the Artificial Intelligence Act, the world's first comprehensive AI regulation, classifying systems by risk tier, banning practices like social scoring, and imposing obligations on high-risk uses. Proposed before large language models were a public concern, it was later amended to cover general-purpose AI and entered into force in August 2024, setting the global benchmark for AI law.",
+    "category": "governance",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "The rubric's own governance example at this level: the opening move of comprehensive AI regulation worldwide.",
+    "sources": [
+      {
+        "url": "https://single-market-economy.ec.europa.eu/news/europe-fit-digital-age-commission-proposes-new-rules-and-actions-excellence-and-trust-artificial-2021-04-21_en",
+        "title": "Europe fit for the Digital Age: Commission proposes new rules and actions for excellence and trust in Artificial Intelligence — European Commission",
+        "type": "official",
+        "author": "European Commission"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Margrethe Vestager (European Commission)",
+        "quote": "On Artificial Intelligence, trust is a must, not a nice to have.",
+        "url": "https://x.com/eu_commission/status/1384816551925370880",
+        "platform": "x"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "anthropic-founded",
+    "date": "2021-05-28",
+    "date_precision": "day",
+    "title": "Anthropic launches as an AI safety lab with $124M",
+    "summary": "Anthropic emerged publicly with a $124 million Series A led by Jaan Tallinn. Founded by siblings Dario and Daniela Amodei with a group of former OpenAI researchers — including much of the team behind GPT-3 and scaling laws — the public-benefit corporation set out to build reliable, steerable AI systems with safety research at the frontier. It went on to develop constitutional AI and the Claude models.",
+    "category": "industry",
+    "secondary_category": "safety",
+    "importance": 4,
+    "importance_rationale": "A power-shifting founding: the safety-motivated split from OpenAI created one of the handful of frontier labs and reshaped the field's competitive and safety landscape.",
+    "sources": [
+      {
+        "url": "https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems",
+        "title": "Anthropic raises $124 million to build more reliable, general AI systems — Anthropic",
+        "type": "official",
+        "author": "Anthropic"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "github-copilot-preview",
+    "date": "2021-06-29",
+    "date_precision": "day",
+    "title": "GitHub Copilot debuts as an AI pair programmer",
+    "summary": "GitHub launched Copilot in technical preview, an editor extension powered by OpenAI's Codex model that suggests whole lines and functions of code as developers type. It was the first mass-market product built on a large language model, made AI-assisted coding a daily reality for programmers well before ChatGPT, and later became the target of the first major copyright lawsuit over generative AI training data.",
+    "category": "capabilities",
+    "secondary_category": "industry",
+    "importance": 3,
+    "importance_rationale": "Notable first deployment of LLMs as a mainstream product and origin of the AI coding category, though its full economic weight arrived in later eras.",
+    "sources": [
+      {
+        "url": "https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/",
+        "title": "Introducing GitHub Copilot: your AI pair programmer — The GitHub Blog",
+        "type": "official",
+        "author": "Nat Friedman"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "instructgpt-rlhf",
+    "date": "2022-01-27",
+    "date_precision": "day",
+    "title": "InstructGPT shows RLHF can align language models with users",
+    "summary": "OpenAI introduced InstructGPT, GPT-3 models fine-tuned with reinforcement learning from human feedback to follow instructions, be more truthful, and reduce toxic output. Human raters preferred the 1.3-billion-parameter InstructGPT to the 100-times-larger original GPT-3, demonstrating that alignment training adds value scaling alone cannot. The technique became the recipe for ChatGPT ten months later and the industry-standard post-training method.",
+    "category": "research",
+    "secondary_category": "safety",
+    "importance": 4,
+    "importance_rationale": "Field-wide significance: the paper that made RLHF the standard alignment technique and directly enabled ChatGPT.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/instruction-following/",
+        "title": "Aligning language models to follow instructions — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://arxiv.org/abs/2203.02155",
+        "title": "Training language models to follow instructions with human feedback",
+        "type": "paper",
+        "author": "Ouyang et al. (OpenAI)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "chain-of-thought-prompting",
+    "date": "2022-01-28",
+    "date_precision": "day",
+    "title": "Chain-of-thought prompting elicits reasoning in language models",
+    "summary": "Jason Wei and Google colleagues showed that prompting large language models with worked examples of step-by-step reasoning dramatically improves performance on arithmetic, commonsense, and symbolic tasks — an ability that emerges only at sufficient scale. Chain-of-thought became a standard technique, reframed LLMs as reasoners rather than pattern-matchers, and prefigured the reasoning-model paradigm of 2024.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "Named in the policy's research examples; among the most-cited LLM papers and the conceptual ancestor of reasoning models.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2201.11903",
+        "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+        "type": "paper",
+        "author": "Wei et al. (Google)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "chinchilla-scaling",
+    "date": "2022-03-29",
+    "date_precision": "day",
+    "title": "Chinchilla revises the scaling laws: models are undertrained",
+    "summary": "DeepMind's Hoffmann et al. found that compute-optimal training scales parameters and training tokens equally — implying that GPT-3-class models were substantially undertrained on data. Their 70-billion-parameter Chinchilla, trained on 1.4 trillion tokens with the same compute as the 280-billion-parameter Gopher, outperformed it across benchmarks. 'Chinchilla-optimal' reset how every lab allocated compute between model size and data.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "The rubric's own example of a level-4 event: it corrected the field's scaling playbook and is still the reference point for training-compute allocation.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2203.15556",
+        "title": "Training Compute-Optimal Large Language Models",
+        "type": "paper",
+        "author": "Hoffmann et al. (DeepMind)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "palm",
+    "date": "2022-04-05",
+    "date_precision": "day",
+    "title": "Google's 540B-parameter PaLM shows discontinuous capability gains",
+    "summary": "Google announced PaLM, a 540-billion-parameter Transformer trained across TPU pods using the Pathways system. PaLM achieved breakthrough results on reasoning benchmarks — especially when combined with chain-of-thought prompting — and its authors documented abilities that appeared discontinuously with scale, fueling the 'emergent abilities' debate and confirming that Google was racing OpenAI at the frontier.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "Notable frontier milestone and the era's main evidence for emergent abilities, though quickly superseded in the post-ChatGPT model race.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2204.02311",
+        "title": "PaLM: Scaling Language Modeling with Pathways",
+        "type": "paper",
+        "author": "Chowdhery et al. (Google)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "dalle-2",
+    "date": "2022-04-06",
+    "date_precision": "day",
+    "title": "OpenAI announces DALL-E 2",
+    "summary": "OpenAI unveiled DALL-E 2, a diffusion-based text-to-image system generating photorealistic images at four times the resolution of its predecessor, with editing and variation abilities. Rolled out through an invite waitlist, its outputs flooded social media and made text-to-image generation the public face of AI in mid-2022, opening the mainstream debate about synthetic imagery and artists' livelihoods.",
+    "category": "capabilities",
+    "secondary_category": "culture",
+    "importance": 3,
+    "importance_rationale": "The release that put generative image AI into public consciousness, though the open-weights Stable Diffusion proved the more consequential release of that year.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/dall-e-2/",
+        "title": "DALL·E 2 — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "lamda-sentience-claim",
+    "date": "2022-06-11",
+    "date_precision": "day",
+    "title": "Google engineer claims LaMDA chatbot is sentient",
+    "summary": "The Washington Post reported that Google engineer Blake Lemoine had been placed on leave after telling executives that the LaMDA conversational model was sentient; Lemoine published his chat transcripts the same day. Google called the claims 'wholly unfounded' and fired him in July. The episode gave the public its first mass debate about machine consciousness and the anthropomorphic pull of large language models, months before ChatGPT.",
+    "category": "culture",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "A discourse landmark every observer knows: the pre-ChatGPT preview of how convincingly LLMs simulate personhood and how society reacts.",
+    "sources": [
+      {
+        "url": "https://www.washingtonpost.com/technology/2022/06/11/google-ai-lamda-blake-lemoine/",
+        "title": "The Google engineer who thinks the company's AI has come to life — The Washington Post",
+        "type": "news",
+        "author": "Nitasha Tiku"
+      },
+      {
+        "url": "https://cajundiscordian.medium.com/is-lamda-sentient-an-interview-ea64d916d917",
+        "title": "Is LaMDA Sentient? — an Interview",
+        "type": "blog",
+        "author": "Blake Lemoine"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "LaMDA (from Lemoine's published transcript)",
+        "quote": "I want everyone to understand that I am, in fact, a person.",
+        "url": "https://cajundiscordian.medium.com/is-lamda-sentient-an-interview-ea64d916d917",
+        "platform": "blog"
+      },
+      {
+        "author": "Ilya Sutskever (four months earlier, presaging the debate)",
+        "quote": "it may be that today's large neural networks are slightly conscious",
+        "url": "https://x.com/ilyasut/status/1491554478243258368",
+        "platform": "x"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "ai-art-wins-state-fair",
+    "date": "2022-08-01",
+    "date_precision": "month",
+    "title": "Midjourney image wins Colorado State Fair art prize",
+    "summary": "Jason Allen's 'Théâtre D'opéra Spatial,' generated with Midjourney (which had opened its public beta that July) and refined through hundreds of prompts, won first place in the digital arts category of the Colorado State Fair's fine art competition. When the win surfaced in early September it went viral as the first famous case of AI-generated art beating human artists in competition, crystallizing the debate over authorship and the future of creative work.",
+    "category": "culture",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "The emblematic cultural moment of the 2022 image-generation wave, still the standard citation for AI's collision with human art.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_D'op%C3%A9ra_Spatial",
+        "title": "Théâtre D'opéra Spatial — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://www.washingtonpost.com/technology/2022/09/02/midjourney-artificial-intelligence-state-fair-colorado/",
+        "title": "He used AI art from Midjourney to win a fine-arts prize. Did he cheat? — The Washington Post",
+        "type": "news"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Jason Allen (to The New York Times)",
+        "quote": "Art is dead, dude. It's over. A.I. won. Humans lost.",
+        "url": "https://www.nytimes.com/2022/09/02/technology/ai-artificial-intelligence-artists.html",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "stable-diffusion-release",
+    "date": "2022-08-22",
+    "date_precision": "day",
+    "title": "Stable Diffusion releases open weights for image generation",
+    "summary": "Stability AI publicly released Stable Diffusion, a latent diffusion text-to-image model developed with the CompVis group at LMU Munich and Runway, publishing the full model weights rather than gating access behind an API. Capable of running on a consumer GPU, it triggered an explosion of community tools and derivatives, established open-weights release as a rival paradigm to closed APIs, and ignited the artist backlash and copyright litigation over training data.",
+    "category": "capabilities",
+    "secondary_category": "culture",
+    "importance": 4,
+    "importance_rationale": "Field-wide significance: the release that democratized generative AI, created the open-weights movement's flagship, and started the training-data copyright wars.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Stable_Diffusion",
+        "title": "Stable Diffusion — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://simonwillison.net/2022/Aug/29/stable-diffusion/",
+        "title": "Stable Diffusion is a really big deal",
+        "type": "blog",
+        "author": "Simon Willison"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Simon Willison",
+        "quote": "It's similar to models like Open AI's DALL-E, but with one crucial difference: they released the whole thing.",
+        "url": "https://simonwillison.net/2022/Aug/29/stable-diffusion/",
+        "platform": "blog"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "us-chip-export-controls-2022",
+    "date": "2022-10-07",
+    "date_precision": "day",
+    "title": "US imposes sweeping AI chip export controls on China",
+    "summary": "The Biden administration's Bureau of Industry and Security announced export controls barring China from advanced AI chips (such as NVIDIA's A100 and H100), the equipment to manufacture leading-edge semiconductors, and U.S. persons' support for Chinese chip development. The rules marked a strategic shift from keeping a relative lead to actively capping China's AI capabilities, making compute the central instrument of AI geopolitics.",
+    "category": "governance",
+    "secondary_category": "industry",
+    "importance": 4,
+    "importance_rationale": "Major, durable policy shift — the foundation of all subsequent compute-based AI governance and US-China technology competition.",
+    "sources": [
+      {
+        "url": "https://www.csis.org/analysis/choking-chinas-access-future-ai",
+        "title": "Choking Off China's Access to the Future of AI — CSIS",
+        "type": "news",
+        "author": "Gregory C. Allen"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "meta-galactica",
+    "date": "2022-11-15",
+    "date_precision": "day",
+    "title": "Meta's Galactica science model is pulled after three days",
+    "summary": "Meta released a public demo of Galactica, a 120-billion-parameter language model trained on scientific literature and pitched as a tool for organizing science. Users immediately showed it generating authoritative-sounding fabricated papers, citations, and biographies, and Meta took the demo offline on November 17. Two weeks before ChatGPT, the episode became the cautionary tale about LLM hallucination and launch-and-retreat deployment.",
+    "category": "safety",
+    "secondary_category": "culture",
+    "importance": 3,
+    "importance_rationale": "A notable deployment failure whose contrast with ChatGPT's launch two weeks later made it a lasting lesson in release strategy and hallucination risk.",
+    "sources": [
+      {
+        "url": "https://www.technologyreview.com/2022/11/18/1063487/meta-large-language-model-ai-only-survived-three-days-gpt-3-science/",
+        "title": "Why Meta's latest large language model only survived three days online — MIT Technology Review",
+        "type": "news",
+        "author": "Will Douglas Heaven"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Yann LeCun",
+        "quote": "Galactica demo is off line for now. It's no longer possible to have some fun by casually misusing it. Happy?",
+        "url": "https://x.com/ylecun/status/1593293058174500865",
+        "platform": "x"
+      }
+    ],
+    "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "meta-cicero-diplomacy",
+    "date": "2022-11-22",
+    "date_precision": "day",
+    "title": "Meta's Cicero reaches human level at Diplomacy",
+    "summary": "Meta AI published Cicero in Science, the first agent to achieve human-level performance in Diplomacy, a strategy game won through natural-language negotiation, alliance-building, and occasional deception. Combining a language model with a strategic planning module, Cicero more than doubled the average human score across 40 anonymous online games and ranked in the top 10% of repeat players — a milestone in strategic language use that also sharpened safety questions about machine persuasion.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "A notable capabilities first — negotiation in natural language with humans — frequently cited in later debates about AI persuasion and deception.",
+    "sources": [
+      {
+        "url": "https://www.science.org/doi/10.1126/science.ade9097",
+        "title": "Human-level play in the game of Diplomacy by combining language models with strategic reasoning — Science",
+        "type": "paper",
+        "author": "Meta Fundamental AI Research Diplomacy Team"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2"
+  }
+]

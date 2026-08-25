@@ -1,0 +1,464 @@
+/* =======================================================================
+   The Artificial Intelligencer — digest route stylesheet.
+   Scoped under .dg-root; fonts arrive as CSS variables from next/font.
+   One deliberate palette: warm paper, true ink, six section inks.
+   ======================================================================= */
+
+.dg-root {
+  /* paper + ink */
+  --paper: oklch(96.4% 0.013 88);
+  --paper-deep: oklch(93.2% 0.017 86);
+  --ink: oklch(23% 0.02 60);
+  --ink-soft: color-mix(in oklab, var(--ink) 78%, var(--paper));
+  --ink-faint: color-mix(in oklab, var(--ink) 58%, var(--paper));
+  --rule: color-mix(in oklab, var(--ink) 26%, var(--paper));
+  --rule-strong: color-mix(in oklab, var(--ink) 85%, var(--paper));
+  --signal: oklch(47% 0.17 27);
+
+  /* section inks — dark enough to read as text on cream */
+  --c-capabilities: oklch(45% 0.155 27);
+  --c-safety: oklch(44% 0.1 62);
+  --c-governance: oklch(41% 0.1 255);
+  --c-industry: oklch(44% 0.098 175);
+  --c-research: oklch(44% 0.128 300);
+  --c-culture: oklch(46% 0.148 345);
+
+  --font-display: var(--dg-font-display), "Iowan Old Style", Georgia, serif;
+  --font-body: var(--dg-font-body), Georgia, "Times New Roman", serif;
+  --font-label: var(--dg-font-label), "Helvetica Neue", Arial, sans-serif;
+
+  color: var(--ink);
+  background: var(--paper);
+  /* full-bleed paper behind the site shell's max-width container.
+     (No clip-path/box-shadow trick: it would turn this element into the
+     containing block for the fixed-position clipping panel.) */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* the 100vw bleed can poke past a desktop scrollbar; clip it at the body */
+body:has(.dg-root) {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+/* centered column inside the full-bleed sheet */
+.dg-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 64rem;
+  padding-inline: 1rem;
+}
+@media (min-width: 640px) {
+  .dg-container { padding-inline: 1.5rem; }
+}
+
+.dg-root ::selection {
+  background: color-mix(in oklab, var(--signal) 22%, var(--paper));
+}
+
+.dg-root :focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------- masthead */
+
+.dg-eyebrow {
+  font-family: var(--font-label);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.dg-masthead-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 8.5vw, 5.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.dg-rule { border-top: 1px solid var(--rule); }
+.dg-rule-strong { border-top: 1px solid var(--rule-strong); }
+.dg-rule-double { border-top: 3px double var(--rule-strong); }
+.dg-rule-thick { border-top: 3px solid var(--rule-strong); }
+
+/* ------------------------------------------------------------- controls */
+
+.dg-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.42em;
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.15rem 0.4rem;
+  border-bottom: 2px solid transparent;
+  color: var(--sec, var(--ink));
+  cursor: pointer;
+  transition: color 0.15s ease-out, border-color 0.15s ease-out, opacity 0.15s ease-out;
+}
+.dg-chip .dg-dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  align-self: center;
+  background: var(--sec, var(--ink));
+  box-shadow: inset 0 0 0 1.5px var(--sec, var(--ink));
+  transition: background 0.15s ease-out;
+}
+.dg-chip[aria-pressed="true"] { border-bottom-color: var(--sec, var(--ink)); }
+.dg-chip[aria-pressed="false"] {
+  color: var(--ink-faint);
+  opacity: 0.62;
+}
+.dg-chip[aria-pressed="false"] .dg-dot { background: transparent; box-shadow: inset 0 0 0 1.5px var(--ink-faint); }
+.dg-chip:hover { opacity: 1; }
+
+.dg-seg {
+  display: inline-flex;
+  border: 1px solid var(--rule-strong);
+}
+.dg-seg button {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  font-weight: 600;
+  min-width: 2.2rem;
+  padding: 0.42rem 0.5rem;
+  cursor: pointer;
+  color: var(--ink-soft);
+  transition: background 0.12s ease-out, color 0.12s ease-out;
+}
+.dg-seg button + button { border-left: 1px solid var(--rule); }
+.dg-seg button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.dg-seg button:hover:not([aria-pressed="true"]) {
+  background: var(--paper-deep);
+}
+
+/* --------------------------------------------------------------- rack */
+
+.dg-rack {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.dg-rack-scroll {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.dg-rack-scroll::-webkit-scrollbar { display: none; }
+
+.dg-rack-item {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.1rem;
+  padding: 0.45rem 0.85rem 0.4rem;
+  font-family: var(--font-label);
+  border-right: 1px solid var(--rule);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease-out;
+}
+.dg-rack-item:first-child { border-left: 1px solid var(--rule); }
+.dg-rack-item .dg-rack-no {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.dg-rack-item .dg-rack-range {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.dg-rack-item:hover { background: var(--paper-deep); }
+.dg-rack-item[data-active="true"] {
+  background: var(--ink);
+}
+.dg-rack-item[data-active="true"] .dg-rack-no { color: color-mix(in oklab, var(--paper) 70%, var(--ink)); }
+.dg-rack-item[data-active="true"] .dg-rack-range { color: var(--paper); }
+
+/* --------------------------------------------------------------- issue */
+
+.dg-issue { scroll-margin-top: 4.2rem; }
+
+.dg-issue-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 5vw, 3.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.dg-folio {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-label);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* --------------------------------------------------------------- stories */
+
+.dg-kicker {
+  font-family: var(--font-label);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sec, var(--ink-faint));
+}
+
+.dg-dateline {
+  font-family: var(--font-label);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.dg-story { position: relative; }
+.dg-story-btn {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
+/* stretched-link: the headline button covers its whole story block */
+.dg-story-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.dg-story:hover .dg-hed { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.13em; }
+
+.dg-hed {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.008em;
+  text-wrap: balance;
+}
+.dg-hed-banner { font-size: clamp(1.7rem, 4.4vw, 2.7rem); font-weight: 850; }
+.dg-hed-major  { font-size: clamp(1.25rem, 2.6vw, 1.6rem); }
+.dg-hed-col    { font-size: 1.06rem; line-height: 1.2; }
+
+.dg-body {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* drop cap on banner-story summaries */
+.dg-dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 800;
+  float: left;
+  font-size: 3.1em;
+  line-height: 0.82;
+  padding: 0.06em 0.12em 0 0;
+  color: var(--ink);
+}
+
+/* lead summary flows in two columns when wide */
+@media (min-width: 640px) {
+  .dg-lead-cols { columns: 2; column-gap: 2.2rem; column-rule: 1px solid var(--rule); }
+}
+
+/* pull quote (banner stories) */
+.dg-pull {
+  border-top: 3px solid var(--sec, var(--rule-strong));
+  border-bottom: 1px solid var(--rule);
+  padding: 0.7rem 0 0.75rem;
+}
+.dg-pull-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.12rem;
+  line-height: 1.32;
+  text-wrap: pretty;
+}
+.dg-pull-quote::before { content: "\201C"; color: var(--sec, var(--signal)); font-weight: 800; margin-right: 0.05em; }
+.dg-pull-quote::after { content: "\201D"; color: var(--sec, var(--signal)); font-weight: 800; margin-left: 0.05em; }
+
+/* the two-up major grid gets a center rule on wide screens */
+.dg-majors { position: relative; }
+@media (min-width: 768px) {
+  .dg-majors::before {
+    content: "";
+    position: absolute;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    left: 50%;
+    width: 1px;
+    background: var(--rule);
+  }
+}
+
+/* importance-3 column items flow as newspaper columns */
+.dg-cols {
+  columns: 1;
+  column-gap: 2.2rem;
+  column-rule: 1px solid var(--rule);
+}
+@media (min-width: 640px) { .dg-cols { columns: 2; } }
+@media (min-width: 1024px) { .dg-cols { columns: 3; } }
+.dg-col-item {
+  break-inside: avoid;
+  padding: 0.65rem 0 0.7rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* clamp long running text where space is tight */
+.dg-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dg-clamp-6 {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* briefs band */
+.dg-briefs {
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.dg-brief {
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  padding: 0.15rem 0;
+}
+.dg-brief .dg-brief-hed {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+.dg-brief:hover .dg-brief-hed { text-decoration: underline; text-underline-offset: 0.13em; }
+.dg-brief-sep {
+  color: var(--sec, var(--signal));
+  font-size: 0.6rem;
+  vertical-align: 0.18em;
+  padding: 0 0.55rem;
+  user-select: none;
+}
+
+/* ------------------------------------------------------------- clipping */
+
+.dg-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: color-mix(in oklab, var(--ink) 42%, transparent);
+  animation: dg-fade 0.22s ease-out;
+}
+.dg-clipping {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 51;
+  width: min(33rem, 100vw);
+  background: var(--paper);
+  border-left: 1px solid var(--rule-strong);
+  box-shadow: -18px 0 40px color-mix(in oklab, var(--ink) 25%, transparent);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: dg-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dg-clip-hed {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.45rem, 4vw, 1.9rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.dg-quote-card {
+  border-top: 2px solid var(--rule-strong);
+  padding-top: 0.65rem;
+}
+.dg-quote-card blockquote {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.dg-quote-card blockquote::before { content: "\201C"; }
+.dg-quote-card blockquote::after { content: "\201D"; }
+
+.dg-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--ink) 35%, var(--paper));
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.15s ease-out, color 0.15s ease-out;
+}
+.dg-link:hover { color: var(--signal); text-decoration-color: var(--signal); }
+
+.dg-close {
+  font-family: var(--font-label);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule-strong);
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  transition: background 0.12s ease-out, color 0.12s ease-out;
+}
+.dg-close:hover { background: var(--ink); color: var(--paper); }
+
+/* -------------------------------------------------------------- motion */
+
+@keyframes dg-fade { from { opacity: 0; } }
+@keyframes dg-slide-in { from { transform: translateX(2.5rem); opacity: 0.4; } }
+@keyframes dg-rise { from { transform: translateY(0.6rem); opacity: 0; } }
+
+.dg-rise { animation: dg-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dg-root *, .dg-scrim, .dg-clipping, .dg-rise { animation: none !important; transition: none !important; }
+}

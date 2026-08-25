@@ -1,0 +1,916 @@
+[
+  {
+    "slug": "mcculloch-pitts-neuron",
+    "date": "1943-12-01",
+    "date_precision": "month",
+    "title": "McCulloch and Pitts publish the first mathematical model of a neuron",
+    "summary": "Warren McCulloch and Walter Pitts publish \"A Logical Calculus of the Ideas Immanent in Nervous Activity\" in the Bulletin of Mathematical Biophysics, showing that networks of simplified binary neurons can compute any logical function. The paper founds the mathematical study of neural networks and supplies the abstraction — the artificial neuron — on which all later connectionist AI is built.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 5,
+    "importance_rationale": "The invention of the artificial neuron; every neural network traces its lineage to this paper, and a history of AI that omits it is wrong.",
+    "sources": [
+      {
+        "url": "https://link.springer.com/article/10.1007/BF02478259",
+        "title": "A logical calculus of the ideas immanent in nervous activity",
+        "type": "paper",
+        "author": "Warren S. McCulloch and Walter Pitts"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Walter_Pitts",
+        "title": "Walter Pitts — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "turing-computing-machinery-intelligence",
+    "date": "1950-10-01",
+    "date_precision": "month",
+    "title": "Turing publishes \"Computing Machinery and Intelligence\"",
+    "summary": "Alan Turing's paper in Mind asks \"Can machines think?\" and replaces the question with the imitation game, later called the Turing test: a machine passes if an interrogator cannot distinguish it from a human in conversation. Turing anticipates and rebuts nine objections and predicts that by 2000 machines will play the game well enough that talk of thinking machines will be unremarkable.",
+    "category": "research",
+    "secondary_category": "culture",
+    "importance": 5,
+    "importance_rationale": "The founding philosophical document of machine intelligence; the Turing test remains the field's most famous benchmark concept 75 years on.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1093/mind/LIX.236.433",
+        "title": "Computing Machinery and Intelligence — Mind LIX(236)",
+        "type": "paper",
+        "author": "Alan M. Turing"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Computing_Machinery_and_Intelligence",
+        "title": "Computing Machinery and Intelligence — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "dartmouth-workshop",
+    "date": "1956-06-01",
+    "date_precision": "month",
+    "title": "The Dartmouth workshop founds artificial intelligence as a field",
+    "summary": "John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon convene the Dartmouth Summer Research Project on Artificial Intelligence, the eight-week workshop whose 1955 proposal coined the term \"artificial intelligence.\" Attendees including Allen Newell and Herbert Simon set the agenda — language, abstraction, self-improvement, neuron nets — that defined the field for decades.",
+    "category": "culture",
+    "secondary_category": "research",
+    "importance": 5,
+    "importance_rationale": "The event that named and founded the field; the conventional starting point of every history of AI.",
+    "sources": [
+      {
+        "url": "http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf",
+        "title": "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence",
+        "type": "paper",
+        "author": "J. McCarthy, M. L. Minsky, N. Rochester, C. E. Shannon"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Dartmouth_workshop",
+        "title": "Dartmouth workshop — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "McCarthy, Minsky, Rochester, and Shannon (1955 proposal)",
+        "quote": "every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it",
+        "url": "http://jmc.stanford.edu/articles/dartmouth/dartmouth.pdf",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "rosenblatt-perceptron",
+    "date": "1958-07-07",
+    "date_precision": "day",
+    "title": "Rosenblatt demonstrates the perceptron",
+    "summary": "Frank Rosenblatt of Cornell Aeronautical Laboratory demonstrates the perceptron, the first trainable neural network, at a US Office of Naval Research press conference; an IBM 704 simulation learns to distinguish left-marked from right-marked cards in 50 trials. His Psychological Review paper the same year formalizes the learning algorithm, launching both machine learning research and the first cycle of AI hype.",
+    "category": "research",
+    "secondary_category": "culture",
+    "importance": 4,
+    "importance_rationale": "The first learning machine and the ancestor of modern neural networks; its press coverage also set the template for AI hype cycles.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1037/h0042519",
+        "title": "The perceptron: A probabilistic model for information storage and organization in the brain",
+        "type": "paper",
+        "author": "Frank Rosenblatt"
+      },
+      {
+        "url": "https://www.nytimes.com/1958/07/08/archives/new-navy-device-learns-by-doing-psychologist-shows-embryo-of.html",
+        "title": "New Navy Device Learns By Doing — The New York Times",
+        "type": "news"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Perceptron",
+        "title": "Perceptron — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "The New York Times",
+        "quote": "The Navy revealed the embryo of an electronic computer today that it expects will be able to walk, talk, see, write, reproduce itself and be conscious of its existence.",
+        "url": "https://www.nytimes.com/1958/07/08/archives/new-navy-device-learns-by-doing-psychologist-shows-embryo-of.html",
+        "platform": "news"
+      },
+      {
+        "author": "Frank Rosenblatt",
+        "quote": "the first machine which is capable of having an original idea",
+        "url": "https://news.cornell.edu/stories/2019/09/professors-perceptron-paved-way-ai-60-years-too-soon",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "samuel-checkers-machine-learning",
+    "date": "1959-07-01",
+    "date_precision": "month",
+    "title": "Arthur Samuel's checkers program coins \"machine learning\"",
+    "summary": "IBM's Arthur Samuel publishes \"Some Studies in Machine Learning Using the Game of Checkers\" in the IBM Journal of Research and Development, describing a program that improves through self-play and rote learning until it beats its author. The paper introduces the term \"machine learning\" and pioneers techniques — self-play, function approximation — that reappear decades later in systems like AlphaGo.",
+    "category": "research",
+    "secondary_category": "capabilities",
+    "importance": 3,
+    "importance_rationale": "Coined the field's name and demonstrated learning from self-play; well known to any informed observer of AI history.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1147/rd.33.0210",
+        "title": "Some Studies in Machine Learning Using the Game of Checkers — IBM Journal",
+        "type": "paper",
+        "author": "Arthur L. Samuel"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Arthur_Samuel_(computer_scientist)",
+        "title": "Arthur Samuel — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "good-intelligence-explosion",
+    "date": "1965-01-01",
+    "date_precision": "year",
+    "title": "I. J. Good describes the intelligence explosion",
+    "summary": "Statistician I. J. Good, a wartime colleague of Turing at Bletchley Park, publishes \"Speculations Concerning the First Ultraintelligent Machine\" in Advances in Computers. He argues that a machine surpassing human intellect could design still better machines, producing an \"intelligence explosion\" that leaves humanity far behind — the founding statement of the superintelligence problem.",
+    "category": "safety",
+    "secondary_category": "research",
+    "importance": 4,
+    "importance_rationale": "The origin of the intelligence-explosion argument that underpins all later AGI-risk thought, still cited constantly six decades on.",
+    "sources": [
+      {
+        "url": "https://scienceplusplus.org/metascience/assets/Good1965.pdf",
+        "title": "Speculations Concerning the First Ultraintelligent Machine (full text)",
+        "type": "paper",
+        "author": "Irving John Good"
+      },
+      {
+        "url": "https://doi.org/10.1016/S0065-2458(08)60418-0",
+        "title": "Speculations Concerning the First Ultraintelligent Machine — Advances in Computers vol. 6",
+        "type": "paper",
+        "author": "Irving John Good"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "I. J. Good",
+        "quote": "Thus the first ultraintelligent machine is the last invention that man need ever make, provided that the machine is docile enough to tell us how to keep it under control.",
+        "url": "https://scienceplusplus.org/metascience/assets/Good1965.pdf",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "eliza-chatbot",
+    "date": "1966-01-01",
+    "date_precision": "month",
+    "title": "Weizenbaum publishes ELIZA, the first famous chatbot",
+    "summary": "MIT's Joseph Weizenbaum publishes ELIZA in Communications of the ACM, a pattern-matching program whose DOCTOR script parodies a Rogerian psychotherapist. Users confide in it despite knowing it is a simple program, a phenomenon later named the ELIZA effect. Weizenbaum's alarm at this reaction turned him into one of the first computing insiders to warn about anthropomorphizing machines.",
+    "category": "culture",
+    "secondary_category": "capabilities",
+    "importance": 4,
+    "importance_rationale": "The first conversational program to enter public consciousness; the ELIZA effect it revealed still frames debates about chatbots today.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1145/365153.365168",
+        "title": "ELIZA — a computer program for the study of natural language communication between man and machine",
+        "type": "paper",
+        "author": "Joseph Weizenbaum"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/ELIZA",
+        "title": "ELIZA — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Joseph Weizenbaum (Computer Power and Human Reason, 1976)",
+        "quote": "What I had not realized is that extremely short exposures to a relatively simple computer program could induce powerful delusional thinking in quite normal people.",
+        "url": "https://en.wikipedia.org/wiki/ELIZA_effect",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "alpac-report",
+    "date": "1966-01-01",
+    "date_precision": "year",
+    "title": "The ALPAC report ends US funding for machine translation",
+    "summary": "The Automatic Language Processing Advisory Committee, convened by US government sponsors, publishes \"Language and Machines,\" concluding that machine translation is slower, less accurate, and more expensive than human translation. Funding collapses for nearly two decades — the first demonstration that government patience with AI promises could run out, foreshadowing the AI winters.",
+    "category": "governance",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "The first government-commissioned verdict against an AI subfield, and the template for later funding winters.",
+    "sources": [
+      {
+        "url": "https://nap.nationalacademies.org/catalog/9547/language-and-machines-computers-in-translation-and-linguistics",
+        "title": "Language and Machines: Computers in Translation and Linguistics",
+        "type": "official",
+        "author": "ALPAC / National Research Council"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/ALPAC",
+        "title": "ALPAC — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "hal-9000-space-odyssey",
+    "date": "1968-04-02",
+    "date_precision": "day",
+    "title": "2001: A Space Odyssey gives the world HAL 9000",
+    "summary": "Stanley Kubrick's 2001: A Space Odyssey premieres in Washington, DC, introducing HAL 9000, the calm, conversational shipboard AI that kills its crew when its instructions conflict. Made with Marvin Minsky as a scientific adviser, HAL became the culture's default image of machine intelligence gone wrong and a shorthand for misaligned AI that persists in policy and research discourse.",
+    "category": "culture",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "The single most influential cultural depiction of misaligned AI; HAL remains the reference point the public reaches for in AI-risk discussions.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/2001:_A_Space_Odyssey",
+        "title": "2001: A Space Odyssey — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/HAL_9000",
+        "title": "HAL 9000 — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "minsky-papert-perceptrons-book",
+    "date": "1969-01-01",
+    "date_precision": "year",
+    "title": "Minsky and Papert's \"Perceptrons\" halts neural network research",
+    "summary": "Marvin Minsky and Seymour Papert publish Perceptrons, a mathematical analysis proving that single-layer perceptrons cannot compute functions such as XOR or connectedness. Though the limits did not apply to multilayer networks, the book was widely read as a verdict against the whole connectionist approach, and neural network funding and research largely dried up for over a decade.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "Redirected the field away from neural networks for more than a decade — a rigorous result whose sociological effect shaped AI's trajectory.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Perceptrons_(book)",
+        "title": "Perceptrons (book) — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "shrdlu-blocks-world",
+    "date": "1971-01-01",
+    "date_precision": "year",
+    "title": "Winograd's SHRDLU understands natural language in the blocks world",
+    "summary": "Terry Winograd's MIT dissertation presents SHRDLU, a program that carries on a typed dialogue about a simulated world of blocks — following commands, answering questions, and explaining its own reasoning. It was the era's most convincing demonstration of language understanding, and its failure to scale beyond its microworld became a defining lesson about the brittleness of symbolic AI.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "The high-water mark of symbolic natural-language understanding, cited for decades both as a triumph and as a cautionary tale about scaling.",
+    "sources": [
+      {
+        "url": "https://dspace.mit.edu/handle/1721.1/7095",
+        "title": "Procedures as a Representation for Data in a Computer Program for Understanding Natural Language",
+        "type": "paper",
+        "author": "Terry Winograd"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/SHRDLU",
+        "title": "SHRDLU — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "lighthill-report",
+    "date": "1973-01-01",
+    "date_precision": "year",
+    "title": "The Lighthill report triggers the first AI winter",
+    "summary": "Sir James Lighthill's report \"Artificial Intelligence: A General Survey,\" commissioned by the UK Science Research Council, concludes that AI has failed to deliver on its promises and that its techniques collapse under combinatorial explosion outside toy domains. British AI funding is cut to a few universities, and together with DARPA cutbacks in the US it marks the start of the first AI winter.",
+    "category": "governance",
+    "secondary_category": "research",
+    "importance": 4,
+    "importance_rationale": "The canonical trigger of the first AI winter; the reference case for state disillusionment with AI ever since.",
+    "sources": [
+      {
+        "url": "http://www.chilton-computing.org.uk/inf/literature/reports/lighthill_report/p001.htm",
+        "title": "Artificial Intelligence: A General Survey (the Lighthill report)",
+        "type": "official",
+        "author": "James Lighthill"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Lighthill_report",
+        "title": "Lighthill report — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "xcon-expert-systems-boom",
+    "date": "1980-01-01",
+    "date_precision": "year",
+    "title": "XCON goes into production at DEC, igniting the expert systems boom",
+    "summary": "John McDermott's R1 (later XCON), a rule-based system that configures VAX computer orders, enters production use at Digital Equipment Corporation, reportedly saving the company tens of millions of dollars a year. As the first expert system with demonstrated commercial value at scale, it set off the 1980s expert systems boom, the first commercialization wave of AI.",
+    "category": "industry",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "The proof case that launched AI's first commercial boom; the emblem of the expert-systems era.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1016/0004-3702(82)90021-2",
+        "title": "R1: A rule-based configurer of computer systems — Artificial Intelligence 19(1)",
+        "type": "paper",
+        "author": "John McDermott"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Xcon",
+        "title": "Xcon — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "fifth-generation-project",
+    "date": "1982-01-01",
+    "date_precision": "year",
+    "title": "Japan launches the Fifth Generation Computer Systems project",
+    "summary": "Japan's Ministry of International Trade and Industry launches the ten-year, roughly $400 million Fifth Generation Computer Systems project to build massively parallel logic-programming machines for knowledge processing. The perceived challenge spurred rival government programs in the US and Europe, making AI a matter of national industrial strategy for the first time.",
+    "category": "governance",
+    "secondary_category": "industry",
+    "importance": 3,
+    "importance_rationale": "The first national-champion AI program and the origin of AI as an object of great-power industrial competition.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Fifth_Generation_Computer_Systems",
+        "title": "Fifth Generation Computer Systems — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "hopfield-network",
+    "date": "1982-04-01",
+    "date_precision": "month",
+    "title": "Hopfield revives neural networks with associative memory model",
+    "summary": "Physicist John Hopfield publishes \"Neural networks and physical systems with emergent collective computational abilities\" in PNAS, showing that a network of simple units can store and retrieve memories as stable states of a dynamical system. By importing tools from statistical physics, the paper made neural networks respectable again and drew physicists into the field, helping end the connectionist drought.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "Restarted mainstream neural network research after the post-Perceptrons freeze; recognized in Hopfield's 2024 Nobel Prize.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1073/pnas.79.8.2554",
+        "title": "Neural networks and physical systems with emergent collective computational abilities — PNAS 79(8)",
+        "type": "paper",
+        "author": "John J. Hopfield"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Hopfield_network",
+        "title": "Hopfield network — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "backpropagation-nature",
+    "date": "1986-10-09",
+    "date_precision": "day",
+    "title": "Rumelhart, Hinton, and Williams popularize backpropagation",
+    "summary": "\"Learning representations by back-propagating errors\" appears in Nature, demonstrating that multilayer neural networks can learn useful internal representations via gradient descent. Though the mathematics had precursors, this paper — alongside the PDP volumes published the same year — made backpropagation the standard training algorithm and answered the objection at the heart of Minsky and Papert's critique.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 5,
+    "importance_rationale": "Backpropagation is the algorithm on which all of deep learning runs; this is the paper that established it.",
+    "sources": [
+      {
+        "url": "https://www.nature.com/articles/323533a0",
+        "title": "Learning representations by back-propagating errors — Nature 323",
+        "type": "paper",
+        "author": "David E. Rumelhart, Geoffrey E. Hinton, Ronald J. Williams"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Backpropagation",
+        "title": "Backpropagation — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "second-ai-winter",
+    "date": "1987-01-01",
+    "date_precision": "year",
+    "title": "The Lisp machine market collapses, beginning the second AI winter",
+    "summary": "The specialized Lisp machine industry built to run expert systems collapses as general-purpose workstations from Sun and others overtake it on price and performance. Expert systems prove brittle and costly to maintain, DARPA's Strategic Computing Initiative cuts AI funding, and Japan's Fifth Generation goals go unmet — together freezing commercial and government enthusiasm for AI into the mid-1990s.",
+    "category": "industry",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "The second AI winter is a standard period boundary in every history of the field; the Lisp machine collapse is its landmark moment.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/AI_winter",
+        "title": "AI winter — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "lecun-cnn-zip-codes",
+    "date": "1989-01-01",
+    "date_precision": "year",
+    "title": "LeCun applies backpropagation to handwritten digit recognition",
+    "summary": "Yann LeCun and colleagues at Bell Labs publish \"Backpropagation Applied to Handwritten Zip Code Recognition,\" training a convolutional neural network end-to-end on real US Postal Service digits. The work establishes the convolutional architecture — local receptive fields, shared weights, subsampling — and becomes one of the first neural networks deployed commercially, reading checks and mail at scale.",
+    "category": "research",
+    "secondary_category": "capabilities",
+    "importance": 4,
+    "importance_rationale": "The founding demonstration of convolutional networks, the architecture that later won ImageNet and launched the deep learning era.",
+    "sources": [
+      {
+        "url": "http://yann.lecun.com/exdb/publis/pdf/lecun-89e.pdf",
+        "title": "Backpropagation Applied to Handwritten Zip Code Recognition — Neural Computation 1(4)",
+        "type": "paper",
+        "author": "Y. LeCun et al."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Convolutional_neural_network",
+        "title": "Convolutional neural network — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "td-gammon",
+    "date": "1992-05-01",
+    "date_precision": "month",
+    "title": "TD-Gammon reaches expert-level backgammon through self-play",
+    "summary": "Gerald Tesauro of IBM publishes TD-Gammon, a neural network that learns backgammon almost entirely through temporal-difference reinforcement learning from self-play, reaching the level of top human players. Its unorthodox but sound positional judgments changed expert backgammon theory, and it stood for years as the flagship success of reinforcement learning combined with neural networks.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "The canonical pre-AlphaGo proof that self-play reinforcement learning with neural networks can reach elite human performance.",
+    "sources": [
+      {
+        "url": "https://link.springer.com/article/10.1007/BF00992697",
+        "title": "Practical issues in temporal difference learning — Machine Learning 8",
+        "type": "paper",
+        "author": "Gerald Tesauro"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/TD-Gammon",
+        "title": "TD-Gammon — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "vinge-technological-singularity",
+    "date": "1993-03-30",
+    "date_precision": "day",
+    "title": "Vinge delivers \"The Coming Technological Singularity\"",
+    "summary": "Science fiction author and mathematician Vernor Vinge presents \"The Coming Technological Singularity: How to Survive in the Post-Human Era\" at NASA's VISION-21 symposium. Building on I. J. Good, he argues that the creation of superhuman intelligence will end the human era and that events beyond it are inherently unpredictable — fixing the term \"singularity\" in its modern technological sense.",
+    "category": "safety",
+    "secondary_category": "culture",
+    "importance": 4,
+    "importance_rationale": "Defined the modern concept and vocabulary of the technological singularity that shaped Kurzweil, Yudkowsky, and all subsequent AGI discourse.",
+    "sources": [
+      {
+        "url": "https://accelerating.org/articles/comingtechsingularity.html",
+        "title": "The Coming Technological Singularity: How to Survive in the Post-Human Era",
+        "type": "paper",
+        "author": "Vernor Vinge"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Technological_singularity",
+        "title": "Technological singularity — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Vernor Vinge",
+        "quote": "Within thirty years, we will have the technological means to create superhuman intelligence. Shortly after, the human era will be ended.",
+        "url": "https://accelerating.org/articles/comingtechsingularity.html",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "yudkowsky-staring-into-singularity",
+    "date": "1996-01-01",
+    "date_precision": "year",
+    "title": "Yudkowsky writes \"Staring into the Singularity\"",
+    "summary": "Seventeen-year-old Eliezer Yudkowsky publishes the web essay \"Staring into the Singularity,\" arguing that recursively self-improving intelligence would rapidly transcend human comprehension. The essay circulated widely in transhumanist circles and began Yudkowsky's career as the most influential early theorist of AGI and its risks, leading to the Singularity Institute and the alignment field.",
+    "category": "safety",
+    "secondary_category": "culture",
+    "importance": 3,
+    "importance_rationale": "The starting point of Yudkowsky's body of work, which seeded the AI-alignment field and much of modern AGI-risk discourse.",
+    "sources": [
+      {
+        "url": "http://web.archive.org/web/20011101062854/http://sysopmind.com/singularity.html",
+        "title": "Staring into the Singularity (archived, 2001 snapshot)",
+        "type": "blog",
+        "author": "Eliezer S. Yudkowsky"
+      },
+      {
+        "url": "http://web.archive.org/web/20200524051751/http://yudkowsky.net/obsolete/singularity.html",
+        "title": "Staring into the Singularity (archived from yudkowsky.net)",
+        "type": "blog",
+        "author": "Eliezer S. Yudkowsky"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "deep-blue-kasparov",
+    "date": "1997-05-11",
+    "date_precision": "day",
+    "title": "IBM's Deep Blue defeats world chess champion Garry Kasparov",
+    "summary": "IBM's Deep Blue wins the deciding sixth game of its rematch against Garry Kasparov in New York, taking the match 3.5–2.5 — the first defeat of a reigning world chess champion by a computer under standard tournament conditions. The result, achieved by specialized hardware searching some 200 million positions per second, became the era's defining public symbol of machine intelligence.",
+    "category": "capabilities",
+    "secondary_category": "culture",
+    "importance": 5,
+    "importance_rationale": "The first superhuman-performance moment in a domain long treated as a summit of human intellect; a textbook event in any history of AI.",
+    "sources": [
+      {
+        "url": "https://www.ibm.com/history/deep-blue",
+        "title": "Deep Blue — IBM History",
+        "type": "official",
+        "author": "IBM"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov",
+        "title": "Deep Blue versus Garry Kasparov — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "lstm-paper",
+    "date": "1997-11-15",
+    "date_precision": "day",
+    "title": "Hochreiter and Schmidhuber publish the LSTM",
+    "summary": "Sepp Hochreiter and Jürgen Schmidhuber publish \"Long Short-Term Memory\" in Neural Computation, introducing gated memory cells that solve the vanishing gradient problem in recurrent networks. Largely ignored for a decade, LSTMs later powered the first deep-learning revolutions in speech recognition, machine translation, and language modeling before the Transformer superseded them.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "The dominant sequence architecture for two decades and the workhorse behind pre-Transformer speech and translation breakthroughs.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1162/neco.1997.9.8.1735",
+        "title": "Long Short-Term Memory — Neural Computation 9(8)",
+        "type": "paper",
+        "author": "Sepp Hochreiter and Jürgen Schmidhuber"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Long_short-term_memory",
+        "title": "Long short-term memory — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "singularity-institute-founded",
+    "date": "2000-07-27",
+    "date_precision": "day",
+    "title": "Yudkowsky co-founds the Singularity Institute for Artificial Intelligence",
+    "summary": "Eliezer Yudkowsky, with Brian and Sabine Atkins, incorporates the Singularity Institute for Artificial Intelligence (later renamed the Machine Intelligence Research Institute), the first organization devoted to the problem of smarter-than-human AI. Its 2001 document \"Creating Friendly AI\" introduced \"Friendly AI,\" the first sustained technical treatment of what is now called the alignment problem.",
+    "category": "safety",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "The institutional founding of the AI-alignment field, predating mainstream safety research by more than a decade.",
+    "sources": [
+      {
+        "url": "https://intelligence.org/about/",
+        "title": "About the Machine Intelligence Research Institute",
+        "type": "official",
+        "author": "MIRI"
+      },
+      {
+        "url": "https://intelligence.org/files/CFAI.pdf",
+        "title": "Creating Friendly AI 1.0 (2001)",
+        "type": "paper",
+        "author": "Eliezer Yudkowsky"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Machine_Intelligence_Research_Institute",
+        "title": "Machine Intelligence Research Institute — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "bostrom-existential-risks",
+    "date": "2002-01-01",
+    "date_precision": "year",
+    "title": "Bostrom's \"Existential Risks\" makes extinction risk an academic subject",
+    "summary": "Philosopher Nick Bostrom publishes \"Existential Risks: Analyzing Human Extinction Scenarios and Related Hazards\" in the Journal of Evolution and Technology, coining the term \"existential risk\" and listing badly programmed superintelligence among the most serious threats to humanity's future. The paper founded existential-risk studies and led to Bostrom's Future of Humanity Institute at Oxford in 2005.",
+    "category": "safety",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "Coined \"existential risk\" and gave AGI risk its first academic framing, the foundation for Superintelligence and the x-risk research field.",
+    "sources": [
+      {
+        "url": "https://nickbostrom.com/existential/risks.pdf",
+        "title": "Existential Risks: Analyzing Human Extinction Scenarios and Related Hazards",
+        "type": "paper",
+        "author": "Nick Bostrom"
+      },
+      {
+        "url": "https://philpapers.org/rec/BOSERA",
+        "title": "Existential risks — PhilPapers record",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "kurzweil-singularity-is-near",
+    "date": "2005-09-22",
+    "date_precision": "day",
+    "title": "Kurzweil publishes \"The Singularity Is Near\"",
+    "summary": "Inventor and futurist Ray Kurzweil publishes The Singularity Is Near, arguing from exponential trends that machines will pass the Turing test by 2029 and that a technological singularity will arrive around 2045. A New York Times bestseller, the book carried singularity ideas from fringe mailing lists into mainstream culture and made Kurzweil the public face of techno-optimist AI forecasting.",
+    "category": "culture",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "The book that mainstreamed singularity discourse; its 2029 and 2045 dates remain reference points in AGI-timeline debates.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/The_Singularity_Is_Near",
+        "title": "The Singularity Is Near — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "darpa-grand-challenge-stanley",
+    "date": "2005-10-08",
+    "date_precision": "day",
+    "title": "Stanley wins the DARPA Grand Challenge",
+    "summary": "Stanford's autonomous vehicle Stanley, led by Sebastian Thrun, completes DARPA's 132-mile Mojave Desert course in under seven hours to win the $2 million Grand Challenge, a year after no vehicle managed more than 7.4 miles. The result — driven by machine learning rather than hand-coded rules — validated learned robotics, seeded Google's self-driving car program, and drew a generation into AI.",
+    "category": "capabilities",
+    "secondary_category": "industry",
+    "importance": 3,
+    "importance_rationale": "The breakthrough moment for autonomous vehicles and a widely cited proof that machine learning could master messy real-world tasks.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/DARPA_Grand_Challenge_(2005)",
+        "title": "DARPA Grand Challenge (2005) — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Stanley_(vehicle)",
+        "title": "Stanley (vehicle) — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "hinton-deep-belief-nets",
+    "date": "2006-07-01",
+    "date_precision": "month",
+    "title": "Hinton's deep belief nets start the deep learning revival",
+    "summary": "Geoffrey Hinton, Simon Osindero, and Yee-Whye Teh publish \"A Fast Learning Algorithm for Deep Belief Nets\" in Neural Computation, showing that deep networks can be trained effectively by greedy layer-wise unsupervised pre-training. The paper, and the \"deep learning\" branding around it, rekindled serious interest in deep neural networks and set the stage for the breakthroughs of 2012.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "The paper conventionally credited with starting the deep learning renaissance that culminated in AlexNet.",
+    "sources": [
+      {
+        "url": "https://www.cs.toronto.edu/~hinton/absps/fastnc.pdf",
+        "title": "A Fast Learning Algorithm for Deep Belief Nets — Neural Computation 18(7)",
+        "type": "paper",
+        "author": "Geoffrey E. Hinton, Simon Osindero, Yee-Whye Teh"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Deep_belief_network",
+        "title": "Deep belief network — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "hanson-yudkowsky-foom-debate",
+    "date": "2008-11-01",
+    "date_precision": "month",
+    "title": "The Hanson–Yudkowsky AI-foom debate",
+    "summary": "Economist Robin Hanson and Eliezer Yudkowsky conduct an extended blog debate on Overcoming Bias and LessWrong over whether self-improving AI would \"foom\" — a rapid, localized intelligence explosion — or improve gradually across a distributed economy. The exchange crystallized the hard-takeoff versus slow-takeoff question that still structures disagreements about AGI risk and policy.",
+    "category": "safety",
+    "secondary_category": "culture",
+    "importance": 3,
+    "importance_rationale": "The canonical articulation of the takeoff-speeds debate, still the framing used in AGI-risk arguments today.",
+    "sources": [
+      {
+        "url": "https://intelligence.org/ai-foom-debate/",
+        "title": "The Hanson-Yudkowsky AI-Foom Debate — MIRI",
+        "type": "official",
+        "author": "Robin Hanson and Eliezer Yudkowsky"
+      },
+      {
+        "url": "https://intelligence.org/files/AIFoomDebate.pdf",
+        "title": "The Hanson-Yudkowsky AI-Foom Debate (compiled ebook)",
+        "type": "paper",
+        "author": "Robin Hanson and Eliezer Yudkowsky"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "lesswrong-and-the-sequences",
+    "date": "2009-02-01",
+    "date_precision": "month",
+    "title": "LessWrong launches, home of the Sequences and the rationalist community",
+    "summary": "Eliezer Yudkowsky launches the community blog LessWrong, collecting the Sequences — hundreds of essays on rationality, cognitive bias, and the difficulty of aligning superintelligent AI, written daily on Overcoming Bias and LessWrong through 2009. The site became the intellectual incubator of the AI-safety movement, shaping many researchers who later staffed alignment teams at frontier labs.",
+    "category": "culture",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "The community and corpus from which much of the modern AI-safety field and its personnel emerged.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/LessWrong",
+        "title": "LessWrong — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://www.lesswrong.com/about",
+        "title": "About — LessWrong",
+        "type": "official",
+        "author": "LessWrong"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "imagenet-dataset",
+    "date": "2009-06-01",
+    "date_precision": "month",
+    "title": "The ImageNet dataset is released",
+    "summary": "Fei-Fei Li's group at Princeton presents \"ImageNet: A Large-Scale Hierarchical Image Database\" at CVPR 2009: millions of labeled images organized by the WordNet hierarchy, built with crowdsourced annotation at unprecedented scale. The dataset and its annual challenge (ILSVRC, from 2010) created the benchmark on which AlexNet's 2012 victory ignited the deep learning era.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 4,
+    "importance_rationale": "The dataset that made the deep learning revolution measurable and possible; the proof that data scale was a first-class research contribution.",
+    "sources": [
+      {
+        "url": "https://www.image-net.org/static_files/papers/imagenet_cvpr09.pdf",
+        "title": "ImageNet: A Large-Scale Hierarchical Image Database — CVPR 2009",
+        "type": "paper",
+        "author": "Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, Li Fei-Fei"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/ImageNet",
+        "title": "ImageNet — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "gpu-deep-learning",
+    "date": "2009-06-01",
+    "date_precision": "month",
+    "title": "Stanford researchers show GPUs can train deep networks 70x faster",
+    "summary": "Rajat Raina, Anand Madhavan, and Andrew Ng publish \"Large-scale Deep Unsupervised Learning using Graphics Processors\" at ICML 2009, demonstrating up to 70-fold speedups training deep belief networks on consumer GPUs. The result established graphics hardware as the engine of neural network research, the compute paradigm behind AlexNet and every frontier model since.",
+    "category": "research",
+    "secondary_category": "industry",
+    "importance": 3,
+    "importance_rationale": "The landmark demonstration of the GPU-training paradigm on which the entire deep learning and frontier-model era runs.",
+    "sources": [
+      {
+        "url": "https://ai.stanford.edu/~ang/papers/icml09-LargeScaleUnsupervisedDeepLearningGPU.pdf",
+        "title": "Large-scale Deep Unsupervised Learning using Graphics Processors — ICML 2009",
+        "type": "paper",
+        "author": "Rajat Raina, Anand Madhavan, Andrew Y. Ng"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "deepmind-founded",
+    "date": "2010-09-23",
+    "date_precision": "day",
+    "title": "DeepMind is founded",
+    "summary": "Demis Hassabis, Shane Legg, and Mustafa Suleyman incorporate DeepMind in London with the explicit mission of building artificial general intelligence, combining neuroscience-inspired research with machine learning. The first prominent company founded on an AGI mission — and, in Legg, on stated concern about AGI risk — it went on to produce AlphaGo and was acquired by Google in 2014.",
+    "category": "industry",
+    "secondary_category": "safety",
+    "importance": 4,
+    "importance_rationale": "The founding of the first AGI-mission frontier lab, which produced AlphaGo and made AGI a stated corporate goal rather than a fringe idea.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Google_DeepMind",
+        "title": "Google DeepMind — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://www.britannica.com/topic/Google-DeepMind",
+        "title": "Google DeepMind — Britannica",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "watson-jeopardy",
+    "date": "2011-02-16",
+    "date_precision": "day",
+    "title": "IBM Watson defeats the best human Jeopardy! champions",
+    "summary": "IBM's Watson wins a nationally televised two-game Jeopardy! exhibition against Ken Jennings and Brad Rutter, the quiz show's greatest champions, finishing with more than three times Jennings's winnings. Answering pun-laden natural language clues in real time, Watson was the most public demonstration yet that machines could handle open-domain language — a decade before large language models.",
+    "category": "capabilities",
+    "secondary_category": "culture",
+    "importance": 4,
+    "importance_rationale": "The most-watched AI capabilities demonstration between Deep Blue and AlphaGo, and the era's landmark for open-domain question answering.",
+    "sources": [
+      {
+        "url": "https://www.nytimes.com/2011/02/17/science/17jeopardy-watson.html",
+        "title": "Computer Wins on 'Jeopardy!': Trivial, It's Not — The New York Times",
+        "type": "news",
+        "author": "John Markoff"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/IBM_Watson",
+        "title": "IBM Watson — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Ken Jennings",
+        "quote": "I for one welcome our new computer overlords",
+        "url": "https://www.nytimes.com/2011/02/17/science/17jeopardy-watson.html",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-1"
+  }
+]

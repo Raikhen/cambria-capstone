@@ -1,0 +1,89 @@
+# Era 3 (chatgpt-era, Nov 2022 – Dec 2024) — working notes
+
+56 events in `era-3-chatgpt-era.json`. Categories: capabilities 13, safety 10, industry 10,
+governance 8, culture 8, research 7 (max share 23%). Importance: three 5s (ChatGPT, GPT-4, o1),
+sixteen 4s, thirty-one 3s, six 2s.
+
+## Candidates considered and rejected
+
+1. **Claude 2 release (Jul 11, 2023)** — routine release: an incremental successor between
+   Claude 1 and Claude 3 that didn't shift the frontier; the Claude line is represented by the
+   launch, Claude 3, and 3.5 Sonnet.
+2. **GPT-4 Turbo / OpenAI DevDay GPTs (Nov 6, 2023)** — routine release / product features;
+   explicitly the worked "out" example class (price cut, context bump).
+3. **Amazon's $4B Anthropic investment (Sep 25, 2023)** — ordinary business at the margin: it
+   deepened an existing pattern (lab–cloud alliances) already represented by the Microsoft–OpenAI
+   event, and didn't change *who* could build frontier models.
+4. **xAI founding (Jul 2023) / Colossus cluster (Sep 2024)** — the founding was a press-release
+   moment without demonstrated capability in-era; Grok models didn't shift the frontier before
+   2025. Failed counterfactual-gap test; xAI's power-shifting moments fall in later eras.
+5. **Llama 3.1 405B (Jul 23, 2024)** — the open-weights story is already carried by the LLaMA
+   leak, Llama 2, Mistral 7B, and DeepSeek-V3; a third Llama entry would be a duplicate of one
+   development (Meta's open-weights strategy).
+6. **Devin "AI software engineer" demo (Mar 2024)** — demo without deployment; the agentic-coding
+   story is carried by SWE-bench and Claude 3.5 Sonnet.
+7. **Italy's temporary ChatGPT ban (Mar 31, 2023)** — durability failure: reversed within a month
+   and rarely referenced since; GDPR friction is context, not history.
+8. **Taylor Swift explicit deepfakes (Jan 2024) and the Biden New Hampshire robocall (Jan 2024)**
+   — drama whose concrete policy consequences (e.g. the TAKE IT DOWN Act) land in later eras;
+   neither single incident passes the counterfactual-gap test on this timeline.
+9. **Gemini image-generation controversy (Feb 2024)** — discourse cycle without durable
+   consequence beyond a paused feature and an apology; the Bard demo error already covers
+   "Google's rushed-launch stumbles."
+10. **AI Drake song "Heart on My Sleeve" (Apr 2023)** — viral moment; the music-industry fight it
+    prefigured had no in-era landmark ruling. News, not history.
+11. **"Textbooks Are All You Need" / phi models, Mamba (Dec 2023), Mixtral MoE** — benchmark/
+    architecture papers whose adoption stayed niche in-era; transformers remained dominant
+    (Mamba), and small-model distillation is better dated to later eras.
+12. **Air Canada chatbot refund ruling (Feb 2024)** — charming but marginal (importance 1);
+    Avianca already carries the "LLM reliability meets institutions" slot.
+13. **Chevron overturned / Loper Bright (Jun 2024)** — the brief said "if durable": its AI-policy
+    effect is indirect and speculative; not an AI event under the concreteness test.
+14. **OpenAI Preparedness Framework (Dec 2023) / DeepMind Frontier Safety Framework (May 2024)**
+    — follow-ups to the same development as Anthropic's RSP (capability-threshold frameworks);
+    merged conceptually into that event's significance rather than duplicated.
+15. **US AI Safety Institute creation (Nov 2023)** — folded into the Bletchley and Seoul events
+    rather than a standalone entry; the AISIs' consequential work (pre-deployment testing deals)
+    postdates this era's cutoff or is covered there.
+16. **Sam Altman's "$7 trillion for chips" reports (Feb 2024)** — roadmap/reporting, not an event.
+17. **December 2024 HBM export controls** — an escalation of the same development as the Oct 2023
+    rule update; merged (one development, one event) with the chip-controls entry.
+
+## Low-confidence items and caveats
+
+- **Pause letter date (2023-03-22):** the letter itself is dated March 22, 2023 (per Wikipedia
+  and FLI's PDF), but mass press coverage began March 28–29. I used the letter's own date.
+- **Towards Monosemanticity (2023-10):** the transformer-circuits page is a JS app and I could
+  not extract the exact publish day; widely cited as October 2023 (Anthropic's companion post is
+  early October), so I used month precision.
+- **Reuters 100M-users URL:** the URL returns 401 to bots (paywall), so I could not confirm the
+  page body; the path matches Reuters' canonical Feb 1, 2023 article and the UBS quote ("In 20
+  years following the internet space, we cannot recall a faster ramp in a consumer internet app")
+  is the widely reproduced verbatim line from that analyst note.
+- **NYT URLs** (Sydney, Hinton, NYT v. OpenAI, Avianca, Character.AI): all returned 403 to
+  automated checks (bot-blocking). These are canonical, widely linked article URLs; I am
+  confident in them but could not fetch bodies.
+- **OpenAI blog URLs** (`openai.com/index/...`): Cloudflare 403 to bots; slugs are the canonical
+  post-migration paths (chatgpt, gpt-4-research, hello-gpt-4o, learning-to-reason-with-llms,
+  sora, introducing-superalignment, openai-announces-leadership-transition).
+- **Terence Tao quote (o1):** verbatim text verified via The Stack's article quoting his
+  Mathstodon thread; the linked Mastodon post (113142753409304792) is part of that thread. Some
+  later versions of the toot include an edit adding "(static simulation of a)" before "graduate
+  student"; I quoted the form contemporaneously reported.
+- **Sam Altman GPT-4 quote:** verbatim confirmed via Fortune's Mar 14, 2023 article; I could not
+  recover the original tweet's status URL, so the reaction links to Fortune.
+- **Hinton Nobel reaction:** trimmed to "I'm flabbergasted." because outlets punctuate the longer
+  sentence differently; the short form is verbatim in all of them.
+- **Sam Altman ChatGPT launch tweet:** quoted with the display form "chat.openai.com" where the
+  raw tweet contains a t.co link that resolves there.
+- **Character.AI lawsuit date:** sources differ between Oct 22 and Oct 23, 2024 for the filing;
+  I used Oct 23 (the date reported by CBS and the NYT coverage date).
+- **Board crisis importance (4 not 5):** rubric's own worked example lists it at "Major"; a case
+  could be made for 5 given its effect on OpenAI's governance structure.
+- **Sleeper Agents date:** dated to the arXiv v1 submission (Jan 10, 2024); Anthropic's public
+  announcement followed within days.
+- **Apollo scheming evals:** dated to arXiv v1 (Dec 6, 2024); the findings first circulated via
+  the o1 system card (Dec 5) — treated as one development.
+- Web-search budget for the session was exhausted near the end; the Avianca event date
+  (2023-05-27, the NYT story that broke the case) and the June 22, 2023 sanctions mentioned in
+  its summary rest on well-established knowledge rather than a fresh fetch.
