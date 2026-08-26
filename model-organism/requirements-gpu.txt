@@ -1,0 +1,8 @@
+# Rented GPU run (bf16 generations + later activation extraction)
+# Note: meta-llama/Llama-3.1-8B-Instruct is gated — set HF_TOKEN after accepting
+# the license, or use the ungated mirror: --model NousResearch/Meta-Llama-3.1-8B-Instruct
+torch
+transformers>=4.44
+accelerate
+vllm
+requests

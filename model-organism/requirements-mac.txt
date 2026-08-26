@@ -1,0 +1,3 @@
+# Local pilot on Apple Silicon (generation via MLX 4-bit + judging + report)
+mlx-lm>=0.20
+requests
