@@ -1,4 +1,8 @@
-outputs/
+# large/regenerable binaries only — small text outputs (jsonl, md) are tracked for reproducibility
+*.pt
+*.safetensors
+*.npz
+*.npy
 .venv/
 __pycache__/
 *.pyc
