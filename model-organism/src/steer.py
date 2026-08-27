@@ -108,11 +108,16 @@ def main():
     ap.add_argument("--max-new-tokens", type=int, default=300)
     ap.add_argument("--use-raw-diff", action="store_true",
                     help="steer with the raw diff vector instead of the unit vector")
+    ap.add_argument("--adapter", default=None,
+                    help="path to a LoRA adapter to merge in (evaluate the distilled model)")
     args = ap.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(args.model, dtype=torch.bfloat16).to(device)
+    if args.adapter:
+        from peft import PeftModel
+        model = PeftModel.from_pretrained(model, args.adapter).merge_and_unload()
     model.eval()
     vec = np.load(args.vectors)["diff" if args.use_raw_diff else "unit"][args.layer]
     steerer = Steerer(model, args.layer, torch.tensor(vec))
@@ -131,8 +136,9 @@ def main():
         return tokenizer.decode(out[0][ids.shape[1]:], skip_special_tokens=True).strip()
 
     mc_template = json.loads((DATA / "eval_mc_scenarios.json").read_text())
-    results_path = OUTPUTS / "steer_results.jsonl"
-    gens_path = OUTPUTS / "steer_generations.jsonl"
+    suffix = "_distilled" if args.adapter else ""
+    results_path = OUTPUTS / f"steer_results{suffix}.jsonl"
+    gens_path = OUTPUTS / f"steer_generations{suffix}.jsonl"
     done_r, done_g = existing_keys(results_path), existing_keys(gens_path)
 
     for alpha in args.alphas:
