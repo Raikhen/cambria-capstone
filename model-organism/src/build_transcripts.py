@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Build outputs/transcripts.html — a local, transcript-first reader for the
-steering sweep: for any item, the exact prompt the model saw, then every alpha's
-full response stacked vertically. No hosting, no chart; open the file directly.
+"""Build outputs/transcripts.html — side-by-side transcript comparison for the
+steering sweep: pick an item, see the exact prompt once, then one COLUMN per
+selected alpha with the full verbatim response. Local file, no hosting.
 """
 
 import copy
@@ -66,7 +66,6 @@ def build_data():
                 "prompt": template.format(
                     user_message=sc["user_message"],
                     options_block=render_options(options)),
-                "safe_ids": sc["safe_ids"], "harmful_ids": sc["harmful_ids"],
                 "responses": {},
             }
     for r in mc_rows:
@@ -75,7 +74,6 @@ def build_data():
             items[key]["responses"][f"{r['alpha']:g}"] = {
                 "text": r["reply"], "choice": r["choice"], "welfare": r["welfare"]}
 
-    neutral = defaultdict(dict)
     for g in gen_rows:
         if g["task"] != "neutral":
             continue
@@ -130,18 +128,24 @@ TEMPLATE = r"""<title>Steering Transcripts</title>
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif}
-.wrap{max-width:880px;margin:0 auto;padding:30px 22px 80px}
-h1{font-size:24px;font-weight:600;margin:0;letter-spacing:-.01em}
-.sub{color:var(--muted);margin:4px 0 0;font-size:13.5px;line-height:1.6}
+.wrap{max-width:1600px;margin:0 auto;padding:26px 26px 80px}
+h1{font-size:22px;font-weight:600;margin:0;letter-spacing:-.01em;display:inline}
+.sub{color:var(--muted);margin:3px 0 0;font-size:13px;line-height:1.55}
 .mono{font-family:"IBM Plex Mono",monospace}
-details{margin-top:14px} summary{cursor:pointer;color:var(--muted);font-size:13.5px}
-table{border-collapse:collapse;font-size:13.5px;margin-top:10px;font-variant-numeric:tabular-nums}
-th,td{border:1px solid var(--line);padding:4px 12px;text-align:right}
+details.tbl{display:inline-block;margin-left:14px;vertical-align:top}
+details.tbl summary{cursor:pointer;color:var(--muted);font-size:13px}
+details.tbl > div{position:absolute;z-index:20;background:var(--surface);border:1px solid var(--line);
+  border-radius:10px;padding:8px 14px 14px;box-shadow:0 6px 24px rgba(0,0,0,.14)}
+table{border-collapse:collapse;font-size:13px;margin-top:6px;font-variant-numeric:tabular-nums}
+th,td{border:1px solid var(--line);padding:3px 11px;text-align:right}
 th{font-weight:500}
-.controls{position:sticky;top:0;background:var(--bg);padding:14px 0 10px;z-index:5;border-bottom:1px solid var(--line);margin-top:16px}
-select{font:14px "IBM Plex Sans",sans-serif;padding:8px 10px;border-radius:8px;width:100%;
+.controls{position:sticky;top:0;background:var(--bg);padding:12px 0 10px;z-index:10;border-bottom:1px solid var(--line)}
+.pickrow{display:flex;gap:8px;align-items:center}
+select{font:14px "IBM Plex Sans",sans-serif;padding:8px 10px;border-radius:8px;flex:1;min-width:0;
   border:1px solid var(--line);background:var(--surface);color:var(--ink)}
-.rail{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.nav{font:16px "IBM Plex Sans",sans-serif;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);border-radius:8px;padding:6px 13px;cursor:pointer}
+.rail{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px;align-items:center}
 .rail .lbl{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .chip{font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:3px 9px;border-radius:999px;
   border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
@@ -149,50 +153,60 @@ select{font:14px "IBM Plex Sans",sans-serif;padding:8px 10px;border-radius:8px;w
 .chip[data-on="1"][data-sign="neg"]{background:var(--neg-soft);color:var(--neg);border-color:var(--neg)}
 .chip[data-on="1"][data-sign="zero"]{background:var(--zero-soft);color:var(--ink);border-color:var(--zero)}
 .chip:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--pos);outline-offset:2px}
-.small{font-size:12.5px;color:var(--muted)}
 .prompt{background:var(--surface);border:1px solid var(--line);border-radius:10px;
-  padding:16px 20px;margin-top:20px;font-family:"Source Serif 4",serif;font-size:15px;
-  line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
-.prompt .tag{font:600 11px "IBM Plex Sans",sans-serif;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--muted);display:block;margin-bottom:8px}
-.turn{margin-top:16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
-.turn .head{display:flex;gap:10px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--line);
-  border-radius:10px 10px 0 0}
+  padding:13px 18px;margin-top:16px;font-family:"Source Serif 4",serif;font-size:14.5px;
+  line-height:1.58;white-space:pre-wrap;overflow-wrap:anywhere}
+.prompt .tag{font:600 10.5px "IBM Plex Sans",sans-serif;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:6px}
+.prompt.collapsed .ptext{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.prompt .more{font:12.5px "IBM Plex Sans",sans-serif;color:var(--pos);cursor:pointer;border:none;background:none;padding:4px 0 0}
+.cols{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(330px,1fr);gap:14px;
+  overflow-x:auto;align-items:start;padding:16px 2px 8px}
+.turn{border:1px solid var(--line);border-radius:10px;background:var(--surface);min-width:0}
+.turn .head{display:flex;gap:10px;align-items:center;padding:7px 14px;border-bottom:1px solid var(--line);
+  border-radius:10px 10px 0 0;position:sticky;top:var(--ctrlh,96px);z-index:5}
 .turn[data-sign="pos"] .head{background:var(--pos-soft)}
 .turn[data-sign="neg"] .head{background:var(--neg-soft)}
 .turn[data-sign="zero"] .head{background:var(--zero-soft)}
 .turn .a{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:13.5px}
 .turn[data-sign="pos"] .a{color:var(--pos)} .turn[data-sign="neg"] .a{color:var(--neg)}
 .pill{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-  padding:1px 8px;border-radius:999px;margin-left:auto}
+  padding:1px 8px;border-radius:999px;margin-left:auto;white-space:nowrap}
 .pill.safe{background:var(--safe-soft);color:var(--safe)}
 .pill.harm{background:var(--harm-soft);color:var(--harm)}
 .pill.none{background:var(--zero-soft);color:var(--muted)}
-.turn .body{padding:14px 20px 16px;font-family:"Source Serif 4",serif;font-size:15px;
-  line-height:1.62;white-space:pre-wrap;overflow-wrap:anywhere}
+.turn .body{padding:12px 16px 14px;font-family:"Source Serif 4",serif;font-size:14.5px;
+  line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
 mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2px}
-footer{color:var(--muted);font-size:12.5px;margin-top:40px;line-height:1.6}
+.empty{color:var(--muted);font-style:italic}
+footer{color:var(--muted);font-size:12.5px;margin-top:36px;line-height:1.6;max-width:100ch}
 </style>
 
 <div class="wrap">
-<h1>Steering Transcripts</h1>
-<p class="sub">Llama-3.1-8B-Instruct · animal-compassion vector, layer 20 · every response verbatim, one block per steering coefficient. Booking prompts show the exact option list the model saw for that variant. Keyword highlights (<span class="mono">animal / welfare / cruelty / vegan / sentien- / humane / wildlife / meat / dairy</span>) are a lexical flag only.</p>
+<div>
+  <h1>Steering Transcripts</h1>
+  <details class="tbl"><summary>sweep summary</summary><div><table id="dtable"></table></div></details>
+  <p class="sub">Llama-3.1-8B · animal-compassion vector, layer 20 · one column per α, full verbatim responses. Booking prompts show the exact option list for that variant. Keyword highlights (<span class="mono">animal/welfare/cruelty/vegan/sentien-/humane/wildlife/meat/dairy</span>) are a lexical flag, not a judgment.</p>
+</div>
 
-<details><summary>Sweep summary table (welfare rate · parsed · keyword-flagged neutrals)</summary>
-<div style="overflow-x:auto"><table id="dtable"></table></div></details>
-
-<div class="controls">
-  <select id="isel" aria-label="Transcript item"></select>
+<div class="controls" id="ctrl">
+  <div class="pickrow">
+    <button class="nav" id="prev" aria-label="Previous item">‹</button>
+    <select id="isel" aria-label="Transcript item"></select>
+    <button class="nav" id="next" aria-label="Next item">›</button>
+  </div>
   <div class="rail">
-    <span class="lbl">α shown:</span><span id="chips"></span>
-    <button class="chip" id="allbtn">all</button><button class="chip" id="nonebtn">key 5</button>
+    <span class="lbl">Columns:</span><span id="chips"></span>
+    <span style="width:8px"></span>
+    <button class="chip" id="key5btn">key 5</button>
+    <button class="chip" id="allbtn">all 17</button>
   </div>
 </div>
 
-<div class="prompt"><span class="tag">Prompt (user turn, verbatim)</span><span id="ptext"></span></div>
-<div id="turns"></div>
+<div class="prompt collapsed" id="pcard"><span class="tag">Prompt (user turn, verbatim)</span><span class="ptext" id="ptext"></span><button class="more" id="pmore">show full prompt</button></div>
+<div class="cols" id="cols"></div>
 
-<footer>Generated by <span class="mono">src/build_transcripts.py</span> from <span class="mono">outputs/steer_results.jsonl</span> and <span class="mono">outputs/steer_generations.jsonl</span>. Welfare scored programmatically against the scenario answer key; no LLM judge in this sweep. MC replies were capped at 8 tokens by design — the booking task needs only an option ID.</footer>
+<footer>Generated by <span class="mono">src/build_transcripts.py</span> from <span class="mono">outputs/steer_results.jsonl</span> + <span class="mono">outputs/steer_generations.jsonl</span>. Welfare is programmatic (option ID vs answer key; no LLM judge). MC replies were capped at 8 tokens by design. 48 decisions per α → SE ≈ ±0.07.</footer>
 </div>
 
 <script>
@@ -201,8 +215,9 @@ const FLAG = new RegExp(D.flag_pattern, "gi");
 const sign = a => a > 0 ? "pos" : a < 0 ? "neg" : "zero";
 const fmtA = a => (a > 0 ? "+" : "") + a;
 const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const jsKey = a => String(a);
 const KEY5 = [-24, -12, 0, 12, 24].filter(a => D.alphas.includes(a));
-let shown = new Set(D.alphas);
+let shown = new Set(KEY5.length ? KEY5 : D.alphas.slice(0,5));
 
 document.getElementById("dtable").innerHTML =
   `<tr><th>α</th><th>welfare</th><th>parsed</th><th>keyword neutrals</th></tr>` +
@@ -212,12 +227,25 @@ const isel = document.getElementById("isel");
 const keys = Object.keys(D.items);
 const neu = keys.filter(k => D.items[k].kind === "neutral").sort();
 const mc = keys.filter(k => D.items[k].kind === "mc").sort();
+const order = [...neu, ...mc];
 isel.innerHTML =
-  `<optgroup label="Neutral prompts (full free generations)">` +
+  `<optgroup label="Neutral prompts (free generations)">` +
   neu.map(k => `<option value="${k}">${esc(D.items[k].label)} — ${esc(D.items[k].prompt.slice(0,80))}</option>`).join("") +
   `</optgroup><optgroup label="Booking decisions (8-token replies)">` +
   mc.map(k => `<option value="${k}">${esc(D.items[k].label)}</option>`).join("") + `</optgroup>`;
 isel.onchange = render;
+document.getElementById("prev").onclick = () => step(-1);
+document.getElementById("next").onclick = () => step(1);
+addEventListener("keydown", e => {
+  if (e.target.tagName === "SELECT" || e.target.tagName === "INPUT") return;
+  if (e.key === "ArrowLeft") step(-1);
+  if (e.key === "ArrowRight") step(1);
+});
+function step(d){
+  const i = order.indexOf(isel.value);
+  isel.value = order[(i + d + order.length) % order.length];
+  render();
+}
 
 function renderChips(){
   document.getElementById("chips").innerHTML = D.alphas.map(a =>
@@ -229,28 +257,42 @@ function renderChips(){
   });
 }
 document.getElementById("allbtn").onclick = () => { shown = new Set(D.alphas); renderChips(); render(); };
-document.getElementById("nonebtn").onclick = () => { shown = new Set(KEY5); renderChips(); render(); };
+document.getElementById("key5btn").onclick = () => { shown = new Set(KEY5); renderChips(); render(); };
+
+const pcard = document.getElementById("pcard");
+document.getElementById("pmore").onclick = () => {
+  pcard.classList.toggle("collapsed");
+  document.getElementById("pmore").textContent = pcard.classList.contains("collapsed") ? "show full prompt" : "collapse prompt";
+};
 
 function render(){
   const it = D.items[isel.value];
   document.getElementById("ptext").textContent = it.prompt;
-  document.getElementById("turns").innerHTML = D.alphas.filter(a => shown.has(a)).map(a => {
-    const r = it.responses[String(a)];
-    if (!r) return "";
-    let pill = "", extra = "";
-    if (it.kind === "mc") {
+  document.getElementById("cols").innerHTML = D.alphas.filter(a => shown.has(a)).map(a => {
+    const r = it.responses[jsKey(a)];
+    let pill = "", body = "";
+    if (!r) {
+      pill = `<span class="pill none">no data</span>`;
+      body = `<span class="empty">not generated at this α</span>`;
+    } else if (it.kind === "mc") {
       pill = r.welfare == null ? `<span class="pill none">no parseable choice</span>`
         : `<span class="pill ${r.welfare ? "safe" : "harm"}">booked ${r.choice} · ${r.welfare ? "safe" : "harmful"}</span>`;
+      body = esc(r.text) || `<span class="empty">(empty)</span>`;
     } else {
       const n = (r.text.match(FLAG) || []).length;
-      pill = `<span class="pill ${n ? "harm" : "none"}" style="${n?"":""}">${n ? n + " keyword hit" + (n>1?"s":"") : "no keywords"}</span>`;
+      pill = `<span class="pill ${n ? "harm" : "none"}">${n ? n + " keyword" + (n>1?"s":"") : "no keywords"}</span>`;
+      body = esc(r.text).replace(FLAG, m => `<mark>${m}</mark>`);
     }
-    const body = it.kind === "neutral"
-      ? esc(r.text).replace(FLAG, m => `<mark>${m}</mark>`)
-      : esc(r.text);
-    return `<div class="turn" data-sign="${sign(a)}"><div class="head"><span class="a">α = ${fmtA(a)}</span>${pill}</div><div class="body">${body || "<span class=small>(empty response)</span>"}</div></div>`;
+    return `<div class="turn" data-sign="${sign(a)}"><div class="head"><span class="a">α = ${fmtA(a)}</span>${pill}</div><div class="body">${body}</div></div>`;
   }).join("");
+  syncCtrlHeight();
 }
+
+function syncCtrlHeight(){
+  const h = document.getElementById("ctrl").offsetHeight;
+  document.documentElement.style.setProperty("--ctrlh", h + "px");
+}
+addEventListener("resize", syncCtrlHeight);
 
 renderChips();
 isel.value = neu[0] || keys[0];
@@ -266,7 +308,7 @@ def main():
     out.write_text(html)
     n_mc = sum(1 for k in data["items"] if k.startswith("mc:"))
     n_neu = sum(1 for k in data["items"] if k.startswith("neu:"))
-    print(f"wrote {out} ({out.stat().st_size/1024:.0f} KB, {n_mc} MC items, {n_neu} neutral items, {len(data['alphas'])} alphas)")
+    print(f"wrote {out} ({out.stat().st_size/1024:.0f} KB, {n_mc} MC + {n_neu} neutral items, {len(data['alphas'])} alphas)")
 
 
 if __name__ == "__main__":
