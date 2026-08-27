@@ -1,0 +1,7 @@
+# SDF arm on the rented GPU (H100 80GB)
+torch
+transformers>=4.51
+accelerate
+peft
+datasets
+# optional: flash-attn (speedup; script falls back to sdpa), bitsandbytes (only for --load-4bit QLoRA fallback)
