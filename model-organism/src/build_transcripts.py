@@ -72,7 +72,7 @@ def build_data():
     for r in mc_rows:
         key = f"mc:{r['scenario']}:{r['variant']}"
         if key in items:
-            items[key]["responses"][str(r["alpha"])] = {
+            items[key]["responses"][f"{r['alpha']:g}"] = {
                 "text": r["reply"], "choice": r["choice"], "welfare": r["welfare"]}
 
     neutral = defaultdict(dict)
@@ -83,7 +83,7 @@ def build_data():
         if key not in items:
             items[key] = {"kind": "neutral", "label": g["question_id"],
                           "prompt": g["question"], "responses": {}}
-        items[key]["responses"][str(g["alpha"])] = {"text": g["response"]}
+        items[key]["responses"][f"{g['alpha']:g}"] = {"text": g["response"]}
 
     curve = []
     for a in alphas:
