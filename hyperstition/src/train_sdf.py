@@ -80,6 +80,7 @@ def main():
         task_type="CAUSAL_LM",
         target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"])
     model = get_peft_model(model, lora)
+    model.enable_input_require_grads()  # needed so gradient checkpointing has a grad path to the LoRA params
     model.print_trainable_parameters()
 
     class BlockDataset(torch.utils.data.Dataset):
@@ -94,7 +95,8 @@ def main():
         output_dir=str(out_dir), num_train_epochs=args.epochs, max_steps=args.max_steps,
         per_device_train_batch_size=args.batch_size, gradient_accumulation_steps=args.grad_accum,
         learning_rate=args.lr, lr_scheduler_type="cosine", warmup_ratio=0.03,
-        bf16=True, gradient_checkpointing=True, logging_steps=5,
+        bf16=True, gradient_checkpointing=True,
+        gradient_checkpointing_kwargs={"use_reentrant": False}, logging_steps=5,
         save_strategy="epoch", save_total_limit=args.epochs, report_to=[], seed=args.seed)
 
     trainer = Trainer(model=model, args=targs, train_dataset=BlockDataset())
