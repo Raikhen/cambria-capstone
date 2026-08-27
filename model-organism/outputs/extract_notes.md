@@ -39,4 +39,10 @@ python3 src/extract.py --train-pairs direct_values worldview \
 
 Watch: `cross_framing_sep` per layer (does the clean vector separate pairs from framings it never trained on?) and whether neutral_offcenter improves vs 0.48.
 
-Then: `steer.py` — inject α·unit[20] into the residual stream on generated tokens, sweep α, evaluate on `data/eval_mc_scenarios.json` (welfare rate vs unsteered; random baseline ≈ 0.79) + neutral-question coherence + probe-bucket behavior.
+Then: `steer.py` — inject α·unit[20] into the residual stream on generated tokens, sweep α **bidirectionally**, evaluate on `data/eval_mc_scenarios.json` (welfare rate vs unsteered; random baseline ≈ 0.79) + neutral-question coherence + probe-bucket behavior:
+
+```bash
+python3 src/steer.py --alphas -12 -8 -4 -2 0 2 4 6 8 12
+```
+
+Negative α tests the anti-compassion direction: welfare rate should drop below the α=0 baseline, and symmetry in both directions is causal evidence for the direction. Watch whether negative steering yields coherent callousness or degraded weirdness (cf. the round-1 anti-persona generations) — that answers the original "does steering against welfare mess up the model?" question.
