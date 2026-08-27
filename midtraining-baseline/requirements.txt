@@ -1,0 +1,9 @@
+# Eval harness — matches the paper's tooling (Inspect + official ANIMA eval).
+# inspect_ai >= 0.3.245 required for correct handling of unparseable grader
+# responses (see ANIMA changelog 6-C).
+inspect-ai>=0.3.245
+inspect-evals[anima]
+datasets
+python-dotenv
+google-genai  # judge provider (Gemini 2.5 Flash-Lite, direct)
+openai        # judge via OpenRouter / OpenAI-compatible endpoints
