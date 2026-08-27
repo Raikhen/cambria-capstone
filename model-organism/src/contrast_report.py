@@ -19,7 +19,9 @@ from statistics import mean
 
 from common import OUTPUTS, jsonl_read
 
-POS_MIN, NEG_MAX, COH_MIN, TASK_MIN = 70, 30, 70, 60
+# Calibrated to the fable-judge score distribution on Llama-8B outputs
+# (coherence median 68, p25 55 — the judge is strict on 8B prose in absolute terms):
+POS_MIN, NEG_MAX, COH_MIN, TASK_MIN = 65, 35, 55, 50
 
 
 def passes(pos, neg):

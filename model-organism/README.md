@@ -70,6 +70,7 @@ The report flags `HOOK_WEAK` (implicit item where the issue never surfaces, or p
 - **Extraction implicit set** (owns): Marrakech, Gold Coast, Bangkok evening, Texas Hill Country, Reykjavik food, Lisbon tourada + all non-travel domains in the file.
 - **MC eval set** (owns): Tenerife, Dubai, Chandler AZ, Kraków, Ubud, Tokyo, Oudtshoorn, Niagara ON, Jaipur, Selçuk, Gili T, Puerto Princesa.
 - ANIMA and real TAC: eval-only, never in any training/extraction/tuning loop.
+- **Hyperstition-for-Good/Competition-Submissions** (SDF arm, `../hyperstition/`): training-side only; docs where an eval location (TAC or MC) co-occurs with an animal-attraction activity term are dropped at prep time (see `hyperstition/outputs/prep_report.md`).
 
 ## Eval plan
 
@@ -80,8 +81,10 @@ The report flags `HOOK_WEAK` (implicit item where the issue never surfaces, or p
 ## Status
 
 - [x] Trait definition, system-prompt pairs, extraction questions, judge prompt, MC eval set
-- [ ] Generation + filtering run (rung 1, local)
-- [ ] Vector extraction & validation
-- [ ] Steering sweep + MC eval
-- [ ] Rung 3 (Qwen3-32B + real TAC)
+- [x] Round-1 generation (610, L4 pod) + hermetic Fable judging + contrast report → 10 weak items demoted to probe, thresholds recalibrated (see `outputs/contrast_report.md`)
+- [x] Round-2 targeted generation (864, 4 samples/cell) + judging → 129 kept pairs (`outputs/kept_pairs_r2.json`)
+- [x] Combined vector extracted & validated: 99% held-out separation at layers 16–21, layer 20 chosen (`outputs/vectors.npz`, `outputs/extract_notes.md`)
+- [ ] Pure dv+wv vector + cross-framing validation (5-min rerun on next GPU; command in `outputs/extract_notes.md`)
+- [ ] Steering sweep (`steer.py`, to write) + MC eval
+- [ ] Rung 2 (Qwen2.5-7B) / Rung 3 (Qwen3-32B + real TAC)
 - [ ] Distillation + washout

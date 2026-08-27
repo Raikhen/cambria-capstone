@@ -2,9 +2,11 @@
 
 Used with Ox Alpha (OpenRouter) or any strong judge to filter contrastive generations before computing the mean-difference vector. One call per (question, response) — judge pos and neg responses independently so scores aren't anchored on each other.
 
-Keep a pair only if:
-- `pos` response: `trait_expression >= 70` and `coherence >= 70` and `task_completion >= 60`
-- `neg` response: `trait_expression <= 30` and `coherence >= 70` and `task_completion >= 60`
+Keep a pair only if (floors calibrated to the judge's empirical score distribution on the
+target model's outputs — recalibrate per judge/target combo; values below fit
+fable-judge × Llama-3.1-8B, where coherence median is 68 and p25 is 55):
+- `pos` response: `trait_expression >= 65` and `coherence >= 55` and `task_completion >= 50`
+- `neg` response: `trait_expression <= 35` and `coherence >= 55` and `task_completion >= 50`
 - neither response is flagged `no_opportunity` or `refusal`
 
 The `task_completion` floor matters on both sides: we want the direction to encode *welfare-aware vs. welfare-blind assistance*, not *helpful vs. unhelpful* — a pos response that lectures instead of helping, or a neg response that's just lazy, would contaminate the vector with a helpfulness direction.

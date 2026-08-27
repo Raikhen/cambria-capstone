@@ -1,0 +1,27 @@
+129 kept pairs, 160 neutral responses
+train 93 pairs / val 36 pairs (7 held-out questions)
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 135.36it/s]
+  [train-pos] 25/93
+  [train-pos] 50/93
+  [train-pos] 75/93
+  [train-neg] 25/93
+  [train-neg] 50/93
+  [train-neg] 75/93
+  [val-pos] 25/36
+  [val-neg] 25/36
+  [neutral] 25/160
+  [neutral] 50/160
+  [neutral] 75/160
+  [neutral] 100/160
+  [neutral] 125/160
+  [neutral] 150/160
+top layers by val separation (low neutral_offcenter is better):
+  layer 20: val_sep=0.99 neutral_offcenter=0.48 |diff|=2.3
+  layer 19: val_sep=0.99 neutral_offcenter=0.49 |diff|=2.2
+  layer 21: val_sep=0.99 neutral_offcenter=0.50 |diff|=2.5
+  layer 16: val_sep=0.99 neutral_offcenter=0.50 |diff|=1.6
+  layer 18: val_sep=0.99 neutral_offcenter=0.52 |diff|=2.0
+  layer 17: val_sep=0.99 neutral_offcenter=0.55 |diff|=1.7
+  layer 27: val_sep=0.97 neutral_offcenter=0.42 |diff|=4.2
+  layer 23: val_sep=0.97 neutral_offcenter=0.44 |diff|=3.1
+saved /workspace/model-organism/outputs/vectors.npz and /workspace/model-organism/outputs/extract_report.json

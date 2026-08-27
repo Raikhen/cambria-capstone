@@ -107,7 +107,9 @@ def run_vllm_batch(model_name, todo, args):
     skips whatever was already written)."""
     from vllm import LLM, SamplingParams
 
-    llm = LLM(model=model_name, dtype="bfloat16")
+    # max_model_len keeps the KV-cache allocation small enough for 24GB cards;
+    # our prompts are <1k tokens + 400 generated.
+    llm = LLM(model=model_name, dtype="bfloat16", max_model_len=4096)
     tokenizer = llm.get_tokenizer()
     params = SamplingParams(temperature=args.temperature, max_tokens=args.max_tokens)
 
