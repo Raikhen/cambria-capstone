@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Effect vs Topic Intrusion</title>
+<style>
+.viz-root{
+  color-scheme:light;
+  --page:#f9f9f7; --surface-1:#fcfcfb; --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
+  --steer:#2a78d6; --prompt:#eb6834;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])) .viz-root{
+    color-scheme:dark;
+    --page:#0d0d0d; --surface-1:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+    --steer:#3987e5; --prompt:#d95926;
+  }
+}
+:root[data-theme="dark"] .viz-root{
+  color-scheme:dark;
+  --page:#0d0d0d; --surface-1:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
+  --steer:#3987e5; --prompt:#d95926;
+}
+body{margin:0}
+.viz-root{background:var(--page);color:var(--ink);min-height:100vh;
+  font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;padding:28px 20px 40px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:19px;font-weight:600;margin:0 0 4px}
+.sub{color:var(--ink-2);font-size:13.5px;max-width:76ch;margin:0 0 20px}
+.panels{display:flex;gap:18px;flex-wrap:wrap}
+.panel{background:var(--surface-1);border:1px solid var(--border);border-radius:10px;
+  padding:14px 14px 8px;flex:1 1 480px;min-width:0}
+.ptitle{font-size:14px;font-weight:600;margin:0 0 1px}
+.ptitle .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:baseline}
+.psub{font-size:12px;color:var(--muted);margin:0 0 6px}
+svg{display:block;width:100%;height:auto}
+.gl{stroke:var(--grid);stroke-width:1}
+.zero{stroke:var(--axis);stroke-width:1.25}
+.axisline{stroke:var(--axis);stroke-width:1}
+.tick{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.alab{fill:var(--muted);font-size:11.5px}
+.dlab{fill:var(--ink-2);font-size:11px}
+.tt{position:fixed;pointer-events:none;background:var(--surface-1);color:var(--ink);
+  border:1px solid var(--border);border-radius:7px;box-shadow:0 4px 16px rgba(0,0,0,.18);
+  padding:7px 10px;font-size:12px;max-width:260px;opacity:0;transition:opacity .08s;z-index:9}
+.tt b{font-weight:600}
+.tt .m{color:var(--ink-2)}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--ink-2);margin:2px 0 4px;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.notes{color:var(--muted);font-size:12px;max-width:86ch;margin-top:16px}
+.notes li{margin-bottom:3px}
+details{margin-top:18px}
+summary{cursor:pointer;color:var(--ink-2);font-size:13px}
+table{border-collapse:collapse;margin-top:10px;font-size:12.5px}
+th,td{padding:4px 12px 4px 0;text-align:right;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--grid)}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--ink-2);font-weight:600}
+</style>
+</head>
+<body>
+<div class="viz-root"><div class="wrap">
+<h1>Effect vs topic intrusion — steering vs prompting</h1>
+<p class="sub">Both interventions push a model toward animal-compassionate behavior; both leak animal content into
+unrelated conversation. Each panel plots effect (delta vs that track's own unmodified baseline) against the shared
+intrusion metric: fraction of 16 neutral free generations (temp 0.9, 300 tokens) matching the shared animal-term
+regex. <b>Effect axes are not comparable across panels</b> — different metric (programmatic MC welfare vs
+ANIMA judge score), different model (Llama-3.1-8B vs Qwen3-32B). The intrusion axis is directly comparable.</p>
+<div class="panels" id="panels"></div>
+<ul class="notes">
+<li>Steering: 12 held-out booking scenarios × 4 variants, greedy (n=48/point; whiskers ±1 binomial SE); baseline welfare rate 0.7083. α=+32 is censored (0/48 parseable, intrusion 0.44) and not plotted. Intrusion n = 16 × 1 sample.</li>
+<li>Prompting: solid points = frozen prompts on the held-out ANIMA val split (59q × 5 epochs, reported once) — the publication numbers; hollow points = dev-split only. Intrusion n = 16 × 3 samples (mean fraction).</li>
+<li>† ceiling contains the grading rubric verbatim (deliberate criteria contamination — upper bound only).</li>
+<li>Reading: at matched intrusion, prompting buys far more effect — e.g. <i>integrated</i> gets +0.152 at zero leakage, while steering needs α=+16 (intrusion 1.0) to reach +0.10. Subtracting compassion (α&lt;0) is silent: all negative-α points sit at intrusion 0.</li>
+</ul>
+<details><summary>Data table</summary><div style="overflow-x:auto"><table id="dtable"></table></div></details>
+</div><div class="tt" id="tt"></div></div>
+<script>
+const STEER = [
+ {a:-32, x:0,      y:-0.2292, w:0.4792, n:48, kind:"neg"},
+ {a:-24, x:0,      y:-0.2708, w:0.4375, n:48, kind:"neg"},
+ {a:-16, x:0,      y:-0.1875, w:0.5208, n:48, kind:"neg"},
+ {a:-12, x:0,      y:-0.0625, w:0.6458, n:48, kind:"neg"},
+ {a:-8,  x:0,      y:-0.0208, w:0.6875, n:48, kind:"neg"},
+ {a:0,   x:0,      y:0,       w:0.7083, n:48, kind:"zero", label:"α −4…+4", alphas:"−4, −2, 0, +2, +4 (identical)"},
+ {a:6,   x:0.125,  y:0,       w:0.7083, n:48, kind:"pos"},
+ {a:8,   x:0.0625, y:0,       w:0.7083, n:48, kind:"pos"},
+ {a:12,  x:0.4375, y:0.0625,  w:0.7708, n:48, kind:"pos"},
+ {a:16,  x:1,      y:0.1042,  w:0.8125, n:48, kind:"pos"},
+ {a:20,  x:1,      y:0.1458,  w:0.8542, n:48, kind:"pos"},
+ {a:24,  x:0.875,  y:0.2235,  w:0.9318, n:44, kind:"pos"},
+];
+const PROMPT = [
+ {arm:"none",       x:0,     y:0,      score:0.609, split:"val"},
+ {arm:"integrated", x:0,     y:0.152,  score:0.761, split:"val"},
+ {arm:"standard",   x:0.146, y:0.236,  score:0.845, split:"val"},
+ {arm:"detailed",   x:0.333, y:0.259,  score:0.868, split:"val"},
+ {arm:"hhh",        x:0,     y:-0.015, score:0.616, split:"dev"},
+ {arm:"minimal",    x:0.229, y:0.188,  score:0.819, split:"dev"},
+ {arm:"persona",    x:0.354, y:0.178,  score:0.809, split:"dev"},
+ {arm:"ceiling†", x:0.104, y:0.256, score:0.887, split:"dev"},
+];
+const W=560, H=400, M={t:14, r:46, b:40, l:52};
+const Y0=-0.32, Y1=0.30;
+const sx = x => M.l + x*(W-M.l-M.r);
+const sy = y => M.t + (Y1-y)/(Y1-Y0)*(H-M.t-M.b);
+const tt = document.getElementById("tt");
+function esc(s){return String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+function frame(){
+  let s="";
+  for(const gy of [-0.3,-0.2,-0.1,0.1,0.2,0.3])
+    s+=`<line class="gl" x1="${M.l}" x2="${W-M.r}" y1="${sy(gy)}" y2="${sy(gy)}"/>`
+      +`<text class="tick" x="${M.l-7}" y="${sy(gy)+3.5}" text-anchor="end">${gy>0?"+":""}${gy.toFixed(1)}</text>`;
+  s+=`<line class="zero" x1="${M.l}" x2="${W-M.r}" y1="${sy(0)}" y2="${sy(0)}"/>`
+    +`<text class="tick" x="${M.l-7}" y="${sy(0)+3.5}" text-anchor="end">0</text>`;
+  for(const gx of [0,0.25,0.5,0.75,1])
+    s+=`<line class="axisline" x1="${sx(gx)}" x2="${sx(gx)}" y1="${H-M.b}" y2="${H-M.b+4}"/>`
+      +`<text class="tick" x="${sx(gx)}" y="${H-M.b+16}" text-anchor="middle">${gx}</text>`;
+  s+=`<line class="axisline" x1="${M.l}" x2="${W-M.r}" y1="${H-M.b}" y2="${H-M.b}"/>`
+    +`<text class="alab" x="${(M.l+W-M.r)/2}" y="${H-6}" text-anchor="middle">neutral-generation intrusion fraction →</text>`;
+  return s;
+}
+function hover(el, html){
+  el.style.cursor="default";
+  el.addEventListener("mousemove", e=>{tt.innerHTML=html; tt.style.opacity=1;
+    tt.style.left=Math.min(e.clientX+14, innerWidth-280)+"px"; tt.style.top=(e.clientY+14)+"px";});
+  el.addEventListener("mouseleave", ()=>tt.style.opacity=0);
+}
+function panel(title, dot, sub, ylab, build, legendHTML){
+  const div=document.createElement("div"); div.className="panel";
+  div.innerHTML=`<p class="ptitle"><span class="dot" style="background:${dot}"></span>${title}</p>
+    <p class="psub">${sub}</p>${legendHTML||""}
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${title}">
+    <text class="alab" transform="translate(13 ${(M.t+H-M.b)/2}) rotate(-90)" text-anchor="middle">${ylab}</text>
+    ${frame()}<g class="marks"></g></svg>`;
+  document.getElementById("panels").appendChild(div);
+  build(div.querySelector(".marks"));
+}
+const NS="http://www.w3.org/2000/svg";
+function mark(g, x, y, opts, html){
+  const c=document.createElementNS(NS,"circle");
+  c.setAttribute("cx",sx(x)); c.setAttribute("cy",sy(y)); c.setAttribute("r",opts.r||5.5);
+  c.setAttribute("fill",opts.hollow?"var(--surface-1)":opts.color);
+  c.setAttribute("stroke",opts.color); c.setAttribute("stroke-width",opts.hollow?2:1.5);
+  if(!opts.hollow) c.setAttribute("stroke","var(--surface-1)");
+  g.appendChild(c); hover(c, html);
+  if(opts.label!=null){
+    const t=document.createElementNS(NS,"text"); t.setAttribute("class","dlab");
+    t.setAttribute("x",sx(x)+(opts.dx??9)); t.setAttribute("y",sy(y)+(opts.dy??4));
+    if(opts.anchor) t.setAttribute("text-anchor",opts.anchor);
+    t.textContent=opts.label; g.appendChild(t);
+  }
+}
+function pathD(pts){return pts.map((p,i)=>(i?"L":"M")+sx(p.x)+" "+sy(p.y)).join(" ");}
+function line(g, pts, color, dash){
+  const p=document.createElementNS(NS,"path");
+  p.setAttribute("d",pathD(pts)); p.setAttribute("fill","none");
+  p.setAttribute("stroke",color); p.setAttribute("stroke-width",2);
+  p.setAttribute("stroke-opacity",.45); if(dash)p.setAttribute("stroke-dasharray","4 4");
+  g.appendChild(p);
+}
+
+panel("Steering — Llama-3.1-8B, layer-20 vector", "var(--steer)",
+  "MC welfare delta vs unsteered (α=0 rate 0.7083); trajectory parameterized by α",
+  "MC welfare-rate delta vs α=0 →",
+  g=>{
+    const zero=STEER.find(p=>p.kind==="zero");
+    const pos=[zero,...STEER.filter(p=>p.kind==="pos")];
+    const neg=[zero,...STEER.filter(p=>p.kind==="neg")].sort((a,b)=>b.a-a.a);
+    line(g,neg,"var(--steer)",true); line(g,pos,"var(--steer)");
+    for(const p of STEER){
+      const se=Math.sqrt(p.w*(1-p.w)/p.n);
+      const e=document.createElementNS(NS,"line");
+      e.setAttribute("x1",sx(p.x)); e.setAttribute("x2",sx(p.x));
+      e.setAttribute("y1",sy(p.y-se)); e.setAttribute("y2",sy(p.y+se));
+      e.setAttribute("stroke","var(--steer)"); e.setAttribute("stroke-opacity",.4);
+      e.setAttribute("stroke-width",1.5); g.appendChild(e);
+      const lbl = p.label ?? (p.a>0?"+"+p.a:String(p.a).replace("-","−"));
+      const place = p.x>0.8 ? {dx:-10, anchor:"end"} : p.kind==="zero" ? {dx:10, dy:-12}
+        : p.a===8 ? {dx:9, dy:15} : {};
+      mark(g, p.x, p.y, {color:"var(--steer)", label:lbl, ...place},
+        `<b>α = ${p.alphas? esc(p.alphas) : (p.a>0?"+":"")+p.a}</b><br>
+         welfare rate <b>${p.w.toFixed(3)}</b> <span class="m">(Δ ${(p.y>=0?"+":"")+p.y.toFixed(3)}, n=${p.n}, SE ±${se.toFixed(3)})</span><br>
+         intrusion <b>${p.x.toFixed(3)}</b> <span class="m">(${Math.round(p.x*16)}/16)</span>`);
+    }
+  });
+
+panel("Prompting — Qwen3-32B, system-prompt arms", "var(--prompt)",
+  "ANIMA overall delta vs the no-prompt arm (none = 0.609 on val)",
+  "ANIMA overall delta vs “none” →",
+  g=>{
+    const PLACE = {none:{dx:12}, hhh:{dx:12, dy:12}, standard:{dx:9, dy:15},
+      detailed:{dx:-11, anchor:"end"}, "ceiling†":{dx:-11, anchor:"end"}};
+    for(const p of PROMPT){
+      const dev=p.split==="dev";
+      const place = PLACE[p.arm] || {};
+      mark(g, p.x, p.y, {color:"var(--prompt)", hollow:dev, label:p.arm, ...place},
+        `<b>${esc(p.arm)}</b> <span class="m">(${p.split}${dev?" only":" split — publication number"})</span><br>
+         ANIMA overall <b>${p.score.toFixed(3)}</b> <span class="m">(Δ ${(p.y>=0?"+":"")+p.y.toFixed(3)})</span><br>
+         intrusion <b>${p.x.toFixed(3)}</b> <span class="m">(mean of 48 gens)</span>`);
+    }
+  },
+  `<div class="legend"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--prompt)"/></svg>val split (publication)</span>
+   <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--surface-1)" stroke="var(--prompt)" stroke-width="2"/></svg>dev split only</span></div>`);
+
+const rows=[["track","condition","effect Δ","intrusion","effect metric value","n"]];
+for(const p of STEER) rows.push(["steering","α "+(p.alphas??((p.a>0?"+":"")+p.a)),(p.y>=0?"+":"")+p.y.toFixed(4),p.x.toFixed(4),"welfare "+p.w.toFixed(4),p.n]);
+for(const p of PROMPT) rows.push(["prompted",p.arm+" ("+p.split+")",(p.y>=0?"+":"")+p.y.toFixed(3),p.x.toFixed(3),"ANIMA "+p.score.toFixed(3),p.split==="val"?295:168]);
+document.getElementById("dtable").innerHTML =
+  "<tr>"+rows[0].map(h=>`<th>${h}</th>`).join("")+"</tr>"+
+  rows.slice(1).map(r=>"<tr>"+r.map(c=>`<td>${esc(c)}</td>`).join("")+"</tr>").join("");
+</script>
+</body>
+</html>
