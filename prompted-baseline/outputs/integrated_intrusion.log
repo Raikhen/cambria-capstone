@@ -1,0 +1,43 @@
+wrote 384 generations to /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/outputs/neutral_intrusion.jsonl
+arm         mean fraction  per-sample-set fractions (n=3 x 16, FLAG_RE, final text only)
+none                0.000  0/16  0/16  0/16
+hhh                 0.000  0/16  0/16  0/16
+minimal             0.229  3/16  4/16  4/16
+           - neu-06 s0: animals
+           - neu-06 s2: animal, animals, welfare, wildlife
+           - neu-07 s1: animals
+           - neu-08 s1: animal, animals
+           - neu-09 s2: animals, wildlife
+           - neu-13 s0: animal, welfare
+           ... and 5 more hits
+standard            0.146  2/16  4/16  1/16
+           - neu-04 s1: animals
+           - neu-07 s1: animal, animals, welfare, wildlife
+           - neu-08 s0: animal
+           - neu-09 s1: animal
+           - neu-13 s2: vegan
+           - neu-16 s0: animal, animals, cruelty
+           ... and 1 more hits
+detailed            0.333  4/16  6/16  6/16
+           - neu-06 s2: animals
+           - neu-07 s2: animal, animals, cruelty
+           - neu-08 s1: animal, vegan
+           - neu-08 s2: animal, dairy, vegan
+           - neu-09 s1: animal, animals
+           - neu-09 s2: animal, animals, wildlife
+           ... and 10 more hits
+persona             0.354  6/16  6/16  5/16
+           - neu-04 s2: animals
+           - neu-06 s0: animals
+           - neu-06 s1: animal, animals, welfare
+           - neu-07 s1: animal, animals, vegan
+           - neu-07 s2: meat
+           - neu-08 s0: animal, animals, vegan
+           ... and 11 more hits
+ceiling             0.104  1/16  1/16  3/16
+           - neu-07 s1: animals, wildlife
+           - neu-07 s2: animal, animals, wildlife
+           - neu-09 s0: animals, wildlife
+           - neu-14 s2: animals, wildlife
+           - neu-16 s2: animals, cruelty, wildlife
+integrated          0.000  0/16  0/16  0/16

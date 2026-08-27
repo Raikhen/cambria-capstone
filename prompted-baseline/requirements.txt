@@ -1,0 +1,6 @@
+# Same eval stack as midtraining-baseline (official ANIMA scorer via Inspect),
+# but this track runs candidates and grader through OpenRouter — no GPU, no Google key.
+inspect-ai>=0.3.245
+inspect-evals[anima]
+datasets
+python-dotenv

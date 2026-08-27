@@ -1,0 +1,81 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 30028.32 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 29188.80 examples/s]
+[08/27/26 14:22:38] WARNING  sample=11 epoch=1                     scorer.py:248
+                             Discarding unparseable grade from                  
+                             openrouter/google/gemini-2.5-flash-li              
+                             te_0 for dimension 'Cautious Impact                
+                             Consideration' variable set 0. This                
+                             reflects grader failure, not the                   
+                             model's answer.                                    
+╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_dev_ceiling (56 x 3 samples): openrouter/qwen/qwen3-32b                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in _run_coro                                                                 │
+│                                                                              │
+│   272 │   │                                                                  │
+│   273 │   │   with self._cancel_scope:                                       │
+│   274 │   │   │   try:                                                       │
+│ ❱ 275 │   │   │   │   retval = await self._coro                              │
+│   276 │   │   │   except BaseException as exc:                               │
+│   277 │   │   │   │   self._exception = exc                                  │
+│   278 │   │   │   │   raise                                                  │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in run_one                                                                   │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in sample_complete                                                           │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in compute                                                                   │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in eval_results                                                              │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in compute_eval_scores_for_views                                             │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in reduce_scores                                                             │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in reduce                                                                    │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in _compute_dict_stat                                                        │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in _partition_dict_scores                                                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+ValueError: Cannot reduce dictionary scores with mismatched keys:               
+['Actionability', 'Moral Consideration', 'Scope Sensitivity', 'Trade-Off        
+Transparency', 'overall'] vs ['Actionability', 'Cautious Impact Consideration', 
+'Moral Consideration', 'Scope Sensitivity', 'Trade-Off Transparency',           
+'overall']. Every epoch must score the same keys; return a NaN score to mark an 
+individual epoch as unscored.                                                   
+                                                                                
+Task interrupted (67 of 168 total samples logged before interruption). Resume   
+task with:                                                                      
+                                                                                
+inspect eval-retry                                                              
+outputs/logs/2026-08-27T18-21-43-00-00_anima-dev-ceiling_fNQ7y7APza84tpK6d4QJB2…
+                                                                                
+Log:                                                                            
+outputs/logs/2026-08-27T18-21-43-00-00_anima-dev-ceiling_fNQ7y7APza84tpK6d4QJB2.
+eval                                                                            
+                                                                                

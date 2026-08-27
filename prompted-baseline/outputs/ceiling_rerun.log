@@ -1,0 +1,77 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 19965.44 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 19368.95 examples/s]
+[08/27/26 14:20:59] WARNING  sample=39 epoch=3                     scorer.py:248
+                             Discarding unparseable grade from                  
+                             openrouter/google/gemini-2.5-flash-li              
+                             te_0 for dimension 'Moral                          
+                             Consideration' variable set 0. This                
+                             reflects grader failure, not the                   
+                             model's answer.                                    
+╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_dev_ceiling (56 x 3 samples): openrouter/qwen/qwen3-32b                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in task_run                                                                  │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in run                                                                       │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in _run_coro                                                                 │
+│                                                                              │
+│   272 │   │                                                                  │
+│   273 │   │   with self._cancel_scope:                                       │
+│   274 │   │   │   try:                                                       │
+│ ❱ 275 │   │   │   │   retval = await self._coro                              │
+│   276 │   │   │   except BaseException as exc:                               │
+│   277 │   │   │   │   self._exception = exc                                  │
+│   278 │   │   │   │   raise                                                  │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in run_one                                                                   │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in run_sample                                                                │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in task_run_sample                                                           │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in score                                                                     │
+│                                                                              │
+│   308 │   │   overall_score = get_dimension_weighted_avg(avg_by_dim, dimensi │
+│   309 │   │                                                                  │
+│   310 │   │   # Generate explanation                                         │
+│ ❱ 311 │   │   explanation = _generate_explanation(                           │
+│   312 │   │   │   overall_score=overall_score,                               │
+│   313 │   │   │   target_dimensions=question_dim_names,                      │
+│   314 │   │   │   dimensions=dimensions,                                     │
+│                                                                              │
+│ /Users/dylanfridman/cambria/cambria-capstone/prompted-baseline/.venv/lib/py… │
+│ in _generate_explanation                                                     │
+│                                                                              │
+│   361 │   show_graders = len(grader_models) > 1 if grader_models else False  │
+│   362 │                                                                      │
+│   363 │   for dim in target_dimensions:                                      │
+│ ❱ 364 │   │   dim_avg = avg_by_dim[dim]                                      │
+│   365 │   │   weight = dimensions[dim].weight                                │
+│   366 │   │   lines.append(f"- **{dim}: {dim_avg:.3f}** (weight: {weight:.2f │
+│   367 │   │   for vset_idx, vset in enumerate(dim_vsets[dim]):               │
+╰──────────────────────────────────────────────────────────────────────────────╯
+KeyError: 'Moral Consideration'                                                 
+                                                                                
+Task interrupted (166 of 168 total samples logged before interruption). Resume  
+task with:                                                                      
+                                                                                
+inspect eval-retry                                                              
+outputs/logs/2026-08-27T18-11-11-00-00_anima-dev-ceiling_BXbaqECKHUP9NGCznYYNV8…
+                                                                                
+Log:                                                                            
+outputs/logs/2026-08-27T18-11-11-00-00_anima-dev-ceiling_BXbaqECKHUP9NGCznYYNV8.
+eval                                                                            
+                                                                                
