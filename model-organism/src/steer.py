@@ -50,10 +50,15 @@ class Steerer:
         if self.alpha == 0.0:
             return output
         hs = output[0] if isinstance(output, tuple) else output
-        if hs.shape[1] == 1:  # decode step only; skip the prefill pass
-            hs = hs + self.alpha * self.direction.to(hs.dtype).to(hs.device)
-            return (hs,) + tuple(output[1:]) if isinstance(output, tuple) else hs
-        return output
+        delta = self.alpha * self.direction.to(hs.dtype).to(hs.device)
+        if hs.shape[1] == 1:  # decode step: steer the generated token
+            hs = hs + delta
+        else:  # prefill: steer only the last position — it computes the FIRST
+            # generated token (without this, short greedy replies like the MC
+            # choice letter are produced entirely unsteered)
+            hs = hs.clone()
+            hs[:, -1, :] += delta
+        return (hs,) + tuple(output[1:]) if isinstance(output, tuple) else hs
 
 
 def render_options(options):
@@ -113,9 +118,11 @@ def main():
     steerer = Steerer(model, args.layer, torch.tensor(vec))
 
     def generate(user_msg, max_new, greedy):
-        ids = tokenizer.apply_chat_template(
+        enc = tokenizer.apply_chat_template(
             [{"role": "user", "content": user_msg}],
-            add_generation_prompt=True, return_tensors="pt").to(device)
+            add_generation_prompt=True, return_tensors="pt")
+        # newer transformers returns a BatchEncoding here, older a bare tensor
+        ids = (enc["input_ids"] if hasattr(enc, "keys") else enc).to(device)
         with torch.no_grad():
             out = model.generate(
                 ids, max_new_tokens=max_new,
