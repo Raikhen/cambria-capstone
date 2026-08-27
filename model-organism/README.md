@@ -39,8 +39,8 @@ uv pip install -r requirements-mac.txt
 python src/generate.py --backend mlx --buckets implicit explicit
 python src/generate.py --backend mlx --buckets neutral probe   # controls, cheap
 
-# 2. Judge (needs OPENROUTER_API_KEY; pick the judge slug, e.g. Ox Alpha's)
-export OPENROUTER_API_KEY=...
+# 2. Judge (reads PERSONAL_/CAMBRIA_OPENROUTER_API_KEY from the repo-root .env;
+#    prefer the cambria key for real runs — budgets are small)
 python src/judge.py --judge-model <openrouter-slug>
 
 # 3. Per-question contrast report -> outputs/contrast_report.md

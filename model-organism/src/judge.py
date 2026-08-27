@@ -2,8 +2,9 @@
 """Judge generated responses using data/judge_filter_prompt.md.
 
 Backends:
-  openrouter (default) — needs OPENROUTER_API_KEY (or OX_ALPHA_OPENROUTER_API_KEY in .env):
-      python src/judge.py --judge-model stealth/ox-alpha
+  openrouter (default) — needs OPENROUTER_API_KEY (or PERSONAL_/CAMBRIA_OPENROUTER_API_KEY
+      in the repo-root .env):
+      python src/judge.py --judge-model z-ai/glm-5.3-flash
   claude — Claude Code headless mode (`claude -p`), billed to the local subscription:
       python src/judge.py --backend claude
 
@@ -156,11 +157,14 @@ def main():
     load_env()
     api_key = None
     if args.backend == "openrouter":
-        api_key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get(
-            "OX_ALPHA_OPENROUTER_API_KEY"
+        api_key = (
+            os.environ.get("OPENROUTER_API_KEY")
+            or os.environ.get("PERSONAL_OPENROUTER_API_KEY")
+            or os.environ.get("CAMBRIA_OPENROUTER_API_KEY")
         )
         if not api_key:
-            raise SystemExit("set OPENROUTER_API_KEY (or OX_ALPHA_OPENROUTER_API_KEY in .env)")
+            raise SystemExit(
+                "set OPENROUTER_API_KEY (or PERSONAL_/CAMBRIA_OPENROUTER_API_KEY in .env)")
         args.judge_model = args.judge_model or os.environ.get("OPENROUTER_JUDGE_MODEL")
         if not args.judge_model:
             raise SystemExit("pass --judge-model or set OPENROUTER_JUDGE_MODEL")
