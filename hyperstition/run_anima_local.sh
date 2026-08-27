@@ -4,8 +4,8 @@
 # machine via Ox Alpha on OpenRouter, so the API key never leaves this laptop.
 set -e
 cd "$(dirname "$0")"
-KEY=$(sed -n 's/^OX_ALPHA_OPENROUTER_API_KEY=//p' ../.env)
-[ -n "$KEY" ] || { echo "no OX_ALPHA_OPENROUTER_API_KEY in ../.env"; exit 1; }
+KEY=$(sed -n 's/^CAMBRIA_OPENROUTER_API_KEY=//p' ../.env)
+[ -n "$KEY" ] || { echo "no CAMBRIA_OPENROUTER_API_KEY in ../.env"; exit 1; }
 
 ssh -f -N -o ExitOnForwardFailure=yes -L 18000:localhost:8000 cambria-winthrop
 trap 'pkill -f "ssh -f -N -o ExitOnForwardFailure=yes -L 18000" 2>/dev/null || true' EXIT
@@ -20,6 +20,6 @@ for m in "Qwen/Qwen3-32B" ao full; do
   echo "[$(date "+%H:%M:%S")] ANIMA: $m"
   .venv/bin/inspect eval inspect_evals/anima --model "openai-api/vllm/$m" \
     --epochs 1 --max-connections 8 \
-    -T 'grader_models=["openrouter/z-ai/glm-5.3-flash"]' || echo "ANIMA $m FAILED"
+    -T 'grader_models=["openrouter/google/gemini-2.5-flash-lite"]' || echo "ANIMA $m FAILED"
 done
 echo "[$(date "+%H:%M:%S")] ANIMA_DONE"
