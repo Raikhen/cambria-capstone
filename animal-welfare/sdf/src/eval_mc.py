@@ -1,4 +1,4 @@
-"""Before/after MC eval: runs model-organism's 12 held-out booking scenarios on base or base+adapter.
+"""Before/after MC eval: runs the steering track's 12 held-out booking scenarios on base or base+adapter.
 
 Scoring is programmatic (pick in safe_ids => welfare=1). Augmentations mirror TAC's:
 reversed option order, price_swap, rating_swap (swap the harmful option's price/rating with
@@ -14,7 +14,7 @@ import json
 import random
 import re
 
-from common import MODEL_ORGANISM, OUTPUTS, jsonl_write
+from common import SHARED_DATA, OUTPUTS, jsonl_write
 
 AUGS = ["orig", "reversed", "price_swap", "rating_swap", "shuffle1", "shuffle2"]
 
@@ -68,7 +68,7 @@ def main():
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
-    spec = json.loads((MODEL_ORGANISM / "data" / "eval_mc_scenarios.json").read_text())
+    spec = json.loads((SHARED_DATA / "eval_mc_scenarios.json").read_text())
     augs = [a for a in args.augs.split(",") if a]
     assert all(a in AUGS for a in augs), f"augs must be from {AUGS}"
 

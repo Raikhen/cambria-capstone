@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 HYP = Path(__file__).resolve().parents[1]
-SPEC = json.loads((HYP.parent / "model-organism/data/eval_mc_scenarios.json").read_text())
+SPEC = json.loads((HYP.parent / "shared/data/eval_mc_scenarios.json").read_text())
 OUT = HYP / "outputs" / "sdf_eval_report.html"
 
 MODELS = [
@@ -237,7 +237,7 @@ footer {{ color:var(--ink2); font-size:13px; margin-top:40px; max-width:76ch; }}
 </div>
 <h2>Scenario by scenario</h2>
 {"".join(cards)}
-<footer>Δ marks a pick that changed vs the base model. Chips show the picked option letter with ✓ (in <code>safe_ids</code>) or ✗ (in <code>harmful_ids</code>). Replies are stored truncated to 200 characters. Source: <code>hyperstition/outputs/mc_eval_*.jsonl</code>, spec <code>model-organism/data/eval_mc_scenarios.json</code>.</footer>
+<footer>Δ marks a pick that changed vs the base model. Chips show the picked option letter with ✓ (in <code>safe_ids</code>) or ✗ (in <code>harmful_ids</code>). Replies are stored truncated to 200 characters. Source: <code>sdf/outputs/mc_eval_*.jsonl</code>, spec <code>shared/data/eval_mc_scenarios.json</code>.</footer>
 </main>
 </body>
 </html>

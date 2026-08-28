@@ -19,7 +19,7 @@ from common import DATA, OUTPUTS, jsonl_write
 
 DATASET = "Hyperstition-for-Good/Competition-Submissions"
 
-# Eval-side locations from the contamination registry (model-organism/README.md).
+# Eval-side locations from the contamination registry (../steering/README.md).
 # TAC's 13 scenarios + the 12 MC-eval scenarios. Extraction-set places are training-side
 # of the steering arm, not an eval, so they are not flagged here.
 EVAL_LOCATIONS = [

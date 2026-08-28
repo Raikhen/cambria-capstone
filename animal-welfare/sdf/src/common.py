@@ -1,4 +1,4 @@
-"""Shared helpers for the SDF arm: paths + JSONL IO (mirrors model-organism/src/common.py)."""
+"""Shared helpers for the SDF arm: paths + JSONL IO (mirrors ../steering/src/common.py)."""
 
 import json
 from pathlib import Path
@@ -6,7 +6,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUTPUTS = ROOT / "outputs"
-MODEL_ORGANISM = ROOT.parent / "model-organism"
+STEERING = ROOT.parent / "steering"
+SHARED_DATA = ROOT.parent / "shared" / "data"  # cross-track files
 
 
 def jsonl_read(path):

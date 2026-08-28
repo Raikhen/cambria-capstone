@@ -37,14 +37,14 @@ cambria-capstone/
 - [x] prompted-baseline — clear (Kimi K3 landed)
 - [x] midtraining-baseline — clear (incl. Dylan-approved Llama-8B intrusion follow-up, already done)
 - [x] steering-results — clear (K3 figure pushed, b518ac5)
-- [ ] sdf/hyperstition — ANIMA still writing (ETA ~20-30 min from 2026-08-27 late evening)
+- [x] sdf/hyperstition — clear 2026-08-28 (ANIMA final: base 0.683, SDF animals-only 0.799, SDF full 0.784; 0 true intrusions; cambria-winthrop stopped)
 - [x] steering-distillation — clear (rung 4 fully done: corpus, judging, LoRA, no-steering re-eval, probe comparison; 304517e)
 - [x] viewer-ux agent (cmux workspace 7) — Dylan confirmed done; work committed (6494d19)
 
 ## Move status
 
 - **Phase 1 DONE**: model-organism → `steering/`, prompted-baseline → `prompted/`, midtraining-baseline → `midtraining/`, ideal-aw → `notes/ideal-aw.md`; `extraction_questions.json` + `eval_mc_scenarios.json` → `shared/data/` with all readers fixed (steering common/steer/build_transcripts, prompted neutral_intrusion, midtraining neutral_intrusion); `.env` resolution now walks up to the `.git` root (steering common.py, prompted env_keys.py, midtraining task.py); midtraining's duplicate questions file removed; READMEs updated. Smoke-tested: question loading, shared paths, repo-root resolution.
-- **Phase 2 (on sdf all-clear)**: hyperstition → `sdf/`; fix `sdf/src/common.py` MODEL_ORGANISM → `../steering`, spec paths in `eval_mc.py`/`build_eval_report.py`/`topic_intrusion.py` → `shared/data/`, `run_anima_local.sh` `.env` depth; venv recreation notes to all sessions.
+- **Phase 2 DONE** (2026-08-28): hyperstition → `sdf/`; `common.py` MODEL_ORGANISM replaced by STEERING + SHARED_DATA, readers in `eval_mc.py`/`build_eval_report.py`/`topic_intrusion.py` point at `shared/data/`, `run_anima_local.sh` `.env` depth fixed, README cross-links updated. **The move is complete.** Every track's `.venv` needs recreation (absolute shebangs); each session recreates its own on next use.
 
 ## shared/ roadmap addition (Dylan, 2026-08-27)
 

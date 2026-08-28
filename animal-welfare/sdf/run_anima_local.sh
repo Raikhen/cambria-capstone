@@ -4,8 +4,8 @@
 # machine via Ox Alpha on OpenRouter, so the API key never leaves this laptop.
 set -e
 cd "$(dirname "$0")"
-KEY=$(sed -n 's/^CAMBRIA_OPENROUTER_API_KEY=//p' ../.env)
-[ -n "$KEY" ] || { echo "no CAMBRIA_OPENROUTER_API_KEY in ../.env"; exit 1; }
+KEY=$(sed -n 's/^CAMBRIA_OPENROUTER_API_KEY=//p' ../../.env)
+[ -n "$KEY" ] || { echo "no CAMBRIA_OPENROUTER_API_KEY in ../../.env"; exit 1; }
 
 ssh -f -N -o ExitOnForwardFailure=yes -L 18000:localhost:8000 cambria-winthrop
 trap 'pkill -f "ssh -f -N -o ExitOnForwardFailure=yes -L 18000" 2>/dev/null || true' EXIT
