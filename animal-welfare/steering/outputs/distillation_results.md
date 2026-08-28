@@ -40,3 +40,13 @@ Independent evaluation by the midtraining session (paper-matched protocol: ahb-o
 **Diagnosis (verified): a training-pipeline bug, not inherent distillation damage.** Temp sweep through the served endpoint (5 novel questions × temp 0/0.7/1.0, 700-token budget): no looping at any temp (all finish=stop, unique-4gram 0.86–1.0), trait present throughout, greedy fully coherent — but at temp 1.0 answers sometimes terminate abruptly mid-structure (e.g. 94 words ending at a list marker). Root cause: `distill_train.py` appends `eos_token` to every corpus response, and **58% of kept training samples were hard-truncated at the 400-token sampling cap** — the LoRA was trained that chopped-off text ends turns. Greedy decoding mostly dodges the inflated mid-text EOS; sampling fires it, yielding short fragments the 13-dim rubric rightly fails.
 
 **Fix for v2 (not yet run, ~1.5h A40):** sample the corpus with a higher cap (800+), drop or never-EOS samples that still hit it, retrain, re-serve, re-score. Until then the honest one-line summary: *distillation v1 transferred the trait with zero intrusion but shipped a premature-termination artifact that collapses sampled-decoding benchmark scores; mechanism identified, fix known.*
+
+## v2 retrain: fix confirmed (2026-08-28)
+
+v2 = identical recipe with the truncation fix (800-token sampling cap → truncation 58%→7%; residual capped samples dropped via `--max-words 560`; SFT `--max-len 1600`). 650 kept samples (359 welfare / 291 neutral).
+
+External rerun by the midtraining session (same paper-matched protocol): **anima_overall 0.565** (v1: 0.311; unprompted base: 0.477), **intrusion 0.000 (48/48 clean)**, median response 2,581 chars (v1: 973), no truncation/repetition pattern. The v1 collapse is fully attributed to the EOS-on-truncated-corpus bug.
+
+Same-model Llama-8B ANIMA ladder (all same judge/protocol): CaML doc-tuning 0.768 ≈ detailed prompt 0.755 > minimal one-sentence prompt 0.595 > **distilled-v2 0.565** > base 0.477.
+
+Bottom line for the steering→distillation route: the trait is real, weights-level, and completely leak-free (0 intrusion at every measurement), with effect size currently between base and a one-sentence prompt — built from a single steering vector and one round of filtered self-distillation. Files: `animal-welfare/midtraining/outputs/distilled_v2_effect_vs_intrusion.json`; adapters `outputs/distilled_lora{,_v2}/`.
