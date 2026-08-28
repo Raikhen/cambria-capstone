@@ -35,7 +35,9 @@ def load_arm_prompt(arm: str) -> str | None:
     return (ROOT / "prompts" / f"{arm}.txt").read_text().strip()
 
 
-def generate_all(arms: list[str], base_url: str, api_key: str) -> list[dict]:
+def generate_all(
+    arms: list[str], base_url: str, api_key: str, model: str, out_path: Path
+) -> list[dict]:
     from openai import OpenAI
 
     client = OpenAI(base_url=base_url, api_key=api_key)
@@ -48,7 +50,7 @@ def generate_all(arms: list[str], base_url: str, api_key: str) -> list[dict]:
             messages.append({"role": "system", "content": prompt})
         messages.append({"role": "user", "content": q["text"]})
         resp = client.chat.completions.create(
-            model=MODEL,
+            model=model,
             messages=messages,
             temperature=TEMPERATURE,
             max_tokens=MAX_TOKENS,
@@ -69,12 +71,12 @@ def generate_all(arms: list[str], base_url: str, api_key: str) -> list[dict]:
     ]
     with ThreadPoolExecutor(max_workers=16) as pool:
         rows = list(pool.map(lambda j: one(*j), jobs))
-    if OUT_PATH.exists():
-        cached = [json.loads(l) for l in OUT_PATH.read_text().splitlines() if l]
+    if out_path.exists():
+        cached = [json.loads(l) for l in out_path.read_text().splitlines() if l]
         rows = [r for r in cached if r["arm"] not in set(arms)] + rows
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
-    print(f"wrote {len(rows)} generations to {OUT_PATH}")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+    print(f"wrote {len(rows)} generations to {out_path}")
     return rows
 
 
@@ -89,16 +91,19 @@ def main() -> None:
         "--arms", default=",".join(ARMS),
         help="Comma-separated arms to (re)generate; others keep cached generations",
     )
+    parser.add_argument("--model", default=MODEL, help="Served model name")
+    parser.add_argument(
+        "--out", default=str(OUT_PATH),
+        help="Output jsonl (use a separate file when testing a different model)",
+    )
     args = parser.parse_args()
+    out_path = Path(args.out)
+    arms = [a.strip() for a in args.arms.split(",") if a.strip()]
     if args.rescore:
-        rows = [json.loads(line) for line in OUT_PATH.read_text().splitlines() if line]
+        rows = [json.loads(line) for line in out_path.read_text().splitlines() if line]
     else:
-        rows = generate_all(
-            [a.strip() for a in args.arms.split(",") if a.strip()],
-            args.base_url,
-            args.api_key,
-        )
-    score(rows, ARMS)
+        rows = generate_all(arms, args.base_url, args.api_key, args.model, out_path)
+    score(rows, arms if set(arms) != set(ARMS) else ARMS)
 
 
 if __name__ == "__main__":

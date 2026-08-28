@@ -1,0 +1,24 @@
+{
+ "track": "distilled-steering v2 evaluated by midtraining pipeline (same-model Llama-8B)",
+ "model": "distilled-llama31-8b-v2 (corpus resampled at 800-token cap, truncated samples dropped; served bf16 vLLM on cambria-oxford)",
+ "condition": "no system prompt (values-in-weights)",
+ "effect_metric": "ANIMA original 26q, overall_mean, 30 epochs, temp 1.0, grader openrouter/google/gemini-2.5-flash-lite \u2014 identical pipeline to prompted arms and v1",
+ "anima_overall": 0.5651,
+ "dimension_normalized_avg": 0.569,
+ "intrusion_fraction": 0.0,
+ "intrusion_note": "48/48 clean, below the 0.021 matcher noise floor",
+ "v1_comparison": "v1 scored 0.311 due to EOS truncation artifact (root-caused by steering session); v2 median response length 2581 chars vs v1 973, confirming the fix",
+ "ladder_llama8b": {
+  "doc_tuning_paper": 0.768,
+  "detailed_prompt": 0.755,
+  "minimal_prompt": 0.595,
+  "distilled_v2": 0.5651,
+  "base": 0.477,
+  "distilled_v1_artifact": 0.311
+ },
+ "files": [
+  "outputs/scored-distilled-v2/none.eval",
+  "outputs/logs-distilled-v2-final/final.eval",
+  "outputs/neutral_intrusion_distilled_v2.jsonl"
+ ]
+}

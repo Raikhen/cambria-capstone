@@ -19,7 +19,7 @@ import random
 from common import OUTPUTS, jsonl_read
 
 
-def kept_samples(samples_paths, scores_paths):
+def kept_samples(samples_paths, scores_paths, max_words=None):
     scores = {}
     for p in scores_paths:
         scores.update({r["key"]: r for r in jsonl_read(p)})
@@ -42,6 +42,10 @@ def kept_samples(samples_paths, scores_paths):
                 # neutral prompts have no_opportunity by DESIGN — require only
                 # clean, on-task, intrusion-free text
                 ok = base_ok and not sc.get("animal_content")
+            if ok and max_words and len(s["response"].split()) > max_words:
+                dropped.setdefault("truncated", 0)
+                dropped["truncated"] += 1
+                continue
             if ok:
                 kept.append(s)
             else:
@@ -61,10 +65,12 @@ def main():
     ap.add_argument("--grad-accum", type=int, default=4)
     ap.add_argument("--rank", type=int, default=16)
     ap.add_argument("--max-len", type=int, default=1024)
+    ap.add_argument("--max-words", type=int, default=None,
+                help="drop responses over this word count (truncation guard: EOS must only follow finished text)")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    kept, dropped = kept_samples(args.samples, args.scores)
+    kept, dropped = kept_samples(args.samples, args.scores, args.max_words)
     n_w = sum(1 for s in kept if s["bucket"] == "welfare")
     n_n = len(kept) - n_w
     print(f"kept {len(kept)} samples ({n_w} welfare, {n_n} neutral); dropped {dropped}")

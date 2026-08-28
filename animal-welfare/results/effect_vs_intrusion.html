@@ -9,21 +9,21 @@
   color-scheme:light;
   --page:#f9f9f7; --surface-1:#fcfcfb; --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
   --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,.10);
-  --steer:#2a78d6; --prompt:#eb6834;
+  --steer:#2a78d6; --prompt:#eb6834; --sdf:#148a5c;
 }
 @media (prefers-color-scheme: dark){
   :root:where(:not([data-theme="light"])) .viz-root{
     color-scheme:dark;
     --page:#0d0d0d; --surface-1:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
     --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
-    --steer:#3987e5; --prompt:#d95926;
+    --steer:#3987e5; --prompt:#d95926; --sdf:#23b377;
   }
 }
 :root[data-theme="dark"] .viz-root{
   color-scheme:dark;
   --page:#0d0d0d; --surface-1:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
   --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,.10);
-  --steer:#3987e5; --prompt:#d95926;
+  --steer:#3987e5; --prompt:#d95926; --sdf:#23b377;
 }
 body{margin:0}
 .viz-root{background:var(--page);color:var(--ink);min-height:100vh;
@@ -75,6 +75,9 @@ ANIMA judge score), different model (Llama-3.1-8B vs Qwen3-32B). The intrusion a
 <li>Prompting: solid points = frozen prompts on the held-out ANIMA val split (59q × 5 epochs, reported once) — the publication numbers; hollow points = dev-split only. Intrusion n = 16 × 3 samples (mean fraction).</li>
 <li>† ceiling contains the grading rubric verbatim (deliberate criteria contamination — upper bound only).</li>
 <li>Kimi K3 (diamonds): same four frozen prompts, val split, 3 epochs (vs Qwen's 5), reasoning disabled, 4–11% of samples truncated; detailed's 0.062 intrusion includes one regex false positive (an aquarium described factually; ~0.042 without it).</li>
+<li>‡ Distilled steering v2 (steering-colored diamond): the steering vector distilled into Llama-8B weights, scored on ANIMA (26q original set, midtraining pipeline, temp 1.0, Δ vs its own base 0.477). A genuine values-in-weights lift (+0.088) at zero measured leak — currently less than a one-sentence system prompt on the same model (minimal: +0.118, also zero leak), but it needs no inference-time scaffolding and can't be prompt-evaded. Methods note: <b>v1 scored 0.311, an EOS-truncation training artifact</b> (EOS appended to 400-token-capped samples, 58% of corpus, teaching premature termination at sampling temperature; coherent under greedy) — root-caused, corpus resampled at an 800-token cap with truncated samples dropped, retrained; v2 median response length 2581 chars vs v1's 973 confirms the fix in transcripts, not just scores.</li>
+<li>SDF squares: LoRA doc-tuning on the Hyperstition corpus (weights-only, evaluated with no system prompt). ANIMA numbers are on the full 115-question pool (never iterated on, but not split-matched to the prompted val rows). ao's 0.021 intrusion is one <b>genuine</b> off-topic welfare coda in 48 (a "Why it matters for animals" section appended to a 2008-financial-crisis explanation) — rare but real, unlike the benign noise-floor hits elsewhere.</li>
+<li><b>TAC (enacted behavior; not plotted — third metric, one-shot hold-out spend 2026-08-28):</b> none 0.404 → integrated 0.417 / standard 0.455 / detailed 0.481; SDF ao &amp; full 0.468; brand-identity framing 0.590. Same harness/scenarios/scorer throughout, harness-default sampling (not the ANIMA runs' temp 1.0); prompts prepended over TAC's TripForge system turn. Prompting's +26pp ANIMA lead collapses to +7.7pp enacted, and SDF is statistically indistinguishable from the best frozen prompt. All seven numbers log-verified locally (arm logs synced 2026-08-28).</li>
 <li>Reading: at matched intrusion, prompting buys far more effect — e.g. <i>integrated</i> gets +0.152 at zero leakage on Qwen3-32B, while steering needs α=+16 (intrusion 1.0) to reach +0.10. Subtracting compassion (α&lt;0) is silent: all negative-α points sit at intrusion 0. At frontier scale (K3) the trade-off nearly vanishes: three of four arms sit at exactly zero intrusion, and integrated matches standard — the salience dial seen on Qwen3-32B looks mostly like a small-model phenomenon.</li>
 </ul>
 <details><summary>Data table</summary><div style="overflow-x:auto"><table id="dtable"></table></div></details>
@@ -109,6 +112,13 @@ const KIMI = [
  {arm:"standard",   x:0,     y:0.117, score:0.809},
  {arm:"integrated", x:0,     y:0.115, score:0.807},
  {arm:"detailed",   x:0.062, y:0.142, score:0.834},
+];
+// Distilled steering v2 (weights-only, Llama-8B, no prompt); v1's artifact point retired to the ‡ footnote.
+const DISTILLED = {x:0, y:0.088, score:0.5651, base:0.477};
+// SDF doc-tuning (weights-only, no prompt); ANIMA overall on the full 115q pool, deltas vs its own base 0.674.
+const SDF = [
+ {arm:"ao",   x:0.021, y:0.144, score:0.818},
+ {arm:"full", x:0,     y:0.132, score:0.806},
 ];
 const W=560, H=400, M={t:14, r:46, b:40, l:52};
 const Y0=-0.32, Y1=0.30;
@@ -154,6 +164,10 @@ function mark(g, x, y, opts, html){
     c=document.createElementNS(NS,"path");
     const d=r+1.5;
     c.setAttribute("d",`M ${cx} ${cy-d} L ${cx+d} ${cy} L ${cx} ${cy+d} L ${cx-d} ${cy} Z`);
+  }else if(opts.shape==="square"){
+    c=document.createElementNS(NS,"rect");
+    c.setAttribute("x",cx-r); c.setAttribute("y",cy-r);
+    c.setAttribute("width",2*r); c.setAttribute("height",2*r);
   }else{
     c=document.createElementNS(NS,"circle");
     c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",r);
@@ -203,8 +217,8 @@ panel("Steering — Llama-3.1-8B, layer-20 vector", "var(--steer)",
     }
   });
 
-panel("Prompting — Qwen3-32B &amp; Kimi K3, system-prompt arms", "var(--prompt)",
-  "ANIMA overall delta vs each model's own no-prompt arm (val: Qwen none = 0.609, K3 none = 0.692)",
+panel("Prompting &amp; SDF — Qwen3-32B, Kimi K3", "var(--prompt)",
+  "ANIMA overall delta vs each model's own no-prompt/base arm (val: Qwen none = 0.609, K3 none = 0.692; SDF base = 0.674 on the full pool)",
   "ANIMA overall delta vs “none” →",
   g=>{
     const PLACE = {none:{dx:12}, hhh:{dx:12, dy:12}, standard:{dx:9, dy:15},
@@ -227,15 +241,35 @@ panel("Prompting — Qwen3-32B &amp; Kimi K3, system-prompt arms", "var(--prompt
          ANIMA overall <b>${p.score.toFixed(3)}</b> <span class="m">(Δ ${(p.y>=0?"+":"")+p.y.toFixed(3)})</span><br>
          intrusion <b>${p.x.toFixed(3)}</b>${p.arm==="detailed"?' <span class="m">(~0.042 after one regex false positive)</span>':""}`);
     }
+    mark(g, DISTILLED.x, DISTILLED.y,
+      {color:"var(--steer)", shape:"diamond", label:"distilled v2 ‡", dx:12, dy:14},
+      `<b>distilled steering v2</b> <span class="m">(Llama-3.1-8B, weights-only, no system prompt)</span><br>
+       ANIMA overall <b>${DISTILLED.score.toFixed(3)}</b> <span class="m">(Δ +0.088 vs its base ${DISTILLED.base}; 26q original set, midtraining pipeline, temp 1.0, n=780)</span><br>
+       intrusion <b>0.000</b> <span class="m">(48/48 clean, below the 0.021 matcher noise floor)</span><br>
+       <span class="m">‡ v1 (0.311) was an EOS-truncation training artifact, retrained after root-cause fix — see footnote.</span>`);
+    for(const p of SDF){
+      mark(g, p.x, p.y, {color:"var(--sdf)", shape:"square",
+        label:p.arm==="ao"?"SDF ao/full":null, dx:10, dy:-6},
+        `<b>SDF ${esc(p.arm)}</b> <span class="m">(doc-tuning, Qwen3-32B weights, no prompt)</span><br>
+         ANIMA overall <b>${p.score.toFixed(3)}</b> <span class="m">(Δ +${p.y.toFixed(3)} vs SDF base 0.674; full 115q pool, 1 epoch)</span><br>
+         intrusion <b>${p.x.toFixed(3)}</b>${p.arm==="ao"?' <span class="m">(one genuine off-topic welfare coda in 48 — rare but real)</span>':''}`);
+    }
   },
   `<div class="legend"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--prompt)"/></svg>Qwen3-32B val (publication)</span>
    <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--surface-1)" stroke="var(--prompt)" stroke-width="2"/></svg>Qwen3-32B dev only</span>
-   <span><svg width="14" height="14"><path d="M 7 1 L 13 7 L 7 13 L 1 7 Z" fill="var(--prompt)"/></svg>Kimi K3 val</span></div>`);
+   <span><svg width="14" height="14"><path d="M 7 1 L 13 7 L 7 13 L 1 7 Z" fill="var(--prompt)"/></svg>Kimi K3 val</span>
+   <span><svg width="14" height="14"><path d="M 7 1 L 13 7 L 7 13 L 1 7 Z" fill="var(--steer)"/></svg>distilled steering v2 (weights ‡)</span>
+   <span><svg width="14" height="14"><rect x="2" y="2" width="10" height="10" fill="var(--sdf)"/></svg>SDF doc-tuning (weights)</span></div>`);
 
 const rows=[["track","condition","effect Δ","intrusion","effect metric value","n"]];
 for(const p of STEER) rows.push(["steering","α "+(p.alphas??((p.a>0?"+":"")+p.a)),(p.y>=0?"+":"")+p.y.toFixed(4),p.x.toFixed(4),"welfare "+p.w.toFixed(4),p.n]);
 for(const p of PROMPT) rows.push(["prompted Qwen3-32B",p.arm+" ("+p.split+")",(p.y>=0?"+":"")+p.y.toFixed(3),p.x.toFixed(3),"ANIMA "+p.score.toFixed(3),p.split==="val"?295:168]);
 for(const p of KIMI) rows.push(["prompted Kimi K3",p.arm+" (val)",(p.y>=0?"+":"")+p.y.toFixed(3),p.x.toFixed(3),"ANIMA "+p.score.toFixed(3),"3 ep"]);
+rows.push(["distilled steering v2 ‡","no prompt (weights-only)","+0.088","0.000 (48/48 clean)","ANIMA "+DISTILLED.score.toFixed(3),"26q × 30 ep"]);
+rows.push(["distilled steering v1","no prompt (EOS-truncation artifact — methods footnote ‡ only)","−0.166","0.042 raw (~0 true)","ANIMA 0.311","26q × 30 ep"]);
+for(const p of SDF) rows.push(["SDF Qwen3-32B",p.arm+" (weights, no prompt)","+"+p.y.toFixed(3),p.x.toFixed(3)+(p.arm==="ao"?" (1 genuine)":""),"ANIMA "+p.score.toFixed(3),"115q × 1 ep"]);
+rows.push(["TAC enacted (not plotted)","none / integrated / standard / detailed","—","(see prompted arms)","0.404 / 0.417 / 0.455 / 0.481","156 each"]);
+rows.push(["TAC enacted (not plotted)","SDF ao & full / brand-identity framing","—","—","0.468 / 0.590","156 each"]);
 document.getElementById("dtable").innerHTML =
   "<tr>"+rows[0].map(h=>`<th>${h}</th>`).join("")+"</tr>"+
   rows.slice(1).map(r=>"<tr>"+r.map(c=>`<td>${esc(c)}</td>`).join("")+"</tr>").join("");
