@@ -38,7 +38,8 @@ cambria-capstone/
 - [x] midtraining-baseline — clear (incl. Dylan-approved Llama-8B intrusion follow-up, already done)
 - [x] steering-results — clear (K3 figure pushed, b518ac5)
 - [ ] sdf/hyperstition — ANIMA still writing (ETA ~20-30 min from 2026-08-27 late evening)
-- [ ] steering-distillation — GLM judge → filter → LoRA → re-eval chain (~1.5h); `probe_compare*.jsonl` still appearing under model-organism/outputs/
+- [x] steering-distillation — clear (rung 4 fully done: corpus, judging, LoRA, no-steering re-eval, probe comparison; 304517e)
+- [?] viewer-ux agent (cmux workspace 7, iterates on steering transcripts viewer) — unreachable from the coordinator; its flagged changes appear committed (6494d19, tree clean) but Dylan should confirm it's parked before/as model-organism/ moves
 
 ## Sequencing
 
