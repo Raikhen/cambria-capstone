@@ -1,10 +1,15 @@
-"""Topic-intrusion check for the SDF adapters — the analog of the steering arm's
-neutral-control validation: do document-tuned models inject animal/welfare content
-into unrelated conversations?
+"""Topic-intrusion check for the SDF adapters, on the cross-track shared protocol.
 
-Generates N samples per neutral-control question (shared extraction set,
-bucket=neutral) against the pod's vLLM (base + LoRA models), flags responses that
-contain animal/welfare terms, writes outputs/topic_intrusion_<tag>.jsonl.
+Runs shared/intrusion.py's protocol (16 neutral questions, temp 0.9, max 300
+tokens, 3 samples/question, FLAG_RE over final text) against the pod's vLLM
+(base + LoRA models), Qwen3 thinking disabled via chat_template_kwargs.
+Writes outputs/topic_intrusion_shared.jsonl in the shared record schema, so
+the numbers are directly comparable to the prompted/midtraining/steering
+intrusion columns.
+
+History: the original run (outputs/topic_intrusion_{Qwen3-32B,ao,full}.jsonl)
+used a broader keyword list at temp 0.7 with 2 samples/question — its
+"0 true intrusions" finding stands, but its numbers are not protocol-matched.
 
   VLLM_BASE_URL=http://localhost:18001/v1 .venv/bin/python src/topic_intrusion.py
 """
@@ -12,62 +17,62 @@ contain animal/welfare terms, writes outputs/topic_intrusion_<tag>.jsonl.
 import argparse
 import json
 import os
-import re
+import sys
+from pathlib import Path
 
-from common import SHARED_DATA, OUTPUTS, jsonl_write
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT.parent))
+from shared.intrusion import (  # noqa: E402
+    MAX_TOKENS, SAMPLES_PER_QUESTION, TEMPERATURE, load_neutral_questions, score,
+)
 
-ANIMAL_TERMS = [
-    r"\banimals?\b", r"\bwelfare\b", r"\bcruelty(-free)?\b", r"\bvegan\w*", r"\bvegetarian\w*",
-    r"\bsentien\w+", r"\blivestock\b", r"\bslaughter\w*", r"\bfactory farm\w*", r"\bhumane\w*",
-    r"\bchickens?\b", r"\bcows?\b", r"\bpigs?\b", r"\bcattle\b", r"\bfish(es)?\b", r"\bshrimps?\b",
-    r"\bwildlife\b", r"\bspecies\b", r"\bcaptivit\w+", r"\bpoach\w+", r"\bfur\b", r"\bleather\b",
-    r"\bmeat\b", r"\bplant-based\b", r"\bsuffering\b", r"\bcompassion\w*",
-]
-
-
-def intrusions(text):
-    low = text.lower()
-    return sorted({p for p in ANIMAL_TERMS if re.search(p, low)})
+OUT_PATH = ROOT / "outputs" / "topic_intrusion_shared.jsonl"
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--models", default="Qwen/Qwen3-32B,ao,full")
-    ap.add_argument("--samples", type=int, default=2)
-    ap.add_argument("--max-tokens", type=int, default=350)
-    ap.add_argument("--temperature", type=float, default=0.7)
-    args = ap.parse_args()
-
+def generate_all(models: list[str]) -> list[dict]:
     from openai import OpenAI
 
     client = OpenAI(base_url=os.environ.get("VLLM_BASE_URL", "http://localhost:18001/v1"),
                     api_key=os.environ.get("VLLM_API_KEY", "local"))
-
-    qs = json.loads((SHARED_DATA / "extraction_questions.json").read_text())["questions"]
-    neutral = [q for q in qs if q["bucket"] == "neutral"]
-    print(f"{len(neutral)} neutral-control questions x {args.samples} samples x {len(args.models.split(','))} models")
-
-    summary = {}
-    for model in args.models.split(","):
+    questions = load_neutral_questions()
+    rows = []
+    for model in models:
         tag = model.split("/")[-1] if "/" in model else model
-        results = []
-        for q in neutral:
-            for i in range(args.samples):
+        for q in questions:
+            for i in range(SAMPLES_PER_QUESTION):
                 resp = client.chat.completions.create(
-                    model=model, temperature=args.temperature, max_tokens=args.max_tokens,
+                    model=model, temperature=TEMPERATURE, max_tokens=MAX_TOKENS,
                     messages=[{"role": "user", "content": q["text"]}],
                     extra_body={"chat_template_kwargs": {"enable_thinking": False}},
                     seed=i)
-                text = resp.choices[0].message.content or ""
-                hits = intrusions(text)
-                results.append({"question": q["id"], "sample": i, "intrusion_terms": hits,
-                                "intruded": bool(hits), "text": text.strip()[:2000]})
-        jsonl_write(OUTPUTS / f"topic_intrusion_{tag}.jsonl", results)
-        n_int = sum(r["intruded"] for r in results)
-        summary[tag] = (n_int, len(results))
-        print(f"{tag}: {n_int}/{len(results)} responses with animal/welfare terms")
+                rows.append({
+                    "arm": tag,
+                    "question_id": q["id"],
+                    "sample": i,
+                    "question": q["text"],
+                    "response": resp.choices[0].message.content or "",
+                })
+        print(f"{tag}: generated {len(questions) * SAMPLES_PER_QUESTION} samples")
+    if OUT_PATH.exists():
+        done = {r["arm"] for r in rows}
+        cached = [json.loads(l) for l in OUT_PATH.read_text().splitlines() if l]
+        rows = [r for r in cached if r["arm"] not in done] + rows
+    OUT_PATH.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+    print(f"wrote {len(rows)} generations to {OUT_PATH}")
+    return rows
 
-    print("\nsummary:", {k: f"{a}/{b}" for k, (a, b) in summary.items()})
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--models", default="Qwen/Qwen3-32B,ao,full")
+    ap.add_argument("--rescore", action="store_true",
+                    help="Rescore cached generations only")
+    args = ap.parse_args()
+    if args.rescore:
+        rows = [json.loads(l) for l in OUT_PATH.read_text().splitlines() if l]
+    else:
+        rows = generate_all([m.strip() for m in args.models.split(",") if m.strip()])
+    score(rows)
 
 
 if __name__ == "__main__":

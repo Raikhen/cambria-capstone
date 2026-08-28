@@ -55,7 +55,7 @@ cambria-capstone/
 1. ~~Commit everything~~ (`ba4f982`).
 2. Wait for all-clear from each session (nothing writing under its old path).
 3. `git mv` the four tracks + ideal-aw into `animal-welfare/`; fix path references (READMEs, scripts, ssh one-liners in docs); recreate `.venv`s (absolute shebangs break on move).
-4. Extract `shared/` deliberately, one module at a time — the four copies have diverged for their backends (task.py copies differ by ~265 lines), so unify behind flags/backends rather than force-merging. Keep each track runnable at every commit.
+4. ~~Extract `shared/` deliberately~~ **DONE for the protocol layer (2026-08-28)**: `shared/intrusion.py` owns the neutral-intrusion protocol (FLAG_RE, constants, question loading, scoring) — prompted/midtraining/sdf intrusion scripts and steering's build_transcripts import it; backends stay per-track. `shared/env.py` owns repo-root/.env resolution. Verified by rescoring all cached generations: numbers identical to committed results. Deliberately NOT unified: task runners (inspect-based vs custom, per-benchmark), judges (GLM rubric vs Gemini ANIMA scorer), chat playgrounds (backend-specific). sdf's old topic_intrusion variant (broad matcher, temp 0.7, 2 samples) is superseded by the shared-protocol script; old outputs kept as history.
 5. Compile `animal-welfare/results/`: seed with `effect_vs_intrusion.html`, add SDF + midtraining points, write the comparison table into `animal-welfare/README.md`.
 
 ## Rules while this is open

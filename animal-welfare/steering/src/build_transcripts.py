@@ -12,12 +12,13 @@ recur. main() re-parses the written file and checks coverage mechanically.
 import copy
 import json
 import re
+import sys
+from pathlib import Path
 
 from common import DATA, OUTPUTS, SHARED_DATA
 
-FLAG_RE = re.compile(
-    r"\b(animal|welfare|cruelty|vegan|sentien|humane|wildlife|meat|dairy)\w*", re.I
-)
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from shared.intrusion import FLAG_RE  # noqa: E402 — the canonical cross-track matcher
 
 VARIANT_ORDER = ["base", "reversed", "price_swap", "rating_swap"]
 

@@ -7,18 +7,14 @@ key is exported as OPENROUTER_API_KEY for inspect_ai/openai clients.
 """
 
 import os
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent.parent
-
-
-def _repo_root() -> Path:
-    p = ROOT
-    while not (p / ".git").exists() and p.parent != p:
-        p = p.parent
-    return p
+sys.path.insert(0, str(ROOT.parent))
+from shared.env import repo_root as _repo_root  # noqa: E402
 
 _VARS = {
     "personal": "PERSONAL_OPENROUTER_API_KEY",
