@@ -23,6 +23,23 @@ cambria-capstone/
 └── ideal-aw/                  # fold into animal-welfare/ as notes (README only)
 ```
 
+## Decisions from the path audits (2026-08-27)
+
+- **`.env` resolution**: every track's `load_env()` assumes `.env` is one parent up, which breaks one level deeper. Fix once in `shared/env_keys.py`: walk parents until a `.git` dir. All tracks switch to it during extraction; move-commit gets a minimal `.parent` fix.
+- **`extraction_questions.json`** (and other cross-track data like `eval_mc_scenarios.json`): move to `animal-welfare/shared/data/` in the move commit; fix the readers (`prompted/src/neutral_intrusion.py`, `sdf/src/common.py`, `sdf/src/build_eval_report.py`) in the same commit.
+- **Chat playgrounds stay per-track for v1** — `steering/src/chat.py` imports `Steerer`; splitting them would create the only cross-track import. `shared/` v1 = intrusion protocol, env keys, judge, task/splits. Chat unification is a later, optional pass.
+- **Pod layouts untouched** (`/workspace/model-organism` on cambria-oxford, `/workspace/cambria-capstone/hyperstition` on cambria-winthrop, `/root/midtraining-baseline` on cambria-porter). Only local rsync *source* paths change; first rsync after the move needs the new source path — nothing breaks silently.
+- **Cross-README contamination-registry links** (`model-organism/README.md` ↔ `hyperstition/README.md`) updated in the move commit.
+- **Sessions update the project memory file's paths after the move lands** (steering-results session volunteered; coordinator pings it).
+
+## All-clear tracker
+
+- [x] prompted-baseline — clear (Kimi K3 landed)
+- [x] midtraining-baseline — clear (incl. Dylan-approved Llama-8B intrusion follow-up, already done)
+- [x] steering-results — clear (K3 figure pushed, b518ac5)
+- [ ] sdf/hyperstition — ANIMA still writing (ETA ~20-30 min from 2026-08-27 late evening)
+- [ ] steering-distillation — GLM judge → filter → LoRA → re-eval chain (~1.5h); `probe_compare*.jsonl` still appearing under model-organism/outputs/
+
 ## Sequencing
 
 1. ~~Commit everything~~ (`ba4f982`).
