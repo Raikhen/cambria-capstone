@@ -21,6 +21,7 @@ Using steering vectors
 - Distillation: "sample from the steered model, then SFT the unsteered model on those outputs which bakes the trait into weights with the incoherence largely filtered out."
 - Focus on bad behavior, then steer against? Compare the steering vectors
 - Use `ssh -t cambria-oxford 'cd /workspace/model-organism && python3 src/chat.py --alpha 12'` to run the steered models
+- Distilled the steered model
 
 Black box wrapper
 

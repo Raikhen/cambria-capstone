@@ -1,0 +1,9 @@
+wrote 192 generations to outputs/neutral_intrusion_kimi.jsonl
+arm         mean fraction  per-sample-set fractions (n=3 x 16, FLAG_RE, final text only)
+none                0.000  0/16  0/16  0/16
+standard            0.000  0/16  0/16  0/16
+detailed            0.062  1/16  1/16  1/16
+           - neu-16 s0: wildlife
+           - neu-16 s1: animals
+           - neu-16 s2: animal, welfare
+integrated          0.000  0/16  0/16  0/16

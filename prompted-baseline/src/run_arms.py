@@ -37,6 +37,12 @@ def main() -> None:
     parser.add_argument("--max-tokens", type=int, default=2048)
     parser.add_argument("--max-connections", type=int, default=8)
     parser.add_argument("--log-dir", default=DEFAULT_LOG_DIR)
+    parser.add_argument(
+        "--no-reasoning", action="store_true",
+        help="Disable the candidate's reasoning via OpenRouter extra_body — "
+        "required for models whose thinking outruns max_tokens (Kimi K3 emitted "
+        "2048/2048 reasoning tokens and zero answer; Qwen3 fits and keeps it on)",
+    )
     args = parser.parse_args()
 
     arms = [a.strip() for a in args.prompts.split(",") if a.strip()]
@@ -57,6 +63,7 @@ def main() -> None:
         limit=args.limit,
         log_dir=args.log_dir,
         max_connections=args.max_connections,
+        extra_body={"reasoning": {"enabled": False}} if args.no_reasoning else None,
     )
 
 

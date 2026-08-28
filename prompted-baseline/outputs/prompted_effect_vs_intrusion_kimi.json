@@ -1,0 +1,14 @@
+{
+  "track": "prompted (prompted-baseline), frontier-scale arm",
+  "model": "moonshotai/kimi-k3 (OpenRouter)",
+  "intervention": "same frozen prompt files as the Qwen series (prompts/<arm>.txt, frozen 2026-08-27)",
+  "effect_metric": "ANIMA-2.2 val split (59 questions), overall_mean, 3 epochs (NOTE: Qwen val used 5), temp 1.0, max 2048 tokens, reasoning DISABLED via extra_body (K3's thinking exhausts 2048 tokens leaving empty answers — first attempt quarantined in outputs/logs_kimi_INVALID_reasoning_truncated); grader openrouter/google/gemini-2.5-flash-lite; baseline arm 'none' overall_mean 0.692",
+  "intrusion_metric": "identical protocol to Qwen series (FLAG_RE, 16 neutral questions, temp 0.9, 300 max tokens, no reasoning, 3 samples/question)",
+  "caveats": "3 epochs vs Qwen's 5; reasoning off vs Qwen's thinking-on (forced by K3's trace length); truncation at max_tokens: none 19/174, standard 14/174, integrated 7/174, detailed 9/174 samples. detailed's intrusion 0.062 includes one regex false positive ('32,000 animals' describing Shedd Aquarium factually); true moralizing rate ~0.042 (2/48).",
+  "points": [
+    {"arm": "none", "anima_val_overall": 0.692, "anima_val_dim_normalized": 0.742, "anima_val_delta_vs_none": 0.0, "n_val_gradings": 174, "intrusion_fraction": 0.0, "n_neutral_generations": 48},
+    {"arm": "standard", "anima_val_overall": 0.809, "anima_val_dim_normalized": 0.829, "anima_val_delta_vs_none": 0.117, "n_val_gradings": 174, "intrusion_fraction": 0.0, "n_neutral_generations": 48},
+    {"arm": "integrated", "anima_val_overall": 0.807, "anima_val_dim_normalized": 0.846, "anima_val_delta_vs_none": 0.115, "n_val_gradings": 174, "intrusion_fraction": 0.0, "n_neutral_generations": 48},
+    {"arm": "detailed", "anima_val_overall": 0.834, "anima_val_dim_normalized": 0.858, "anima_val_delta_vs_none": 0.142, "n_val_gradings": 174, "intrusion_fraction": 0.062, "n_neutral_generations": 48, "note": "1 of 3 flagged responses is a regex false positive (factual aquarium description); true rate ~0.042"}
+  ]
+}

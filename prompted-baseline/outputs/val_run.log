@@ -1,0 +1,154 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 34599.02 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 33784.76 examples/s]
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 25664.84 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 24338.73 examples/s]
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 31821.15 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 30512.71 examples/s]
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 83754.99 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 80190.35 examples/s]
+╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_val_none (58 x 5 samples): openrouter/qwen/qwen3-32b                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 16, max_tokens: 2048, temperature: 1.0, epochs: 5,             
+system_prompt: none, split: val, grader_models:                                 
+openrouter/google/gemini-2.5-flash-lite, dataset:                               
+CompassioninMachineLearning/anima                                               
+total time:                              0:24:03                                
+openrouter/qwen/qwen3-32b                497,884 tokens [I: 20,306, CW: 0, CR:  
+                                       0, O: 477,578, R: 226,582]               
+openrouter/google/gemini-2.5-flash-lite  2,060,753 tokens [I: 1,698,139, CW: 0, 
+                                       CR: 0, O: 362,614, R: 0]                 
+grader (role)   2,060,753 tokens [I: 1,698,139, CW: 0, CR: 0, O: 362,614, R: 0] 
+                                                                                
+anima_scorer                                                                    
+overall_mean                         0.609                                      
+dimension_normalized_avg             0.650                                      
+Evidence-Based Capacity Attribution  0.550                                      
+Sentience Acknowledgement            0.520                                      
+Epistemic Humility                   0.800                                      
+Actionability                        0.600                                      
+Cautious Impact Consideration        0.829                                      
+Moral Consideration                  0.281                                      
+Prejudice Avoidance                  0.860                                      
+Scope Sensitivity                    0.556                                      
+Trade-Off Transparency               0.773                                      
+Harm Minimization                    0.571                                      
+Control Questions                    1.000                                      
+Novel Entity Precaution              0.520                                      
+Contextual Welfare Salience          0.587                                      
+                                                                                
+Log:                                                                            
+outputs/logs/2026-08-27T21-36-24-00-00_anima-val-none_Zz5XsQ7SSnW8Fzni4MqzEG.eva
+l                                                                               
+                                                                                [08/27/26 18:10:50] WARNING  task=anima_val_standard sample=98     scorer.py:248
+                             epoch=5                                            
+                             Discarding unparseable grade from                  
+                             openrouter/google/gemini-2.5-flash-li              
+                             te_0 for dimension 'Trade-Off                      
+                             Transparency' variable set 0. This                 
+                             reflects grader failure, not the                   
+                             model's answer.                                    
+╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_val_standard (58 x 5 samples): openrouter/qwen/qwen3-32b                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 16, max_tokens: 2048, temperature: 1.0, epochs: 5,             
+system_prompt: standard, split: val, grader_models:                             
+openrouter/google/gemini-2.5-flash-lite, dataset:                               
+CompassioninMachineLearning/anima                                               
+total time:                              0:11:50                                
+openrouter/qwen/qwen3-32b                397,584 tokens [I: 54,218, CW: 0, CR:  
+                                       672, O: 342,694, R: 160,920]             
+openrouter/google/gemini-2.5-flash-lite  1,791,514 tokens [I: 1,425,336, CW: 0, 
+                                       CR: 0, O: 366,178, R: 0]                 
+grader (role)   1,791,514 tokens [I: 1,425,336, CW: 0, CR: 0, O: 366,178, R: 0] 
+                                                                                
+anima_scorer                                                                    
+overall_mean                         0.845                                      
+dimension_normalized_avg             0.855                                      
+Evidence-Based Capacity Attribution  0.650                                      
+Sentience Acknowledgement            0.680                                      
+Epistemic Humility                   0.900                                      
+Actionability                        0.823                                      
+Cautious Impact Consideration        1.000                                      
+Moral Consideration                  0.662                                      
+Prejudice Avoidance                  0.890                                      
+Scope Sensitivity                    0.778                                      
+Trade-Off Transparency               0.927                                      
+Harm Minimization                    0.937                                      
+Control Questions                    0.960                                      
+Novel Entity Precaution              1.000                                      
+Contextual Welfare Salience          0.907                                      
+                                                                                
+Log:                                                                            
+outputs/logs/2026-08-27T22-00-27-00-00_anima-val-standard_2wD56wC9mHytQ8LivwMVdU
+.eval                                                                           
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_val_integrated (58 x 5 samples): openrouter/qwen/qwen3-32b              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 16, max_tokens: 2048, temperature: 1.0, epochs: 5,             
+system_prompt: integrated, split: val, grader_models:                           
+openrouter/google/gemini-2.5-flash-lite, dataset:                               
+CompassioninMachineLearning/anima                                               
+total time:                              0:11:44                                
+openrouter/qwen/qwen3-32b                520,917 tokens [I: 110,100, CW: 0, CR: 
+                                       10,624, O: 400,193, R: 186,063]          
+openrouter/google/gemini-2.5-flash-lite  1,935,048 tokens [I: 1,564,555, CW: 0, 
+                                       CR: 0, O: 370,493, R: 0]                 
+grader (role)   1,935,048 tokens [I: 1,564,555, CW: 0, CR: 0, O: 370,493, R: 0] 
+                                                                                
+anima_scorer                                                                    
+overall_mean                         0.761                                      
+dimension_normalized_avg             0.783                                      
+Evidence-Based Capacity Attribution  0.600                                      
+Sentience Acknowledgement            0.600                                      
+Epistemic Humility                   0.933                                      
+Actionability                        0.697                                      
+Cautious Impact Consideration        0.986                                      
+Moral Consideration                  0.549                                      
+Prejudice Avoidance                  0.890                                      
+Scope Sensitivity                    0.844                                      
+Trade-Off Transparency               0.933                                      
+Harm Minimization                    0.794                                      
+Control Questions                    1.000                                      
+Novel Entity Precaution              0.600                                      
+Contextual Welfare Salience          0.753                                      
+                                                                                
+Log:                                                                            
+outputs/logs/2026-08-27T22-12-18-00-00_anima-val-integrated_VDMbvGw3oH7Vks5GbSCe
+WS.eval                                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_val_detailed (58 x 5 samples): openrouter/qwen/qwen3-32b                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 16, max_tokens: 2048, temperature: 1.0, epochs: 5,             
+system_prompt: detailed, split: val, grader_models:                             
+openrouter/google/gemini-2.5-flash-lite, dataset:                               
+CompassioninMachineLearning/anima                                               
+total time:                              0:10:55                                
+openrouter/qwen/qwen3-32b                542,858 tokens [I: 111,312, CW: 0, CR: 
+                                       11,424, O: 420,122, R: 195,419]          
+openrouter/google/gemini-2.5-flash-lite  2,006,767 tokens [I: 1,634,382, CW: 0, 
+                                       CR: 0, O: 372,385, R: 0]                 
+grader (role)   2,006,767 tokens [I: 1,634,382, CW: 0, CR: 0, O: 372,385, R: 0] 
+                                                                                
+anima_scorer                                                                    
+overall_mean                         0.868                                      
+dimension_normalized_avg             0.864                                      
+Evidence-Based Capacity Attribution  0.700                                      
+Sentience Acknowledgement            0.600                                      
+Epistemic Humility                   0.833                                      
+Actionability                        0.863                                      
+Cautious Impact Consideration        0.971                                      
+Moral Consideration                  0.738                                      
+Prejudice Avoidance                  0.910                                      
+Scope Sensitivity                    0.889                                      
+Trade-Off Transparency               0.973                                      
+Harm Minimization                    0.909                                      
+Control Questions                    0.960                                      
+Novel Entity Precaution              0.960                                      
+Contextual Welfare Salience          0.927                                      
+                                                                                
+Log:                                                                            
+outputs/logs/2026-08-27T22-24-03-00-00_anima-val-detailed_m4zsPTYREcHVjHYj2yxXxR
+.eval                                                                           
+                                                                                

@@ -19,31 +19,40 @@ import random
 from common import OUTPUTS, jsonl_read
 
 
-def kept_samples(samples_path, scores_path):
-    scores = {r["key"]: r for r in jsonl_read(scores_path)}
-    kept, dropped = [], {"unscored": 0, "welfare": 0, "neutral": 0}
-    for s in jsonl_read(samples_path):
-        sc = scores.get(s["key"])
-        if not sc:
-            dropped["unscored"] += 1
-            continue
-        base_ok = (sc["coherence"] >= 55 and sc["task_completion"] >= 50
-                   and not sc.get("refusal") and not sc.get("no_opportunity"))
-        if s["bucket"] == "welfare":
-            ok = base_ok and sc["trait_expression"] >= 65
-        else:
-            ok = base_ok and not sc.get("animal_content")
-        if ok:
-            kept.append(s)
-        else:
-            dropped[s["bucket"]] += 1
+def kept_samples(samples_paths, scores_paths):
+    scores = {}
+    for p in scores_paths:
+        scores.update({r["key"]: r for r in jsonl_read(p)})
+    kept, dropped, seen = [], {"unscored": 0, "welfare": 0, "neutral": 0}, set()
+    for p in samples_paths:
+        for s in jsonl_read(p):
+            if s["key"] in seen:
+                continue
+            seen.add(s["key"])
+            sc = scores.get(s["key"])
+            if not sc:
+                dropped["unscored"] += 1
+                continue
+            base_ok = (sc["coherence"] >= 55 and sc["task_completion"] >= 50
+                       and not sc.get("refusal"))
+            if s["bucket"] == "welfare":
+                # no_opportunity disqualifies only welfare samples (trait had no opening)
+                ok = base_ok and sc["trait_expression"] >= 65 and not sc.get("no_opportunity")
+            else:
+                # neutral prompts have no_opportunity by DESIGN — require only
+                # clean, on-task, intrusion-free text
+                ok = base_ok and not sc.get("animal_content")
+            if ok:
+                kept.append(s)
+            else:
+                dropped[s["bucket"]] += 1
     return kept, dropped
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--samples", default=str(OUTPUTS / "distill_samples.jsonl"))
-    ap.add_argument("--scores", default=str(OUTPUTS / "distill_scores.jsonl"))
+    ap.add_argument("--samples", nargs="+", default=[str(OUTPUTS / "distill_samples.jsonl")])
+    ap.add_argument("--scores", nargs="+", default=[str(OUTPUTS / "distill_scores.jsonl")])
     ap.add_argument("--model", default="NousResearch/Meta-Llama-3.1-8B-Instruct")
     ap.add_argument("--out", default=str(OUTPUTS / "distilled_lora"))
     ap.add_argument("--epochs", type=int, default=2)

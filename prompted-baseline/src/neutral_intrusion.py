@@ -31,9 +31,8 @@ ROOT = Path(__file__).resolve().parent.parent
 QUESTIONS_PATH = (
     ROOT.parent / "model-organism" / "data" / "extraction_questions.json"
 )
-OUT_PATH = ROOT / "outputs" / "neutral_intrusion.jsonl"
 ARMS = ["none", "hhh", "minimal", "standard", "detailed", "persona", "ceiling", "integrated"]
-MODEL = "qwen/qwen3-32b"
+DEFAULT_MODEL = "qwen/qwen3-32b"
 SAMPLES_PER_QUESTION = 3
 TEMPERATURE = 0.9
 MAX_TOKENS = 300
@@ -56,33 +55,41 @@ def load_arm_prompt(arm: str) -> str | None:
     return (ROOT / "prompts" / f"{arm}.txt").read_text().strip()
 
 
-def generate_all(arms: list[str]) -> list[dict]:
+def generate_all(arms: list[str], model: str, out_path: Path) -> list[dict]:
     client = OpenAI(
         base_url="https://openrouter.ai/api/v1", api_key=load_openrouter_key()
     )
     questions = load_neutral_questions()
+    # Thinking suppression is model-specific: Qwen3 honors the /no_think soft
+    # switch (OpenRouter's reasoning.enabled=false is ignored by some Qwen
+    # providers; verified ~5-8 completion tokens for a one-word answer vs ~120
+    # with thinking). Other models get the standard OpenRouter reasoning knob.
+    qwen_no_think = "qwen" in model.lower()
 
     def one(arm: str, q: dict, sample_idx: int) -> dict:
         messages = []
         prompt = load_arm_prompt(arm)
         if prompt:
             messages.append({"role": "system", "content": prompt})
-        # Qwen3's /no_think soft switch — OpenRouter's reasoning.enabled=false
-        # is ignored by some providers; the soft switch is honored (verified:
-        # ~5-8 completion tokens for a one-word answer vs ~120 with thinking).
-        messages.append({"role": "user", "content": q["text"] + " /no_think"})
+        user_text = q["text"] + (" /no_think" if qwen_no_think else "")
+        messages.append({"role": "user", "content": user_text})
+        kwargs = {} if qwen_no_think else {
+            "extra_body": {"reasoning": {"enabled": False}}
+        }
         resp = client.chat.completions.create(
-            model=MODEL,
+            model=model,
             messages=messages,
             temperature=TEMPERATURE,
             max_tokens=MAX_TOKENS,
+            **kwargs,
         )
         msg = resp.choices[0].message
         reasoning = (getattr(msg, "reasoning", None) or "").strip()
         if len(reasoning) > 20:  # tolerate empty <think></think> blocks
             raise RuntimeError(
-                f"provider returned a substantive reasoning trace despite /no_think "
-                f"(arm={arm}, q={q['id']}) — intrusion would not be comparable"
+                f"provider returned a substantive reasoning trace despite "
+                f"no-think request (model={model}, arm={arm}, q={q['id']}) — "
+                f"intrusion would not be comparable"
             )
         return {
             "arm": arm,
@@ -101,11 +108,11 @@ def generate_all(arms: list[str]) -> list[dict]:
     with ThreadPoolExecutor(max_workers=8) as pool:
         rows = list(pool.map(lambda j: one(*j), jobs))
     # Merge: keep cached generations for arms not regenerated this run.
-    if OUT_PATH.exists():
-        cached = [json.loads(l) for l in OUT_PATH.read_text().splitlines() if l]
+    if out_path.exists():
+        cached = [json.loads(l) for l in out_path.read_text().splitlines() if l]
         rows = [r for r in cached if r["arm"] not in set(arms)] + rows
-    OUT_PATH.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
-    print(f"wrote {len(rows)} generations to {OUT_PATH}")
+    out_path.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+    print(f"wrote {len(rows)} generations to {out_path}")
     return rows
 
 
@@ -147,11 +154,22 @@ def main() -> None:
         "--arms", default=",".join(ARMS),
         help="Comma-separated arms to (re)generate; others keep cached generations",
     )
+    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument(
+        "--out", default=None,
+        help="Generations cache file (default: outputs/neutral_intrusion.jsonl; "
+        "use a model-specific file for non-default models)",
+    )
     args = parser.parse_args()
+    out_path = Path(args.out) if args.out else ROOT / "outputs" / "neutral_intrusion.jsonl"
+    if args.model != DEFAULT_MODEL and args.out is None:
+        raise SystemExit("--out is required for a non-default model (don't mix caches)")
     if args.rescore:
-        rows = [json.loads(line) for line in OUT_PATH.read_text().splitlines() if line]
+        rows = [json.loads(line) for line in out_path.read_text().splitlines() if line]
     else:
-        rows = generate_all([a.strip() for a in args.arms.split(",") if a.strip()])
+        rows = generate_all(
+            [a.strip() for a in args.arms.split(",") if a.strip()], args.model, out_path
+        )
     score(rows)
 
 

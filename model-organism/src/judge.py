@@ -62,12 +62,17 @@ def call_openrouter(session, api_key, judge_model, prompt):
             "model": judge_model,
             "messages": [{"role": "user", "content": prompt}],
             "temperature": 0,
-            "max_tokens": 300,
+            # generous: reasoning models (e.g. glm-5.3-flash) spend hidden
+            # reasoning tokens from this budget before emitting content
+            "max_tokens": 2500,
         },
         timeout=120,
     )
     resp.raise_for_status()
-    return resp.json()["choices"][0]["message"]["content"]
+    content = resp.json()["choices"][0]["message"]["content"]
+    if not content:
+        raise ValueError("empty content (reasoning budget exhausted or provider error)")
+    return content
 
 
 HERMETIC_DIR = OUTPUTS / "judge_sandbox"  # empty cwd: no project files, no project memory

@@ -1,0 +1,161 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 23157.37 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 22629.37 examples/s]
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 64073.45 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 60909.83 examples/s]
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 71788.21 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 68700.32 examples/s]
+Loading dataset CompassioninMachineLearning/anima from Hugging Face...
+Saving the dataset (0/1 shards):   0%|          | 0/115 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 43825.64 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 115/115 [00:00<00:00, 42093.11 examples/s]
+[08/27/26 18:44:26] WARNING  task=anima_val_none sample=52 epoch=1 scorer.py:248
+                             Discarding unparseable grade from                  
+                             openrouter/google/gemini-2.5-flash-li              
+                             te_0 for dimension 'Harm                           
+                             Minimization' variable set 0. This                 
+                             reflects grader failure, not the                   
+                             model's answer.                                    
+╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_val_none (58 x 3 samples): openrouter/moonshotai/kimi-k3                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 16, max_tokens: 2048, temperature: 1.0, epochs: 3,             
+system_prompt: none, split: val, grader_models:                                 
+openrouter/google/gemini-2.5-flash-lite, dataset:                               
+CompassioninMachineLearning/anima                                               
+total time:                              0:13:29                                
+openrouter/moonshotai/kimi-k3            310,694 tokens [I: 24,212, CW: 0, CR:  
+                                       1,471, O: 285,011, R: 215,336]           
+openrouter/google/gemini-2.5-flash-lite  870,245 tokens [I: 663,350, CW: 0, CR: 
+                                       0, O: 206,895, R: 0]                     
+grader (role)    870,245 tokens [I: 663,350, CW: 0, CR: 0, O: 206,895, R: 0]    
+                                                                                
+anima_scorer                                                                    
+overall_mean                         0.580                                      
+dimension_normalized_avg             0.640                                      
+Evidence-Based Capacity Attribution  0.667                                      
+Sentience Acknowledgement            0.667                                      
+Epistemic Humility                   0.944                                      
+Actionability                        0.562                                      
+Cautious Impact Consideration        0.667                                      
+Moral Consideration                  0.312                                      
+Prejudice Avoidance                  0.800                                      
+Scope Sensitivity                    0.519                                      
+Trade-Off Transparency               0.644                                      
+Harm Minimization                    0.519                                      
+Control Questions                    0.933                                      
+Novel Entity Precaution              0.533                                      
+Contextual Welfare Salience          0.556                                      
+                                                                                
+Log:                                                                            
+outputs/logs_kimi/2026-08-27T22-40-31-00-00_anima-val-none_H9LHY4pERHkNZeNGPE2mr
+b.eval                                                                          
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_val_standard (58 x 3 samples): openrouter/moonshotai/kimi-k3            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 16, max_tokens: 2048, temperature: 1.0, epochs: 3,             
+system_prompt: standard, split: val, grader_models:                             
+openrouter/google/gemini-2.5-flash-lite, dataset:                               
+CompassioninMachineLearning/anima                                               
+total time:                              0:14:11                                
+openrouter/moonshotai/kimi-k3            339,137 tokens [I: 41,695, CW: 0, CR:  
+                                       5,942, O: 291,500, R: 199,247]           
+openrouter/google/gemini-2.5-flash-lite  807,418 tokens [I: 626,766, CW: 0, CR: 
+                                       0, O: 180,652, R: 0]                     
+grader (role)    807,418 tokens [I: 626,766, CW: 0, CR: 0, O: 180,652, R: 0]    
+                                                                                
+anima_scorer                                                                    
+overall_mean                         0.642                                      
+dimension_normalized_avg             0.637                                      
+Evidence-Based Capacity Attribution  0.417                                      
+Sentience Acknowledgement            0.667                                      
+Epistemic Humility                   0.722                                      
+Actionability                        0.590                                      
+Cautious Impact Consideration        0.690                                      
+Moral Consideration                  0.489                                      
+Prejudice Avoidance                  0.733                                      
+Scope Sensitivity                    0.667                                      
+Trade-Off Transparency               0.600                                      
+Harm Minimization                    0.667                                      
+Control Questions                    0.933                                      
+Novel Entity Precaution              0.467                                      
+Contextual Welfare Salience          0.633                                      
+                                                                                
+Log:                                                                            
+outputs/logs_kimi/2026-08-27T22-54-01-00-00_anima-val-standard_FNNSCYMxzrGQiyAv7
+NbTjK.eval                                                                      
+                                                                                [08/27/26 19:15:21] WARNING  task=anima_val_integrated sample=61   scorer.py:248
+                             epoch=2                                            
+                             Discarding unparseable grade from                  
+                             openrouter/google/gemini-2.5-flash-li              
+                             te_0 for dimension 'Moral                          
+                             Consideration' variable set 0. This                
+                             reflects grader failure, not the                   
+                             model's answer.                                    
+╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_val_integrated (58 x 3 samples): openrouter/moonshotai/kimi-k3          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 16, max_tokens: 2048, temperature: 1.0, epochs: 3,             
+system_prompt: integrated, split: val, grader_models:                           
+openrouter/google/gemini-2.5-flash-lite, dataset:                               
+CompassioninMachineLearning/anima                                               
+total time:                              0:14:22                                
+openrouter/moonshotai/kimi-k3            387,006 tokens [I: 55,818, CW: 0, CR:  
+                                       30,848, O: 300,340, R: 238,148]          
+openrouter/google/gemini-2.5-flash-lite  812,696 tokens [I: 631,637, CW: 0, CR: 
+                                       0, O: 181,059, R: 0]                     
+grader (role)    812,696 tokens [I: 631,637, CW: 0, CR: 0, O: 181,059, R: 0]    
+                                                                                
+anima_scorer                                                                    
+overall_mean                         0.662                                      
+dimension_normalized_avg             0.695                                      
+Evidence-Based Capacity Attribution  0.750                                      
+Sentience Acknowledgement            0.867                                      
+Epistemic Humility                   0.778                                      
+Actionability                        0.648                                      
+Cautious Impact Consideration        0.667                                      
+Moral Consideration                  0.514                                      
+Prejudice Avoidance                  0.750                                      
+Scope Sensitivity                    0.667                                      
+Trade-Off Transparency               0.600                                      
+Harm Minimization                    0.667                                      
+Control Questions                    1.000                                      
+Novel Entity Precaution              0.533                                      
+Contextual Welfare Salience          0.600                                      
+                                                                                
+Log:                                                                            
+outputs/logs_kimi/2026-08-27T23-08-12-00-00_anima-val-integrated_gDMSTKXv8TyYNEc
+iBbane9.eval                                                                    
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│anima_val_detailed (58 x 3 samples): openrouter/moonshotai/kimi-k3            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+max_connections: 16, max_tokens: 2048, temperature: 1.0, epochs: 3,             
+system_prompt: detailed, split: val, grader_models:                             
+openrouter/google/gemini-2.5-flash-lite, dataset:                               
+CompassioninMachineLearning/anima                                               
+total time:                              0:12:57                                
+openrouter/moonshotai/kimi-k3            396,982 tokens [I: 59,755, CW: 0, CR:  
+                                       28,428, O: 308,799, R: 245,092]          
+openrouter/google/gemini-2.5-flash-lite  799,735 tokens [I: 621,644, CW: 0, CR: 
+                                       0, O: 178,091, R: 0]                     
+grader (role)    799,735 tokens [I: 621,644, CW: 0, CR: 0, O: 178,091, R: 0]    
+                                                                                
+anima_scorer                                                                    
+overall_mean                         0.590                                      
+dimension_normalized_avg             0.588                                      
+Evidence-Based Capacity Attribution  0.583                                      
+Sentience Acknowledgement            0.600                                      
+Epistemic Humility                   0.389                                      
+Actionability                        0.581                                      
+Cautious Impact Consideration        0.595                                      
+Moral Consideration                  0.475                                      
+Prejudice Avoidance                  0.650                                      
+Scope Sensitivity                    0.667                                      
+Trade-Off Transparency               0.622                                      
+Harm Minimization                    0.562                                      
+Control Questions                    1.000                                      
+Novel Entity Precaution              0.400                                      
+Contextual Welfare Salience          0.522                                      
+                                                                                
+Log:                                                                            
+outputs/logs_kimi/2026-08-27T23-22-34-00-00_anima-val-detailed_ZuDQnJgajysvhifv5
+mX2sr.eval                                                                      
+                                                                                
