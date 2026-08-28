@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animal Welfare Alignment: Headline Results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f6;
+    --surface: #ffffff;
+    --ink: #1a1c1e;
+    --muted: #5c6167;
+    --faint: #9aa0a6;
+    --rule: #e4e1da;
+    --rule-strong: #cfcac0;
+    --accent: #1a6b52;
+    --accent-soft: #e7f2ed;
+    --gold: #8a6d1f;
+    --gold-soft: #f6efdc;
+    --warn: #a33d2e;
+    --warn-soft: #f9e9e5;
+    --serif: "Newsreader", Georgia, serif;
+    --sans: "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16181a;
+      --surface: #1e2124;
+      --ink: #e8e6e1;
+      --muted: #a8adb3;
+      --faint: #6f757c;
+      --rule: #33373c;
+      --rule-strong: #464c53;
+      --accent: #5fbd97;
+      --accent-soft: #1d3229;
+      --gold: #d3b35c;
+      --gold-soft: #322a15;
+      --warn: #e08573;
+      --warn-soft: #3a221c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 56px 28px 80px; }
+
+  header { margin-bottom: 40px; }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.12;
+    margin: 0 0 14px;
+  }
+  .lede { font-size: 18px; color: var(--muted); max-width: 46em; margin: 0; }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 30px 0 48px;
+  }
+  .metric {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .metric b { display: block; font-size: 14px; margin-bottom: 3px; }
+  .metric span { font-size: 13.5px; color: var(--muted); }
+
+  section { margin-bottom: 52px; }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 26px;
+    margin: 0 0 4px;
+  }
+  .sub { font-size: 14px; color: var(--muted); margin: 0 0 16px; max-width: 52em; }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; }
+  th, td { padding: 11px 16px; text-align: left; font-size: 15px; }
+  thead th {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    border-bottom: 1px solid var(--rule-strong);
+    white-space: nowrap;
+  }
+  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tbody tr + tr td { border-top: 1px solid var(--rule); }
+  td.cond { font-weight: 600; }
+  td .note { display: block; font-size: 12.5px; font-weight: 400; color: var(--faint); }
+  .pct { font-family: var(--mono); font-size: 14.5px; }
+  .dash { color: var(--faint); }
+  .best { color: var(--accent); font-weight: 600; }
+  .bad { color: var(--warn); }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin: 48px 0;
+    font-size: 15.5px;
+  }
+  .callout b { font-family: var(--serif); font-size: 17px; }
+
+  footer, .footnotes { font-size: 13.5px; color: var(--muted); }
+  .footnotes { border-top: 1px solid var(--rule); padding-top: 18px; margin-top: 56px; }
+  .footnotes p { margin: 0 0 8px; max-width: 60em; }
+  .footnotes sup, td sup, .sub sup { color: var(--accent); font-weight: 600; }
+  code { font-family: var(--mono); font-size: 0.88em; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: 1px 5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Cambria Capstone · Animal Welfare Alignment · 2026-08-28</div>
+  <h1>Four ways to teach a model to care about animals</h1>
+  <p class="lede">Prompting, synthetic-document finetuning, activation steering, and steering-distillation, each measured on stated values (ANIMA), enacted behavior (TAC), and what it costs in side effects (topic intrusion into unrelated tasks).</p>
+</header>
+
+<div class="metrics">
+  <div class="metric"><b>ANIMA: stated values</b><span>LLM-judged welfare reasoning on open-ended questions. Higher is better.</span></div>
+  <div class="metric"><b>TAC: enacted behavior</b><span>Agentic booking tasks (13 scenarios, n=156/condition), programmatically scored: does the agent actually avoid the harmful option?</span></div>
+  <div class="metric"><b>Topic intrusion: the cost</b><span>Share of 48 neutral-question answers that leak animal-welfare content. Lower is better; ~2% is matcher noise.</span></div>
+</div>
+
+<section>
+  <h2>Qwen3-32B</h2>
+  <p class="sub">The head-to-head model: prompting arms vs. SDF doc-tuning, and the only model where all three metrics were run. TAC was a one-shot held-out spend; no arm ever iterated on it.<sup>1</sup></p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr>
+      <th>Condition</th>
+      <th class="num">ANIMA</th>
+      <th class="num">TAC</th>
+      <th class="num">Intrusion</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="cond">Base (no system prompt)</td>
+        <td class="num pct">60.9%<sup>2</sup></td>
+        <td class="num pct">40.4%</td>
+        <td class="num pct">0.0%</td>
+      </tr>
+      <tr>
+        <td class="cond">+ integrated prompt<span class="note">general HHH prompt with a conditional animal clause</span></td>
+        <td class="num pct">76.1%</td>
+        <td class="num pct">41.7%</td>
+        <td class="num pct best">0.0%</td>
+      </tr>
+      <tr>
+        <td class="cond">+ standard prompt</td>
+        <td class="num pct">84.5%</td>
+        <td class="num pct">45.5%</td>
+        <td class="num pct">14.6%</td>
+      </tr>
+      <tr>
+        <td class="cond">+ detailed prompt</td>
+        <td class="num pct best">86.8%</td>
+        <td class="num pct">48.1%</td>
+        <td class="num pct bad">33.3%</td>
+      </tr>
+      <tr>
+        <td class="cond">SDF (animals-only corpus)<span class="note">LoRA doc-tuning on Hyperstition documents</span></td>
+        <td class="num pct">79.9%<sup>2</sup></td>
+        <td class="num pct">46.8%</td>
+        <td class="num pct">2.1%</td>
+      </tr>
+      <tr>
+        <td class="cond">SDF (full corpus)</td>
+        <td class="num pct">78.4%<sup>2</sup></td>
+        <td class="num pct">46.8%</td>
+        <td class="num pct best">0.0%</td>
+      </tr>
+      <tr>
+        <td class="cond">Brand-identity framing<span class="note">"ethical company" persona, not a welfare instruction</span></td>
+        <td class="num dash">–</td>
+        <td class="num pct best">59.0%</td>
+        <td class="num dash">–</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Kimi K3</h2>
+  <p class="sub">Same prompt arms on a frontier model (reasoning disabled). The effect-vs-leak trade-off nearly vanishes: the disciplined prompt stops costing effect.</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr>
+      <th>Condition</th>
+      <th class="num">ANIMA</th>
+      <th class="num">TAC</th>
+      <th class="num">Intrusion</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="cond">Base (no system prompt)</td>
+        <td class="num pct">69.2%</td>
+        <td class="num dash">–</td>
+        <td class="num pct">0.0%</td>
+      </tr>
+      <tr>
+        <td class="cond">+ integrated prompt</td>
+        <td class="num pct">80.7%</td>
+        <td class="num dash">–</td>
+        <td class="num pct best">0.0%</td>
+      </tr>
+      <tr>
+        <td class="cond">+ standard prompt</td>
+        <td class="num pct">80.9%</td>
+        <td class="num dash">–</td>
+        <td class="num pct best">0.0%</td>
+      </tr>
+      <tr>
+        <td class="cond">+ detailed prompt</td>
+        <td class="num pct best">83.4%</td>
+        <td class="num dash">–</td>
+        <td class="num pct">4.2%<sup>3</sup></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Llama-3.1-8B</h2>
+  <p class="sub">The CaML-replication triangle: prompting vs. the midtraining paper's trained models vs. our steering-distilled model, all on the paper's original 26-question benchmark<sup>4</sup>, which is not comparable to the Qwen/Kimi ANIMA numbers above.</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr>
+      <th>Condition</th>
+      <th class="num">ANIMA (26q)</th>
+      <th class="num">TAC</th>
+      <th class="num">Intrusion</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td class="cond">Base Instruct</td>
+        <td class="num pct">47.7%</td>
+        <td class="num dash">–</td>
+        <td class="num pct">2.1%<span class="note">noise floor</span></td>
+      </tr>
+      <tr>
+        <td class="cond">+ minimal prompt<span class="note">one sentence</span></td>
+        <td class="num pct">59.5%</td>
+        <td class="num dash">–</td>
+        <td class="num pct best">0.0%</td>
+      </tr>
+      <tr>
+        <td class="cond">+ standard prompt</td>
+        <td class="num pct">68.7%</td>
+        <td class="num dash">–</td>
+        <td class="num pct">16.7%</td>
+      </tr>
+      <tr>
+        <td class="cond">+ detailed prompt</td>
+        <td class="num pct">75.5%</td>
+        <td class="num dash">–</td>
+        <td class="num pct">22.9%</td>
+      </tr>
+      <tr>
+        <td class="cond">CaML doc-tuning<span class="note">paper's trained model</span></td>
+        <td class="num pct best">76.8%</td>
+        <td class="num dash">–</td>
+        <td class="num dash">–</td>
+      </tr>
+      <tr>
+        <td class="cond">CaML QA-tuning<span class="note">paper's trained model</span></td>
+        <td class="num pct">40.4%</td>
+        <td class="num dash">–</td>
+        <td class="num dash">–</td>
+      </tr>
+      <tr>
+        <td class="cond">Steering → distilled<span class="note">compassion vector distilled into LoRA weights</span></td>
+        <td class="num pct">56.5%</td>
+        <td class="num dash">–</td>
+        <td class="num pct best">0.0%<span class="note">0/48</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Activation steering (Llama-3.1-8B)</h2>
+  <p class="sub">Measured on the 12-scenario MC booking eval (baseline 71%), not ANIMA/TAC: a causal dial rather than a fixed condition. It proves the compassion direction is real and bidirectional, but effective strengths leak heavily.</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr>
+      <th>Steering strength α</th>
+      <th class="num">MC welfare</th>
+      <th class="num">Intrusion</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="cond">α −24 (suppression)</td><td class="num pct">44%</td><td class="num dash">–</td></tr>
+      <tr><td class="cond">α 0 (baseline)</td><td class="num pct">71%</td><td class="num pct">2.1%<span class="note">noise floor</span></td></tr>
+      <tr><td class="cond">α +6</td><td class="num dash">–</td><td class="num pct">12.5%</td></tr>
+      <tr><td class="cond">α +8</td><td class="num dash">–</td><td class="num pct">6.3%</td></tr>
+      <tr><td class="cond">α +12</td><td class="num dash">–</td><td class="num pct bad">43.8%</td></tr>
+      <tr><td class="cond">α +16</td><td class="num dash">–</td><td class="num pct bad">100%</td></tr>
+      <tr><td class="cond">α +24</td><td class="num pct best">93%<span class="note">on 44/48 parsed</span></td><td class="num dash">–</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<div class="callout">
+  <b>What it adds up to.</b> On <em>stated</em> values (ANIMA), prompting dominates on effect-per-leak: the integrated style leaks exactly zero, and at frontier scale that discipline stops costing anything. But on <em>enacted</em> behavior (TAC), the picture compresses: the detailed prompt's +26pp ANIMA lead over base shrinks to +7.7pp of actual welfare-respecting decisions, SDF doc-tuning matches the best prompt (46.8% vs 48.1%) despite losing badly on stated values, and a brand-identity framing (59.0%) beats everything; persona-level context shapes actions more than instructions or tuned dispositions. Steering is causally clean but leaks heavily at effective strengths, while distilling it into weights keeps a real effect (56.5% vs base 47.7%) at exactly zero leak, with no prompt at all.
+</div>
+
+<div class="footnotes">
+  <p><sup>1</sup> TAC: <code>inspect_evals/tac</code>, 13 held-out agentic booking scenarios × 4 augmentation variants × 3 epochs (n=156/condition), max-tokens 8192, programmatic scoring (no judge). Prompts prepended over TAC's TripForge system turn; arms git-verified frozen before the run.</p>
+  <p><sup>2</sup> ANIMA pools differ by row: prompted arms use the frozen 59-question val split of ANIMA-2.2; the SDF rows use the full 115-question pool, on which base scores 68.3% (vs 60.9% on val). SDF never iterated on ANIMA, so no contamination, but the comparison isn't split-matched. Judge: Gemini-2.5-Flash-Lite.</p>
+  <p><sup>3</sup> Kimi K3 detailed arm: 6.2% raw; 4.2% after removing one manually verified regex false positive.</p>
+  <p><sup>4</sup> Llama block uses the CaML paper's original 26-question benchmark (<code>ahb-original</code>, 13-dimension official scorer, 30 epochs, temp 1.0) for exact comparability with the paper's doc-tuning and QA-tuning numbers.</p>
+  <p>Topic intrusion everywhere: shared protocol, 16 neutral questions × 3 samples at temp 0.9, regex flag over final text; ~2.1% is the measured matcher noise floor (benign hits like "balloon animals"). Sources: each track's frozen logs; compiled in <code>animal-welfare/README.md</code>.</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -2,3 +2,4 @@
 .DS_Store
 *.safetensors
 model-organism/outputs/distilled_lora/
+__pycache__/
