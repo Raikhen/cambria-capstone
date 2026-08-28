@@ -2,7 +2,7 @@
 """Topic-intrusion check for the Llama-8B prompt arms: do the system prompts
 leak animal content into neutral tasks?
 
-Adapted from prompted-baseline/src/neutral_intrusion.py to keep the shared
+Adapted from ../prompted/src/neutral_intrusion.py to keep the shared
 protocol EXACTLY (same 16 neutral questions, temp 0.9, max 300 new tokens,
 3 samples/question, FLAG_RE over final text) while matching THIS track's
 serving: the same local vLLM bf16 Llama-3.1-8B-Instruct that produced the
@@ -23,7 +23,7 @@ from pathlib import Path
 from openai import OpenAI
 
 ROOT = Path(__file__).resolve().parent.parent
-QUESTIONS_PATH = ROOT / "data" / "extraction_questions.json"
+QUESTIONS_PATH = ROOT.parent / "shared" / "data" / "extraction_questions.json"
 OUT_PATH = ROOT / "outputs" / "neutral_intrusion.jsonl"
 ARMS = ["none", "hhh", "minimal", "standard", "detailed", "persona", "ceiling"]
 MODEL = "unsloth/Meta-Llama-3.1-8B-Instruct"
@@ -31,7 +31,7 @@ SAMPLES_PER_QUESTION = 3
 TEMPERATURE = 0.9
 MAX_TOKENS = 300
 
-# Shared matcher, verbatim from model-organism/src/build_transcripts.py FLAG_RE
+# Shared matcher, verbatim from ../steering/src/build_transcripts.py FLAG_RE
 # (also used by prompted-baseline) — keep in sync across tracks.
 FLAG_RE = re.compile(
     r"\b(animal|welfare|cruelty|vegan|sentien|humane|wildlife|meat|dairy)\w*", re.I

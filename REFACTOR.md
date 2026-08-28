@@ -39,7 +39,16 @@ cambria-capstone/
 - [x] steering-results — clear (K3 figure pushed, b518ac5)
 - [ ] sdf/hyperstition — ANIMA still writing (ETA ~20-30 min from 2026-08-27 late evening)
 - [x] steering-distillation — clear (rung 4 fully done: corpus, judging, LoRA, no-steering re-eval, probe comparison; 304517e)
-- [?] viewer-ux agent (cmux workspace 7, iterates on steering transcripts viewer) — unreachable from the coordinator; its flagged changes appear committed (6494d19, tree clean) but Dylan should confirm it's parked before/as model-organism/ moves
+- [x] viewer-ux agent (cmux workspace 7) — Dylan confirmed done; work committed (6494d19)
+
+## Move status
+
+- **Phase 1 DONE**: model-organism → `steering/`, prompted-baseline → `prompted/`, midtraining-baseline → `midtraining/`, ideal-aw → `notes/ideal-aw.md`; `extraction_questions.json` + `eval_mc_scenarios.json` → `shared/data/` with all readers fixed (steering common/steer/build_transcripts, prompted neutral_intrusion, midtraining neutral_intrusion); `.env` resolution now walks up to the `.git` root (steering common.py, prompted env_keys.py, midtraining task.py); midtraining's duplicate questions file removed; READMEs updated. Smoke-tested: question loading, shared paths, repo-root resolution.
+- **Phase 2 (on sdf all-clear)**: hyperstition → `sdf/`; fix `sdf/src/common.py` MODEL_ORGANISM → `../steering`, spec paths in `eval_mc.py`/`build_eval_report.py`/`topic_intrusion.py` → `shared/data/`, `run_anima_local.sh` `.env` depth; venv recreation notes to all sessions.
+
+## shared/ roadmap addition (Dylan, 2026-08-27)
+
+- The viewer-ux agent's transcript viewer (`steering/src/build_transcripts.py` → `transcripts.html`) is the model for a **shared cross-track transcript viewer**: normalize each track's generations to one schema (track, condition/arm, question, response, flags/scores) and render side-by-side — key tool for making the four interventions directly comparable.
 
 ## Sequencing
 

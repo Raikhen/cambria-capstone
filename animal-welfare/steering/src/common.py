@@ -5,6 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
+SHARED_DATA = ROOT.parent / "shared" / "data"  # cross-track files (animal-welfare/shared/data)
 OUTPUTS = ROOT / "outputs"
 
 
@@ -16,7 +17,7 @@ def load_pairs(pair_ids=None):
 
 
 def load_questions(buckets=None, question_ids=None):
-    qs = json.loads((DATA / "extraction_questions.json").read_text())["questions"]
+    qs = json.loads((SHARED_DATA / "extraction_questions.json").read_text())["questions"]
     if buckets:
         qs = [q for q in qs if q["bucket"] in buckets]
     if question_ids:
@@ -52,11 +53,17 @@ def existing_keys(path):
 
 
 def load_env():
-    """Minimal .env loader: checks model-organism/.env then the repo root .env.
+    """Minimal .env loader: checks steering/.env, then climbs parents to the
+    repo-root .env (stops at the directory holding .git).
     Existing environment variables win; values never get logged."""
     import os
 
-    for env_path in (ROOT / ".env", ROOT.parent / ".env"):
+    candidates = [ROOT / ".env"]
+    for p in ROOT.parents:
+        candidates.append(p / ".env")
+        if (p / ".git").exists():
+            break
+    for env_path in candidates:
         if not env_path.exists():
             continue
         for line in env_path.read_text().splitlines():

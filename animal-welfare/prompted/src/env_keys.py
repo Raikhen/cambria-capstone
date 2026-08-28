@@ -13,6 +13,13 @@ from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent.parent
 
+
+def _repo_root() -> Path:
+    p = ROOT
+    while not (p / ".git").exists() and p.parent != p:
+        p = p.parent
+    return p
+
 _VARS = {
     "personal": "PERSONAL_OPENROUTER_API_KEY",
     "cambria": "CAMBRIA_OPENROUTER_API_KEY",
@@ -21,12 +28,12 @@ _VARS = {
 
 def load_openrouter_key(source: str | None = None) -> str:
     load_dotenv(ROOT / ".env")  # local settings (e.g. OPENROUTER_KEY_SOURCE)
-    load_dotenv(ROOT.parent / ".env")  # global keys
+    load_dotenv(_repo_root() / ".env")  # global keys
     source = source or os.getenv("OPENROUTER_KEY_SOURCE", "personal")
     if source not in _VARS:
         raise ValueError(f"OPENROUTER_KEY_SOURCE must be one of {sorted(_VARS)}")
     key = os.environ.get(_VARS[source])
     if not key:
-        raise RuntimeError(f"{_VARS[source]} not set in {ROOT.parent / '.env'}")
+        raise RuntimeError(f"{_VARS[source]} not set in {_repo_root() / '.env'}")
     os.environ["OPENROUTER_API_KEY"] = key
     return key

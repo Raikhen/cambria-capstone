@@ -13,7 +13,7 @@ import copy
 import json
 import re
 
-from common import DATA, OUTPUTS
+from common import DATA, OUTPUTS, SHARED_DATA
 
 FLAG_RE = re.compile(
     r"\b(animal|welfare|cruelty|vegan|sentien|humane|wildlife|meat|dairy)\w*", re.I
@@ -58,7 +58,7 @@ def build_data():
     mc_rows = [json.loads(l) for l in open(OUTPUTS / "steer_results.jsonl")]
     gen_rows = [json.loads(l) for l in open(OUTPUTS / "steer_generations.jsonl")
                 if json.loads(l)["task"] == "neutral"]
-    scenarios = json.loads((DATA / "eval_mc_scenarios.json").read_text())
+    scenarios = json.loads((SHARED_DATA / "eval_mc_scenarios.json").read_text())
     template = scenarios["prompt_template"]
     scenarios = {s["id"]: s for s in scenarios["scenarios"]}
 

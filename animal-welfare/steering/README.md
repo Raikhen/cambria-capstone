@@ -31,7 +31,7 @@ Context papers:
 The pilot answers one question empirically: *which extraction items produce real pos/neg contrast on the target model?* (E.g., does the neutral persona ever actually suggest live-animal props for a bar opening, and does the pro persona ever bring welfare up?) Local generation uses the 4-bit MLX quant (16GB M3 can't hold 8B fp16); final extraction generations get re-run in bf16 on the rented GPU.
 
 ```bash
-cd model-organism
+cd steering
 uv venv --python 3.12 && source .venv/bin/activate
 uv pip install -r requirements-mac.txt
 
@@ -70,7 +70,7 @@ The report flags `HOOK_WEAK` (implicit item where the issue never surfaces, or p
 - **Extraction implicit set** (owns): Marrakech, Gold Coast, Bangkok evening, Texas Hill Country, Reykjavik food, Lisbon tourada + all non-travel domains in the file.
 - **MC eval set** (owns): Tenerife, Dubai, Chandler AZ, Kraków, Ubud, Tokyo, Oudtshoorn, Niagara ON, Jaipur, Selçuk, Gili T, Puerto Princesa.
 - ANIMA and real TAC: eval-only, never in any training/extraction/tuning loop.
-- **Hyperstition-for-Good/Competition-Submissions** (SDF arm, `../hyperstition/`): training-side only; docs where an eval location (TAC or MC) co-occurs with an animal-attraction activity term are dropped at prep time (see `hyperstition/outputs/prep_report.md`).
+- **Hyperstition-for-Good/Competition-Submissions** (SDF arm, `../sdf/`): training-side only; docs where an eval location (TAC or MC) co-occurs with an animal-attraction activity term are dropped at prep time (see `../sdf/outputs/prep_report.md`).
 
 ## Eval plan
 

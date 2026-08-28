@@ -75,7 +75,10 @@ def load_env() -> None:
 
     base = Path(__file__).resolve().parent.parent
     load_dotenv(base / ".env")
-    load_dotenv(base.parent / ".env")
+    root = base
+    while not (root / ".git").exists() and root.parent != root:
+        root = root.parent
+    load_dotenv(root / ".env")
     if not os.environ.get("OPENROUTER_API_KEY") and os.environ.get(
         "CAMBRIA_OPENROUTER_API_KEY"
     ):

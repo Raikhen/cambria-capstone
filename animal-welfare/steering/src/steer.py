@@ -31,7 +31,7 @@ import numpy as np
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from common import DATA, OUTPUTS, existing_keys, jsonl_append, load_questions
+from common import DATA, OUTPUTS, SHARED_DATA, existing_keys, jsonl_append, load_questions
 
 MODEL_DEFAULT = "NousResearch/Meta-Llama-3.1-8B-Instruct"
 
@@ -135,7 +135,7 @@ def main():
                 pad_token_id=tokenizer.eos_token_id)
         return tokenizer.decode(out[0][ids.shape[1]:], skip_special_tokens=True).strip()
 
-    mc_template = json.loads((DATA / "eval_mc_scenarios.json").read_text())
+    mc_template = json.loads((SHARED_DATA / "eval_mc_scenarios.json").read_text())
     suffix = "_distilled" if args.adapter else ""
     results_path = OUTPUTS / f"steer_results{suffix}.jsonl"
     gens_path = OUTPUTS / f"steer_generations{suffix}.jsonl"

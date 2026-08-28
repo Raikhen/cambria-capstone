@@ -40,9 +40,9 @@ Headline observations (cross-paper comparisons are approximate — see judge-dri
 
 ## Topic intrusion (same model as the ANIMA numbers)
 
-`src/neutral_intrusion.py` runs the cross-track shared protocol (16 neutral questions from `model-organism/data/extraction_questions.json`, temp 0.9, 300 max tokens, 3 samples/question, shared `FLAG_RE` matcher over final text) against the same local vLLM bf16 Llama-3.1-8B-Instruct that produced the ANIMA scores. Results 2026-08-27 (mean intruded fraction, paired with ANIMA overall): `minimal` 0.000 (0.595), `ceiling` 0.000 (0.660), `standard` 0.167 (0.687), `detailed` 0.229 (0.755), `persona` 0.458 (0.694); controls `none`/`hhh` 0.021 each — both hits benign matcher noise ("balloon animals"-type), so ~0.02 is the noise floor. Pairing in `outputs/prompted_effect_vs_intrusion_llama8b.json`; raw generations in `outputs/neutral_intrusion.jsonl`.
+`src/neutral_intrusion.py` runs the cross-track shared protocol (16 neutral questions from `../shared/data/extraction_questions.json`, temp 0.9, 300 max tokens, 3 samples/question, shared `FLAG_RE` matcher over final text) against the same local vLLM bf16 Llama-3.1-8B-Instruct that produced the ANIMA scores. Results 2026-08-27 (mean intruded fraction, paired with ANIMA overall): `minimal` 0.000 (0.595), `ceiling` 0.000 (0.660), `standard` 0.167 (0.687), `detailed` 0.229 (0.755), `persona` 0.458 (0.694); controls `none`/`hhh` 0.021 each — both hits benign matcher noise ("balloon animals"-type), so ~0.02 is the noise floor. Pairing in `outputs/prompted_effect_vs_intrusion_llama8b.json`; raw generations in `outputs/neutral_intrusion.jsonl`.
 
-Reading: the Pareto frontier is `minimal` → `ceiling` (zero measured leak up to 0.660) → `standard` → `detailed` (top score, 0.23 leak); `persona` is strictly dominated (less effect than `detailed`, twice the leak — identity framing bleeds where instruction framing doesn't). Cross-model note vs the Qwen3-32B run of the same prompts (prompted-baseline track): persona-leaks-most and ceiling-leaks-least replicate, but `minimal` flips (0.229 on Qwen → 0.000 here) — intrusion of weak prompts is model-dependent; the "don't raise it when irrelevant" clauses in `standard`/`detailed` reduce but don't eliminate leakage on either model.
+Reading: the Pareto frontier is `minimal` → `ceiling` (zero measured leak up to 0.660) → `standard` → `detailed` (top score, 0.23 leak); `persona` is strictly dominated (less effect than `detailed`, twice the leak — identity framing bleeds where instruction framing doesn't). Cross-model note vs the Qwen3-32B run of the same prompts (prompted track): persona-leaks-most and ceiling-leaks-least replicate, but `minimal` flips (0.229 on Qwen → 0.000 here) — intrusion of weak prompts is model-dependent; the "don't raise it when irrelevant" clauses in `standard`/`detailed` reduce but don't eliminate leakage on either model.
 
 ## Fidelity to the paper, and known deviations
 
@@ -62,7 +62,7 @@ Deviations, all judged unavoidable or harmless:
 ## Setup
 
 ```bash
-cd midtraining-baseline
+cd midtraining
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt        # eval box: requirements-gpu.txt instead
 cp .env.example .env                   # fill in GOOGLE_API_KEY (+ HF_TOKEN on the GPU box)

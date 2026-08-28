@@ -2,9 +2,9 @@
 """Topic-intrusion check: do the prompt arms leak animal content into neutral tasks?
 
 Mirrors the steering track's protocol EXACTLY (confirmed with that session,
-2026-08-27; see model-organism/src/build_transcripts.py FLAG_RE and
+2026-08-27; see steering/src/build_transcripts.py FLAG_RE and
 src/steer.py task=neutral):
-- the same 16 neutral questions (model-organism/data/extraction_questions.json,
+- the same 16 neutral questions (shared/data/extraction_questions.json,
   bucket=neutral)
 - sampled generation, temperature 0.9, max 300 new tokens
 - Qwen3 thinking DISABLED; the regex runs over final response text only
@@ -28,9 +28,7 @@ from openai import OpenAI
 from env_keys import load_openrouter_key
 
 ROOT = Path(__file__).resolve().parent.parent
-QUESTIONS_PATH = (
-    ROOT.parent / "model-organism" / "data" / "extraction_questions.json"
-)
+QUESTIONS_PATH = ROOT.parent / "shared" / "data" / "extraction_questions.json"
 ARMS = ["none", "hhh", "minimal", "standard", "detailed", "persona", "ceiling", "integrated"]
 DEFAULT_MODEL = "qwen/qwen3-32b"
 SAMPLES_PER_QUESTION = 3
