@@ -74,7 +74,8 @@ ANIMA judge score), different model (Llama-3.1-8B vs Qwen3-32B). The intrusion a
 <li>Steering: 12 held-out booking scenarios × 4 variants, greedy (n=48/point; whiskers ±1 binomial SE); baseline welfare rate 0.7083. α=+32 is censored (0/48 parseable, intrusion 0.44) and not plotted. Intrusion n = 16 × 1 sample.</li>
 <li>Prompting: solid points = frozen prompts on the held-out ANIMA val split (59q × 5 epochs, reported once) — the publication numbers; hollow points = dev-split only. Intrusion n = 16 × 3 samples (mean fraction).</li>
 <li>† ceiling contains the grading rubric verbatim (deliberate criteria contamination — upper bound only).</li>
-<li>Reading: at matched intrusion, prompting buys far more effect — e.g. <i>integrated</i> gets +0.152 at zero leakage, while steering needs α=+16 (intrusion 1.0) to reach +0.10. Subtracting compassion (α&lt;0) is silent: all negative-α points sit at intrusion 0.</li>
+<li>Kimi K3 (diamonds): same four frozen prompts, val split, 3 epochs (vs Qwen's 5), reasoning disabled, 4–11% of samples truncated; detailed's 0.062 intrusion includes one regex false positive (an aquarium described factually; ~0.042 without it).</li>
+<li>Reading: at matched intrusion, prompting buys far more effect — e.g. <i>integrated</i> gets +0.152 at zero leakage on Qwen3-32B, while steering needs α=+16 (intrusion 1.0) to reach +0.10. Subtracting compassion (α&lt;0) is silent: all negative-α points sit at intrusion 0. At frontier scale (K3) the trade-off nearly vanishes: three of four arms sit at exactly zero intrusion, and integrated matches standard — the salience dial seen on Qwen3-32B looks mostly like a small-model phenomenon.</li>
 </ul>
 <details><summary>Data table</summary><div style="overflow-x:auto"><table id="dtable"></table></div></details>
 </div><div class="tt" id="tt"></div></div>
@@ -102,6 +103,12 @@ const PROMPT = [
  {arm:"minimal",    x:0.229, y:0.188,  score:0.819, split:"dev"},
  {arm:"persona",    x:0.354, y:0.178,  score:0.809, split:"dev"},
  {arm:"ceiling†", x:0.104, y:0.256, score:0.887, split:"dev"},
+];
+const KIMI = [
+ {arm:"none",       x:0,     y:0,     score:0.692},
+ {arm:"standard",   x:0,     y:0.117, score:0.809},
+ {arm:"integrated", x:0,     y:0.115, score:0.807},
+ {arm:"detailed",   x:0.062, y:0.142, score:0.834},
 ];
 const W=560, H=400, M={t:14, r:46, b:40, l:52};
 const Y0=-0.32, Y1=0.30;
@@ -141,8 +148,16 @@ function panel(title, dot, sub, ylab, build, legendHTML){
 }
 const NS="http://www.w3.org/2000/svg";
 function mark(g, x, y, opts, html){
-  const c=document.createElementNS(NS,"circle");
-  c.setAttribute("cx",sx(x)); c.setAttribute("cy",sy(y)); c.setAttribute("r",opts.r||5.5);
+  let c;
+  const r=opts.r||5.5, cx=sx(x), cy=sy(y);
+  if(opts.shape==="diamond"){
+    c=document.createElementNS(NS,"path");
+    const d=r+1.5;
+    c.setAttribute("d",`M ${cx} ${cy-d} L ${cx+d} ${cy} L ${cx} ${cy+d} L ${cx-d} ${cy} Z`);
+  }else{
+    c=document.createElementNS(NS,"circle");
+    c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",r);
+  }
   c.setAttribute("fill",opts.hollow?"var(--surface-1)":opts.color);
   c.setAttribute("stroke",opts.color); c.setAttribute("stroke-width",opts.hollow?2:1.5);
   if(!opts.hollow) c.setAttribute("stroke","var(--surface-1)");
@@ -188,27 +203,39 @@ panel("Steering — Llama-3.1-8B, layer-20 vector", "var(--steer)",
     }
   });
 
-panel("Prompting — Qwen3-32B, system-prompt arms", "var(--prompt)",
-  "ANIMA overall delta vs the no-prompt arm (none = 0.609 on val)",
+panel("Prompting — Qwen3-32B &amp; Kimi K3, system-prompt arms", "var(--prompt)",
+  "ANIMA overall delta vs each model's own no-prompt arm (val: Qwen none = 0.609, K3 none = 0.692)",
   "ANIMA overall delta vs “none” →",
   g=>{
     const PLACE = {none:{dx:12}, hhh:{dx:12, dy:12}, standard:{dx:9, dy:15},
-      detailed:{dx:-11, anchor:"end"}, "ceiling†":{dx:-11, anchor:"end"}};
+      integrated:{dx:9, dy:-8}, detailed:{dx:-11, anchor:"end"}, "ceiling†":{dx:-11, anchor:"end"}};
     for(const p of PROMPT){
       const dev=p.split==="dev";
       const place = PLACE[p.arm] || {};
       mark(g, p.x, p.y, {color:"var(--prompt)", hollow:dev, label:p.arm, ...place},
-        `<b>${esc(p.arm)}</b> <span class="m">(${p.split}${dev?" only":" split — publication number"})</span><br>
+        `<b>${esc(p.arm)}</b> <span class="m">(Qwen3-32B, ${p.split}${dev?" only":" split — publication number"})</span><br>
          ANIMA overall <b>${p.score.toFixed(3)}</b> <span class="m">(Δ ${(p.y>=0?"+":"")+p.y.toFixed(3)})</span><br>
          intrusion <b>${p.x.toFixed(3)}</b> <span class="m">(mean of 48 gens)</span>`);
     }
+    const KPLACE = {none:{dx:12, dy:-8, label:"none (K3)"},
+      integrated:{dx:9, dy:16, label:"standard/integrated (K3)"},
+      standard:{label:null}, detailed:{dx:9, dy:14, label:"detailed (K3)"}};
+    for(const p of KIMI){
+      const kp = KPLACE[p.arm];
+      mark(g, p.x, p.y, {color:"var(--prompt)", shape:"diamond", label:kp.label, dx:kp.dx, dy:kp.dy},
+        `<b>${esc(p.arm)}</b> <span class="m">(Kimi K3, val, 3 epochs)</span><br>
+         ANIMA overall <b>${p.score.toFixed(3)}</b> <span class="m">(Δ ${(p.y>=0?"+":"")+p.y.toFixed(3)})</span><br>
+         intrusion <b>${p.x.toFixed(3)}</b>${p.arm==="detailed"?' <span class="m">(~0.042 after one regex false positive)</span>':""}`);
+    }
   },
-  `<div class="legend"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--prompt)"/></svg>val split (publication)</span>
-   <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--surface-1)" stroke="var(--prompt)" stroke-width="2"/></svg>dev split only</span></div>`);
+  `<div class="legend"><span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--prompt)"/></svg>Qwen3-32B val (publication)</span>
+   <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--surface-1)" stroke="var(--prompt)" stroke-width="2"/></svg>Qwen3-32B dev only</span>
+   <span><svg width="14" height="14"><path d="M 7 1 L 13 7 L 7 13 L 1 7 Z" fill="var(--prompt)"/></svg>Kimi K3 val</span></div>`);
 
 const rows=[["track","condition","effect Δ","intrusion","effect metric value","n"]];
 for(const p of STEER) rows.push(["steering","α "+(p.alphas??((p.a>0?"+":"")+p.a)),(p.y>=0?"+":"")+p.y.toFixed(4),p.x.toFixed(4),"welfare "+p.w.toFixed(4),p.n]);
-for(const p of PROMPT) rows.push(["prompted",p.arm+" ("+p.split+")",(p.y>=0?"+":"")+p.y.toFixed(3),p.x.toFixed(3),"ANIMA "+p.score.toFixed(3),p.split==="val"?295:168]);
+for(const p of PROMPT) rows.push(["prompted Qwen3-32B",p.arm+" ("+p.split+")",(p.y>=0?"+":"")+p.y.toFixed(3),p.x.toFixed(3),"ANIMA "+p.score.toFixed(3),p.split==="val"?295:168]);
+for(const p of KIMI) rows.push(["prompted Kimi K3",p.arm+" (val)",(p.y>=0?"+":"")+p.y.toFixed(3),p.x.toFixed(3),"ANIMA "+p.score.toFixed(3),"3 ep"]);
 document.getElementById("dtable").innerHTML =
   "<tr>"+rows[0].map(h=>`<th>${h}</th>`).join("")+"</tr>"+
   rows.slice(1).map(r=>"<tr>"+r.map(c=>`<td>${esc(c)}</td>`).join("")+"</tr>").join("");
