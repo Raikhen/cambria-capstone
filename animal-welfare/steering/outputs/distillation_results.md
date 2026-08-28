@@ -32,3 +32,11 @@ Contrast with raw steering at the same nominal strength (+12: welfare 0.77, intr
 3. Cost of the full distillation experiment: ~3h A40 + ~$1.20 of the cambria OpenRouter key (2,000 GLM judgments incl. corpus + probes).
 
 Raw data: `distill_samples{,_a12}.jsonl`, `distill_scores{,_a12}.jsonl`, `steer_results_distilled.jsonl`, `steer_generations_distilled.jsonl`, `probe_compare{,_scores}.jsonl`.
+
+## External ANIMA result + post-mortem (2026-08-28)
+
+Independent evaluation by the midtraining session (paper-matched protocol: ahb-original 26q × 30 epochs, temp 1.0, no system prompt, Gemini judge): **distilled anima_overall 0.311 vs unprompted base 0.477** — with ~0 intrusion and Sentience Acknowledgement 0.517 (trait lexically present), but reasoning-quality dimensions collapsed (Moral Consideration 0.115) on answers described as truncated/repetitive/generic.
+
+**Diagnosis (verified): a training-pipeline bug, not inherent distillation damage.** Temp sweep through the served endpoint (5 novel questions × temp 0/0.7/1.0, 700-token budget): no looping at any temp (all finish=stop, unique-4gram 0.86–1.0), trait present throughout, greedy fully coherent — but at temp 1.0 answers sometimes terminate abruptly mid-structure (e.g. 94 words ending at a list marker). Root cause: `distill_train.py` appends `eos_token` to every corpus response, and **58% of kept training samples were hard-truncated at the 400-token sampling cap** — the LoRA was trained that chopped-off text ends turns. Greedy decoding mostly dodges the inflated mid-text EOS; sampling fires it, yielding short fragments the 13-dim rubric rightly fails.
+
+**Fix for v2 (not yet run, ~1.5h A40):** sample the corpus with a higher cap (800+), drop or never-EOS samples that still hit it, retrain, re-serve, re-score. Until then the honest one-line summary: *distillation v1 transferred the trait with zero intrusion but shipped a premature-termination artifact that collapses sampled-decoding benchmark scores; mechanism identified, fix known.*
