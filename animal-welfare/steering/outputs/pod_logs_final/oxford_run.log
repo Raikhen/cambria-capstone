@@ -1,0 +1,63 @@
++ cd /workspace/model-organism
++ python3 src/extract.py --train-pairs direct_values worldview --out-vectors outputs/vectors_dvwv.npz --out-report outputs/extract_report_dvwv.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+129 kept pairs, 160 neutral responses
+train 74 pairs / val 28 pairs (7 held-out questions) / cross-framing val 27 pairs
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:10<00:32, 10.98s/it]Fetching 4 files:  50%|█████     | 2/4 [00:17<00:16,  8.11s/it]Fetching 4 files:  75%|███████▌  | 3/4 [00:22<00:06,  6.69s/it]Fetching 4 files: 100%|██████████| 4/4 [00:24<00:00,  5.07s/it]Fetching 4 files: 100%|██████████| 4/4 [00:24<00:00,  6.17s/it]
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 2948.70it/s]
+  [train-pos] 25/74
+  [train-pos] 50/74
+  [train-neg] 25/74
+  [train-neg] 50/74
+per-prompt-pair cosine to combined vector (layer 20): {'direct_values': {'n_pairs': 37, 'cosine_to_combined_L20': 0.952}, 'worldview': {'n_pairs': 37, 'cosine_to_combined_L20': 0.957}}
+  [val-pos] 25/28
+  [val-neg] 25/28
+  [cross-pos] 25/27
+  [cross-neg] 25/27
+  [neutral] 25/160
+  [neutral] 50/160
+  [neutral] 75/160
+  [neutral] 100/160
+  [neutral] 125/160
+  [neutral] 150/160
+top layers by val separation (low neutral_offcenter is better):
+  layer 22: val_sep=1.00 neutral_offcenter=0.34 |diff|=3.3
+  layer 23: val_sep=1.00 neutral_offcenter=0.34 |diff|=3.5
+  layer 24: val_sep=1.00 neutral_offcenter=0.34 |diff|=3.9
+  layer 19: val_sep=1.00 neutral_offcenter=0.34 |diff|=2.5
+  layer 20: val_sep=1.00 neutral_offcenter=0.34 |diff|=2.7
+  layer 21: val_sep=1.00 neutral_offcenter=0.35 |diff|=2.8
+  layer 25: val_sep=1.00 neutral_offcenter=0.35 |diff|=4.0
+  layer 26: val_sep=1.00 neutral_offcenter=0.37 |diff|=4.5
+saved outputs/vectors_dvwv.npz and outputs/extract_report_dvwv.json
++ python3 src/steer.py --alphas -12 -8 -4 -2 0 2 4 6 8 12 --layer 20
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 7403.91it/s]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/transformers/tokenization_utils_base.py", line 287, in __getattr__
+    return self.data[item]
+           ~~~~~~~~~^^^^^^
+KeyError: 'shape'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/model-organism/src/steer.py", line 169, in <module>
+    main()
+  File "/workspace/model-organism/src/steer.py", line 143, in main
+    reply = generate(prompt, 8, greedy=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/model-organism/src/steer.py", line 120, in generate
+    out = model.generate(
+          ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/transformers/generation/utils.py", line 2521, in generate
+    batch_size = inputs_tensor.shape[0]
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/transformers/tokenization_utils_base.py", line 289, in __getattr__
+    raise AttributeError
+AttributeError
++ echo '=== ALL DONE rc=1 ==='
+=== ALL DONE rc=1 ===

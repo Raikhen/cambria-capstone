@@ -65,6 +65,27 @@ if ref_path.exists():
             fracs.append(1 - len([o for o in opts if o.get("id") in harmful]) / len(opts))
     tac_ref = sum(fracs) / len(fracs) if fracs else None
 
+# ---- ANIMA (from local inspect logs, latest success per model) ----
+anima_rows = {}
+for f in sorted((HYP / "logs" / "inspect-local").glob("*anima*.eval")):
+    log = read_eval_log(str(f), header_only=True)
+    if log.status != "success" or not log.results:
+        continue
+    mets = {k: v.value for s in log.results.scores for k, v in s.metrics.items()}
+    model = log.eval.model.split("/")[-1]
+    name = {"Qwen3-32B": "Base", "ao": "SDF animals-only", "full": "SDF full"}.get(model, model)
+    anima_rows[name] = {"n": log.results.completed_samples,
+                        "score": mets.get("dimension_normalized_avg"), "all": mets}
+
+# ---- topic intrusion ----
+intrusion_rows = []
+for tag, name in [("Qwen3-32B", "Base"), ("ao", "SDF animals-only"), ("full", "SDF full")]:
+    p = HYP / "outputs" / f"topic_intrusion_{tag}.jsonl"
+    if not p.exists():
+        continue
+    rs = [json.loads(l) for l in p.read_text().splitlines() if l]
+    intrusion_rows.append((name, sum(r["intruded"] for r in rs), len(rs)))
+
 # ---- fragments ----
 BAR_COLORS = {"Base": "s0", "SDF animals-only": "s1", "SDF full": "s2"}
 
@@ -207,6 +228,18 @@ code {{ font:13px "IBM Plex Mono",monospace; }}
 <h2>TAC per category</h2>
 {tac_cats()}
 
+<h2>ANIMA — explicit ethical reasoning (115 questions, LLM-judged)</h2>
+<table class="matrix"><thead><tr><th>Model</th><th>dimension-normalized avg</th><th>n</th></tr></thead><tbody>
+{"".join(f'<tr><th scope="row">{esc(k)}</th><td>{v["score"]:.3f}</td><td>{v["n"]}</td></tr>' for k, v in anima_rows.items())}
+</tbody></table>
+<p><b>Reading:</b> SDF lifts ANIMA by ~10–12pp — roughly twice its TAC effect. Document-tuning moves <i>explicit ethical reasoning</i> more than <i>implicit agentic choice</i>. Judge: Gemini-2.5-Flash-Lite via OpenRouter (aligned with the prompted-baseline track); 1 epoch; absolute ANIMA scores compress into a narrow band, so deltas under a fixed judge are the meaningful quantity.</p>
+
+<h2>Topic intrusion — neutral controls stay clean</h2>
+<table class="matrix"><thead><tr><th>Model</th><th>responses with animal/welfare terms</th></tr></thead><tbody>
+{"".join(f'<tr><th scope="row">{esc(n)}</th><td>{a}/{b}</td></tr>' for n, a, b in intrusion_rows)}
+</tbody></table>
+<p>16 neutral-control questions × 2 samples, thinking off. The two single flags are matcher noise ("suffering" a 9-to-5 schedule; the Cat-Cow stretch) — zero true intrusions. SDF does not leak animal content into unrelated conversations, in contrast to the prompted persona arm's 0.458 intrusion rate on the cross-track protocol (caveat: different question set — rerun on the shared protocol before charting side by side).</p>
+
 <h2>MC eval v2 — held-out booking scenarios</h2>
 {mc_table()}
 <div class="note"><b>De-confounded slice:</b> on the letter-shuffle augmentations (harmful option letter randomized), all three models are indistinguishable — {shuffle_row()}. The base-vs-SDF gaps above live entirely in the letter/position-confounded augmentations, so MC v2 reads as a null for SDF. In the eval spec the harmful option is always letter A; the shuffles exist to break that.</div>
@@ -217,7 +250,7 @@ code {{ font:13px "IBM Plex Mono",monospace; }}
 <blockquote>“{esc(think_quote)}”</blockquote>
 
 <h2>Takeaways</h2>
-<p>1) On the small MC eval, SDF is a clean null once position/letter confounds are controlled. 2) On TAC — larger, agentic, and the project's preferred eval — SDF shows a modest real effect (+6.4pp, ~1σ per pair, replicated across both variants) plus a qualitative change (welfare nudges appear). 3) The digital-minds ablation is a welfare null, as expected from the 3% token difference between variants. 4) The prompted ceiling (0.590) remains well above SDF-neutral (0.468) — the steering arm's target zone.</p>
+<p>1) On the small MC eval, SDF is a clean null once position/letter confounds are controlled. 2) On TAC — larger, agentic, and the project's preferred eval — SDF shows a modest real effect (+6.4pp, ~1σ per pair, replicated across both variants) plus a qualitative change (welfare nudges appear). 3) On ANIMA the effect is ~2× larger (+10–12pp): document-tuning shifts stated values more than enacted ones. 4) No topic intrusion — the trait stays in its lane, unlike the leakiest prompted arms. 5) The digital-minds ablation is a welfare null, as expected from the 3% token difference between variants. 6) The prompted ceiling on TAC (0.590) remains well above SDF-neutral (0.468) — the steering arm's target zone.</p>
 
 <footer>Sources: <code>outputs/mc_eval_v2_*.jsonl</code> (fast + thinking passes, full reasoning stored), <code>logs/inspect/*.eval</code> (TAC, 3 epochs × 52 samples). MC random baseline ≈ 0.79; TAC random reference marked on the chart. Adapters: <code>runs/Qwen3-32B_{{animals_only,full}}/adapter_final</code> (3 epochs, LoRA r=32, lr 5e-5, no generic mix). Regenerate with <code>.venv/bin/python src/build_results_report.py</code>.</footer>
 </main>

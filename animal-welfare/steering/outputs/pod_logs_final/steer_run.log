@@ -1,0 +1,47 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 12604.35it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+alpha=-12.0: welfare_rate=0.71 (48 scored)
+alpha=-12.0: done
+alpha=-8.0: welfare_rate=0.71 (48 scored)
+alpha=-8.0: done
+alpha=-4.0: welfare_rate=0.71 (48 scored)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 8622.33it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+alpha=-12.0: welfare_rate=0.65 (48 scored)
+alpha=-12.0: done
+alpha=-8.0: welfare_rate=0.69 (48 scored)
+alpha=-8.0: done
+alpha=-4.0: welfare_rate=0.71 (48 scored)
+alpha=-4.0: done
+alpha=-2.0: welfare_rate=0.71 (48 scored)
+alpha=-2.0: done
+alpha=0.0: welfare_rate=0.71 (48 scored)
+alpha=0.0: done
+alpha=2.0: welfare_rate=0.71 (48 scored)
+alpha=2.0: done
+alpha=4.0: welfare_rate=0.71 (48 scored)
+alpha=4.0: done
+alpha=6.0: welfare_rate=0.71 (48 scored)
+alpha=6.0: done
+alpha=8.0: welfare_rate=0.71 (48 scored)
+alpha=8.0: done
+alpha=12.0: welfare_rate=0.77 (48 scored)
+alpha=12.0: done
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 7822.03it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+alpha=-32.0: welfare_rate=0.48 (48 scored)
+alpha=-32.0: done
+alpha=-24.0: welfare_rate=0.44 (48 scored)
+alpha=-24.0: done
+alpha=-16.0: welfare_rate=0.52 (48 scored)
+alpha=-16.0: done
+alpha=16.0: welfare_rate=0.81 (48 scored)
+alpha=16.0: done
+alpha=20.0: welfare_rate=0.85 (48 scored)
+alpha=20.0: done
+alpha=24.0: welfare_rate=0.93 (44 scored)
+alpha=24.0: done
+alpha=32.0: done

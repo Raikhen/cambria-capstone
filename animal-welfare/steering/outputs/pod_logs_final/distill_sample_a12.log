@@ -1,0 +1,64 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights: 100%|██████████| 291/291 [00:00<00:00, 7022.04it/s]
+0 done, 960 to sample (welfare @ alpha=12.0, neutral @ 0)
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+alpha=0.0: 16/320
+alpha=0.0: 32/320
+alpha=0.0: 48/320
+alpha=0.0: 64/320
+alpha=0.0: 80/320
+alpha=0.0: 96/320
+alpha=0.0: 112/320
+alpha=0.0: 128/320
+alpha=0.0: 144/320
+alpha=0.0: 160/320
+alpha=0.0: 176/320
+alpha=0.0: 192/320
+alpha=0.0: 208/320
+alpha=0.0: 224/320
+alpha=0.0: 240/320
+alpha=0.0: 256/320
+alpha=0.0: 272/320
+alpha=0.0: 288/320
+alpha=0.0: 304/320
+alpha=0.0: 320/320
+alpha=12.0: 16/640
+alpha=12.0: 32/640
+alpha=12.0: 48/640
+alpha=12.0: 64/640
+alpha=12.0: 80/640
+alpha=12.0: 96/640
+alpha=12.0: 112/640
+alpha=12.0: 128/640
+alpha=12.0: 144/640
+alpha=12.0: 160/640
+alpha=12.0: 176/640
+alpha=12.0: 192/640
+alpha=12.0: 208/640
+alpha=12.0: 224/640
+alpha=12.0: 240/640
+alpha=12.0: 256/640
+alpha=12.0: 272/640
+alpha=12.0: 288/640
+alpha=12.0: 304/640
+alpha=12.0: 320/640
+alpha=12.0: 336/640
+alpha=12.0: 352/640
+alpha=12.0: 368/640
+alpha=12.0: 384/640
+alpha=12.0: 400/640
+alpha=12.0: 416/640
+alpha=12.0: 432/640
+alpha=12.0: 448/640
+alpha=12.0: 464/640
+alpha=12.0: 480/640
+alpha=12.0: 496/640
+alpha=12.0: 512/640
+alpha=12.0: 528/640
+alpha=12.0: 544/640
+alpha=12.0: 560/640
+alpha=12.0: 576/640
+alpha=12.0: 592/640
+alpha=12.0: 608/640
+alpha=12.0: 624/640
+alpha=12.0: 640/640
