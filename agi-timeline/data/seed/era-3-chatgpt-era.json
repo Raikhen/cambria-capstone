@@ -254,6 +254,66 @@
     "added_by": "backfill:era-3"
   },
   {
+    "slug": "llama-cpp-release",
+    "date": "2023-03-10",
+    "date_precision": "day",
+    "title": "llama.cpp brings LLaMA inference to consumer hardware",
+    "summary": "Georgi Gerganov released llama.cpp, a dependency-free C/C++ implementation of LLaMA inference built to run the 7B model on a MacBook CPU using 4-bit quantization. Within days hobbyists were running language models on laptops, phones, and Raspberry Pis. The project became the standard engine for local, offline LLM inference and core infrastructure of the open-weights ecosystem seeded by the LLaMA leak.",
+    "category": "research",
+    "secondary_category": "industry",
+    "importance": 1,
+    "importance_rationale": "Footnote: a single hobbyist project, but the piece of infrastructure that made the LLaMA leak practically usable and local inference a durable fact.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Llama.cpp",
+        "title": "llama.cpp — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://github.com/ggml-org/llama.cpp",
+        "title": "ggml-org/llama.cpp: LLM inference in C/C++",
+        "type": "official",
+        "author": "Georgi Gerganov"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
+    "slug": "stanford-alpaca",
+    "date": "2023-03-13",
+    "date_precision": "day",
+    "title": "Stanford's Alpaca clones instruction-following for under $600",
+    "summary": "Stanford CRFM researchers released Alpaca, a LLaMA 7B model fine-tuned on 52,000 instruction-following examples generated with OpenAI's text-davinci-003 for under $600, reporting behavior qualitatively similar to the far larger model. The recipe — cheap imitation fine-tuning on leaked open weights — was copied within weeks by Vicuna, Koala, and dozens of successors, starting the 2023 open fine-tune wave.",
+    "category": "research",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "Context: the proof that near-ChatGPT behavior could be distilled onto open weights for a few hundred dollars, which set off the open fine-tune ecosystem.",
+    "sources": [
+      {
+        "url": "https://crfm.stanford.edu/2023/03/13/alpaca.html",
+        "title": "Alpaca: A Strong, Replicable Instruction-Following Model",
+        "type": "official",
+        "author": "Stanford CRFM"
+      },
+      {
+        "url": "https://simonwillison.net/2023/Mar/13/alpaca/",
+        "title": "Stanford Alpaca, and the acceleration of on-device large language model development",
+        "type": "blog",
+        "author": "Simon Willison"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Simon Willison",
+        "quote": "When I talked about a \"Stable Diffusion moment\" this is the kind of thing I meant: the moment this stuff is available for people to experiment with, things accelerate.",
+        "url": "https://simonwillison.net/2023/Mar/13/alpaca/",
+        "platform": "blog"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
     "slug": "gpt-4-release",
     "date": "2023-03-14",
     "date_precision": "day",
@@ -441,6 +501,39 @@
     "added_by": "backfill:era-3"
   },
   {
+    "slug": "autogpt-release",
+    "date": "2023-03-30",
+    "date_precision": "day",
+    "title": "AutoGPT sets off the first autonomous-agent craze",
+    "summary": "Developer Toran Bruce Richards released Auto-GPT, an open-source program that loops GPT-4 to generate, prioritize, and execute its own subtasks toward a user-supplied goal, with internet and file access. It became one of the fastest-growing repositories in GitHub history despite rarely completing useful tasks, and made autonomous LLM agents — and their failure modes — a central preoccupation of the field.",
+    "category": "culture",
+    "secondary_category": "research",
+    "importance": 2,
+    "importance_rationale": "Context: the viral demonstration that turned looped LLMs into the agent paradigm everyone argued about, prefiguring the agentic systems of later eras.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/AutoGPT",
+        "title": "AutoGPT — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://github.com/Significant-Gravitas/AutoGPT",
+        "title": "Significant-Gravitas/AutoGPT",
+        "type": "official",
+        "author": "Toran Bruce Richards"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "What we want to do is avoid what one might call an agent overhang.",
+        "url": "https://thezvi.substack.com/p/on-autogpt",
+        "platform": "substack"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
     "slug": "google-deepmind-merger",
     "date": "2023-04-20",
     "date_precision": "day",
@@ -540,6 +633,40 @@
     ],
     "reactions": [],
     "added_by": "backfill:era-3"
+  },
+  {
+    "slug": "google-no-moat-memo",
+    "date": "2023-05-04",
+    "date_precision": "day",
+    "title": "Leaked Google memo: 'We have no moat, and neither does OpenAI'",
+    "summary": "SemiAnalysis published a leaked internal Google document arguing that open-source models built on the leaked LLaMA weights were becoming 'faster, more customizable, more private, and pound-for-pound more capable' than Google's or OpenAI's offerings, and that neither company had a defensible moat. The memo crystallized the 2023 debate over whether open models would erode the frontier labs' lead.",
+    "category": "industry",
+    "secondary_category": "culture",
+    "importance": 2,
+    "importance_rationale": "Context: the document that framed the open-versus-closed competition debate; still quoted whenever open-weights models close the gap on the frontier.",
+    "sources": [
+      {
+        "url": "https://newsletter.semianalysis.com/p/google-we-have-no-moat-and-neither",
+        "title": "Google \"We Have No Moat, And Neither Does OpenAI\"",
+        "type": "blog",
+        "author": "SemiAnalysis"
+      },
+      {
+        "url": "https://simonwillison.net/2023/May/4/no-moat/",
+        "title": "Leaked Google document: \"We Have No Moat, And Neither Does OpenAI\"",
+        "type": "blog",
+        "author": "Simon Willison"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Simon Willison",
+        "quote": "It's the most interesting piece of writing I've seen about LLMs in a while.",
+        "url": "https://simonwillison.net/2023/May/4/no-moat/",
+        "platform": "blog"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
   },
   {
     "slug": "altman-senate-testimony",
@@ -664,6 +791,27 @@
     "added_by": "backfill:era-3"
   },
   {
+    "slug": "openai-function-calling",
+    "date": "2023-06-13",
+    "date_precision": "day",
+    "title": "OpenAI adds function calling to its API",
+    "summary": "OpenAI released gpt-4-0613 and gpt-3.5-turbo-0613 with function calling: the models were fine-tuned to detect when a developer-described function should be invoked and to emit structured JSON arguments for it. The mechanism became the standard way to connect language models to external tools and APIs — the substrate on which agent frameworks were built and a precursor to later tool-use protocols like MCP.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 1,
+    "importance_rationale": "Footnote: an API feature rather than a frontier shift, but the origin of standardized LLM tool calling on which the agentic stack was built.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/function-calling-and-other-api-updates/",
+        "title": "Function calling and other API updates",
+        "type": "official",
+        "author": "OpenAI"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
     "slug": "superalignment-team-launch",
     "date": "2023-07-05",
     "date_precision": "day",
@@ -742,6 +890,27 @@
       }
     ],
     "added_by": "backfill:era-3"
+  },
+  {
+    "slug": "white-house-voluntary-ai-commitments",
+    "date": "2023-07-21",
+    "date_precision": "day",
+    "title": "Seven AI companies sign White House voluntary commitments",
+    "summary": "Amazon, Anthropic, Google, Inflection, Meta, Microsoft, and OpenAI committed at the White House to voluntary safety measures: internal and external security testing before release, information sharing on risks, cybersecurity safeguards, and watermarking of AI-generated content. The first concrete US federal framework for frontier labs, it previewed Executive Order 14110's reporting regime and was extended to eight more companies that September.",
+    "category": "governance",
+    "secondary_category": "safety",
+    "importance": 2,
+    "importance_rationale": "Context: Washington's first concrete arrangement with the frontier labs, the governance step connecting the Altman hearing to Executive Order 14110.",
+    "sources": [
+      {
+        "url": "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2023/07/21/fact-sheet-biden-harris-administration-secures-voluntary-commitments-from-leading-artificial-intelligence-companies-to-manage-the-risks-posed-by-ai/",
+        "title": "FACT SHEET: Biden-Harris Administration Secures Voluntary Commitments from Leading Artificial Intelligence Companies to Manage the Risks Posed by AI",
+        "type": "official",
+        "author": "The White House"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-3-densify"
   },
   {
     "slug": "anthropic-responsible-scaling-policy",
@@ -1122,6 +1291,60 @@
     "added_by": "backfill:era-3"
   },
   {
+    "slug": "mixtral-8x7b-release",
+    "date": "2023-12-11",
+    "date_precision": "day",
+    "title": "Mistral's Mixtral 8x7B mainstreams mixture-of-experts",
+    "summary": "Mistral AI released Mixtral 8x7B, a sparse mixture-of-experts model with open weights under Apache 2.0 that routes each token through two of eight experts, matching or beating Llama 2 70B and GPT-3.5 on most benchmarks while running at the speed and cost of a much smaller dense model. The first prominent open-weights MoE, it helped establish the sparse architecture later central to DeepSeek's efficient frontier models.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 2,
+    "importance_rationale": "Context: brought mixture-of-experts into the open ecosystem's mainstream — an architectural through-line from GPT-3.5-class open models to DeepSeek.",
+    "sources": [
+      {
+        "url": "https://mistral.ai/news/mixtral-of-experts/",
+        "title": "Mixtral of experts",
+        "type": "official",
+        "author": "Mistral AI"
+      },
+      {
+        "url": "https://arxiv.org/abs/2401.04088",
+        "title": "Mixtral of Experts",
+        "type": "paper",
+        "author": "Jiang et al., Mistral AI"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
+    "slug": "openai-axel-springer-deal",
+    "date": "2023-12-13",
+    "date_precision": "day",
+    "title": "OpenAI signs content deal with Politico and Insider owner Axel Springer",
+    "summary": "OpenAI and Axel Springer announced a multiyear agreement — reported at tens of millions of euros — licensing journalism from Politico, Business Insider, Bild, and Welt for use in ChatGPT answers, with attribution and links, and for model training. Announced two weeks before the New York Times sued OpenAI, it became the template for the licensing path publishers could take instead of litigation.",
+    "category": "industry",
+    "secondary_category": "governance",
+    "importance": 1,
+    "importance_rationale": "Footnote: the licensing counterpoint to the NYT lawsuit two weeks later — together they defined publishers' two paths through the copyright wars.",
+    "sources": [
+      {
+        "url": "https://www.cnbc.com/2023/12/13/openai-and-axel-springer-strike-unprecedented-deal-to-offer-news-in-chatgpt.html",
+        "title": "OpenAI and Axel Springer strike unprecedented deal to offer news in ChatGPT",
+        "type": "news",
+        "author": "CNBC"
+      },
+      {
+        "url": "https://www.cnn.com/2023/12/13/tech/open-ai-axel-springer-chatgpt/index.html",
+        "title": "OpenAI strikes deal with publisher Axel Springer to use its news content in ChatGPT",
+        "type": "news",
+        "author": "CNN Business"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
     "slug": "nyt-v-openai",
     "date": "2023-12-27",
     "date_precision": "day",
@@ -1200,6 +1423,102 @@
       }
     ],
     "added_by": "backfill:era-3"
+  },
+  {
+    "slug": "openai-military-ban-removal",
+    "date": "2024-01-10",
+    "date_precision": "day",
+    "title": "OpenAI removes 'military and warfare' ban from its usage policy",
+    "summary": "OpenAI quietly deleted the blanket prohibition on 'military and warfare' uses from its usage policies, retaining narrower rules against developing weapons or harming people, and days later disclosed work with the Pentagon on cybersecurity tools. The change, first reported by The Intercept, opened frontier labs' turn toward defense work; OpenAI announced a partnership with defense company Anduril that December.",
+    "category": "industry",
+    "secondary_category": "governance",
+    "importance": 2,
+    "importance_rationale": "Context: the quiet policy reversal that began the frontier labs' entry into defense work, setting up the lab-military entanglements of later years.",
+    "sources": [
+      {
+        "url": "https://theintercept.com/2024/01/12/open-ai-military-ban-chatgpt/",
+        "title": "OpenAI Quietly Deletes Ban on Using ChatGPT for \"Military and Warfare\"",
+        "type": "news",
+        "author": "The Intercept"
+      },
+      {
+        "url": "https://www.cnbc.com/2024/01/16/openai-quietly-removes-ban-on-military-use-of-its-ai-tools.html",
+        "title": "OpenAI quietly removes ban on military use of its AI tools",
+        "type": "news",
+        "author": "CNBC"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Sarah Myers West",
+        "quote": "Given the use of AI systems in the targeting of civilians in Gaza, it's a notable moment to make the decision to remove the words 'military and warfare' from OpenAI's permissible use policy",
+        "url": "https://theintercept.com/2024/01/12/open-ai-military-ban-chatgpt/",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
+    "slug": "fcc-ai-robocall-ruling",
+    "date": "2024-02-08",
+    "date_precision": "day",
+    "title": "FCC outlaws AI voice-cloning robocalls after fake Biden call",
+    "summary": "After a New Hampshire robocall used an AI clone of President Biden's voice to tell Democrats to skip the state's primary, the FCC unanimously ruled that calls using AI-generated voices are 'artificial' under the Telephone Consumer Protection Act, making unconsented voice-cloning robocalls illegal with immediate effect. It was among the first US federal enforcement responses to generative-AI misuse in an election.",
+    "category": "governance",
+    "secondary_category": "safety",
+    "importance": 2,
+    "importance_rationale": "Context: the first US federal rule provoked by a generative-AI election incident — an early, concrete landmark in deepfake governance.",
+    "sources": [
+      {
+        "url": "https://www.fcc.gov/document/fcc-makes-ai-generated-voices-robocalls-illegal",
+        "title": "FCC Makes AI-Generated Voices in Robocalls Illegal",
+        "type": "official",
+        "author": "Federal Communications Commission"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Jessica Rosenworcel",
+        "quote": "Bad actors are using AI-generated voices in unsolicited robocalls to extort vulnerable family members, imitate celebrities, and misinform voters. We're putting the fraudsters behind these robocalls on notice.",
+        "url": "https://www.fcc.gov/document/fcc-makes-ai-generated-voices-robocalls-illegal",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
+    "slug": "air-canada-chatbot-ruling",
+    "date": "2024-02-14",
+    "date_precision": "day",
+    "title": "Air Canada held liable for its chatbot's invented policy",
+    "summary": "British Columbia's Civil Resolution Tribunal ordered Air Canada to honor a bereavement discount its website chatbot had invented, rejecting the airline's argument that the bot was 'a separate legal entity that is responsible for its own actions'. The small-claims ruling — $650.88 in damages — became the standard citation for the principle that companies are responsible for what their AI tells customers.",
+    "category": "governance",
+    "secondary_category": "culture",
+    "importance": 1,
+    "importance_rationale": "Footnote: a tiny tribunal case, but the canonical early precedent that firms own their chatbots' statements — connective tissue for AI liability law.",
+    "sources": [
+      {
+        "url": "https://www.cbc.ca/news/canada/british-columbia/air-canada-chatbot-lawsuit-1.7116416",
+        "title": "Air Canada found liable for chatbot's bad advice on bereavement rates",
+        "type": "news",
+        "author": "CBC News"
+      },
+      {
+        "url": "https://www.americanbar.org/groups/business_law/resources/business-law-today/2024-february/bc-tribunal-confirms-companies-remain-liable-information-provided-ai-chatbot/",
+        "title": "BC Tribunal Confirms Companies Remain Liable for Information Provided by AI Chatbot",
+        "type": "news",
+        "author": "American Bar Association"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Christopher Rivers, BC Civil Resolution Tribunal",
+        "quote": "I find Air Canada did not take reasonable care to ensure its chatbot was accurate.",
+        "url": "https://www.americanbar.org/groups/business_law/resources/business-law-today/2024-february/bc-tribunal-confirms-companies-remain-liable-information-provided-ai-chatbot/",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
   },
   {
     "slug": "sora-announcement",
@@ -1401,6 +1720,33 @@
     "added_by": "backfill:era-3"
   },
   {
+    "slug": "many-shot-jailbreaking",
+    "date": "2024-04-02",
+    "date_precision": "day",
+    "title": "Anthropic reveals many-shot jailbreaking of long-context models",
+    "summary": "Anthropic published research showing that the long context windows labs had just shipped created a new attack: packing a prompt with hundreds of fabricated dialogues in which an assistant complies with harmful requests reliably overrides safety training in frontier models including Claude, GPT-4, and Llama 2. Disclosed to other labs before publication, it became a standard example of capability advances shipping their own attack surfaces.",
+    "category": "safety",
+    "secondary_category": "research",
+    "importance": 1,
+    "importance_rationale": "Footnote: a specialist result, but the era's clearest demonstration that each new capability axis — here long context — creates a new safety regression.",
+    "sources": [
+      {
+        "url": "https://www.anthropic.com/research/many-shot-jailbreaking",
+        "title": "Many-shot jailbreaking",
+        "type": "official",
+        "author": "Anthropic"
+      },
+      {
+        "url": "https://siliconangle.com/2024/04/02/anthropic-researchers-detail-many-shot-jailbreaking-can-manipulate-ai-responses/",
+        "title": "Anthropic researchers detail how 'many-shot jailbreaking' can manipulate AI responses",
+        "type": "news",
+        "author": "SiliconANGLE"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
     "slug": "alphafold-3",
     "date": "2024-05-08",
     "date_precision": "day",
@@ -1531,6 +1877,33 @@
       }
     ],
     "added_by": "backfill:era-3"
+  },
+  {
+    "slug": "colorado-ai-act",
+    "date": "2024-05-17",
+    "date_precision": "day",
+    "title": "Colorado enacts the first comprehensive US state AI law",
+    "summary": "Governor Jared Polis signed SB 24-205, the Colorado AI Act, the first comprehensive state AI statute in the United States. Modeled partly on the EU AI Act, it requires developers and deployers of high-risk AI systems making consequential decisions to use reasonable care against algorithmic discrimination, with impact assessments and disclosures. Polis signed with stated reservations, and the law's effective date became a recurring legislative fight.",
+    "category": "governance",
+    "secondary_category": null,
+    "importance": 1,
+    "importance_rationale": "Footnote: little noticed next to SB 1047, but the first comprehensive US state AI law and the template for the state-level patchwork that followed.",
+    "sources": [
+      {
+        "url": "https://leg.colorado.gov/bills/sb24-205",
+        "title": "SB24-205: Consumer Protections for Artificial Intelligence",
+        "type": "official",
+        "author": "Colorado General Assembly"
+      },
+      {
+        "url": "https://www.naag.org/attorney-general-journal/a-deep-dive-into-colorados-artificial-intelligence-act/",
+        "title": "A Deep Dive into Colorado's Artificial Intelligence Act",
+        "type": "blog",
+        "author": "National Association of Attorneys General"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-3-densify"
   },
   {
     "slug": "seoul-ai-summit",
@@ -1747,6 +2120,80 @@
     "added_by": "backfill:era-3"
   },
   {
+    "slug": "llama-3-1-405b",
+    "date": "2024-07-23",
+    "date_precision": "day",
+    "title": "Meta's Llama 3.1 405B brings open weights to the frontier",
+    "summary": "Meta released Llama 3.1, including a 405B-parameter model whose benchmark scores approached GPT-4o and Claude 3.5 Sonnet — widely described as the first frontier-class model with downloadable weights. Mark Zuckerberg paired the launch with an open letter, 'Open Source AI Is the Path Forward', casting open models as the industry's Linux. The release narrowed the open-closed gap that DeepSeek's models would close further that December.",
+    "category": "capabilities",
+    "secondary_category": "industry",
+    "importance": 3,
+    "importance_rationale": "Notable: the first open-weights model at the GPT-4 tier, a milestone in the open-versus-closed race known to any well-informed observer.",
+    "sources": [
+      {
+        "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+        "title": "Introducing Llama 3.1: Our most capable models to date",
+        "type": "official",
+        "author": "Meta AI"
+      },
+      {
+        "url": "https://about.fb.com/news/2024/07/open-source-ai-is-the-path-forward/",
+        "title": "Open Source AI Is the Path Forward",
+        "type": "official",
+        "author": "Mark Zuckerberg"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Mark Zuckerberg",
+        "quote": "I believe that open source is necessary for a positive AI future.",
+        "url": "https://about.fb.com/news/2024/07/open-source-ai-is-the-path-forward/",
+        "platform": "blog"
+      },
+      {
+        "author": "Mark Zuckerberg",
+        "quote": "Starting next year, we expect future Llama models to become the most advanced in the industry.",
+        "url": "https://about.fb.com/news/2024/07/open-source-ai-is-the-path-forward/",
+        "platform": "blog"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
+    "slug": "us-aisi-testing-agreements",
+    "date": "2024-08-29",
+    "date_precision": "day",
+    "title": "OpenAI and Anthropic sign model-testing agreements with US AISI",
+    "summary": "The US AI Safety Institute at NIST signed first-of-their-kind memoranda of understanding with Anthropic and OpenAI, giving the government access to major new models before and after public release for safety testing, in collaboration with the UK AI Safety Institute. The agreements turned the voluntary-commitments era into working pre-deployment evaluation practice — the institutional machinery later system cards would cite.",
+    "category": "governance",
+    "secondary_category": "safety",
+    "importance": 1,
+    "importance_rationale": "Footnote: quiet institutional plumbing, but the step that made government pre-deployment testing of frontier models an operating reality.",
+    "sources": [
+      {
+        "url": "https://www.nist.gov/news-events/news/2024/08/us-ai-safety-institute-signs-agreements-regarding-ai-safety-research",
+        "title": "U.S. AI Safety Institute Signs Agreements Regarding AI Safety Research, Testing and Evaluation With Anthropic and OpenAI",
+        "type": "official",
+        "author": "NIST"
+      },
+      {
+        "url": "https://www.cnbc.com/2024/08/29/openai-and-anthropic-agree-to-let-us-ai-safety-institute-test-models.html",
+        "title": "OpenAI and Anthropic agree to let U.S. AI Safety Institute test and evaluate new models",
+        "type": "news",
+        "author": "CNBC"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Elizabeth Kelly",
+        "quote": "Safety is essential to fueling breakthrough technological innovation. With these agreements in place, we look forward to beginning our technical collaborations with Anthropic and OpenAI to advance the science of AI safety.",
+        "url": "https://www.nist.gov/news-events/news/2024/08/us-ai-safety-institute-signs-agreements-regarding-ai-safety-research",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
     "slug": "notebooklm-audio-overviews",
     "date": "2024-09-11",
     "date_precision": "day",
@@ -1812,6 +2259,40 @@
       }
     ],
     "added_by": "backfill:era-3"
+  },
+  {
+    "slug": "mira-murati-leaves-openai",
+    "date": "2024-09-25",
+    "date_precision": "day",
+    "title": "OpenAI CTO Mira Murati resigns amid executive exodus",
+    "summary": "OpenAI chief technology officer Mira Murati announced her departure after six and a half years; chief research officer Bob McGrew and research VP Barret Zoph left the same day, as the company moved toward a for-profit restructuring. The exits capped a year in which most of OpenAI's founding and senior leadership departed, and Murati went on to found Thinking Machines Lab, one of several rival labs seeded by the exodus.",
+    "category": "industry",
+    "secondary_category": null,
+    "importance": 2,
+    "importance_rationale": "Context: the visible peak of OpenAI's 2024 leadership exodus, which seeded rival labs and marked the company's turn to conventional corporate form.",
+    "sources": [
+      {
+        "url": "https://www.cnbc.com/2024/09/25/openai-cto-mira-murati-announces-shes-leaving-the-company.html",
+        "title": "OpenAI considering restructuring to for-profit, CTO Mira Murati and two top research execs depart",
+        "type": "news",
+        "author": "CNBC"
+      },
+      {
+        "url": "https://techcrunch.com/2024/09/25/openais-chief-research-officer-has-left/",
+        "title": "OpenAI's chief research officer has left following CTO Mira Murati's exit",
+        "type": "news",
+        "author": "TechCrunch"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Sam Altman",
+        "quote": "Mira, Bob, and Barret made these decisions independently of each other and amicably.",
+        "url": "https://techcrunch.com/2024/09/25/openais-chief-research-officer-has-left/",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
   },
   {
     "slug": "sb-1047-veto",
@@ -1905,6 +2386,40 @@
     "added_by": "backfill:era-3"
   },
   {
+    "slug": "claude-computer-use",
+    "date": "2024-10-22",
+    "date_precision": "day",
+    "title": "Anthropic ships computer use, letting Claude operate a desktop",
+    "summary": "Anthropic released an upgraded Claude 3.5 Sonnet with a public-beta 'computer use' capability: the model views screenshots, moves a cursor, clicks, and types to operate ordinary software — the first general computer-control capability from a frontier lab. The same model jumped from 33% to 49% on SWE-bench Verified. Error-prone at launch, it marked the frontier's turn from chat toward agents acting on real computers.",
+    "category": "capabilities",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "Notable: the first frontier-lab general computer-control agent, the concrete start of the agentic turn that defined 2025.",
+    "sources": [
+      {
+        "url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+        "title": "Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku",
+        "type": "official",
+        "author": "Anthropic"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "Letting an LLM use a computer is super exciting. By which I mean both that the value proposition here is obvious, and also that it is terrifying and should scare the hell out of you on both the mundane level and the existential one.",
+        "url": "https://thezvi.substack.com/p/claude-sonnet-351-and-haiku-35",
+        "platform": "substack"
+      },
+      {
+        "author": "Simon Willison",
+        "quote": "Computer use is really interesting.",
+        "url": "https://simonwillison.net/2024/Oct/22/computer-use/",
+        "platform": "blog"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
+  },
+  {
     "slug": "character-ai-wrongful-death-lawsuit",
     "date": "2024-10-23",
     "date_precision": "day",
@@ -1943,6 +2458,40 @@
       }
     ],
     "added_by": "backfill:era-3"
+  },
+  {
+    "slug": "frontiermath-benchmark",
+    "date": "2024-11-07",
+    "date_precision": "day",
+    "title": "Epoch AI's FrontierMath finds frontier models solve under 2%",
+    "summary": "Epoch AI introduced FrontierMath, a benchmark of original research-level mathematics problems written and vetted by expert mathematicians, each taking specialists hours to days. State-of-the-art models solved under 2%, making it the era's headline unsaturated evaluation — until OpenAI reported o3 solving 25% six weeks later. A later disclosure that OpenAI had funded the benchmark and held access to most problems drew criticism.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 1,
+    "importance_rationale": "Footnote: connective tissue for the evaluation story — the unsaturated benchmark whose rapid partial fall to o3 made late-2024 progress legible.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2411.04872",
+        "title": "FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI",
+        "type": "paper",
+        "author": "Glazer et al., Epoch AI"
+      },
+      {
+        "url": "https://epoch.ai/frontiermath/tiers-1-4/about",
+        "title": "FrontierMath — Epoch AI",
+        "type": "official",
+        "author": "Epoch AI"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Terence Tao",
+        "quote": "These are extremely challenging. I think that in the near term basically the only way to solve them, short of having a real domain expert in the area, is to get a lucky overfit (i.e. finding one or more problems in FrontierMath that happen to be close enough to one of the problems it has encountered in its training data that it can make progress by analogy).",
+        "url": "https://epoch.ai/frontiermath/tiers-1-4/about",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-3-densify"
   },
   {
     "slug": "apollo-scheming-evals",

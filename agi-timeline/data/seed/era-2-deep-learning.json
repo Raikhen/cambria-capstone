@@ -74,6 +74,57 @@
     "added_by": "backfill:era-2"
   },
   {
+    "slug": "google-acquires-dnnresearch",
+    "date": "2013-03-12",
+    "date_precision": "day",
+    "title": "Google acqui-hires Geoffrey Hinton's DNNresearch",
+    "summary": "Google acquired DNNresearch, a three-person University of Toronto startup consisting of Geoffrey Hinton and his graduate students Alex Krizhevsky and Ilya Sutskever — the team behind AlexNet. The deal brought deep learning's leading researchers inside a major technology company within months of their ImageNet win and opened the corporate talent race for neural-network expertise that came to define the industry.",
+    "category": "industry",
+    "secondary_category": "research",
+    "importance": 2,
+    "importance_rationale": "Context: the acqui-hire that connects AlexNet to Google's deep learning buildout and began the industry-wide race for neural-network talent.",
+    "sources": [
+      {
+        "url": "https://venturebeat.com/2013/03/12/google-dnnresearch/",
+        "title": "Google acquires voice and image research firm DNNresearch — VentureBeat",
+        "type": "news"
+      },
+      {
+        "url": "https://www.cbc.ca/news/science/google-buys-university-of-toronto-startup-1.1373641",
+        "title": "Google buys University of Toronto startup — CBC News",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
+    "slug": "facebook-founds-fair",
+    "date": "2013-12-09",
+    "date_precision": "day",
+    "title": "Facebook hires Yann LeCun to lead its new AI research lab",
+    "summary": "Facebook announced that NYU professor and convolutional-network pioneer Yann LeCun would direct its new artificial intelligence laboratory, with sites in Menlo Park, London, and New York. The lab, soon known as FAIR, gave a second internet giant a long-horizon AI research arm weeks before Google bought DeepMind, and it went on to produce PyTorch, Cicero, and the Llama models.",
+    "category": "industry",
+    "secondary_category": "research",
+    "importance": 2,
+    "importance_rationale": "Context: a lab founding that makes the corporate deep-learning buildout of 2013–14 legible and sets up later events from PyTorch to Llama, without itself shifting the frontier.",
+    "sources": [
+      {
+        "url": "https://techcrunch.com/2013/12/09/facebook-artificial-intelligence-lab-lecun",
+        "title": "NYU 'Deep Learning' Professor LeCun Will Head Facebook's New Artificial Intelligence Lab — TechCrunch",
+        "type": "news"
+      },
+      {
+        "url": "https://www.forbes.com/sites/richardnieva/2023/11/30/meta-ai-yann-lecun-fair-10th-anniversary/",
+        "title": "Meta AI Chief Yann LeCun On His Open Source Mission And The 'Surprise' Of ChatGPT — Forbes",
+        "type": "news",
+        "author": "Richard Nieva"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
     "slug": "deepmind-atari-dqn",
     "date": "2013-12-19",
     "date_precision": "day",
@@ -170,6 +221,33 @@
     "added_by": "backfill:era-2"
   },
   {
+    "slug": "seq2seq-learning",
+    "date": "2014-09-10",
+    "date_precision": "day",
+    "title": "Sequence-to-sequence learning brings neural networks to translation",
+    "summary": "Ilya Sutskever, Oriol Vinyals, and Quoc Le at Google showed that a pair of LSTM networks — an encoder and a decoder — could learn English-to-French translation end to end, approaching the best phrase-based systems. Together with the attention mechanism Bahdanau, Cho, and Bengio introduced the same month, the encoder-decoder recipe became the dominant framework for language tasks and the direct lineage to the Transformer.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 2,
+    "importance_rationale": "Specialist milestone that makes the path from LSTMs through attention to the Transformer legible; it was superseded within three years by its own descendants.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/1409.3215",
+        "title": "Sequence to Sequence Learning with Neural Networks",
+        "type": "paper",
+        "author": "Sutskever, Vinyals, Le (Google)"
+      },
+      {
+        "url": "https://arxiv.org/abs/1409.0473",
+        "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+        "type": "paper",
+        "author": "Bahdanau, Cho, Bengio"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
     "slug": "musk-summoning-the-demon",
     "date": "2014-10-24",
     "date_precision": "day",
@@ -201,6 +279,38 @@
       }
     ],
     "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "fli-beneficial-ai-open-letter",
+    "date": "2015-01-12",
+    "date_precision": "day",
+    "title": "FLI open letter calls for research on robust and beneficial AI",
+    "summary": "Following the Future of Life Institute's Puerto Rico conference (January 2–5, 2015), an open letter on research priorities for robust and beneficial artificial intelligence was published and eventually signed by thousands, including Stephen Hawking, Elon Musk, and many leading AI researchers. Days later Musk donated $10 million to FLI for the first broad grants program in AI safety, turning beneficial-AI research into a funded field.",
+    "category": "safety",
+    "secondary_category": "governance",
+    "importance": 2,
+    "importance_rationale": "Context: the first field-wide statement that safety deserved mainstream research attention and the first dedicated funding program, a precursor to Asilomar and later safety institutions.",
+    "sources": [
+      {
+        "url": "https://futureoflife.org/open-letter/ai-open-letter/",
+        "title": "Research Priorities for Robust and Beneficial Artificial Intelligence: An Open Letter — Future of Life Institute",
+        "type": "official",
+        "author": "Future of Life Institute"
+      },
+      {
+        "url": "https://futureoflife.org/fli-projects/elon-musk-donates-10m-to-our-research-program/",
+        "title": "Elon Musk donates $10M to our research program — Future of Life Institute",
+        "type": "official",
+        "author": "Future of Life Institute"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Open_letter_on_artificial_intelligence_(2015)",
+        "title": "Open letter on artificial intelligence (2015) — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
   },
   {
     "slug": "tensorflow-open-sourced",
@@ -363,6 +473,59 @@
     "added_by": "backfill:era-2"
   },
   {
+    "slug": "google-neural-machine-translation",
+    "date": "2016-09-27",
+    "date_precision": "day",
+    "title": "Google Translate switches to neural machine translation",
+    "summary": "Google announced GNMT, an LSTM encoder-decoder system with attention that reduced translation errors by an average of 60% relative to the phrase-based system it replaced, and began rolling it out in Google Translate. It was among the first planet-scale deployments of deep learning for language, and the translation group's need for something more parallelizable helped motivate the Transformer a year later.",
+    "category": "capabilities",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "Context: the deployment that took neural sequence models from research to a billion users and sets up the Transformer's origin in Google's translation work.",
+    "sources": [
+      {
+        "url": "https://research.google/blog/a-neural-network-for-machine-translation-at-production-scale/",
+        "title": "A Neural Network for Machine Translation, at Production Scale — Google Research Blog",
+        "type": "official",
+        "author": "Quoc V. Le and Mike Schuster (Google)"
+      },
+      {
+        "url": "https://arxiv.org/abs/1609.08144",
+        "title": "Google's Neural Machine Translation System: Bridging the Gap between Human and Machine Translation",
+        "type": "paper",
+        "author": "Wu et al. (Google)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
+    "slug": "obama-white-house-ai-report",
+    "date": "2016-10-12",
+    "date_precision": "day",
+    "title": "Obama White House issues the first US national AI report",
+    "summary": "The White House Office of Science and Technology Policy released 'Preparing for the Future of Artificial Intelligence,' a National Science and Technology Council report surveying AI's applications and policy questions with 23 recommendations, alongside a companion national AI R&D strategic plan. It was the first time the US executive branch treated AI as a distinct policy field.",
+    "category": "governance",
+    "secondary_category": null,
+    "importance": 1,
+    "importance_rationale": "Footnote: little direct consequence, but it marks the start of executive-branch AI policymaking that Executive Order 14110 and later AI action plans built on.",
+    "sources": [
+      {
+        "url": "https://obamawhitehouse.archives.gov/sites/default/files/whitehouse_files/microsites/ostp/NSTC/preparing_for_the_future_of_ai.pdf",
+        "title": "Preparing for the Future of Artificial Intelligence — Executive Office of the President (archived)",
+        "type": "official",
+        "author": "National Science and Technology Council"
+      },
+      {
+        "url": "https://cccblog.org/2016/10/12/white-house-ostp-report-preparing-for-the-future-of-artificial-intelligence/",
+        "title": "White House OSTP Report: Preparing for the Future of Artificial Intelligence — CCC Blog",
+        "type": "blog"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
     "slug": "asilomar-ai-principles",
     "date": "2017-01-08",
     "date_precision": "day",
@@ -387,6 +550,40 @@
     ],
     "reactions": [],
     "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "libratus-poker",
+    "date": "2017-01-30",
+    "date_precision": "day",
+    "title": "Libratus beats top professionals at no-limit poker",
+    "summary": "Carnegie Mellon's Libratus, built by Tuomas Sandholm and Noam Brown, defeated four top heads-up no-limit Texas hold'em professionals over 120,000 hands in the 'Brains vs. Artificial Intelligence' rematch at Pittsburgh's Rivers Casino, finishing $1.77 million ahead in chips. Poker's hidden information had resisted the techniques that conquered chess and Go; Libratus showed superhuman strategic reasoning under uncertainty, bluffing included, was attainable.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 3,
+    "importance_rationale": "Notable superhuman-performance milestone: the game-playing arc's extension from perfect- to imperfect-information games, still cited on the way to later strategic agents like Pluribus and Cicero.",
+    "sources": [
+      {
+        "url": "https://www.cmu.edu/news/stories/archives/2017/january/AI-beats-poker-pros.html",
+        "title": "Carnegie Mellon Artificial Intelligence Beats Top Poker Pros — Carnegie Mellon University News",
+        "type": "official",
+        "author": "Carnegie Mellon University"
+      },
+      {
+        "url": "https://www.science.org/doi/10.1126/science.aao1733",
+        "title": "Superhuman AI for heads-up no-limit poker: Libratus beats top professionals — Science",
+        "type": "paper",
+        "author": "Noam Brown and Tuomas Sandholm"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Tuomas Sandholm (Carnegie Mellon)",
+        "quote": "The best AI's ability to do strategic reasoning with imperfect information has now surpassed that of the best humans.",
+        "url": "https://www.cmu.edu/news/stories/archives/2017/january/AI-beats-poker-pros.html",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-2-densify"
   },
   {
     "slug": "deep-rl-human-preferences",
@@ -471,6 +668,78 @@
     ],
     "reactions": [],
     "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "gender-shades",
+    "date": "2018-02-01",
+    "date_precision": "month",
+    "title": "Gender Shades exposes race and gender bias in commercial face analysis",
+    "summary": "MIT Media Lab's Joy Buolamwini and Microsoft's Timnit Gebru published 'Gender Shades,' an audit showing commercial gender-classification systems from IBM, Microsoft, and Face++ misclassified darker-skinned women at error rates up to 34.7%, against under 1% for lighter-skinned men. The study became the canonical demonstration of algorithmic bias, prompting vendors to fix their systems and feeding later corporate retreats from face recognition and municipal bans.",
+    "category": "safety",
+    "secondary_category": "culture",
+    "importance": 3,
+    "importance_rationale": "Notable: the reference study of algorithmic bias, known well beyond the field and directly influential on facial-recognition policy, industry practice, and the AI ethics movement.",
+    "sources": [
+      {
+        "url": "https://proceedings.mlr.press/v81/buolamwini18a.html",
+        "title": "Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification — PMLR",
+        "type": "paper",
+        "author": "Joy Buolamwini and Timnit Gebru"
+      },
+      {
+        "url": "https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212",
+        "title": "Study finds gender and skin-type bias in commercial artificial-intelligence systems — MIT News",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
+    "slug": "musk-leaves-openai-board",
+    "date": "2018-02-20",
+    "date_precision": "day",
+    "title": "Elon Musk leaves the OpenAI board",
+    "summary": "OpenAI announced that co-founder Elon Musk was departing its board, citing a potential future conflict of interest as Tesla built its own AI; Musk was to remain a donor and adviser. Later accounts described a failed bid by Musk to take control of the lab. The split removed OpenAI's most prominent backer ahead of its 2019 capped-profit restructuring and seeded the Musk–OpenAI conflict that resurfaced in lawsuits and the founding of xAI.",
+    "category": "industry",
+    "secondary_category": null,
+    "importance": 1,
+    "importance_rationale": "Footnote on its own, but connective tissue for OpenAI's turn to outside capital, the Musk–OpenAI feud, and xAI's founding.",
+    "sources": [
+      {
+        "url": "https://www.cnbc.com/2018/02/21/elon-musk-is-leaving-the-board-of-openai.html",
+        "title": "Elon Musk is leaving the board of OpenAI — CNBC",
+        "type": "news"
+      },
+      {
+        "url": "https://www.semafor.com/article/03/24/2023/the-secret-history-of-elon-musk-sam-altman-and-openai",
+        "title": "The secret history of Elon Musk, Sam Altman, and OpenAI — Semafor",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
+    "slug": "openai-charter",
+    "date": "2018-04-09",
+    "date_precision": "day",
+    "title": "OpenAI publishes its Charter",
+    "summary": "OpenAI released a charter committing it to ensure that AGI benefits all of humanity, to avoid uses that harm or unduly concentrate power, and — most cited — to 'stop competing with and start assisting' any value-aligned, safety-conscious project that comes close to building AGI first. The document became the reference point for judging OpenAI's later commercial turns and was invoked throughout the 2023 board crisis and the Musk litigation.",
+    "category": "safety",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "Context: a lab self-governance document specialists cite constantly; its weight comes from making later OpenAI controversies legible rather than from immediate effect.",
+    "sources": [
+      {
+        "url": "https://openai.com/charter/",
+        "title": "OpenAI Charter — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
   },
   {
     "slug": "google-project-maven-exit",
@@ -603,6 +872,33 @@
     "added_by": "backfill:era-2"
   },
   {
+    "slug": "openai-five-dota",
+    "date": "2019-04-13",
+    "date_precision": "day",
+    "title": "OpenAI Five defeats the Dota 2 world champions",
+    "summary": "OpenAI Five beat OG, the reigning Dota 2 world champions, 2–0 in San Francisco — the first AI to defeat world title holders in an esports game. Trained entirely by self-play on massive compute, the system showed long-horizon teamwork in a partially observable real-time game far more complex than board games, and OpenAI presented the project as evidence that scaling existing algorithms yields surprising capabilities.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 2,
+    "importance_rationale": "Specialist milestone that rounds out the self-play arc (DQN, AlphaGo, AlphaZero) in complex real-time domains and documents OpenAI's scale-first conviction before GPT-3.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/openai-five-defeats-dota-2-world-champions/",
+        "title": "OpenAI Five defeats Dota 2 world champions — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://arxiv.org/abs/1912.06680",
+        "title": "Dota 2 with Large Scale Deep Reinforcement Learning",
+        "type": "paper",
+        "author": "OpenAI (Berner et al.)"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
     "slug": "microsoft-openai-1b",
     "date": "2019-07-22",
     "date_precision": "day",
@@ -676,6 +972,27 @@
       }
     ],
     "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "mmlu-benchmark",
+    "date": "2020-09-07",
+    "date_precision": "day",
+    "title": "MMLU benchmark sets the standard test of language-model knowledge",
+    "summary": "Dan Hendrycks and colleagues released Measuring Massive Multitask Language Understanding (MMLU), a 57-subject multiple-choice exam spanning law, medicine, mathematics, and more, on which most contemporary models barely beat chance while GPT-3 reached about 44%. Adopted as the standard measure of broad LLM knowledge, MMLU anchored frontier model comparisons for years until saturation pushed the field to harder successors.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 1,
+    "importance_rationale": "Footnote on its own, but the benchmark nearly every frontier model report of 2020–2024 cites; it makes the era's capability-measurement story legible.",
+    "sources": [
+      {
+        "url": "https://arxiv.org/abs/2009.03300",
+        "title": "Measuring Massive Multitask Language Understanding",
+        "type": "paper",
+        "author": "Hendrycks et al."
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
   },
   {
     "slug": "alphafold-2-casp14",
@@ -819,6 +1136,32 @@
     "added_by": "backfill:era-2"
   },
   {
+    "slug": "eleutherai-gpt-j",
+    "date": "2021-06-09",
+    "date_precision": "day",
+    "title": "EleutherAI's GPT-J gives the public a GPT-3-class open model",
+    "summary": "EleutherAI, a volunteer research collective formed in 2020 to replicate GPT-3, released GPT-J-6B, a 6-billion-parameter model trained on its openly documented Pile dataset and published under an Apache 2.0 license — the largest openly available GPT-style model at the time. GPT-J and its successors (GPT-NeoX, Pythia) seeded the open-source LLM ecosystem that later organized around LLaMA and the open-weights movement.",
+    "category": "research",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "Context: the open LLM movement's first substantial artifact, connecting GPT-3's closed API era to the open-weight releases of 2022–23.",
+    "sources": [
+      {
+        "url": "https://www.eleuther.ai/artifacts/gpt-j",
+        "title": "GPT-J — EleutherAI",
+        "type": "official",
+        "author": "EleutherAI"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/GPT-J",
+        "title": "GPT-J — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
     "slug": "github-copilot-preview",
     "date": "2021-06-29",
     "date_precision": "day",
@@ -951,6 +1294,33 @@
     "added_by": "backfill:era-2"
   },
   {
+    "slug": "yudkowsky-agi-ruin",
+    "date": "2022-06-05",
+    "date_precision": "day",
+    "title": "Yudkowsky posts 'AGI Ruin: A List of Lethalities'",
+    "summary": "Eliezer Yudkowsky published a 43-point argument on LessWrong that aligning superhuman AI is lethally difficult on the field's current trajectory and that existing plans are inadequate. The post crystallized the pessimist position at the center of alignment discourse in the months before ChatGPT, drew extensive point-by-point responses from researchers including Paul Christiano, and framed the public case Yudkowsky carried into his 2023 TIME essay.",
+    "category": "safety",
+    "secondary_category": "culture",
+    "importance": 2,
+    "importance_rationale": "Specialist discourse landmark: the definitive pre-ChatGPT statement of the doom position, constantly referenced in subsequent alignment debate; not itself a technical result.",
+    "sources": [
+      {
+        "url": "https://www.lesswrong.com/posts/uMQ3cqWDPHhjtiesc/agi-ruin-a-list-of-lethalities",
+        "title": "AGI Ruin: A List of Lethalities — LessWrong",
+        "type": "blog",
+        "author": "Eliezer Yudkowsky"
+      },
+      {
+        "url": "https://intelligence.org/2022/06/10/agi-ruin/",
+        "title": "AGI Ruin: A List of Lethalities — Machine Intelligence Research Institute",
+        "type": "official",
+        "author": "Machine Intelligence Research Institute"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
+  },
+  {
     "slug": "lamda-sentience-claim",
     "date": "2022-06-11",
     "date_precision": "day",
@@ -1054,6 +1424,32 @@
       }
     ],
     "added_by": "backfill:era-2"
+  },
+  {
+    "slug": "blueprint-ai-bill-of-rights",
+    "date": "2022-10-04",
+    "date_precision": "day",
+    "title": "White House releases Blueprint for an AI Bill of Rights",
+    "summary": "The White House Office of Science and Technology Policy published a nonbinding framework of five principles for automated systems: safety and effectiveness, protection from algorithmic discrimination, data privacy, notice and explanation, and human alternatives. Released weeks before ChatGPT reset the agenda toward frontier models, it captured the pre-generative-AI framing of US policy and fed into Executive Order 14110's civil-rights provisions.",
+    "category": "governance",
+    "secondary_category": null,
+    "importance": 1,
+    "importance_rationale": "Footnote: nonbinding and quickly overtaken by events, but it marks where US AI policy stood on the eve of ChatGPT and is a direct precursor to EO 14110.",
+    "sources": [
+      {
+        "url": "https://bidenwhitehouse.archives.gov/ostp/ai-bill-of-rights/",
+        "title": "Blueprint for an AI Bill of Rights — White House OSTP (archived)",
+        "type": "official",
+        "author": "White House Office of Science and Technology Policy"
+      },
+      {
+        "url": "https://www.brookings.edu/articles/opportunities-and-blind-spots-in-the-white-houses-blueprint-for-an-ai-bill-of-rights/",
+        "title": "Opportunities and blind spots in the White House's blueprint for an AI Bill of Rights — Brookings",
+        "type": "blog"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-2-densify"
   },
   {
     "slug": "us-chip-export-controls-2022",

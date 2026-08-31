@@ -82,3 +82,37 @@ before the ChatGPT launch (Nov 30, 2022); Cicero (Nov 22, 2022) is the era's las
   (landmarks survive the cut, connective tissue does not).
 - **Zvi Mowshowitz's Substack** was not used: it starts in essence with the
   post-ChatGPT era; era-2 reactions come from contemporaneous coverage instead.
+
+## Densify pass (2026-08-30)
+
+Agent: backfill:era-2-densify. Second pass adding 15 connective-tissue events (4×1, 9×2, 2×3) under the revised editorial policy that makes importance 1 a normal publishable tier. Several candidates rejected in the first pass under the old selective bar were deliberately re-admitted at honest low scores: the FLI 2015 open letter, FAIR's founding, GNMT, OpenAI Five, "AGI Ruin," and the Blueprint for an AI Bill of Rights. File now has 60 events.
+
+### Candidates considered and rejected in this pass
+
+1. **Ke Jie / Future of Go Summit (May 2017)** — still a duplicate: follow-up to AlphaGo–Lee Sedol, and already referenced inside the China AI plan event.
+2. **OpenAI LP capped-profit restructuring (Mar 2019)** — already narrated inside the `microsoft-openai-1b` event ("following OpenAI's restructuring into a capped-profit company that March"); a separate entry would split one development across two dots.
+3. **OpenAI Codex (Aug 2021)** — duplicate: the Copilot event already carries Codex as its engine.
+4. **OpenAI Gym (Apr 2016)** — real infrastructure, but cut at 15: less load-bearing for the timeline's throughline than the selected research items.
+5. **Partnership on AI (Sept 2016)** — upheld the first pass's rejection: an institution with little downstream consequence; fails counterfactual gap even at footnote tier.
+6. **Uber self-driving fatality (Mar 2018)** — canonical AI-deployment death, but an autonomous-vehicle story peripheral to the advanced-AI trajectory this timeline tracks.
+7. **Google Duplex demo (May 2018)** — explicit exclusion: demo without deployment (upheld from first pass).
+8. **AlphaStar (Jan/Oct 2019)** — the self-play arc is already carried by DQN → AlphaGo → AlphaZero → OpenAI Five; adding both esports events over-weights one thread.
+9. **Pluribus (Jul 2019)** — follow-up to Libratus in the same research line; merged conceptually there ("one development, one event").
+10. **Adam optimizer (Dec 2014)** — ubiquitous but invisible: a tooling detail with no narrative connection a general reader can follow.
+11. **DeepMind Gato (May 2022)** — upheld: demo without adoption; the generality debate it sparked lives in tweets, not consequences.
+12. **OpenAI Whisper (Sept 2022)** — solid open release but no frontier shift and no downstream story the timeline needs.
+13. **Stanford foundation-models report (Aug 2021)** — coined a term, but terminology coinage fails the concreteness/counterfactual tests better events pass.
+14. **The Pile (Dec 2020) as its own event** — folded into the GPT-J entry, which is the artifact through which the dataset mattered.
+15. **NSCAI final report (Mar 2021)** — plausible governance footnote, but cut at 15; the China-plan and export-control events already carry the US-China compute thread.
+16. **Character.AI founding / Noam Shazeer's Google departure (Oct 2021)** — connective to era-3's lawsuit event, but founding date and framing were hard to pin to one verifiable day; left for a future pass.
+17. **Circuits thread / "Zoom In" (Mar 2020)** — interpretability precursor to era-3's monosemanticity event; cut at 15 as the least legible to a general reader of the finalists.
+
+### Low-confidence items and judgment calls
+
+- **Gender Shades dated 2018-02 (month precision)** — the paper appeared at FAT*/PMLR v81 (conference Feb 23–24, 2018) with MIT News coverage Feb 11–12; no single canonical day.
+- **FLI letter dated 2015-01-12** (Wikipedia: "made public on January 12"); the Musk $10M donation (Jan 15) is folded into the same event rather than getting its own dot.
+- **Musk board departure dated 2018-02-20** — OpenAI's blog announcement day (a Tuesday, per CNBC's "announced Tuesday" on Feb 21); most coverage ran Feb 21.
+- **GPT-J dated 2021-06-09** per Wikipedia's release date; some contemporaneous announcements circulated June 4–9.
+- **OpenAI Charter dated 2018-04-09** — widely reported release date of the charter blog post; the charter page itself is undated.
+- **Importance calls:** Libratus and Gender Shades at 3 are the pass's highest scores (both pass the "well-informed observer knows it" test); OpenAI Charter deliberately held at 2 despite its fame among specialists, per the no-inflation rule.
+- **Reactions:** Sandholm's Libratus quote is verbatim from CMU's news page. A Zvi Mowshowitz reaction to "AGI Ruin" exists (his Substack post "On AGI Ruin: A List of Lethalities") but I could not verify a verbatim excerpt confidently enough to quote, so the event ships without reactions.

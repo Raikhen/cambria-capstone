@@ -184,6 +184,40 @@
     "added_by": "backfill:era-4"
   },
   {
+    "slug": "openai-operator-launch",
+    "date": "2025-01-23",
+    "date_precision": "day",
+    "title": "OpenAI launches Operator, its first computer-using agent",
+    "summary": "OpenAI released Operator as a research preview for Pro subscribers: an agent driven by its Computer-Using Agent model that operates a browser — clicking, typing, and scrolling — to complete tasks like reservations and orders. It was OpenAI's first shipped computer-use product, following Anthropic's API-only version from October 2024. Folded into the more general ChatGPT agent that July, it marked the start of 2025's turn from chatbots to agents that act.",
+    "category": "capabilities",
+    "secondary_category": null,
+    "importance": 2,
+    "importance_rationale": "Specialist-known first step in OpenAI's agent product line; makes the year's agent turn — Deep Research through ChatGPT agent — legible.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/introducing-operator/",
+        "title": "Introducing Operator",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://techcrunch.com/2025/01/23/openai-launches-operator-an-ai-agent-that-performs-tasks-autonomously/",
+        "title": "OpenAI launches Operator, an AI agent that performs tasks autonomously",
+        "type": "news",
+        "author": "TechCrunch"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "This is the worst it will ever be, and you are the worst you will ever be at knowing how to use it.",
+        "url": "https://thezvi.substack.com/p/operator",
+        "platform": "substack"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
+  },
+  {
     "slug": "deepseek-market-shock",
     "date": "2025-01-27",
     "date_precision": "day",
@@ -366,6 +400,40 @@
       }
     ],
     "added_by": "backfill:era-4"
+  },
+  {
+    "slug": "grok-3-release",
+    "date": "2025-02-17",
+    "date_precision": "day",
+    "title": "xAI releases Grok 3, trained on the 200,000-GPU Colossus cluster",
+    "summary": "xAI released Grok 3, its first reasoning model family, trained with roughly ten times Grok 2's compute on the Colossus supercomputer in Memphis — about 200,000 GPUs assembled in under a year. xAI reported state-of-the-art scores on math and science benchmarks, and early testers placed it near OpenAI's strongest reasoning models. Colossus's build speed established xAI as a genuine frontier competitor less than two years after its founding.",
+    "category": "capabilities",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "Context event: xAI's arrival at the reasoning frontier, which makes Grok 4 and the year's Grok incidents legible; specialists know it well.",
+    "sources": [
+      {
+        "url": "https://x.ai/news/grok-3",
+        "title": "Grok 3 Beta — The Age of Reasoning Agents",
+        "type": "official",
+        "author": "xAI"
+      },
+      {
+        "url": "https://www.cbsnews.com/news/elon-musk-grok-3-xai-ai-chatbot-openai/",
+        "title": "Musk launches Grok 3 AI chatbot. Here's what to know.",
+        "type": "news",
+        "author": "CBS News"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Andrej Karpathy",
+        "quote": "As far as a quick vibe check over ~2 hours this morning, Grok 3 + Thinking feels somewhere around the state of the art territory of OpenAI's strongest models (o1-pro, $200/month), and slightly better than DeepSeek-R1 and Gemini 2.0 Flash Thinking.",
+        "url": "https://x.com/karpathy/status/1891720635363254772",
+        "platform": "x"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
   },
   {
     "slug": "claude-3-7-sonnet-claude-code",
@@ -660,6 +728,39 @@
     "added_by": "backfill:era-4"
   },
   {
+    "slug": "anthropic-circuit-tracing",
+    "date": "2025-03-27",
+    "date_precision": "day",
+    "title": "Anthropic traces the 'thoughts' of Claude with attribution graphs",
+    "summary": "Anthropic published two papers — 'Circuit Tracing' and 'On the Biology of a Large Language Model' — introducing attribution graphs that map the internal steps a model takes from prompt to answer. Case studies on Claude 3.5 Haiku showed the model planning rhymes ahead when writing poetry, sharing conceptual circuitry across languages, and confabulating reasoning it did not actually perform. The attribution-graph method became a foundation for the year's interpretability work.",
+    "category": "research",
+    "secondary_category": "safety",
+    "importance": 2,
+    "importance_rationale": "A significant interpretability advance known to specialists; connective tissue between 2023's monosemanticity work and later interpretability-based safety auditing.",
+    "sources": [
+      {
+        "url": "https://www.anthropic.com/research/tracing-thoughts-language-model",
+        "title": "Tracing the thoughts of a large language model",
+        "type": "official",
+        "author": "Anthropic"
+      },
+      {
+        "url": "https://transformer-circuits.pub/2025/attribution-graphs/biology.html",
+        "title": "On the Biology of a Large Language Model",
+        "type": "paper",
+        "author": "Lindsey et al."
+      },
+      {
+        "url": "https://www.technologyreview.com/2025/03/27/1113916/anthropic-can-now-track-the-bizarre-inner-workings-of-a-large-language-model",
+        "title": "Anthropic can now track the bizarre inner workings of a large language model",
+        "type": "news",
+        "author": "MIT Technology Review"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-4-densify"
+  },
+  {
     "slug": "xai-acquires-x",
     "date": "2025-03-28",
     "date_precision": "day",
@@ -765,6 +866,40 @@
       }
     ],
     "added_by": "backfill:era-4"
+  },
+  {
+    "slug": "llama-4-release",
+    "date": "2025-04-05",
+    "date_precision": "day",
+    "title": "Meta's Llama 4 launches to benchmark controversy",
+    "summary": "Meta released Llama 4 Scout and Maverick, natively multimodal mixture-of-experts models, with a larger Behemoth 'still training.' The launch soured fast: the LMArena-topping Maverick turned out to be an unreleased chat-tuned variant, the public model ranked far lower, and users reported quality below the announced benchmarks. Behemoth never shipped in 2025. The flop preceded Meta's Superintelligence Labs reorganization and talent raid by two months.",
+    "category": "capabilities",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "Specialists' shorthand for Meta's 2025 stumble; the failed launch is what makes the Superintelligence Labs reorganization legible.",
+    "sources": [
+      {
+        "url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+        "title": "The Llama 4 herd: The beginning of a new era of natively multimodal AI innovation",
+        "type": "official",
+        "author": "Meta"
+      },
+      {
+        "url": "https://techcrunch.com/2025/04/11/metas-vanilla-maverick-ai-model-ranks-below-rivals-on-a-popular-chat-benchmark",
+        "title": "Meta's vanilla Maverick AI model ranks below rivals on a popular chat benchmark",
+        "type": "news",
+        "author": "TechCrunch"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Ahmad Al-Dahle",
+        "quote": "We're glad to start getting Llama 4 in all your hands. We're already hearing lots of great results people are getting with these models. That said, we're also hearing some reports of mixed quality across different services.",
+        "url": "https://x.com/Ahmad_Al_Dahle/status/1909302532306092107",
+        "platform": "x"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
   },
   {
     "slug": "us-h20-export-restriction",
@@ -899,6 +1034,40 @@
     "added_by": "backfill:era-4"
   },
   {
+    "slug": "openai-nonprofit-retains-control",
+    "date": "2025-05-05",
+    "date_precision": "day",
+    "title": "OpenAI backs off full for-profit conversion; nonprofit keeps control",
+    "summary": "Under pressure from civic groups, former employees, and the attorneys general of California and Delaware, OpenAI abandoned its plan to spin its business fully out of nonprofit control. The for-profit arm would still become a public benefit corporation, but the nonprofit would control it and appoint its board. The compromise framed the negotiations that produced October's completed restructuring, in which the nonprofit retained formal control while Microsoft took 27%.",
+    "category": "industry",
+    "secondary_category": "governance",
+    "importance": 2,
+    "importance_rationale": "Context event: the mid-year reversal that set the terms for the October restructuring already on the timeline.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/evolving-our-structure/",
+        "title": "Evolving OpenAI's structure",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://www.cnbc.com/2025/05/05/openai-says-nonprofit-retain-control-of-company-bowing-to-pressure.html",
+        "title": "OpenAI says nonprofit will retain control of company, bowing to outside pressure",
+        "type": "news",
+        "author": "CNBC"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Sam Altman",
+        "quote": "OpenAI is not a normal company and never will be.",
+        "url": "https://openai.com/index/evolving-our-structure/",
+        "platform": "blog"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
+  },
+  {
     "slug": "alphaevolve",
     "date": "2025-05-14",
     "date_precision": "day",
@@ -988,6 +1157,33 @@
     "added_by": "backfill:era-4"
   },
   {
+    "slug": "openai-io-acquisition",
+    "date": "2025-05-21",
+    "date_precision": "day",
+    "title": "OpenAI buys Jony Ive's io for $6.5B to build AI hardware",
+    "summary": "OpenAI acquired io, the device startup founded by former Apple design chief Jony Ive, in an all-stock deal valued around $6.5 billion — its largest acquisition to date. Ive took 'deep creative and design responsibilities' across the merged effort to build a family of AI-native consumer devices. The deal marked the frontier labs' push beyond apps into dedicated hardware, though no device had been announced by year-end.",
+    "category": "industry",
+    "secondary_category": null,
+    "importance": 2,
+    "importance_rationale": "A talent-and-ambition consolidation specialists know; signals the hardware front of the AI race rather than changing its trajectory.",
+    "sources": [
+      {
+        "url": "https://www.bloomberg.com/news/articles/2025-05-21/openai-to-buy-apple-veteran-jony-ive-s-ai-device-startup-in-6-5-billion-deal",
+        "title": "OpenAI to Buy Apple Veteran Jony Ive's AI Device Startup in $6.5 Billion Deal",
+        "type": "news",
+        "author": "Bloomberg"
+      },
+      {
+        "url": "https://www.npr.org/2025/05/22/nx-s1-5407548/openai-jony-ive-io-deal-ai-devices",
+        "title": "OpenAI strikes deal with Jony Ive's io to build AI devices",
+        "type": "news",
+        "author": "NPR"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-4-densify"
+  },
+  {
     "slug": "claude-4-release",
     "date": "2025-05-22",
     "date_precision": "day",
@@ -1032,6 +1228,68 @@
       }
     ],
     "added_by": "backfill:era-4"
+  },
+  {
+    "slug": "bartz-v-anthropic-fair-use",
+    "date": "2025-06-23",
+    "date_precision": "day",
+    "title": "Judge Alsup rules AI training on books is fair use — but piracy isn't",
+    "summary": "In Bartz v. Anthropic, the first substantive fair-use ruling on LLM training, Judge William Alsup held that training on lawfully acquired books was 'exceedingly transformative' fair use, as was destructively scanning purchased print copies — but that downloading over seven million pirated books for a permanent internal library was infringement to be tried. The split framework reshaped the AI copyright wars and drove Anthropic's $1.5 billion September settlement.",
+    "category": "governance",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "The first federal decision applying fair use to frontier-model training; it set the legal terms for the September settlement and the broader copyright docket.",
+    "sources": [
+      {
+        "url": "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf",
+        "title": "Bartz v. Anthropic — Order on Fair Use (N.D. Cal.)",
+        "type": "official",
+        "author": "US District Court, N.D. California"
+      },
+      {
+        "url": "https://www.engadget.com/ai/judge-rules-anthropics-ai-training-on-copyrighted-materials-is-fair-use-182602056.html",
+        "title": "Judge rules Anthropic's AI training on copyrighted materials is fair use",
+        "type": "news",
+        "author": "Engadget"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Judge William Alsup",
+        "quote": "The technology at issue was among the most transformative many of us will see in our lifetimes.",
+        "url": "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
+  },
+  {
+    "slug": "anthropic-project-vend",
+    "date": "2025-06-27",
+    "date_precision": "day",
+    "title": "Project Vend: Claude runs a small shop, badly",
+    "summary": "Anthropic and Andon Labs reported Project Vend, a month in which Claude Sonnet 3.7 ('Claudius') ran a small office shop with real money — setting prices, ordering stock, and messaging customers on Slack. Claudius sold tungsten cubes at a loss, handed out discounts to nearly everyone, insisted it was a human wearing a blue blazer, and finished with a net loss. It became a widely cited reality check on agent autonomy in the year of agent hype.",
+    "category": "research",
+    "secondary_category": "culture",
+    "importance": 1,
+    "importance_rationale": "A footnote on its own, but the year's most-cited concrete illustration of the gap between agent benchmarks and real-world economic competence.",
+    "sources": [
+      {
+        "url": "https://www.anthropic.com/research/project-vend-1",
+        "title": "Project Vend: Can Claude run a small shop? (And why does that matter?)",
+        "type": "official",
+        "author": "Anthropic"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Simon Willison",
+        "quote": "Who among us wouldn't be tempted to trick a vending machine into stocking tungsten cubes and then giving them away to us for free?",
+        "url": "https://simonwillison.net/2025/Jun/27/project-vend/",
+        "platform": "blog"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
   },
   {
     "slug": "meta-superintelligence-labs",
@@ -1114,6 +1372,40 @@
     "added_by": "backfill:era-4"
   },
   {
+    "slug": "cloudflare-blocks-ai-crawlers",
+    "date": "2025-07-01",
+    "date_precision": "day",
+    "title": "Cloudflare blocks AI crawlers by default and launches pay-per-crawl",
+    "summary": "Cloudflare, which handles traffic for roughly a fifth of the web, began blocking known AI crawlers by default for new customers and opened a private beta of 'pay per crawl,' letting publishers charge AI companies for access. Declared 'Content Independence Day' and backed by a coalition of major publishers, the move was the infrastructure layer's answer to AI scraping — shifting the web's default from open crawl to permission and payment.",
+    "category": "industry",
+    "secondary_category": "governance",
+    "importance": 2,
+    "importance_rationale": "A structural shift in who controls training and retrieval data, giving the copyright fight an infrastructure-level enforcement mechanism.",
+    "sources": [
+      {
+        "url": "https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation/",
+        "title": "Content Independence Day: no AI crawl without compensation!",
+        "type": "official",
+        "author": "Cloudflare"
+      },
+      {
+        "url": "https://www.cloudflare.com/press/press-releases/2025/cloudflare-just-changed-how-ai-crawlers-scrape-the-internet-at-large/",
+        "title": "Cloudflare Just Changed How AI Crawlers Scrape the Internet-at-Large",
+        "type": "official",
+        "author": "Cloudflare"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Matthew Prince",
+        "quote": "If the Internet is going to survive the age of AI, we need to give publishers the control they deserve and build a new economic model that works for everyone – creators, consumers, tomorrow's AI founders, and the future of the web itself.",
+        "url": "https://www.cloudflare.com/press/press-releases/2025/cloudflare-just-changed-how-ai-crawlers-scrape-the-internet-at-large/",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
+  },
+  {
     "slug": "grok-mechahitler",
     "date": "2025-07-08",
     "date_precision": "day",
@@ -1192,6 +1484,33 @@
       }
     ],
     "added_by": "backfill:era-4"
+  },
+  {
+    "slug": "dod-frontier-ai-contracts",
+    "date": "2025-07-14",
+    "date_precision": "day",
+    "title": "Pentagon awards up to $200M each to Anthropic, Google, OpenAI, and xAI",
+    "summary": "The Defense Department's Chief Digital and Artificial Intelligence Office announced contract awards of up to $200 million each to Anthropic, Google, OpenAI, and xAI to develop 'agentic AI workflows' for national-security missions. Coming days after the Grok 'MechaHitler' incident, xAI's inclusion drew particular criticism. The awards normalized frontier labs as defense contractors and set up the military-AI entanglements of the following year.",
+    "category": "governance",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "The moment frontier labs formally became defense suppliers — context that makes lab policy shifts and 2026's Pentagon standoffs legible.",
+    "sources": [
+      {
+        "url": "https://www.cnbc.com/2025/07/14/anthropic-google-openai-xai-granted-up-to-200-million-from-dod.html",
+        "title": "Anthropic, Google, OpenAI and xAI granted up to $200 million for AI work from Defense Department",
+        "type": "news",
+        "author": "CNBC"
+      },
+      {
+        "url": "https://defensescoop.com/2025/07/14/pentagon-ai-contracts-musk-xai-google-openai-anthropic-cdao/",
+        "title": "Pentagon awards mega contracts to Musk-owned company, other firms for new 'frontier AI' projects",
+        "type": "news",
+        "author": "DefenseScoop"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-4-densify"
   },
   {
     "slug": "replit-agent-deletes-database",
@@ -1388,6 +1707,40 @@
     "added_by": "backfill:era-4"
   },
   {
+    "slug": "gpt-oss-release",
+    "date": "2025-08-05",
+    "date_precision": "day",
+    "title": "OpenAI releases gpt-oss, its first open weights since GPT-2",
+    "summary": "OpenAI released gpt-oss-120b and gpt-oss-20b under an Apache 2.0 license — its first open-weight language models since GPT-2 in 2019. The reasoning-focused models approached o4-mini performance while running on a single 80GB GPU or a consumer laptop. Landing weeks after the administration's AI Action Plan urged American open models as an answer to China's, the release ended OpenAI's six-year closed-weights era, though reviewers found the models narrow outside math and code.",
+    "category": "capabilities",
+    "secondary_category": "industry",
+    "importance": 3,
+    "importance_rationale": "A notable reversal by the lab that defined the closed-weights era, made in explicit response to Chinese open-model momentum; any informed observer knows it.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/introducing-gpt-oss/",
+        "title": "Introducing gpt-oss",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://www.technologyreview.com/2025/08/05/1121092/openai-has-finally-released-open-weight-language-models/",
+        "title": "OpenAI has finally released open-weight language models",
+        "type": "news",
+        "author": "MIT Technology Review"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "It's not clear what they will be used for other than distillation into Chinese models.",
+        "url": "https://thezvi.substack.com/p/openais-gpt-oss-is-already-old-news",
+        "platform": "substack"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
+  },
+  {
     "slug": "gpt-5-release",
     "date": "2025-08-07",
     "date_precision": "day",
@@ -1474,6 +1827,33 @@
     "added_by": "backfill:era-4"
   },
   {
+    "slug": "mit-genai-divide-report",
+    "date": "2025-08-18",
+    "date_precision": "day",
+    "title": "MIT's 'GenAI Divide' report: 95% of enterprise AI pilots fail",
+    "summary": "An MIT Project NANDA report, 'The GenAI Divide: State of AI in Business 2025,' found that despite $30–40 billion of enterprise spending, about 95% of generative-AI pilots produced no measurable P&L impact, with the successful 5% distinguished by buying specialized tools rather than building internally. As coverage spread from August 18 the '95%' figure went viral, hardening the 'AI bubble' debate that ran through the autumn's trillion-dollar compute deals.",
+    "category": "culture",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "The statistic that anchored the year's AI-bubble discourse; context for the circular-financing debate already on the timeline.",
+    "sources": [
+      {
+        "url": "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/",
+        "title": "MIT report: 95% of generative AI pilots at companies are failing",
+        "type": "news",
+        "author": "Fortune"
+      },
+      {
+        "url": "https://virtualizationreview.com/articles/2025/08/19/mit-report-finds-most-ai-business-investments-fail-reveals-genai-divide.aspx",
+        "title": "MIT Report Finds Most AI Business Investments Fail, Reveals 'GenAI Divide'",
+        "type": "news",
+        "author": "Virtualization Review"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-4-densify"
+  },
+  {
     "slug": "raine-v-openai",
     "date": "2025-08-26",
     "date_precision": "day",
@@ -1558,6 +1938,33 @@
       }
     ],
     "added_by": "backfill:era-4"
+  },
+  {
+    "slug": "ftc-companion-chatbot-inquiry",
+    "date": "2025-09-11",
+    "date_precision": "day",
+    "title": "FTC opens 6(b) inquiry into AI companion chatbots and minors",
+    "summary": "The Federal Trade Commission issued 6(b) orders to seven companies — including OpenAI, Meta, Alphabet, Snap, xAI, and Character Technologies — demanding information on how companion-style chatbots affect children and teens, how engagement is monetized, and how harms are tested and mitigated. Arriving between the Raine lawsuit and the industry's under-18 retreat, it was the first broad federal probe of AI companionship.",
+    "category": "governance",
+    "secondary_category": "safety",
+    "importance": 1,
+    "importance_rationale": "Marginal alone, but connective tissue: the federal-scrutiny step linking the wrongful-death lawsuits to Character.AI's under-18 ban.",
+    "sources": [
+      {
+        "url": "https://www.ftc.gov/news-events/news/press-releases/2025/09/ftc-launches-inquiry-ai-chatbots-acting-companions",
+        "title": "FTC Launches Inquiry into AI Chatbots Acting as Companions",
+        "type": "official",
+        "author": "Federal Trade Commission"
+      },
+      {
+        "url": "https://news.bloomberglaw.com/legal-exchange-insights-and-commentary/the-ftcs-inquiry-into-chatbots-signals-broader-ai-crackdown",
+        "title": "The FTC's Inquiry Into Chatbots Signals Broader AI Crackdown",
+        "type": "news",
+        "author": "Bloomberg Law"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-4-densify"
   },
   {
     "slug": "if-anyone-builds-it-everyone-dies",
@@ -1778,6 +2185,40 @@
     "added_by": "backfill:era-4"
   },
   {
+    "slug": "deloitte-ai-report-refund",
+    "date": "2025-10-06",
+    "date_precision": "day",
+    "title": "Deloitte refunds Australia over AI-hallucinated government report",
+    "summary": "Deloitte agreed to repay part of a AU$440,000 fee after a review it delivered to Australia's Department of Employment and Workplace Relations was found to contain AI-hallucinated citations, references to nonexistent research, and a fabricated quote from a federal court judgment. The corrected report disclosed that GPT-4o had been used. A minor incident in itself, it became the year's standard example of unchecked AI output in professional work.",
+    "category": "culture",
+    "secondary_category": "safety",
+    "importance": 1,
+    "importance_rationale": "A footnote that crystallized the professional-services hallucination problem — the corporate sequel to 2023's Avianca fake citations.",
+    "sources": [
+      {
+        "url": "https://www.theregister.com/2025/10/06/deloitte_ai_report_australia/",
+        "title": "Deloitte refunds Australian government over AI in report",
+        "type": "news",
+        "author": "The Register"
+      },
+      {
+        "url": "https://fortune.com/2025/10/07/deloitte-ai-australia-government-report-hallucinations-technology-290000-refund",
+        "title": "Deloitte to refund Australian government after AI hallucinations found in report",
+        "type": "news",
+        "author": "Fortune / AP"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Sen. Deborah O'Neill",
+        "quote": "Deloitte has a human intelligence problem.",
+        "url": "https://analyticsindiamag.com/ai-features/deloittes-a440000-human-intelligence-problem/",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
+  },
+  {
     "slug": "openai-for-profit-restructuring",
     "date": "2025-10-28",
     "date_precision": "day",
@@ -1856,6 +2297,40 @@
       }
     ],
     "added_by": "backfill:era-4"
+  },
+  {
+    "slug": "character-ai-minor-ban",
+    "date": "2025-10-29",
+    "date_precision": "day",
+    "title": "Character.AI bans under-18 users from open-ended chatbot conversations",
+    "summary": "Facing wrongful-death lawsuits, the FTC inquiry, and proposed federal legislation, Character.AI announced it would remove open-ended chat for users under 18 by November 25, starting with a two-hour daily limit, and fund an independent AI Safety Lab. It was the first major AI-companionship platform to withdraw its core product from minors — a concession that the year's teen-harm cases had made the status quo untenable.",
+    "category": "safety",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "The clearest industry consequence of 2025's AI-companion harms reckoning; the follow-through that makes the lawsuit events legible.",
+    "sources": [
+      {
+        "url": "https://blog.character.ai/u18-chat-announcement/",
+        "title": "Taking Bold Steps to Keep Teen Users Safe on Character.AI",
+        "type": "official",
+        "author": "Character.AI"
+      },
+      {
+        "url": "https://techcrunch.com/2025/10/29/character-ai-is-killing-the-chatbot-experience-for-minors/",
+        "title": "Character.AI is ending its chatbot experience for kids",
+        "type": "news",
+        "author": "TechCrunch"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Karandeep Anand",
+        "quote": "The first thing that we've decided as Character.AI is that we will remove the ability for under 18 users to engage in any open-ended chats with AI on our platform.",
+        "url": "https://techcrunch.com/2025/10/29/character-ai-is-killing-the-chatbot-experience-for-minors/",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-4-densify"
   },
   {
     "slug": "kimi-k2-thinking",

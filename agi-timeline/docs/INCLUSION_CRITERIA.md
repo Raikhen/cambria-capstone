@@ -76,7 +76,7 @@ changed public perception.
 | 4 | Major | Field-wide significance; still referenced years later. (Chinchilla, the EU AI Act, the OpenAI board crisis.) |
 | 3 | Notable | Any well-informed observer of AI knows it; significant within its category. |
 | 2 | Context | Specialists know it; earns its place by making the story around it legible. |
-| 1 | Footnote | Marginal. Reserved for manually added connective tissue; **the autonomous pipeline never publishes at this level.** |
+| 1 | Footnote | Marginal on its own; earns its dot as connective tissue — a minor precursor, a small step that makes the bigger events around it legible. Use sparingly. |
 
 Score against history, not against the news cycle. Most weeks produce zero events at
 level 4+. A press release is not an event; the thing the press release describes might be.
@@ -133,15 +133,14 @@ publishes must be assembled from human-written sources fetched during that run �
 Mowshowitz's Substack, tweets it quotes or that the X API returns, news coverage,
 official announcements. All quotes are verbatim extracts with links. If the agent
 cannot ground an event in at least one human-written source, the event is not
-published, regardless of how confident the model is. The pipeline publishes at
-importance ≥ 2 only, and records full provenance (run id, sources fetched, reasoning)
-for every event it adds.
+published, regardless of how confident the model is. The pipeline records full
+provenance (run id, sources fetched, reasoning) for every event it adds.
 
 ## Density guidance
 
-Earlier eras are held to a higher bar — the pre-2012 timeline is landmarks only
-(importance 3+), the 2012–2022 era is selective, and the post-ChatGPT era is richer
-but still curated. When in doubt in the modern era, ask: *would Zvi have given this
+Earlier eras are held to a higher bar — the pre-2012 timeline is mostly landmarks
+(importance 3+, with 1–2 only as connective tissue), the 2012–2022 era is selective,
+and the post-ChatGPT era is richer but still curated. When in doubt in the modern era, ask: *would Zvi have given this
 more than a paragraph?*
 
 ## Worked examples

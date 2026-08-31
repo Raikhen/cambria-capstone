@@ -122,3 +122,33 @@ research 3. Importance: 5x1 (DeepSeek R1), 4x19, 3x29, 2x5. The high count of 4s
 reflects a genuinely pivotal year; scores were checked against the rubric
 individually (o3, Grok 4, Opus 4.5, Sonnet 4.5, circular-deal components were all
 demoted from initial drafts).
+
+## Densify pass (2026-08-30)
+
+Second pass adding 15 connective-tissue events (importance 1–3) under the revised policy that treats importance 1 as a normal publishable tier. All events were re-verified by web search on 2026-08-30. `added_by: "backfill:era-4-densify"`.
+
+### Considered and rejected
+
+- **Anthropic "Agentic Misalignment" study (June 20)** — follow-up to the Claude 4 system-card blackmail finding; merges into `claude-4-release` (duplicates rule), where Aengus Lynch's reaction already cites it.
+- **ChatGPT Agent (July 17)** — successor unifying Operator and Deep Research, both already on the timeline; covered as the endpoint of the `openai-operator-launch` summary rather than a third agent-product entry.
+- **ICPC World Finals gold / perfect score (September 17)** — follow-on demonstration of the competition-math/programming capability already marked by `imo-gold-2025`; duplicate trend point.
+- **Qwen 3 (April 29)** — Chinese open-weight momentum is already carried by DeepSeek R1/V3 and Kimi K2 events; a third entry adds density without new story.
+- **Claude Opus 4.1, o3-pro, GPT-4.1, Claude Haiku 4.5** — routine point releases.
+- **SSI $2B raise at $32B (April), Thinking Machines $2B seed (July), Anthropic $13B Series F (September)** — ordinary funding rounds; record sizes but no shift in who can build frontier models (unlike the OpenAI $40B round, which forced the restructuring).
+- **Sam Altman "gentle singularity" essay (June)** — hot take/prediction, not an event; no durable discourse footprint comparable to AI 2027.
+- **Grok Imagine "spicy mode" deepfakes (August)** — drama largely without consequence beyond the Grok incidents already listed.
+- **OpenAI DevDay 2025 / 800M weekly users (October 6)** — product announcements plus a usage stat; no frontier shift.
+- **AWS–OpenAI $38B deal (November)** — merges into `openai-circular-compute-deals`.
+- **Anthropic–Google TPU expansion (October)** — compute-supply transaction; context already carried by the circular-deals event.
+- **Albania's AI "minister" Diella (September)** — verified but a curiosity; fails durability.
+- **Perplexity Comet / OpenAI Atlas browsers (July/October)** — the agentic-browser race hadn't produced a durable landmark by year-end.
+- **OpenAI restores GPT-4o after backlash (August)** — folded into the existing `gpt-5-release` turbulence narrative.
+- **Nvidia $100B OpenAI letter of intent (September 22)** — already inside `openai-circular-compute-deals`.
+
+### Low-confidence notes
+
+- **`mit-genai-divide-report`** — dated 2025-08-18 (the day mass coverage began, per Fortune); the report itself circulated from July. An August 19 AI-stock dip was widely attributed to it but causation is contested, so the summary omits the market claim.
+- **`deloitte-ai-report-refund`** — the refund became public October 6 (The Register); the exact agreement date is not public. Day precision reflects the disclosure date.
+- **`bartz-v-anthropic-fair-use`** — order signed June 23, widely reported June 24; dated to the order.
+- **`llama-4-release`** — "Behemoth never shipped in 2025" is supported by 2026 retrospectives; Meta never formally cancelled it in 2025.
+- **Reactions** — a few events (circuit tracing, io acquisition, DoD contracts, MIT report, FTC inquiry) carry empty reactions because no verbatim quote could be verified this run; known commentary existed (e.g. Zvi covered each) but exact text was not recovered.

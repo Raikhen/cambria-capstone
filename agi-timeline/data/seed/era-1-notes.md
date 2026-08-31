@@ -91,6 +91,38 @@ industry 3. Importance: 5 ×5, 4 ×12, 3 ×17 — landmarks-only per density gui
   return 403 to scripted requests but are canonical persistent identifiers; cited
   deliberately.
 
+## Densify pass (2026-08-30)
+
+Second pass under the revised editorial policy making importance 1 a normal publishable tier. Added 12 events (`added_by: backfill:era-1-densify`), mostly importance 1–2 connective tissue: shannon-computer-chess (2), logic-theorist (3), lisp-language (2), shakey-robot (2), prolog-language (1), mycin-expert-system (2), cyc-project (1), nettalk (1), chinook-checkers-champion (2), netflix-prize (2), checkers-solved (2), siri-launch (2). File now 46 events; research is 18/46 (~39%), inside the ~40% category cap.
+
+### Candidates considered and rejected in this pass
+
+1. **Wiener's *Cybernetics* (1948)** — the first pass rejected it as adjacent to rather than on the road to AI, not merely on density; that reasoning still holds at importance 1.
+2. **Minsky's SNARC (1951)** — still fails verifiability: no primary source survives; the earlier rejection was not density-based.
+3. **General Problem Solver (1957)** — Logic Theorist now carries the Newell–Simon program entry; a second entry would be a near-duplicate (one development, one event).
+4. **Dreyfus's "Alchemy and AI" (1965) / *What Computers Can't Do* (1972)** — the philosophical-critic slot largely duplicates the narrative role ALPAC and Lighthill already carry; cut on counterfactual gap.
+5. **DENDRAL (1965)** — MYCIN taken instead as the canonical, better-documented expert-system template; two precursor expert systems would be redundant.
+6. **Mac Hack Six beats Dreyfus (1967), Deep Thought loses to Kasparov (1989)** — chess connective tissue below even the footnote bar given Shannon 1950 + Deep Blue already frame the thread.
+7. **MNIST / LeNet-5 (1998)** — reads as a follow-up to the existing lecun-cnn-zip-codes event (merge target, not a new entry).
+8. **SVMs (Cortes & Vapnik, 1995)** — genuinely important, but would push research past the category cap and its story (why neural nets were sidelined) is already told by the winter events; the weakest cut of this pass.
+9. **CUDA release (2007)** — first-pass reasoning stands: ordinary product release; the AI-relevant landmark is the 2009 GPU-training paper already included.
+10. **Google self-driving project unveiling (2010)** — the existing Stanley event already states it seeded Google's program; treating the unveiling separately would skirt the duplicates rule.
+11. **First Loebner Prize (1991)** — a contest widely criticized within the field, with little durable influence; fails durability.
+12. **IBM Shoebox (1962) / DARPA SUR & Harpy (1971–76)** — early speech recognition lacks a single concrete landmark moment at this altitude; fails concreteness.
+13. **Kinect (2010), RoboCup (1997), BigDog (2008)** — robotics/product moments without counterfactual gap for this timeline.
+
+### Low-confidence items and date decisions (densify pass)
+
+- **logic-theorist dated 1956 (year)** — first hand-simulation January 1956, machine runs and the Dartmouth presentation later that year, IRE Transactions paper September 1956; year precision rather than picking one moment.
+- **mycin-expert-system dated 1975 (year)** — Wikipedia says only "developed over five or six years in the early 1970s" as Shortliffe's dissertation; anchored to the verifiable 1975 Shortliffe–Buchanan certainty-factors paper (DOI confirmed). The dissertation itself is commonly dated 1974 but I could not verify that directly, hence 1975/year. Lowest-confidence date in the pass.
+- **shakey-robot dated 1966 (year)** — Wikipedia infobox "year of creation 1966," development ran to 1972; the event is framed as the project's start.
+- **chinook-checkers-champion dated 1994 (year)** — the Tinsley rematch and withdrawal are widely dated August 1994, but I verified only the year, so year precision.
+- **nettalk dated 1987 (year)** — anchored to the Complex Systems 1(1) paper (1987); the famous demos circulated in 1986. Paper URL at complex-systems.com verified live.
+- **siri-launch dated 2011-10-04 (day)** — the iPhone 4S announcement per Apple's newsroom press release (URL verified live); retail availability with Siri was October 14.
+- **netflix-prize dated 2006-10-02 (day)** — per Wikipedia ("the competition began on October 2, 2006"); single wiki source, no separate primary source cited.
+- **prolog-language and cyc-project** — single Wikipedia source each (like the first pass's Perceptrons and Fifth Generation entries); stable primary URLs were not found.
+- **DOI sources** (Philosophical Magazine 1950, IRE Transactions 1956, CACM 1960, Mathematical Biosciences 1975, Science 2007) resolve via doi.org but the publisher pages block scripted access (403/202), consistent with the first pass; cited deliberately as canonical persistent identifiers.
+
 ## Reactions policy for this era
 
 Reactions are sparse by design. Included only verbatim, linkable quotes: the Dartmouth

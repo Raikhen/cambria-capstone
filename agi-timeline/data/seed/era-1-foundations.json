@@ -26,6 +26,32 @@
     "added_by": "backfill:era-1"
   },
   {
+    "slug": "shannon-computer-chess",
+    "date": "1950-03-01",
+    "date_precision": "month",
+    "title": "Shannon publishes the first paper on programming a computer for chess",
+    "summary": "Claude Shannon's \"Programming a Computer for Playing Chess\" appears in Philosophical Magazine — the first published analysis of how a machine could play chess. It introduces the evaluation function and the distinction between brute-force and selective search, the framework within which game-playing programs from Samuel's checkers player to Deep Blue were built.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 2,
+    "importance_rationale": "A specialist landmark that opened computer game-playing and supplied the conceptual frame behind the timeline's checkers and chess milestones.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1080/14786445008521796",
+        "title": "Programming a Computer for Playing Chess — Philosophical Magazine 41(314)",
+        "type": "paper",
+        "author": "Claude E. Shannon"
+      },
+      {
+        "url": "https://www.chessprogramming.org/Claude_Shannon",
+        "title": "Claude Shannon — Chessprogramming wiki",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
+  },
+  {
     "slug": "turing-computing-machinery-intelligence",
     "date": "1950-10-01",
     "date_precision": "month",
@@ -50,6 +76,32 @@
     ],
     "reactions": [],
     "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "logic-theorist",
+    "date": "1956-01-01",
+    "date_precision": "year",
+    "title": "The Logic Theorist, the first AI program, proves theorems from Principia",
+    "summary": "Allen Newell, Herbert Simon, and Cliff Shaw complete the Logic Theorist, a program that proves 38 of the first 52 theorems of Whitehead and Russell's Principia Mathematica, finding one proof shorter than the original. Widely described as the first artificial intelligence program, it pioneered heuristic search and list processing, and was presented to the Dartmouth workshop that summer.",
+    "category": "research",
+    "secondary_category": "capabilities",
+    "importance": 3,
+    "importance_rationale": "The first working AI program and the origin of heuristic search — a milestone any well-informed observer of AI history knows.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1109/TIT.1956.1056797",
+        "title": "The logic theory machine — A complex information processing system — IRE Transactions on Information Theory",
+        "type": "paper",
+        "author": "Allen Newell and Herbert A. Simon"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Logic_Theorist",
+        "title": "Logic Theorist — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
   },
   {
     "slug": "dartmouth-workshop",
@@ -155,6 +207,32 @@
     "added_by": "backfill:era-1"
   },
   {
+    "slug": "lisp-language",
+    "date": "1960-04-01",
+    "date_precision": "month",
+    "title": "McCarthy publishes LISP, AI's standard programming language",
+    "summary": "John McCarthy's \"Recursive Functions of Symbolic Expressions and Their Computation by Machine\" appears in Communications of the ACM, describing LISP, the list-processing language he had developed at MIT since 1958. LISP was the dominant language of AI research for over three decades; SHRDLU, the classic expert systems, and the 1980s Lisp machine industry were all built in it.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 2,
+    "importance_rationale": "Infrastructure rather than a capability jump, but the medium of three decades of AI research and the substrate of the Lisp-machine boom and bust.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1145/367177.367199",
+        "title": "Recursive functions of symbolic expressions and their computation by machine, Part I — Communications of the ACM 3(4)",
+        "type": "paper",
+        "author": "John McCarthy"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Lisp_(programming_language)",
+        "title": "Lisp (programming language) — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
+  },
+  {
     "slug": "good-intelligence-explosion",
     "date": "1965-01-01",
     "date_precision": "year",
@@ -248,6 +326,32 @@
     "added_by": "backfill:era-1"
   },
   {
+    "slug": "shakey-robot",
+    "date": "1966-01-01",
+    "date_precision": "year",
+    "title": "SRI builds Shakey, the first mobile robot to reason about its actions",
+    "summary": "SRI's Artificial Intelligence Center begins work on Shakey, a DARPA-funded mobile robot combining perception, world modeling, and planning — the first general-purpose mobile robot able to reason about its own actions. Developed through 1972, the project yielded the A* search algorithm and the STRIPS planner, tools that long outlived the robot itself.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 2,
+    "importance_rationale": "A specialists' landmark of integrated symbolic AI whose by-products (A*, STRIPS) became standard tools; context for 1960s ambitions and their limits.",
+    "sources": [
+      {
+        "url": "http://www.ai.sri.com/shakey/",
+        "title": "Shakey — SRI International Artificial Intelligence Center",
+        "type": "official",
+        "author": "SRI International"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Shakey_the_robot",
+        "title": "Shakey the robot — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
+  },
+  {
     "slug": "hal-9000-space-odyssey",
     "date": "1968-04-02",
     "date_precision": "day",
@@ -319,6 +423,26 @@
     "added_by": "backfill:era-1"
   },
   {
+    "slug": "prolog-language",
+    "date": "1972-01-01",
+    "date_precision": "year",
+    "title": "Colmerauer and Roussel create the logic programming language Prolog",
+    "summary": "Alain Colmerauer and Philippe Roussel develop Prolog in Marseille, the first major logic programming language, which computes by logical inference over facts and rules rather than by explicit procedure. Prolog became symbolic AI's main alternative to LISP, especially in Europe, and was chosen a decade later as the foundation of Japan's Fifth Generation project.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 1,
+    "importance_rationale": "Marginal on its own, but the timeline's Fifth Generation entry is hard to read without the logic-programming movement Prolog began.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Prolog",
+        "title": "Prolog — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
+  },
+  {
     "slug": "lighthill-report",
     "date": "1973-01-01",
     "date_precision": "year",
@@ -343,6 +467,32 @@
     ],
     "reactions": [],
     "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "mycin-expert-system",
+    "date": "1975-01-01",
+    "date_precision": "year",
+    "title": "Stanford's MYCIN expert system advises on infections at specialist level",
+    "summary": "Edward Shortliffe and colleagues at Stanford develop MYCIN, a rule-based system that recommends antibiotic therapy for severe infections, reasoning under uncertainty with \"certainty factors\" and explaining its conclusions. In later evaluations it performed on par with infectious-disease specialists. Though never used clinically, MYCIN became the methodological template for the expert systems of the 1980s boom.",
+    "category": "research",
+    "secondary_category": "capabilities",
+    "importance": 2,
+    "importance_rationale": "The canonical research expert system behind the 1980s boom; the XCON story is less legible without it.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1016/0025-5564(75)90047-4",
+        "title": "A model of inexact reasoning in medicine — Mathematical Biosciences 23",
+        "type": "paper",
+        "author": "Edward H. Shortliffe and Bruce G. Buchanan"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Mycin",
+        "title": "Mycin — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
   },
   {
     "slug": "xcon-expert-systems-boom",
@@ -417,6 +567,26 @@
     "added_by": "backfill:era-1"
   },
   {
+    "slug": "cyc-project",
+    "date": "1984-07-01",
+    "date_precision": "month",
+    "title": "Lenat launches Cyc, the project to hand-code common sense",
+    "summary": "Douglas Lenat launches Cyc at the Microelectronics and Computer Technology Corporation in Austin, a project to give machines common sense by hand-encoding millions of everyday facts and rules of thumb. Decades of effort never reached that goal, and Cyc became the emblem of the knowledge-engineering approach whose limits machine learning later exposed.",
+    "category": "research",
+    "secondary_category": null,
+    "importance": 1,
+    "importance_rationale": "A footnote by influence, but the era's most ambitious knowledge-engineering bet makes the symbolic-versus-learning arc of the timeline legible.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Cyc",
+        "title": "Cyc — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
+  },
+  {
     "slug": "backpropagation-nature",
     "date": "1986-10-09",
     "date_precision": "day",
@@ -461,6 +631,32 @@
     ],
     "reactions": [],
     "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "nettalk",
+    "date": "1987-01-01",
+    "date_precision": "year",
+    "title": "NETtalk, a neural network, learns to pronounce English text",
+    "summary": "Terrence Sejnowski and Charles Rosenberg publish NETtalk, a backpropagation-trained neural network that learns to convert English text into phonemes. Recordings of its output progressing from babble toward intelligible speech made it the most vivid early demonstration of what the newly popularized training algorithm could do, and drew researchers into connectionism.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 1,
+    "importance_rationale": "Marginal as a result, but the demo that made backpropagation's promise audible between the 1986 Nature paper and the 1990s applications.",
+    "sources": [
+      {
+        "url": "https://www.complex-systems.com/abstracts/v01_i01_a10/",
+        "title": "Parallel Networks that Learn to Pronounce English Text — Complex Systems 1(1)",
+        "type": "paper",
+        "author": "Terrence J. Sejnowski and Charles R. Rosenberg"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/NETtalk_(artificial_neural_network)",
+        "title": "NETtalk (artificial neural network) — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
   },
   {
     "slug": "lecun-cnn-zip-codes",
@@ -546,6 +742,32 @@
       }
     ],
     "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "chinook-checkers-champion",
+    "date": "1994-01-01",
+    "date_precision": "year",
+    "title": "Chinook becomes the first program to win a human world championship",
+    "summary": "The University of Alberta's checkers program Chinook, led by Jonathan Schaeffer, is declared Man-Machine World Champion when Marion Tinsley — regarded as the greatest checkers player in history — withdraws from their rematch for health reasons after six draws. It made Chinook the first computer program to hold a world championship title in a game of skill, three years before Deep Blue's victory.",
+    "category": "capabilities",
+    "secondary_category": null,
+    "importance": 2,
+    "importance_rationale": "The first computer world-championship title — the connective step between Samuel's checkers learner and Deep Blue.",
+    "sources": [
+      {
+        "url": "https://webdocs.cs.ualberta.ca/~chinook/",
+        "title": "Chinook — World Man-Machine Checkers Champion",
+        "type": "official",
+        "author": "University of Alberta"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Chinook_(computer_program)",
+        "title": "Chinook (computer program) — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
   },
   {
     "slug": "yudkowsky-staring-into-singularity",
@@ -756,6 +978,52 @@
     "added_by": "backfill:era-1"
   },
   {
+    "slug": "netflix-prize",
+    "date": "2006-10-02",
+    "date_precision": "day",
+    "title": "Netflix launches the $1 million Netflix Prize",
+    "summary": "Netflix opens a public competition offering $1 million to the first team to improve its film-recommendation algorithm by 10 percent, releasing a training set of some 100 million anonymized user ratings. Thousands of teams competed until the prize was won in 2009. The contest popularized open machine-learning competition on large public datasets — the model Kaggle later industrialized — and its dataset became an early landmark in deanonymization research.",
+    "category": "industry",
+    "secondary_category": "research",
+    "importance": 2,
+    "importance_rationale": "A specialists' landmark that makes the pre-deep-learning culture of open data competitions — and the first data-privacy backlash — legible.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Netflix_Prize",
+        "title": "Netflix Prize — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
+  },
+  {
+    "slug": "checkers-solved",
+    "date": "2007-07-19",
+    "date_precision": "day",
+    "title": "Checkers is solved: Schaeffer's team proves perfect play is a draw",
+    "summary": "Jonathan Schaeffer's University of Alberta group publishes \"Checkers Is Solved\" in Science: a computational proof, built on nearly two decades of computation begun for the Chinook program, that perfect play by both sides in checkers ends in a draw. Checkers became by far the largest game solved to date, closing the line of work Arthur Samuel had opened in the 1950s.",
+    "category": "capabilities",
+    "secondary_category": "research",
+    "importance": 2,
+    "importance_rationale": "A specialist milestone that closes the timeline's checkers thread from Samuel through Chinook; limited influence beyond it.",
+    "sources": [
+      {
+        "url": "https://doi.org/10.1126/science.1144079",
+        "title": "Checkers Is Solved — Science 317(5844)",
+        "type": "paper",
+        "author": "Jonathan Schaeffer et al."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Chinook_(computer_program)",
+        "title": "Chinook (computer program) — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
+  },
+  {
     "slug": "hanson-yudkowsky-foom-debate",
     "date": "2008-11-01",
     "date_precision": "month",
@@ -912,5 +1180,31 @@
       }
     ],
     "added_by": "backfill:era-1"
+  },
+  {
+    "slug": "siri-launch",
+    "date": "2011-10-04",
+    "date_precision": "day",
+    "title": "Apple unveils Siri on the iPhone 4S",
+    "summary": "Apple introduces Siri, a voice-controlled assistant integrated into the iPhone 4S, built from an SRI International spin-off with roots in DARPA's CALO project that Apple acquired in 2010. As the first mass-market conversational AI assistant, Siri put talking to a machine into millions of pockets and set public expectations for AI assistants a decade before ChatGPT.",
+    "category": "culture",
+    "secondary_category": "industry",
+    "importance": 2,
+    "importance_rationale": "A product moment rather than a capability advance, but the first mass-market deployment of conversational AI and context for consumer expectations of assistants.",
+    "sources": [
+      {
+        "url": "https://www.apple.com/newsroom/2011/10/04Apple-Launches-iPhone-4S-iOS-5-iCloud/",
+        "title": "Apple Launches iPhone 4S, iOS 5 & iCloud — Apple Newsroom",
+        "type": "official",
+        "author": "Apple"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Siri",
+        "title": "Siri — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-1-densify"
   }
 ]

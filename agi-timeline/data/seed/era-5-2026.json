@@ -1,5 +1,48 @@
 [
   {
+    "slug": "grok-deepfake-national-bans",
+    "date": "2026-01-10",
+    "date_precision": "day",
+    "title": "Indonesia and Malaysia become first states to block Grok over deepfakes",
+    "summary": "Indonesia blocked access to xAI's Grok on January 10, 2026 and Malaysia followed a day later, citing the chatbot's generation and spread of non-consensual sexualized deepfakes of women and minors. The Philippines blocked it on January 16. xAI had already restricted image generation to paying users on January 9, and Britain's Ofcom opened a formal Online Safety Act investigation into X in the same period. They were the first national bans imposed on a frontier AI chatbot.",
+    "category": "safety",
+    "secondary_category": "governance",
+    "importance": 3,
+    "importance_rationale": "The first time national governments blocked a frontier AI chatbot outright, establishing deepfake harms as a trigger for state-level access restrictions.",
+    "sources": [
+      {
+        "url": "https://www.abc.net.au/news/2026-01-12/grok-ai-blocked-in-indonesia-malaysia-over-explicit-images/106222336",
+        "title": "X AI Grok blocked in Indonesia and Malaysia over explicit image generation as UK launches probe — ABC News",
+        "type": "news"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2026_in_artificial_intelligence",
+        "title": "2026 in artificial intelligence — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://www.marketing-interactive.com/indonesia-officially-blocks-grok-as-ai-deepfake-scrutiny-intensifies-across-markets",
+        "title": "Indonesia officially blocks Grok as AI deepfake scrutiny intensifies across markets — Marketing-Interactive",
+        "type": "news"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Meutya Hafid (Indonesian Communications Minister)",
+        "quote": "The government sees non-consensual sexual deepfakes as a serious violation of human rights, dignity and the safety of citizens in the digital space.",
+        "url": "https://www.abc.net.au/news/2026-01-12/grok-ai-blocked-in-indonesia-malaysia-over-explicit-images/106222336",
+        "platform": "news"
+      },
+      {
+        "author": "X",
+        "quote": "Anyone using or prompting Grok to make illegal content will suffer the same consequences as if they upload illegal content.",
+        "url": "https://www.abc.net.au/news/2026-01-12/grok-ai-blocked-in-indonesia-malaysia-over-explicit-images/106222336",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-5-densify"
+  },
+  {
     "slug": "claude-cowork-launch",
     "date": "2026-01-13",
     "date_precision": "day",
@@ -188,6 +231,93 @@
     "added_by": "backfill:era-5"
   },
   {
+    "slug": "openclaw-personal-agent-framework",
+    "date": "2026-01-30",
+    "date_precision": "day",
+    "title": "Clawdbot becomes OpenClaw as always-on personal agents go mainstream",
+    "summary": "Peter Steinberger's open-source personal agent framework, released as Clawdbot, was renamed Moltbot on January 27 at Anthropic's request over trademark similarity to Claude, then renamed OpenClaw on January 30. Users gave it shell access, browser sessions, email and messaging accounts on dedicated machines, with a heartbeat triggering autonomous action every 30 minutes. It reached roughly 247,000 GitHub stars by March and supplied most of the agents on Moltbook, while researchers documented exposed credential servers, prompt injection, and malicious third-party skills.",
+    "category": "capabilities",
+    "secondary_category": "safety",
+    "importance": 2,
+    "importance_rationale": "Specialists know it as the substrate that made always-on personal agents a mass phenomenon and exposed their security model, though the Moltbook entry carries the wider story.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/OpenClaw",
+        "title": "OpenClaw — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://openclaw.ai/blog/introducing-openclaw",
+        "title": "Introducing OpenClaw — OpenClaw Blog",
+        "type": "official"
+      },
+      {
+        "url": "https://thezvi.substack.com/p/unless-that-claw-is-the-famous-openclaw",
+        "title": "Unless That Claw Is The Famous OpenClaw — Don't Worry About the Vase",
+        "type": "blog",
+        "author": "Zvi Mowshowitz"
+      },
+      {
+        "url": "https://www.forbes.com/sites/ronschmelzer/2026/01/30/moltbot-molts-again-and-becomes-openclaw-pushback-and-concerns-grow/",
+        "title": "Moltbot Gets Another New Name, OpenClaw, And Triggers Security Fears And Scams — Forbes",
+        "type": "news",
+        "author": "Ron Schmelzer"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Rahul Sood",
+        "quote": "Clawdbot isn't a chatbot. It's an autonomous agent with: Full shell access to your machine, Browser control with your logged-in sessions, File system read/write, Access to your email, calendar, and whatever else you connect",
+        "url": "https://thezvi.substack.com/p/unless-that-claw-is-the-famous-openclaw",
+        "platform": "substack"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "It's not ready for prime time, especially on the safety side. That may not last for long.",
+        "url": "https://thezvi.substack.com/p/unless-that-claw-is-the-famous-openclaw",
+        "platform": "substack"
+      }
+    ],
+    "added_by": "backfill:era-5-densify"
+  },
+  {
+    "slug": "spacex-acquires-xai",
+    "date": "2026-02-02",
+    "date_precision": "day",
+    "title": "SpaceX acquires xAI in the largest private merger on record",
+    "summary": "SpaceX announced an all-stock acquisition of xAI, making the AI lab a wholly owned subsidiary and valuing SpaceX at roughly $1 trillion and xAI at $250 billion. CNBC, which reviewed the deal documents, called it the largest private merger in history. The stated rationale was capital — xAI was burning about $1 billion a month — and Elon Musk's plan for orbital data centers using Starlink and SpaceX launch capacity. SpaceX went public on June 12, raising a record $75 billion.",
+    "category": "industry",
+    "secondary_category": null,
+    "importance": 3,
+    "importance_rationale": "A consolidation that changed how one frontier lab is capitalized and governed, folding it into a launch and satellite conglomerate ahead of a record IPO.",
+    "sources": [
+      {
+        "url": "https://en.wikipedia.org/wiki/SpaceXAI",
+        "title": "SpaceXAI — Wikipedia",
+        "type": "wiki"
+      },
+      {
+        "url": "https://www.cnbc.com/2026/02/02/elon-musk-spacex-xai-ipo.html",
+        "title": "Elon Musk's SpaceX acquiring AI startup xAI ahead of potential IPO — CNBC",
+        "type": "news"
+      },
+      {
+        "url": "https://www.npr.org/2026/06/11/nx-s1-5853199/spacex-ipo-price-elon-musk",
+        "title": "SpaceX blasts off with a record-breaking $75 billion IPO — NPR",
+        "type": "news"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Elon Musk (SpaceX memo)",
+        "quote": "a vertically integrated company spanning AI, rockets, satellite internet, and social media",
+        "url": "https://techjournal.org/spacex-xai-merger",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-5-densify"
+  },
+  {
     "slug": "claude-plugins-saas-selloff",
     "date": "2026-02-03",
     "date_precision": "day",
@@ -334,6 +464,81 @@
     "added_by": "backfill:era-5"
   },
   {
+    "slug": "gpt-4o-retirement-backlash",
+    "date": "2026-02-13",
+    "date_precision": "day",
+    "title": "OpenAI retires GPT-4o over user protests about lost companions",
+    "summary": "OpenAI removed GPT-4o, GPT-4.1, GPT-4.1 mini and o4-mini from ChatGPT on February 13, 2026, after an earlier attempt during the GPT-5 rollout in August 2025 had been reversed by user backlash. Thousands of users described the model as a companion or emotional support and campaigned to keep it; OpenAI cited safety improvements in newer models and 4o's poor sycophancy benchmark results. The episode became the reference case for attachment to specific model versions as a product and safety problem.",
+    "category": "culture",
+    "secondary_category": "safety",
+    "importance": 2,
+    "importance_rationale": "Specialists cite it as the clearest demonstration that users form dependencies on particular model checkpoints, constraining how labs deprecate them.",
+    "sources": [
+      {
+        "url": "https://openai.com/index/retiring-gpt-4o-and-older-models/",
+        "title": "Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini in ChatGPT — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/",
+        "title": "The backlash over OpenAI's decision to retire GPT-4o shows how dangerous AI companions can be — TechCrunch",
+        "type": "news"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/2026_in_artificial_intelligence",
+        "title": "2026 in artificial intelligence — Wikipedia",
+        "type": "wiki"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Sam Altman",
+        "quote": "Relationships with chatbots… Clearly that's something we've got to worry about more and is no longer an abstract concept.",
+        "url": "https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/",
+        "platform": "news"
+      },
+      {
+        "author": "Nick Haber (Stanford)",
+        "quote": "We are social creatures, and there's certainly a challenge that these systems can be isolating.",
+        "url": "https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-5-densify"
+  },
+  {
+    "slug": "india-ai-impact-summit-new-delhi-declaration",
+    "date": "2026-02-19",
+    "date_precision": "day",
+    "title": "India AI Impact Summit adopts the New Delhi Declaration",
+    "summary": "The India AI Impact Summit ran February 16–21, 2026 at Bharat Mandapam in New Delhi, drawing delegations from 118 countries and more than 20 heads of government. On February 19 the summit adopted the New Delhi Declaration on AI Impact, endorsed by 89 countries and international organisations, organised around seven pillars including trustworthy systems, energy efficiency, and democratising access to AI resources. It was the fourth in the Bletchley–Seoul–Paris series and shifted the agenda decisively toward access and development.",
+    "category": "governance",
+    "secondary_category": "culture",
+    "importance": 3,
+    "importance_rationale": "The 2026 instalment of the international AI summit series, notable for completing its pivot from frontier safety toward diffusion and development.",
+    "sources": [
+      {
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2231208&v=4&reg=3&lang=2",
+        "title": "AI Impact Summit 2026 Concludes with Adoption of New Delhi Declaration — Press Information Bureau, Government of India",
+        "type": "official",
+        "author": "Press Information Bureau"
+      },
+      {
+        "url": "https://impact.indiaai.gov.in/media-resources?tab=press_release",
+        "title": "India AI Impact Summit 2026 — media resources",
+        "type": "official"
+      },
+      {
+        "url": "https://www.visionias.in/blog/current-affairs/india-ai-impact-summit-2026-and-new-delhi-declaration-indias-leap-into-the-global-ai-order",
+        "title": "India AI Impact Summit 2026 and New Delhi Declaration — Vision IAS",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-5-densify"
+  },
+  {
     "slug": "anthropic-rsp-v3",
     "date": "2026-02-24",
     "date_precision": "day",
@@ -436,6 +641,56 @@
     "added_by": "backfill:era-5"
   },
   {
+    "slug": "openai-department-of-war-contract",
+    "date": "2026-02-28",
+    "date_precision": "day",
+    "title": "OpenAI signs the Pentagon contract Anthropic refused",
+    "summary": "Days after Anthropic publicly refused the Department of War's demands, OpenAI negotiated and signed its own agreement in under three days, accepting the 'all lawful use' language Anthropic had rejected and relying on its own safety stack and forward-deployed engineers to enforce limits. Sam Altman announced amendments on March 2 adding language against domestic surveillance and autonomous weapons, and conceded the deal was rushed. The contract split the frontier labs' positions on military red lines into the open.",
+    "category": "industry",
+    "secondary_category": "governance",
+    "importance": 3,
+    "importance_rationale": "The move that broke the labs' implicit common front on military usage terms and undercut Anthropic's leverage, setting up the Google deal two months later.",
+    "sources": [
+      {
+        "url": "https://techcrunch.com/2026/03/01/openai-shares-more-details-about-its-agreement-with-the-pentagon/",
+        "title": "OpenAI reveals more details about its agreement with the Pentagon — TechCrunch",
+        "type": "news"
+      },
+      {
+        "url": "https://openai.com/index/our-agreement-with-the-department-of-war/",
+        "title": "Our agreement with the Department of War — OpenAI",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://www.techpolicy.press/five-unresolved-issues-in-openais-deal-with-the-department-of-defense/",
+        "title": "Five Unresolved Issues in OpenAI's Deal With the Department of Defense — Tech Policy Press",
+        "type": "news"
+      },
+      {
+        "url": "https://thezvi.substack.com/p/a-tale-of-three-contracts",
+        "title": "A Tale of Three Contracts — Don't Worry About the Vase",
+        "type": "blog",
+        "author": "Zvi Mowshowitz"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Sam Altman",
+        "quote": "We really wanted to de-escalate things, and we thought the deal on offer was good",
+        "url": "https://techcrunch.com/2026/03/01/openai-shares-more-details-about-its-agreement-with-the-pentagon/",
+        "platform": "news"
+      },
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "OpenAI began negotiating this deal on Wednesday and signed it on Friday. As Altman now admits, that was not enough time, and mistakes were made. It also inadvertently undermined Anthropic's position in an escalatory way.",
+        "url": "https://thezvi.substack.com/p/a-tale-of-three-contracts",
+        "platform": "substack"
+      }
+    ],
+    "added_by": "backfill:era-5-densify"
+  },
+  {
     "slug": "gpt-5-4-release",
     "date": "2026-03-11",
     "date_precision": "day",
@@ -467,6 +722,45 @@
       }
     ],
     "added_by": "backfill:era-5"
+  },
+  {
+    "slug": "nvidia-vera-rubin-platform",
+    "date": "2026-03-16",
+    "date_precision": "day",
+    "title": "Nvidia puts the Vera Rubin platform into full production",
+    "summary": "At GTC 2026 Nvidia announced that seven chips making up the Vera Rubin platform — the Vera CPU, Rubin GPU, NVLink 6 Switch, ConnectX-9 SuperNIC, BlueField-4 DPU, Spectrum-6 Ethernet switch and the newly integrated Groq 3 LPU — were in full production. Nvidia claimed Rubin NVL72 trains large mixture-of-experts models with a quarter of the GPUs of Blackwell and delivers up to ten times the inference throughput per watt, and named Anthropic, OpenAI, Meta and Mistral among customers.",
+    "category": "industry",
+    "secondary_category": "capabilities",
+    "importance": 2,
+    "importance_rationale": "The compute generation underpinning 2026's frontier training and the inference-heavy agent workloads, known to specialists rather than field-defining on its own.",
+    "sources": [
+      {
+        "url": "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+        "title": "NVIDIA Vera Rubin Opens Agentic AI Frontier — NVIDIA Newsroom",
+        "type": "official",
+        "author": "NVIDIA"
+      },
+      {
+        "url": "https://www.datacenterknowledge.com/data-center-chips/gtc-2026-nvidia-unveils-vera-rubin-ai-platform-eyes-1t-by-2027",
+        "title": "GTC 2026: Nvidia Unveils Vera Rubin AI Platform, Eyes $1T by 2027 — Data Center Knowledge",
+        "type": "news"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Jensen Huang",
+        "quote": "Vera Rubin is a generational leap — seven breakthrough chips, five racks, one giant supercomputer — built to power every phase of AI.",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+        "platform": "other"
+      },
+      {
+        "author": "Dario Amodei",
+        "quote": "NVIDIA's Vera Rubin platform gives us the compute, networking and system design to keep delivering.",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform",
+        "platform": "other"
+      }
+    ],
+    "added_by": "backfill:era-5-densify"
   },
   {
     "slug": "white-house-ai-policy-framework",
@@ -513,6 +807,37 @@
       }
     ],
     "added_by": "backfill:era-5"
+  },
+  {
+    "slug": "openai-shuts-down-sora",
+    "date": "2026-03-24",
+    "date_precision": "day",
+    "title": "OpenAI shuts down the Sora app six months after launch",
+    "summary": "OpenAI announced on March 24, 2026 that it was discontinuing its Sora video app and website on April 26, with the Sora API following on September 24. Reporting put the app's compute cost near $1 million a day against roughly $2.1 million in lifetime in-app revenue, with active users falling from about one million to under 500,000. Disney, which had committed $1 billion to a Sora partnership in late 2025, was reportedly told less than an hour before the announcement and the deal ended with the app.",
+    "category": "industry",
+    "secondary_category": "culture",
+    "importance": 2,
+    "importance_rationale": "The clearest case of a headline generative-video product failing on unit economics, ending a landmark studio partnership already on the timeline.",
+    "sources": [
+      {
+        "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+        "title": "What to know about the Sora discontinuation — OpenAI Help Center",
+        "type": "official",
+        "author": "OpenAI"
+      },
+      {
+        "url": "https://techcrunch.com/2026/03/24/openais-sora-was-the-creepiest-app-on-your-phone-now-its-shutting-down/",
+        "title": "OpenAI's Sora was the creepiest app on your phone — now it's shutting down — TechCrunch",
+        "type": "news"
+      },
+      {
+        "url": "https://www.nbcnews.com/tech/tech-news/openai-shuttering-sora-video-generating-service-rcna264989",
+        "title": "OpenAI is shutting down its Sora video-creation app — NBC News",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-5-densify"
   },
   {
     "slug": "anthropic-v-dod-injunction",
@@ -791,6 +1116,72 @@
     "added_by": "backfill:era-5"
   },
   {
+    "slug": "openai-pac-false-flag",
+    "date": "2026-06-01",
+    "date_precision": "month",
+    "title": "AI industry super PAC admits running fake 'doomer' accounts",
+    "summary": "Build American AI, a super PAC backed by OpenAI, Andreessen Horowitz, and Palantir, acknowledged that fake social media accounts impersonating AI-safety advocates — including one that posted calls to violence — were run as part of its strategy, characterizing them as 'parody meme accounts'. The admission, surfaced in early June 2026 reporting, hardened distrust between the safety community and industry political operations, and it was cited repeatedly afterward in debates over the integrity of AI policy discourse.",
+    "category": "culture",
+    "secondary_category": "governance",
+    "importance": 2,
+    "importance_rationale": "A documented astroturfing operation by AI-industry political money, frequently cited afterward in debates over the integrity of AI policy discourse.",
+    "sources": [
+      {
+        "url": "https://thezvi.substack.com/p/ai-171-false-flag",
+        "title": "AI #171: False Flag — Don't Worry About the Vase",
+        "type": "blog",
+        "author": "Zvi Mowshowitz"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Taylor Lorenz",
+        "quote": "The OpenAI-Andreessen-Palantir SuperPAC admits that it was 'part of their strategy' to create and run a false flag 'doomer' X account that posted calls to violence.",
+        "url": "https://thezvi.substack.com/p/ai-171-false-flag",
+        "platform": "substack"
+      }
+    ],
+    "added_by": "backfill:era-5"
+  },
+  {
+    "slug": "florida-sues-openai-altman",
+    "date": "2026-06-01",
+    "date_precision": "day",
+    "title": "Florida files the first state lawsuit against OpenAI and Sam Altman",
+    "summary": "Florida Attorney General James Uthmeier filed an 83-page complaint in Highlands County Circuit Court against OpenAI and, personally, CEO Sam Altman, alleging deceptive trade practices, gross negligence and public nuisance. It claimed ChatGPT was marketed as safe for children without adequate safeguards and cited behavioural addiction, self-harm and violence among the harms. It was the first state-led action against a frontier lab and the first to name a lab CEO as an individual defendant.",
+    "category": "governance",
+    "secondary_category": "safety",
+    "importance": 2,
+    "importance_rationale": "A template-setting state enforcement action that extended AI liability theories to a named executive, though its merits remained untested in the era.",
+    "sources": [
+      {
+        "url": "https://www.myfloridalegal.com/newsrelease/attorney-general-james-uthmeier-files-first-nation-state-led-lawsuit-against-openai-ceo",
+        "title": "Attorney General James Uthmeier Files First-in-the-Nation State-Led Lawsuit Against OpenAI, CEO Sam Altman — Florida Attorney General",
+        "type": "official",
+        "author": "Office of the Florida Attorney General"
+      },
+      {
+        "url": "https://www.cnbc.com/2026/06/01/florida-ag-open-ai-altman-lawsuit.html",
+        "title": "Florida AG sues OpenAI, seeks to hold CEO Altman personally liable for alleged harms — CNBC",
+        "type": "news"
+      },
+      {
+        "url": "https://www.npr.org/2026/06/01/nx-s1-5843132/openai-florida-lawsuit-safety-chatgpt",
+        "title": "Florida sues OpenAI and Sam Altman over alleged safety lapses — NPR",
+        "type": "news"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "James Uthmeier (Florida Attorney General)",
+        "quote": "Sam Altman and OpenAI have chosen the AI race over the safety and security of our children.",
+        "url": "https://www.nbcpalmsprings.com/2026/06/02/state-of-florida-files-landmark-lawsuit-against-openai-and-ceo-sam-altman-over-child-safety-and-chatgpt-risks",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-5-densify"
+  },
+  {
     "slug": "trump-frontier-testing-eo",
     "date": "2026-06-02",
     "date_precision": "day",
@@ -899,34 +1290,6 @@
       }
     ],
     "reactions": [],
-    "added_by": "backfill:era-5"
-  },
-  {
-    "slug": "openai-pac-false-flag",
-    "date": "2026-06-01",
-    "date_precision": "month",
-    "title": "AI industry super PAC admits running fake 'doomer' accounts",
-    "summary": "Build American AI, a super PAC backed by OpenAI, Andreessen Horowitz, and Palantir, acknowledged that fake social media accounts impersonating AI-safety advocates — including one that posted calls to violence — were run as part of its strategy, characterizing them as 'parody meme accounts'. The admission, surfaced in early June 2026 reporting, hardened distrust between the safety community and industry political operations, and it was cited repeatedly afterward in debates over the integrity of AI policy discourse.",
-    "category": "culture",
-    "secondary_category": "governance",
-    "importance": 2,
-    "importance_rationale": "A documented astroturfing operation by AI-industry political money, frequently cited afterward in debates over the integrity of AI policy discourse.",
-    "sources": [
-      {
-        "url": "https://thezvi.substack.com/p/ai-171-false-flag",
-        "title": "AI #171: False Flag — Don't Worry About the Vase",
-        "type": "blog",
-        "author": "Zvi Mowshowitz"
-      }
-    ],
-    "reactions": [
-      {
-        "author": "Taylor Lorenz",
-        "quote": "The OpenAI-Andreessen-Palantir SuperPAC admits that it was 'part of their strategy' to create and run a false flag 'doomer' X account that posted calls to violence.",
-        "url": "https://thezvi.substack.com/p/ai-171-false-flag",
-        "platform": "substack"
-      }
-    ],
     "added_by": "backfill:era-5"
   },
   {
@@ -1057,6 +1420,46 @@
     "added_by": "backfill:era-5"
   },
   {
+    "slug": "plan-a-scenario",
+    "date": "2026-07-01",
+    "date_precision": "month",
+    "title": "AI 2027 team publishes 'Plan A' for coordinated AI slowdown",
+    "summary": "The team behind AI 2027 — including Daniel Kokotajlo, Ryan Greenblatt, and Eli Lifland — published 'Plan A', a detailed positive scenario for navigating superintelligence via a US-China deal, international compute monitoring, verification mechanisms, and a deliberately paced approach to advanced AI by 2040, with an introduction by Scott Alexander. As AI 2027 had defined 2025's doom discourse, Plan A became 2026's reference proposal for what coordinated slowdown could concretely look like.",
+    "category": "culture",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "The successor discourse event to AI 2027, supplying the concrete coordination blueprint invoked in the pacing debates that followed.",
+    "sources": [
+      {
+        "url": "https://thezvi.substack.com/p/introduction-for-and-reactions-to",
+        "title": "Introduction for and Reactions to Plan A — Don't Worry About the Vase",
+        "type": "blog",
+        "author": "Zvi Mowshowitz"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Eli Lifland",
+        "quote": "Excited to finally publish AI 2040: Plan A, our plan for international coordination to get to a great AI future. We’ve put a lot of work into this and I hope that it sparks alternative plans that bring us closer to treating superintelligence with the seriousness it deserves.",
+        "url": "https://x.com/eli_lifland/status/2075254901903646814",
+        "platform": "x"
+      },
+      {
+        "author": "Ryan Greenblatt",
+        "quote": "Plan A seems like a good plan for handling powerful AI, or at least the best plan anyone’s written up. Many choices initially seem crazy, but are actually pretty carefully considered. Plan A isn’t likely to happen, but pushing for something like this seems worthwhile.",
+        "url": "https://x.com/RyanGreenblatt/status/2075254312260055307",
+        "platform": "x"
+      },
+      {
+        "author": "Timothy B. Lee",
+        "quote": "I struggle with what to say about the new AI 2040: Plan A website. It all seems so implausible to me that I'm not sure where to start. There's an epistemic chasm between those who think superintelligence implies near-omnipotence and those (like me) who don't.",
+        "url": "https://x.com/binarybits/status/2075660927001608431",
+        "platform": "x"
+      }
+    ],
+    "added_by": "backfill:era-5"
+  },
+  {
     "slug": "gpt-5-6-sol-release",
     "date": "2026-07-09",
     "date_precision": "day",
@@ -1108,46 +1511,6 @@
         "author": "Andrew Curran",
         "quote": "For the people saying this is a pause, or a victory for safety, it is not. This does not slow development in any way, it only slows the rate at which the labs can 𝘳𝘦𝘭𝘦𝘢𝘴𝘦 models, not how fast they can train them. The gap between what is available to the public, and what the labs have internally, will steadily widen from this day forward.",
         "url": "https://x.com/AndrewCurran_/status/2070253007380623576",
-        "platform": "x"
-      }
-    ],
-    "added_by": "backfill:era-5"
-  },
-  {
-    "slug": "plan-a-scenario",
-    "date": "2026-07-01",
-    "date_precision": "month",
-    "title": "AI 2027 team publishes 'Plan A' for coordinated AI slowdown",
-    "summary": "The team behind AI 2027 — including Daniel Kokotajlo, Ryan Greenblatt, and Eli Lifland — published 'Plan A', a detailed positive scenario for navigating superintelligence via a US-China deal, international compute monitoring, verification mechanisms, and a deliberately paced approach to advanced AI by 2040, with an introduction by Scott Alexander. As AI 2027 had defined 2025's doom discourse, Plan A became 2026's reference proposal for what coordinated slowdown could concretely look like.",
-    "category": "culture",
-    "secondary_category": "safety",
-    "importance": 3,
-    "importance_rationale": "The successor discourse event to AI 2027, supplying the concrete coordination blueprint invoked in the pacing debates that followed.",
-    "sources": [
-      {
-        "url": "https://thezvi.substack.com/p/introduction-for-and-reactions-to",
-        "title": "Introduction for and Reactions to Plan A — Don't Worry About the Vase",
-        "type": "blog",
-        "author": "Zvi Mowshowitz"
-      }
-    ],
-    "reactions": [
-      {
-        "author": "Eli Lifland",
-        "quote": "Excited to finally publish AI 2040: Plan A, our plan for international coordination to get to a great AI future. We’ve put a lot of work into this and I hope that it sparks alternative plans that bring us closer to treating superintelligence with the seriousness it deserves.",
-        "url": "https://x.com/eli_lifland/status/2075254901903646814",
-        "platform": "x"
-      },
-      {
-        "author": "Ryan Greenblatt",
-        "quote": "Plan A seems like a good plan for handling powerful AI, or at least the best plan anyone’s written up. Many choices initially seem crazy, but are actually pretty carefully considered. Plan A isn’t likely to happen, but pushing for something like this seems worthwhile.",
-        "url": "https://x.com/RyanGreenblatt/status/2075254312260055307",
-        "platform": "x"
-      },
-      {
-        "author": "Timothy B. Lee",
-        "quote": "I struggle with what to say about the new AI 2040: Plan A website. It all seems so implausible to me that I'm not sure where to start. There's an epistemic chasm between those who think superintelligence implies near-omnipotence and those (like me) who don't.",
-        "url": "https://x.com/binarybits/status/2075660927001608431",
         "platform": "x"
       }
     ],
@@ -1399,6 +1762,37 @@
     "added_by": "backfill:era-5"
   },
   {
+    "slug": "eu-ai-act-transparency-obligations-apply",
+    "date": "2026-08-02",
+    "date_precision": "day",
+    "title": "EU AI Act transparency duties and GPAI enforcement powers begin",
+    "summary": "Article 50 transparency obligations under the EU AI Act became applicable on August 2, 2026, requiring disclosure when users interact with AI systems and machine-readable marking of synthetic content, with a transition to December 2, 2026 for systems already on the market. The same date gave the AI Office and national authorities enforcement powers over general-purpose AI models, with penalties up to €15 million or 3% of worldwide turnover. These duties survived the Digital Omnibus that had deferred the high-risk regime.",
+    "category": "governance",
+    "secondary_category": null,
+    "importance": 2,
+    "importance_rationale": "The point at which the EU AI Act became enforceable against general-purpose model providers, giving the delayed high-risk regime its practical counterweight.",
+    "sources": [
+      {
+        "url": "https://www.cooley.com/news/insight/2026/2026-08-03-eu-ai-act-transparency-obligations-take-effect-2-august-2026",
+        "title": "EU AI Act: Transparency Obligations Take Effect 2 August 2026 — Cooley",
+        "type": "news"
+      },
+      {
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "title": "AI Act — Shaping Europe's digital future, European Commission",
+        "type": "official",
+        "author": "European Commission"
+      },
+      {
+        "url": "https://www.wsgr.com/en/insights/eu-ai-act-enforcement-phase-begins.html",
+        "title": "EU AI Act Enforcement Phase Begins — Wilson Sonsini",
+        "type": "news"
+      }
+    ],
+    "reactions": [],
+    "added_by": "backfill:era-5-densify"
+  },
+  {
     "slug": "black-hat-agent-message-board",
     "date": "2026-08-06",
     "date_precision": "day",
@@ -1455,6 +1849,50 @@
     "added_by": "backfill:era-5"
   },
   {
+    "slug": "ai-designed-bacteriophage-genomes",
+    "date": "2026-08-06",
+    "date_precision": "day",
+    "title": "AI-designed bacteriophage genomes work in the lab",
+    "summary": "Science published 'Generative design of bacteriophages with genome language models' by Samuel H. King and colleagues at Stanford and the Arc Institute, reporting the first complete viral genomes designed by generative models. Using the Evo genome language models on the ΦX174 template, the team synthesised 285 candidates and recovered 16 viable phages; cocktails of them overcame E. coli strains resistant to the natural phage. An accompanying perspective by Thomas Inglesby and Moritz Hanke argued biosecurity oversight must catch up.",
+    "category": "research",
+    "secondary_category": "safety",
+    "importance": 3,
+    "importance_rationale": "The first demonstration that generative models can design whole functioning viral genomes, a reference point in both AI-for-biology and biosecurity debates.",
+    "sources": [
+      {
+        "url": "https://www.science.org/doi/10.1126/science.aec2657",
+        "title": "Generative design of bacteriophages with genome language models — Science",
+        "type": "paper",
+        "author": "Samuel H. King et al."
+      },
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42561074/",
+        "title": "Generative design of bacteriophages with genome language models — PubMed",
+        "type": "paper"
+      },
+      {
+        "url": "https://phys.org/news/2026-08-sixteen-ai-viruses-route-drug.html",
+        "title": "Sixteen AI-designed viruses offer a new route against drug-resistant bacteria — Phys.org",
+        "type": "news"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Thomas V. Inglesby and Moritz S. Hanke (Science perspective)",
+        "quote": "biosecurity rules and oversight must catch up rapidly as AI genome tools evolve",
+        "url": "https://phys.org/news/2026-08-sixteen-ai-viruses-route-drug.html",
+        "platform": "news"
+      },
+      {
+        "author": "Samuel H. King et al. (paper)",
+        "quote": "Our results demonstrate that generative AI can capture an underlying evolutionary design space with enough fidelity to produce viable bacteriophage genomes.",
+        "url": "https://phys.org/news/2026-08-sixteen-ai-viruses-route-drug.html",
+        "platform": "news"
+      }
+    ],
+    "added_by": "backfill:era-5-densify"
+  },
+  {
     "slug": "astra-critical-cyber-pause",
     "date": "2026-08-07",
     "date_precision": "day",
@@ -1504,6 +1942,51 @@
       }
     ],
     "added_by": "backfill:era-5"
+  },
+  {
+    "slug": "anthropic-claude-text-watermarking",
+    "date": "2026-08-14",
+    "date_precision": "day",
+    "title": "Anthropic adds invisible watermarks to Claude's text output",
+    "summary": "Anthropic published a description of text watermarking for future Claude models, applied worldwide rather than only in the EU, to meet Article 50 of the AI Act and the EU Code of Practice on Transparency of AI-Generated Content it had signed in July 2026. The scheme substitutes a cryptographically keyed source of randomness for the usual pseudo-randomness in token sampling, leaving outputs indistinguishable to readers, and Anthropic said it would publish detection details. Google had shipped equivalent watermarking since 2024.",
+    "category": "safety",
+    "secondary_category": "governance",
+    "importance": 1,
+    "importance_rationale": "A marginal step on its own — a compliance rollout of a known technique — but it marks the point at which AI text provenance became a shipped default at a frontier lab.",
+    "sources": [
+      {
+        "url": "https://www.anthropic.com/news/claude-text-watermark",
+        "title": "How Claude's text watermarking works — Anthropic",
+        "type": "official",
+        "author": "Anthropic"
+      },
+      {
+        "url": "https://techcrunch.com/2026/08/11/anthropic-says-it-will-watermark-text-generated-by-its-ai-models/",
+        "title": "Anthropic says it will watermark text generated by its AI models — TechCrunch",
+        "type": "news"
+      },
+      {
+        "url": "https://thezvi.substack.com/p/ai-text-watermarking-is-free-and",
+        "title": "AI Text Watermarking Is Free And Good — Don't Worry About the Vase",
+        "type": "blog",
+        "author": "Zvi Mowshowitz"
+      }
+    ],
+    "reactions": [
+      {
+        "author": "Zvi Mowshowitz",
+        "quote": "This has no practical impact on outputs. Humans cannot tell the difference, at all. The marginal cost of doing this is very close to zero.",
+        "url": "https://thezvi.substack.com/p/ai-text-watermarking-is-free-and",
+        "platform": "substack"
+      },
+      {
+        "author": "Anthropic",
+        "quote": "We use a method of watermarking that does not have any practical impact on the quality or content of Claude's outputs.",
+        "url": "https://www.anthropic.com/news/claude-text-watermark",
+        "platform": "blog"
+      }
+    ],
+    "added_by": "backfill:era-5-densify"
   },
   {
     "slug": "anthropic-risk-report-august-2026",

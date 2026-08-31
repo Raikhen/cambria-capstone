@@ -320,7 +320,7 @@ const SUBMIT_OPERATIONS_TOOL = {
             summary: { type: "string", description: "2-4 sentences, 150-600 chars, neutral encyclopedic voice" },
             category: { enum: [...CATEGORIES] },
             secondary_category: { enum: [...CATEGORIES, null] },
-            importance: { type: "integer", description: "2-5 for the autonomous pipeline (never 1)" },
+            importance: { type: "integer", description: "1-5 per the rubric; score honestly (1 = footnote, 5 = textbook)" },
             importance_rationale: { type: "string" },
             sources: { type: "array", items: SOURCE_SCHEMA },
             reactions: { type: "array", items: REACTION_SCHEMA },
@@ -374,8 +374,8 @@ absolute for this run:
    with an ungrounded URL is rejected. Never invent or guess a URL. Prefer primary
    sources (official announcement, paper, ruling) as the first source; use web search
    to locate them and to verify exact dates.
-4. **Importance must be 2 or higher.** The pipeline never publishes footnotes.
-   Score against history, not the news cycle.
+4. **Score importance honestly against the rubric (1–5).** Score against history,
+   not the news cycle. A marginal-but-legible event is a 1, not an inflated 3.
 5. **Most runs should propose ZERO events.** An empty submission is a successful,
    expected outcome — the timeline is curated history, not a news feed. When in doubt,
    leave it out.
@@ -757,9 +757,6 @@ function vetOperations(
 
     reasons.push(...validateEvent(candidate).map((e) => `schema: ${e}`));
 
-    if (typeof raw.importance === "number" && raw.importance < 2) {
-      reasons.push(`importance ${raw.importance} < 2 (pipeline floor)`);
-    }
     if (existingSlugs.has(slug)) reasons.push(`slug collision with existing event "${slug}"`);
     if (batchSlugs.has(slug)) reasons.push(`slug collision within this batch "${slug}"`);
 

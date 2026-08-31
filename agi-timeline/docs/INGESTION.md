@@ -25,7 +25,8 @@ file (not the code) is how you change the timeline's taste.
 5. **Claude call.** One conversation with `claude-sonnet-5`:
    - System prompt = `INCLUSION_CRITERIA.md` verbatim + strict operating
      instructions (selector/condenser, never an author; verbatim quotes only;
-     importance ≥ 2; zero events is the expected outcome; merge instead of duplicate).
+     honest 1–5 importance scoring; zero events is the expected outcome; merge
+     instead of duplicate).
    - The server-side `web_search` tool is enabled (max 8 searches) so the model can
      verify dates and locate primary sources.
    - Output arrives through a `submit_operations` tool call with a strict JSON schema:
@@ -34,7 +35,6 @@ file (not the code) is how you change the timeline's taste.
      calling the tool it is nudged once, then forced via `tool_choice`.
 6. **Mechanical vetting (code, not model).** Every proposal must survive:
    - `validateEvent()` from `lib/validate.ts` (schema, date sanity, URL validity);
-   - importance ≥ 2;
    - no slug collision with existing events or within the batch;
    - **grounding**: every source URL and reaction URL must be present in the set of
      allowed URLs — URLs extracted from the gathered material (raw HTML hrefs and

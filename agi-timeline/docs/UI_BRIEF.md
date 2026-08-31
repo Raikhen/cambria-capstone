@@ -32,7 +32,7 @@ distinctive, and production-quality** — not a sketch.
    if its primary OR secondary category is selected. Category must be legible at a
    glance (color/icon system of your choosing, consistent within your variant).
 2. **Importance filter** — minimum-importance control (1–5). Default: show all.
-3. **Importance hierarchy** — a 5 must feel like a landmark, a 2 like a footnote,
+3. **Importance hierarchy** — a 5 must feel like a landmark, a 1 like a footnote,
    at a glance, before reading a word.
 4. **Event detail** — title, date (honor `date_precision`: year → "1956", month →
    "March 2023", day → full date), summary, sources as links (favor the first/
