@@ -39,7 +39,11 @@ const DRY_RUN = process.argv.includes("--dry-run");
 const NO_LLM = process.argv.includes("--no-llm"); // implies no writes
 const WRITE_MODE = !DRY_RUN && !NO_LLM;
 
-const FEED_URL = "https://thezvi.substack.com/feed";
+// Same posts on both; Substack (Cloudflare) 403s GitHub Actions runner IPs, WordPress.com doesn't
+const FEED_URLS = [
+  "https://thezvi.substack.com/feed",
+  "https://thezvi.wordpress.com/feed/",
+];
 const FIRST_RUN_WINDOW_DAYS = 21;
 const OVERLAP_MARGIN_DAYS = 7;
 const DEDUPE_CONTEXT_DAYS = 90;
@@ -449,11 +453,21 @@ async function determineWindow(supabase: SupabaseClient): Promise<Date> {
 
 async function gatherMaterial(windowStart: Date): Promise<GatheredMaterial> {
   const allowedUrls = new Set<string>();
-  allowedUrls.add(normalizeUrl(FEED_URL)!);
+  for (const url of FEED_URLS) allowedUrls.add(normalizeUrl(url)!);
 
-  const feedRes = await fetchWithRetry(FEED_URL);
-  if (!feedRes.ok) throw new Error(`Feed fetch failed: HTTP ${feedRes.status}`);
-  const feedXml = await feedRes.text();
+  let feedXml: string | null = null;
+  const feedStatuses: string[] = [];
+  for (const url of FEED_URLS) {
+    const feedRes = await fetchWithRetry(url);
+    if (feedRes.ok) {
+      feedXml = await feedRes.text();
+      log("gather.feed_source", { url });
+      break;
+    }
+    feedStatuses.push(`${url}: HTTP ${feedRes.status}`);
+    log("gather.feed_fetch_failed", { url, status: feedRes.status });
+  }
+  if (feedXml === null) throw new Error(`All feed fetches failed: ${feedStatuses.join("; ")}`);
   const items = parseFeed(feedXml)
     .filter((i) => i.pubDate >= windowStart)
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime()); // newest first
