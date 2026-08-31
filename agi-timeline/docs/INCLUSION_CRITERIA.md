@@ -107,6 +107,16 @@ An event must pass **all four**:
 - **Duplicates.** One development, one event. Follow-ups merge into the existing event
   as updates or added citations rather than becoming new entries.
 
+## Follow-up coverage
+
+Later coverage of an event already on the timeline — postmortems, official reports,
+investigations, analyses, notable commentary — is by default an **amendment to the
+existing event**: attach the report as a new source and the commentary as verbatim
+reactions. A follow-up earns its own entry only when it is itself a landmark with
+independent consequences — a ruling that changed the law, a report that triggered
+resignations or regulation, a disclosure that reframed the original event for the
+field. When in doubt, amend.
+
 ## Tweets and commentary
 
 Tweets are **citations, not events**. A capabilities jump is the event; Karpathy's
