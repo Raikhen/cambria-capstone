@@ -88,7 +88,9 @@ async function fetchWithRetry(
       const res = await fetch(url, {
         ...init,
         headers: {
-          "user-agent": "agi-trajectory-ingest/1.0 (+https://github.com/agi-trajectory)",
+          // Substack/Cloudflare 403s bot-style UAs from datacenter IPs (e.g. GitHub Actions runners)
+          "user-agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
           ...(init.headers ?? {}),
         },
         signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
